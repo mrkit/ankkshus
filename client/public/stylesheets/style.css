@@ -1,0 +1,189 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    font-weight: 100;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(0deg);
+    }
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+.cog {
+    width: 900px;
+    height: 900px;
+    border-radius: 100%;
+    position: fixed;
+    box-shadow: inset 40px 10px 10px 10px #605e5f;
+}
+
+.cog.one {
+    width: 1000px;
+    height: 1000px;
+    top: 200px;
+    left: -100px;
+    border: 10px dashed #454343;
+    animation: rotate 250s linear infinite;
+    z-index: -1;
+}
+
+.cog.two {
+    top: 300px;
+    right: -200px;
+    border: 10px dotted #656565;
+    animation: rotate 230s linear infinite;
+    animation-direction: reverse;
+    animation-delay: 0;
+    z-index: -2;
+}
+
+
+#container {
+    height: 115%;
+    min-height: 50rem;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+    box-shadow: 1px 0px 60px grey;
+    background-color: white;
+}
+
+nav {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    position: relative;
+    top: -25px;
+}
+
+nav li{
+    list-style: none;
+    display: inline;
+    font-size: 20px;
+    margin-left: 3.2rem;
+    border-spacing: 10px 50px;
+}
+
+nav li a {
+    padding: 10px;
+    box-shadow: inset .2px .5px 1px transparent;
+    text-decoration: none;
+    color: black;
+}
+
+nav li a:hover {
+    padding: 10px;
+    box-shadow: inset .6px .5px 1px #797979;
+    border-radius: 20px;
+    transition:box-shadow .4s ease-in;
+}
+nav li a:active {
+    padding: 10px;
+    box-shadow: inset 2px 5px 10px #797979;
+    border-radius: 20px;
+}
+
+
+
+@keyframes fadeIn {
+    {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}
+
+.fade {
+    opacity: 0;
+    animation: fadeIn ease-in 2s;
+    animation-fill-mode: forwards;
+}
+
+#ankkshus {
+    background-image: url(/images/Ankkshus_logo.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 25em;
+    width: 30em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+}
+
+main {
+    width: 600px;
+    height: 90%;
+    margin: auto;
+}
+
+main fade {
+    animation-delay: 2s;
+}
+
+article {
+    border-bottom: 1px solid black;
+    margin: 10px;
+    margin-bottom: 20px;
+    width: 93.5%;    
+}
+
+article h3 {
+    font-weight: 100;
+    font-size: 1.8em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    animation-delay: .07s;
+}
+
+footer {
+  width: 6rem;
+  margin: auto;
+}
+
+/* TABLE STYLES - MOVE TO OWN MODULE LATER */
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  display: grid;
+}
+
+tr {
+/*  display: contents;*/
+}
+
+th {
+  border: 1px solid black;
+  font-weight: 100;
+  transform: rotate(-90deg);
+  white-space: nowrap;
+}
+
+th:first-child {
+  width: 40vw;
+  white-space: normal;
+  transform: rotate(0);
+}
+
+td {
+  display: table-cell;
+  width: 40em;
+  border: 1px solid black;
+}
+
+td:first-child {
+  width: 100%;
+}
+
+input: {
+  outline: none;
+  border-style: none;
+  border-bottom: 1px solid black;
+}
