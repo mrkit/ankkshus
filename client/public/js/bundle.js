@@ -26449,21 +26449,45 @@ var Quiz = function (_Component) {
       questions: _quizQuestions2.default,
       score: 0
     };
-    _this.handleClick = _this.handleClick.bind(_this);
+    _this.handleReset = _this.handleReset.bind(_this);
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
     return _this;
   }
 
   _createClass(Quiz, [{
-    key: 'handleClick',
-    value: function handleClick(e) {
-      console.log(e.target.innerHTML);
-      e.target.style.background = '#2ff4f4';
-      this.setState({ score: this.state.score + Number(e.target.innerHTML) });
+    key: 'handleSubmit',
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      var questions = document.querySelectorAll('input');
+      var score = 0;
+
+      for (var i = 0; i < questions.length; i++) {
+        if (questions[i].checked) {
+          score += Number(questions[i].value);
+        }
+      }
+
+      this.setState({ score: score });
+    }
+  }, {
+    key: 'handleReset',
+    value: function handleReset(e) {
+      var questions = document.querySelectorAll('input');
+      var score = 0;
+
+      for (var i = 0; i < questions.length; i++) {
+        if (questions[i].checked) {
+          questions[i].checked = false;
+        }
+      }
+
+      this.setState({ score: 0 });
     }
   }, {
     key: 'render',
     value: function render() {
-      var handleClick = this.handleClick;
+      var handleReset = this.handleReset,
+          handleSubmit = this.handleSubmit;
       var _state = this.state,
           questions = _state.questions,
           counter = _state.counter,
@@ -26473,7 +26497,11 @@ var Quiz = function (_Component) {
           cell = _quizStyles2.default.cell,
           cell1 = _quizStyles2.default.cell1,
           questionStyle = _quizStyles2.default.questionStyle,
-          titleStyle = _quizStyles2.default.titleStyle;
+          titleStyle = _quizStyles2.default.titleStyle,
+          inputStyle = _quizStyles2.default.inputStyle,
+          scoreStyle = _quizStyles2.default.scoreStyle,
+          resetStyle = _quizStyles2.default.resetStyle,
+          submitStyle = _quizStyles2.default.submitStyle;
 
       return _react2.default.createElement(
         'div',
@@ -26484,8 +26512,8 @@ var Quiz = function (_Component) {
           'Burns Depression Checklist'
         ),
         _react2.default.createElement(
-          'div',
-          null,
+          'form',
+          { onSubmit: handleSubmit },
           questions.map(function (question) {
             return _react2.default.createElement(
               'div',
@@ -26514,37 +26542,76 @@ var Quiz = function (_Component) {
                     qs[1]
                   ),
                   _react2.default.createElement(
-                    'div',
-                    { onClick: handleClick, style: cell },
-                    '0'
+                    'label',
+                    null,
+                    _react2.default.createElement(
+                      'div',
+                      { style: cell },
+                      _react2.default.createElement('input', { style: inputStyle, type: 'radio', name: 'question' + qs[0], value: '0' }),
+                      ' 0'
+                    )
                   ),
                   _react2.default.createElement(
-                    'div',
-                    { onClick: handleClick, style: cell },
-                    '1'
+                    'label',
+                    null,
+                    _react2.default.createElement(
+                      'div',
+                      { style: cell },
+                      _react2.default.createElement('input', { style: inputStyle, type: 'radio', name: 'question' + qs[0], value: '1' }),
+                      ' 1'
+                    )
                   ),
                   _react2.default.createElement(
-                    'div',
-                    { onClick: handleClick, style: cell },
-                    '2'
+                    'label',
+                    null,
+                    _react2.default.createElement(
+                      'div',
+                      { style: cell },
+                      _react2.default.createElement('input', { style: inputStyle, type: 'radio', name: 'question' + qs[0], value: '2' }),
+                      ' 2'
+                    )
                   ),
                   _react2.default.createElement(
-                    'div',
-                    { onClick: handleClick, style: cell },
-                    '3'
+                    'label',
+                    null,
+                    _react2.default.createElement(
+                      'div',
+                      { style: cell },
+                      _react2.default.createElement('input', { style: inputStyle, type: 'radio', name: 'question' + qs[0], value: '3' }),
+                      ' 3'
+                    )
                   ),
                   _react2.default.createElement(
-                    'div',
-                    { onClick: handleClick, style: cell },
-                    '4'
+                    'label',
+                    null,
+                    _react2.default.createElement(
+                      'div',
+                      { style: cell },
+                      _react2.default.createElement('input', { style: inputStyle, type: 'radio', name: 'question' + qs[0], value: '4' }),
+                      ' 4'
+                    )
                   )
                 );
               })
             );
-          })
+          }),
+          _react2.default.createElement(
+            'button',
+            { style: submitStyle },
+            'Submit'
+          )
         ),
-        'Total: ',
-        score
+        _react2.default.createElement(
+          'button',
+          { onClick: handleReset, style: resetStyle },
+          'Reset'
+        ),
+        _react2.default.createElement(
+          'div',
+          { style: scoreStyle },
+          'Total: ',
+          score
+        )
       );
     }
   }]);
@@ -26620,6 +26687,34 @@ var styles = {
     borderRight: '1px solid black',
     borderLeft: '1px solid black',
     borderTop: '1px solid black'
+  },
+
+  inputStyle: {
+    //    display: 'none'
+  },
+
+  submitStyle: {
+    width: '13rem',
+    position: 'relative',
+    left: '-0.05rem',
+    top: '0rem',
+    height: '1.5rem',
+    outline: 'none'
+  },
+
+  resetStyle: {
+    width: '15.7rem',
+    position: 'relative',
+    left: '12.85rem',
+    top: '-1.5rem',
+    height: '1.5rem',
+    outline: 'none'
+  },
+
+  scoreStyle: {
+    position: 'relative',
+    left: '33.8rem',
+    top: '-2.8rem'
   }
 };
 

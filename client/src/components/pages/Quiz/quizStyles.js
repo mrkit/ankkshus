@@ -32,6 +32,34 @@ const styles = {
     borderRight: '1px solid black',
     borderLeft: '1px solid black',
     borderTop: '1px solid black'
+  },
+  
+  inputStyle: {
+//    display: 'none'
+  }, 
+  
+  submitStyle: {
+    width: '13rem',
+    position: 'relative',
+    left: '-0.05rem',
+    top: '0rem',
+    height: '1.5rem',
+    outline: 'none'
+  },
+  
+  resetStyle: {
+    width: '15.7rem',
+    position: 'relative',
+    left: '12.85rem',
+    top: '-1.5rem',
+    height: '1.5rem',
+    outline: 'none'
+  },
+  
+   scoreStyle: {
+    position: 'relative',
+    left: '33.8rem',
+    top: '-2.8rem'
   }
 }
 
