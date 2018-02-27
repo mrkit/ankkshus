@@ -14,7 +14,7 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(require('compression')());
 
-server.get('/', (req, res, next) => res.sendFile(join(__dirname, '..', 'client', 'public', 'index.html')));
+server.get('/*', (req, res, next) => res.sendFile(join(__dirname, '..', 'client', 'public', 'index.html')));
 
 server.get('/luci', (req, res, next) => res.sendFile(join(__dirname, '..', 'client', 'public', 'luci.html')));
 

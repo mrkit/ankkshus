@@ -1,40 +1,40 @@
 const questions = [{
   title: 'Thoughts and Feelings', 
   qs: [
-    'Feeling sad or down in the dumps',
-    'Feeling unhappy or blue',
-    'Crying spells or tearfulness',
-    'Feeling discouraged',
-    'Feeling hopeless',
-    'Low self-esteem',
-    'Feeling worthless or inadequate',
-    'Guilt or shame',
-    'Criticizing yourself of blaming yourself',
-    'Difficulty making decisions'
+    [1,'Feeling sad or down in the dumps'],
+    [2,'Feeling unhappy or blue'],
+    [3,'Crying spells or tearfulness'],
+    [4,'Feeling discouraged'],
+    [5,'Feeling hopeless'],
+    [6,'Low self-esteem'],
+    [7,'Feeling worthless or inadequate'],
+    [8,'Guilt or shame'],
+    [9,'Criticizing yourself of blaming yourself'],
+    [10,'Difficulty making decisions']
   ]},{
     title: 'Activities and Personal Relationships',
     qs: [
-    'Loss of interest in family, friends or colleagues',
-    'Loneliness',
-    'Spending less time with family or friends',
-    'Loss of motivation',
-    'Loss of interest in work or other activities',
-    'Avoiding work or other activities',
-    'Loss of pleasure or satisfaction in life',
+    [11,'Loss of interest in family, friends or colleagues'],
+    [12,'Loneliness'],
+    [13,'Spending less time with family or friends'],
+    [14,'Loss of motivation'],
+    [15,'Loss of interest in work or other activities'],
+    [16,'Avoiding work or other activities'],
+    [17,'Loss of pleasure or satisfaction in life'],
   ]},{
     title: 'Physical Symptoms',
     qs: [
-    'Feeling tired',
-    'Difficulty sleeping or sleeping too much',
-    'Decreased or increased appetite',
-    'Loss of interest in sex',
-    'Worrying about your health'
+    [18,'Feeling tired'],
+    [19,'Difficulty sleeping or sleeping too much'],
+    [20,'Decreased or increased appetite'],
+    [21,'Loss of interest in sex'],
+    [22,'Worrying about your health']
   ]},{
     title: 'Suicidal Urges**',
     qs: [
-    'Do you have any suicidal thoughts?',
-    'Would you like to end your life?',
-    'Do you have a plan for harming yourself?'
+    [23,'Do you have any suicidal thoughts?'],
+    [24,'Would you like to end your life?'],
+    [25,'Do you have a plan for harming yourself?']
   ]}
 ]
 
