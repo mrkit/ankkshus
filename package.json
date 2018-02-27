@@ -4,7 +4,7 @@
   "description": "It's not my fault I don't know how many k's are in anxious",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -p & forever  --uid 'ankkshus' start server",
+    "start": "webpack -p & forever start --id 'ankkshus' server",
     "dev": "webpack -w & nodemon server"
   },
   "keywords": [],
