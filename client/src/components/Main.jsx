@@ -18,8 +18,8 @@ const Main = () => (
     <Route path='/luci' render={() => window.location.reload()}/>
     <Route path='/distillery' component={Distillery} />
     <Route path='/quiz' component={Quiz} /> 
-    <Route path='/login' component={Login} />
     <Route path='/brainstorm' component={Brainstorm} />
+    <Route path='/login' component={Login} />
   </main>
 )
 

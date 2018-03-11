@@ -26292,8 +26292,8 @@ var Header = function Header(props) {
           null,
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/login' },
-            props.loginOrSignUp
+            { to: '/brainstorm' },
+            'Brainstorm'
           )
         ),
         _react2.default.createElement(
@@ -26301,8 +26301,8 @@ var Header = function Header(props) {
           null,
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: '/brainstorm' },
-            'Brainstorm'
+            { to: '/login' },
+            props.loginOrSignUp
           )
         )
       )
@@ -26379,8 +26379,8 @@ var Main = function Main() {
       } }),
     _react2.default.createElement(_reactRouterDom.Route, { path: '/distillery', component: _Distillery2.default }),
     _react2.default.createElement(_reactRouterDom.Route, { path: '/quiz', component: _Quiz2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _Login2.default }),
-    _react2.default.createElement(_reactRouterDom.Route, { path: '/brainstorm', component: _Brainstorm2.default })
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/brainstorm', component: _Brainstorm2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _Login2.default })
   );
 };
 
