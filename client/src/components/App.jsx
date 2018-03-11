@@ -13,8 +13,6 @@ class App extends Component {
   render(){
     return (
       <div id="container">
-        <div className="cog one"></div>
-        <div className="cog two"></div>
         <Header />
         <Main />
         <Footer />

@@ -1,0 +1,80 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2 {
+  font-family: sans-serif;
+  font-weight: 100;
+  margin: 0;
+}
+
+#container {
+  min-height: 50rem;
+  width: 70rem;
+  margin-top: 0;
+  margin: auto;
+  display: grid;
+  grid-template-rows: 2fr 9fr 1fr;
+}
+
+#ankkshus {
+  background-image: url(/images/Ankkshus_logo.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 8rem;
+  width: 10rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  height: 7.6rem;
+  border-bottom: 1px solid black;
+}
+
+nav {
+  position: relative;
+  top: 2rem;
+  height: 3rem;
+}
+
+nav ul{
+  
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-column-gap: .3rem;
+  padding: 0;
+}
+
+nav ul li {
+  list-style: none;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+
+}
+
+main {
+  width: 60rem;
+  margin: auto;
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+
+main h1 {
+  border-bottom: 1px solid thistle;
+}
+
+footer {
+  text-align-last: center;
+}
