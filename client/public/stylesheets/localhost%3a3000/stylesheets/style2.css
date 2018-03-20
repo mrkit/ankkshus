@@ -20,8 +20,6 @@ body, h1, h2 {
   display: grid;
   grid-template-rows: 1fr 9fr 1fr;
   background: url(/images/citydragonweb.jpg) no-repeat center center fixed;
-  background-size: 95%;
-  background-position: 0 .1rem;
 }
 
 #ankkshus {

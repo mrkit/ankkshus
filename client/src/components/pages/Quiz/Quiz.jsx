@@ -47,9 +47,9 @@ class Quiz extends Component{
   render(){
     const { handleReset, handleSubmit } = this;
     const { questions, counter, score } = this.state;
-    const { container, title, cell, cell1, questionStyle, titleStyle, inputStyle, scoreStyle, resetStyle, submitStyle } = styles;
+    const { container, title, cell, cell1, questionStyle, titleStyle, inputStyle, scoreStyle, resetStyle, submitStyle, quizMain } = styles;
     return (
-      <div>
+      <div style={quizMain}>
        <h1 style={title}>Burns Depression Checklist</h1>
         <form onSubmit={handleSubmit}>
           {questions.map(question => (

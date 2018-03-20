@@ -1,4 +1,7 @@
 const styles = {
+  quizMain: {
+    background: 'rgba(255, 255, 255, 0.8)',
+  },
   container: {
     display: 'grid',
     gridTemplateColumns: '24px 15fr 1fr 1fr 1fr 1fr 1fr',

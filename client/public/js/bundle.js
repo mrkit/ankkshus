@@ -26483,11 +26483,12 @@ var Quiz = function (_Component) {
           inputStyle = _quizStyles2.default.inputStyle,
           scoreStyle = _quizStyles2.default.scoreStyle,
           resetStyle = _quizStyles2.default.resetStyle,
-          submitStyle = _quizStyles2.default.submitStyle;
+          submitStyle = _quizStyles2.default.submitStyle,
+          quizMain = _quizStyles2.default.quizMain;
 
       return _react2.default.createElement(
         'div',
-        null,
+        { style: quizMain },
         _react2.default.createElement(
           'h1',
           { style: title },
@@ -26636,6 +26637,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var styles = {
+  quizMain: {
+    background: 'rgba(255, 255, 255, 0.8)'
+  },
   container: {
     display: 'grid',
     gridTemplateColumns: '24px 15fr 1fr 1fr 1fr 1fr 1fr',
