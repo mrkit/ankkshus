@@ -16,6 +16,7 @@ class Login extends Component {
     this.handlePassword = this.handlePassword.bind(this);
     this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    
   }
   
   handleUsername(ev){
@@ -35,7 +36,9 @@ class Login extends Component {
     axios.post('/api/login', {username, password});
 
     this.setState({username: '', password:''});
-    
+            
+//    taken from login: <h1>{this.props.currentUser}</h1>
+
     window.location.href="/"
   } 
   
@@ -64,24 +67,24 @@ class Login extends Component {
     return (
       
       this.state.signUp ? 
-      <div>
+      <div className="login">
         <form onSubmit={handleSignUpSubmit}>
-         <label htmlFor="username">Sign Up  </label>
+          <label>Sign Up</label>
           <input type="text" name="username" onChange={handleUsername} placeholder="Register new username" autoFocus  value={this.state.username} />
-          <input type="password" onChange={handlePassword} name="password" value={this.state.password} />
+           <input type="password" onChange={handlePassword} name="password" value={this.state.password} placeholder="Password" />
           <button>Submit</button>
         </form> 
-        <h1>{this.props.currentUser}</h1>
         <button onClick={handleClick}>Change to Login</button>
       </div>
       
       :
       
-      <div>
+      <div className="login">
         <form onSubmit={handleLoginSubmit}>
-         <label htmlFor="username">Login  </label>
+          <label>Login</label>
           <input type="text" name="username" onChange={handleUsername} placeholder="Login username" autoFocus  value={this.state.username} />
-          <input type="password" onChange={handlePassword} name="password" value={this.state.password} />
+          
+            <input type="password" onChange={handlePassword} name="password" value={this.state.password} placeholder="Password" />
           <button>Submit</button>
         </form>
         <button onClick={handleClick}>Register new member</button>
