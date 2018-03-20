@@ -25,25 +25,27 @@ body, h1, h2 {
 }
 
 #ankkshus {
-  background-image: url(/images/Ankkshus_logo.gif);
+  background-image: url(/images/Ankkshus_logo_no_top.gif);
   background-size: contain;
   background-repeat: no-repeat;
-  height: 4rem;
-  width: 5rem;
-  margin-left: 2rem;
+  height: 8rem;
+  width: 8rem;
+  position: relative;
+  top: -1rem;
+  filter: drop-shadow(0px 4px 2px grey); 
 }
 
 header {
   display: grid;
   grid-template-columns: 1fr 8fr .5fr;
-  height: 4rem;
-  border-bottom: 1px solid black;
+  height: 2.5rem;
   width: 100%;
+  background: linear-gradient(to right, #ff000070, #f2fafd)
 }
 
 nav {
   position: relative;
-  top: 1.2rem;
+  top: .6rem;
   height: 3rem;
 }
 
@@ -88,7 +90,7 @@ footer {
   height: 11rem;
   margin: auto;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   position: relative;
   top: 6rem;
 }
