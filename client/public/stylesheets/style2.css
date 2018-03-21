@@ -37,10 +37,10 @@ body, h1, h2 {
 
 header {
   display: grid;
-  grid-template-columns: 1fr 8fr .5fr;
+  grid-template-columns: 1fr 2fr .1fr;
   height: 2.5rem;
   width: 100%;
-  background: linear-gradient(to right, #ff000070, #f2fafd)
+  background: linear-gradient(to right, #f17058, #f2fafd)
 }
 
 nav {
@@ -86,11 +86,12 @@ footer {
 .login {
   display: grid;
   grid-template-rows: 2fr 1fr;
-  width: 18rem;
-  height: 11rem;
+  width: 23rem;
+  height: 23rem;
   margin: auto;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: -1px 5px 15px #a2b1a6;
   position: relative;
   top: 6rem;
 }
@@ -99,16 +100,26 @@ footer {
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   grid-row-gap: .3rem;
-  width: 15rem;
+  width: 17rem;
+  height: 17rem;
   margin: auto;
   margin-top: .3rem;
 }
 
+.login form label {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .login form input {
   outline: none;
+  font-size: 1rem;
   border-style: none;
   border-bottom: 1px solid black;
   background-color: inherit;
+  margin-bottom: 2rem;
 }
 
 .login form button {
@@ -116,8 +127,48 @@ footer {
 }
 
 .login button:last-child {
-  width: 15rem;
+  width: 17rem;
+  height: 3rem;
   margin: auto;
   margin-top: 0;
   margin-bottom: .75rem;
+}
+
+.videoSection {
+  background: rgba(255, 255, 255, 0.63);
+  border-radius: 10px;
+  height: 80%;
+}
+
+.videoSection h2 {
+  background: linear-gradient(to right, rgba(255, 0, 0, 0.55), pink);
+  text-shadow: 1px 1px 1px #d39393;
+}
+
+.ccSection {
+  border-bottom: 1px solid black;
+}
+
+.ccSection article {
+  text-align: center;
+}
+
+.ccSection iframe {
+  width: 15rem;
+  height:10rem;
+}
+
+.rowContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 2rem;
+  overflow: scroll;
+}
+
+.rowContainer h3 {
+  font-weight: 100;
+}
+
+.mashupSection {
+  
 }

@@ -20,10 +20,10 @@ const Header = (props) => (
 
     <nav className="fade">
       <ul>
+        <li><Link to="/">Home</Link></li>
         <li><Link to="videos">Videos</Link></li>   
         <li><Link to="/distillery">The Distillery</Link></li>
         <li><Link to="/quiz">Quizzes</Link></li>
-        <li><Link to="mashups">Mashups</Link></li>
         <li><Link to="/brainstorm">Brainstorm</Link></li>
         <li><Link to="/login">{props.loginOrSignUp}</Link></li>
       </ul>         

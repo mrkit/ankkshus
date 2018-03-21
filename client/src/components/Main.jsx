@@ -26,7 +26,7 @@ class Main extends Component {
 
       <Route exact path='/' render={() => (
         <section>
-         <h1>Hello World</h1>
+         <h1>Sestra!</h1>
         </section>
         )}/> 
       <Route path='/videos' component={Videos} />

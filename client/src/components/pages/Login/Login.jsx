@@ -74,7 +74,7 @@ class Login extends Component {
            <input type="password" onChange={handlePassword} name="password" value={this.state.password} placeholder="Password" />
           <button>Submit</button>
         </form> 
-        <button onClick={handleClick}>Change to Login</button>
+        <button onClick={handleClick}>Or Login</button>
       </div>
       
       :
@@ -87,7 +87,7 @@ class Login extends Component {
             <input type="password" onChange={handlePassword} name="password" value={this.state.password} placeholder="Password" />
           <button>Submit</button>
         </form>
-        <button onClick={handleClick}>Register new member</button>
+        <button onClick={handleClick}>Or Sign Up</button>
       </div>
     )
   }

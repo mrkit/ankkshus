@@ -1,6 +1,10 @@
 const styles = {
   quizMain: {
-    background: 'rgba(255, 255, 255, 0.8)',
+    background: 'rgba(255, 255, 255, 0.96)',
+    borderRadius: '10px',
+    boxShadow: '0px 0px 44px -9px #5d696b',
+    height: '44rem',
+    padding: '1rem'
   },
   container: {
     display: 'grid',

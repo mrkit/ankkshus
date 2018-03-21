@@ -15,7 +15,7 @@ const updateSignInStatus = () => {
 
 //Reducer and Initial State
 const initialState = {
-  loginOrSignUp: 'Login/Sign Up',
+  loginOrSignUp: 'Login',
   currentUser: 'Guest'
 }
 
