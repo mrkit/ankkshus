@@ -2,23 +2,13 @@ import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-/*
-This is for the user welcome: 
-
-    <p style={{
-        position: 'relative',
-        top: '-5rem',
-        left: '25rem'
-      }}>Hello {props.currentUser}</p>
-*/
-
 const Header = (props) => (
   <header>
     <Link to="/">
       <div id="ankkshus" className="fade"></div>
     </Link>
 
-    <nav className="fade">
+    <nav>
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="videos">Videos</Link></li>   
@@ -36,6 +26,5 @@ function mapStateToProps (state){
     currentUser: state.currentUser
   }
 }
-
 
 export default connect(mapStateToProps)(Header);

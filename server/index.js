@@ -2,21 +2,20 @@ const express = require('express'),
       server = express(),
       morgan = require('morgan'),
       bodyParser = require('body-parser'),
-      join = require('path').join,
+      resolve = require('path').resolve,
       db = require('./db');
 
 
-server.use(express.static(join(__dirname, '..', 'client', 'public')));
-server.use('/vendor', express.static(join(__dirname, '..', 'node_modules')));
+server.use(express.static(resolve(__dirname, '..', 'client', 'public')));
+server.use('/vendor', express.static(resolve(__dirname, '..', 'node_modules')));
 
 server.use(morgan('dev'));
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(require('compression')());
 
-server.get('/*', (req, res, next) => res.sendFile(join(__dirname, '..', 'client', 'public', 'index.html')));
-
-server.get('/luci', (req, res, next) => res.sendFile(join(__dirname, '..', 'client', 'public', 'luci.html')));
+server.get('/luci', (req, res, next) => res.sendFile(resolve(__dirname, '..', 'client', 'public', 'luci.html')));
+server.get('/*', (req, res, next) => res.sendFile(resolve(__dirname, '..', 'client', 'public', 'index.html')));
 
 server.use('/api', require('./api'));
 

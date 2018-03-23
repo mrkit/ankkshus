@@ -2,7 +2,9 @@ import React from 'react';
 
 const Videos = () => {
   return (
-    <section className="videoSection">
+    <section className="pageContainer">
+       <h1>Video page</h1>
+        <p>YouTubes and Mashups and stuff.</p>
         <section className="ccSection">
           <h2>Crash Course</h2>
           <div className="rowContainer">

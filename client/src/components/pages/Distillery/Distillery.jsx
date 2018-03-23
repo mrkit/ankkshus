@@ -13,15 +13,18 @@ class Distillery extends Component {
   }
   
   render(){
-    
     return(
-      <section>
+      <section className="pageContainer">
         <h1>Welcome to the Distillery!</h1>
         <p>We've got drinks and dinks, help yourself.</p>
-        
-        <section>
+        <section className="ccSection">
           <h2>Games:</h2>
-          <Link to='/luci'>Play Luci</Link>
+          <div className="rowContainer">
+            <article>
+              <h3><Link to="/luci">Luci</Link></h3>
+              <iframe width="560" height="315" src="/luci" frameborder="0" allowfullscreen></iframe>
+            </article>
+          </div>
         </section>
       </section>
     )
