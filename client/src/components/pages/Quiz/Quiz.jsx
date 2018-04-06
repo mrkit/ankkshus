@@ -11,6 +11,7 @@ class Quiz extends Component{
     
     this.handleReset = this.handleReset.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
   }
   
   handleSubmit(event){
@@ -21,6 +22,7 @@ class Quiz extends Component{
 
     for(let i = 0; i < questions.length; i++){
       if(questions[i].checked){
+//        questions[i].parentElement.style.backgroundColor = 'pink';
         score += Number(questions[i].value);
       }
     }
@@ -44,6 +46,15 @@ class Quiz extends Component{
     
   }
   
+  handleCheck(event){
+    let tester = document.querySelectorAll(['event.target.parentElement.parentElement.parentElement > .cell']);
+    console.log('Tester workedd!?', event.target.parentElement.parentElement.parentElement.innerHTML);
+    tester.forEach(element => element.style.backgroundColor = 'red')
+    
+    event.target.parentElement.style.backgroundColor = 'green';
+
+  }
+  
   render(){
     const { handleReset, handleSubmit } = this;
     const { questions, counter, score } = this.state;
@@ -62,11 +73,11 @@ class Quiz extends Component{
                   <div className="container" key={qs[0]}>
                     <div className="cell1">{qs[0]}</div>
                     <div className="questionStyle">{qs[1]}</div>
-                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${qs[0]}`} value='0' /> 0</div></label>
-                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${qs[0]}`} value='1' /> 1</div></label>
-                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${qs[0]}`} value='2' /> 2</div></label>
-                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${qs[0]}`} value='3' /> 3</div></label>
-                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${qs[0]}`} value='4' /> 4</div></label>
+                    <label><div className="cell"><input onChange={this.handleCheck} className="inputStyle" type="radio" name={`question${qs[0]}`} value='0' /> 0</div></label>
+                    <label><div className="cell"><input onChange={this.handleCheck} className="inputStyle" type="radio" name={`question${qs[0]}`} value='1' /> 1</div></label>
+                    <label><div className="cell"><input onChange={this.handleCheck} className="inputStyle" type="radio" name={`question${qs[0]}`} value='2' /> 2</div></label>
+                    <label><div className="cell"><input onChange={this.handleCheck} className="inputStyle" type="radio" name={`question${qs[0]}`} value='3' /> 3</div></label>
+                    <label><div className="cell"><input onChange={this.handleCheck} className="inputStyle" type="radio" name={`question${qs[0]}`} value='4' /> 4</div></label>
                   </div>)
                  )}
               </div>
