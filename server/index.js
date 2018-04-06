@@ -23,4 +23,5 @@ server.use((err, req, res, next) => err && console.log(`Server Error: ${err.mess
 
 const port = process.env.PORT || 3000;
 
-server.listen(port, "127.0.0.1", console.log(`listening on port ${port}`));
+db.conn.sync({ force: true })
+.then(() => server.listen(port, '127.0.0.1', console.log(`listening on port ${port}`)));

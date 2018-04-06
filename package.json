@@ -4,7 +4,7 @@
   "description": "It's not my fault I don't know how many k's are in anxious",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -p & forever start --id 'ankkshus' --minUptime 1000 --spinSleepTime 1000 server",
+    "start": "webpack --mode=production & forever start --id 'ankkshus' --minUptime 1000 --spinSleepTime 1000 server >> /var/log/forever/forever.log",
     "dev": "webpack -w & nodemon server"
   },
   "keywords": [],
