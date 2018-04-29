@@ -155,12 +155,15 @@ var GameState = {
   
   gameOver(){
     this.game.time.events.add(2000, function(){
-    //true refreshses the game world, game cage property is next, then you can pass a variable. You can pass the player stats here too
+    //true refreshes the game world, game cage property is next, then you can pass a variable. You can pass the player stats here too
+          
+
     this.game.state.start('HomeState', true, false, 'You Died');
     }, this);
   },
   
   youWon(){
+    this.game.sound.stopAll();
     console.log('You won!');
     this.game.state.start('YouWonState');
   },

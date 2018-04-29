@@ -40,7 +40,7 @@ var HomeState = {
     var startText = this.game.add.text(this.game.world.centerX, this.game.world.centerY+140, 'TOUCH TO START', styleStart)
     startText.anchor.setTo(0.5);
     startText.setShadow(2, 2, "#333333", 2, true, true);
-    
+        
     if(this.message){
       var gameOverText = this.game.add.text(960, 250, this.message, styleEnd)
       gameOverText.anchor.setTo(0.5);
