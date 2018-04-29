@@ -14,7 +14,7 @@ var BootState = {
   },
   
   preload(){
-    this.game.load.image('preloadBar', '../../assets/images/preloadBar.png');
+    this.game.load.image('preloadBar', '../../assets/images/luci/preloadBar.png');
   },
   
   create(){

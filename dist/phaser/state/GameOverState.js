@@ -1,7 +1,7 @@
 var GameOverState = {
   
   preload(){
-    this.game.load.image('logo', '../../assets/images/logo.png');
+    this.game.load.image('logo', '../../assets/images/luci/logo.png');
   },
   
   create(){

@@ -17,14 +17,14 @@ var PreloadState = {
     this.preloadLoading.setShadow(1, 1, "#ffffff", 1, true, true);
     
     //Assets
-    this.game.load.image('logo', '../../assets/images/logo.png'); //Luci logo from Illustrator font
-    this.game.load.image('background', '../../assets/images/background.png');
-    this.game.load.image('ground', '../../assets/images/ground.png');
-    this.game.load.image('boulder', '../../assets/images/boulder.png');
-    this.game.load.spritesheet('luci', '../../assets/images/spritesheets/alien.png', 332, 407, 11);
-    this.game.load.spritesheet('blue', '../../assets/images/spritesheets/blue.png', 332, 407, 11);
+    this.game.load.image('logo', '../../assets/images/luci/logo.png'); //Luci logo from Illustrator font
+    this.game.load.image('background', '../../assets/images/luci/background.png');
+    this.game.load.image('ground', '../../assets/images/luci/ground.png');
+    this.game.load.image('boulder', '../../assets/images/luci/boulder.png');
+    this.game.load.spritesheet('luci', '../../assets/images/luci/spritesheets/alien.png', 332, 407, 11);
+    this.game.load.spritesheet('blue', '../../assets/images/luci/spritesheets/blue.png', 332, 407, 11);
     this.game.load.text('level', '../../phaser/data/level.json');
-    this.game.load.image('goal', '../../assets/images/goal.png');
+    this.game.load.image('goal', '../../assets/images/luci/goal.png');
     
     this.game.load.audio('song', '../../assets/audio/song.mp3')
 

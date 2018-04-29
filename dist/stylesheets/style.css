@@ -19,13 +19,13 @@ body, h1, h2 {
   margin: auto;
   display: grid;
   grid-template-rows: 1fr 9fr 1fr;
-  background: url(/images/citydragonweb.jpg) no-repeat center center fixed;
+  background: url(/assets/images/citydragonweb.jpg) no-repeat center center fixed;
   background-size: 95%;
   background-position: 0 .1rem;
 }
 
 #ankkshus {
-  background-image: url(/images/Ankkshus_logo_no_top.gif);
+  background-image: url(/assets/images/Ankkshus_logo_no_top.gif);
   background-size: contain;
   background-repeat: no-repeat;
   height: 8rem;

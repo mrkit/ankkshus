@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
-import Quiz from './pages/Quiz/Quiz.jsx';
-import Login from './pages/Login/Login.jsx';
-import Distillery from './pages/Distillery/Distillery.jsx';
-import Videos from './pages/Videos/Videos.jsx';
+import Quiz from './pages/Quiz/Quiz';
+import Login from './pages/Login/Login';
+import Distillery from './pages/Distillery/Distillery';
+import Videos from './pages/Videos/Videos';
 
 class Main extends Component {
   state = {}
