@@ -4,8 +4,9 @@
   "description": "It's not my fault I don't know how many k's are in anxious",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --mode=production & forever start --id 'ankkshus' --minUptime 1000 --spinSleepTime 1000 server >> /var/log/forever/forever.log",
-    "dev": "webpack -w & nodemon server"
+    "start": "webpack --mode=production & node-sass --output-style compressed client/stylesheets/main.scss dist/main.css & forever start --id 'ankkshus' --minUptime 1000 --spinSleepTime 1000 server >> /var/log/forever/forever.log",
+    "dev": "webpack -w & nodemon -e scss -x 'npm run sass' & nodemon server",
+    "sass": "node-sass client/stylesheets/main.scss dist/main.css"
   },
   "keywords": [],
   "author": "mrkit",
@@ -23,6 +24,7 @@
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.0",
     "morgan": "^1.9.0",
+    "node-sass": "^4.9.0",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
     "phaser": "^2.6.2",
