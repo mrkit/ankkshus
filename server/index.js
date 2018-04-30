@@ -22,10 +22,4 @@ server.use((err, req, res, next) => err && console.log(`Server Catch-All Error: 
 
 db.conn.sync({ force: true })
 .then(() => db.seed())
-.then(() => {
-  if(require('../webpack.config.js').mode === 'development'){
-    server.listen(3000, console.log('listening on port 3000 as dev'))
-  } else {
-    server.listen(3000, '127.0.0.1', console.log('listening on port 3000'))
-  }
-});
+.then(() => server.listen(3000, '127.0.0.1', console.log('listening on port 3000')));
