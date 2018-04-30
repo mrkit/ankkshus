@@ -1,0 +1,83 @@
+.pageContainer {
+  background: rgba(255, 255, 255, 0.63);
+  border-radius: 10px;
+}
+
+.pageContainer h2 {
+  background: linear-gradient(to right, rgba(255, 0, 0, 0.55), pink);
+  text-shadow: 1px 1px 1px #d39393;
+}
+
+.rowContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  overflow: scroll;
+}
+
+.rowContainer h3 {
+  font-weight: 100;
+}
+
+.ccSection {
+  border-bottom: 1px solid black;
+  
+  > nav {
+    display: grid;
+    grid-template-columns: 10fr auto auto;
+    
+    button {
+      background: pink;
+      border-radius: 4px;
+    }
+  }
+}
+
+.ccSection article {
+  text-align: center;
+  flex: 0 0 20rem;
+}
+
+.ccSection iframe {
+  width: 15rem;
+  height:10rem;
+}
+
+.addVideo {
+  width: 20rem;
+  height: 17rem;
+  background: white;
+  box-shadow: 10px 10px 10px black;
+  position: absolute;
+  left: 40%;
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  padding: 3rem;
+  
+  h3 {
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  input {
+    height: 2rem;
+    border-style: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    font-size: 1.3rem;
+  }
+  
+  button {
+    height: 2rem;
+  }
+}
+
+span {
+  position: relative;
+  top: -0.5rem;
+  left: .3rem;
+}
+
+.mashupSection {
+  
+}

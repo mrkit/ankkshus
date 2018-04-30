@@ -22,7 +22,7 @@ class Distillery extends Component {
           <div className="rowContainer">
             <article>
               <h3><Link to="/luci">Luci</Link></h3>
-              <iframe width="560" height="315" src="/luci" frameborder="0" allowfullscreen></iframe>
+              <iframe width="560" height="315" src="/luci" frameBorder="0" allowFullScreen></iframe>
             </article>
           </div>
         </section>

@@ -4,30 +4,21 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class Login extends Component {
-  constructor(){
-    super();
-    this.state = {
-      username: '',
-      password: '',
-      signUp: false
-    }
-    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
-    this.handleUsername = this.handleUsername.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
-    this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    
+  state = {
+    username: '',
+    password: '',
+    signUp: false
   }
   
-  handleUsername(ev){
+  handleUsername = ev => {
     this.setState({username: ev.target.value})
   }
   
-  handlePassword(ev){
+  handlePassword = ev => {
     this.setState({password: ev.target.value})
   }
   
-  handleLoginSubmit(ev){
+  handleLoginSubmit = ev => {
     ev.preventDefault();
     
     const username = ev.target.username.value;
@@ -42,7 +33,7 @@ class Login extends Component {
     window.location.href="/"
   } 
   
-  handleSignUpSubmit(ev){
+  handleSignUpSubmit = ev => {
     ev.preventDefault();
     
     const username = ev.target.username.value;
@@ -55,7 +46,7 @@ class Login extends Component {
     window.location.href="/"
   }
   
-  handleClick(){
+  handleClick = () => {
     const { signUp } = this.state;
     signUp ? 
       this.setState({signUp: false}) :

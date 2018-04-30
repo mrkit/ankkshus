@@ -1,8 +1,7 @@
 const { resolve } = require('path');
 
-module.exports = env => {
-  return {
-    mode: 'production', 
+module.exports = {
+    mode: 'development', 
     entry: './client/index.js',
     output: {
       filename: 'bundle.js',
@@ -21,5 +20,4 @@ module.exports = env => {
         }
       }]
     }
-  };
 };

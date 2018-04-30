@@ -2,18 +2,12 @@ import React, { Component } from 'react';
 import questions from './quizQuestions';
 
 class Quiz extends Component{
-  constructor(){
-    super();
-    this.state = {
+  state = {
       questions: questions,
       score: 0
-    }
-    
-    this.handleReset = this.handleReset.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-  handleSubmit(event){
+  handleSubmit = event => {
     event.preventDefault();
     let questions = document.querySelectorAll('input');
     let score = 0;
@@ -29,7 +23,7 @@ class Quiz extends Component{
     
   }
   
-  handleReset(e){
+  handleReset = event => {
     let questions = document.querySelectorAll('input');
     let score = 0;
     

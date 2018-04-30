@@ -1,6 +1,5 @@
 node_modules
 assets/
-images/
+bundle.js
 .DS_Store
-secrets.js
-server/secrets.js
+.env.js
