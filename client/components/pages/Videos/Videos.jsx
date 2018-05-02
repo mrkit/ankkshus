@@ -1,23 +1,30 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-const AddVideoForm = ({handleAddVideo}) => (
-  <form className='addVideo' onSubmit={handleAddVideo}>
-    <h3>Add new video</h3>
-    <input type='text' name='title' placeholder='Title' autoFocus/>
-    <input type='text' name='url' placeholder='Embeded Url'/>
-    <button>Submit</button>
-  </form>
+const AddVideoForm = ({handleAddVideo, unMount}) => (
+  <aside>
+    <button onClick={unMount}>X</button>
+    <form className='messageBoxComponent' onSubmit={handleAddVideo}>
+      <h3>Add new video</h3>
+      <input type='text' name='title' placeholder='Title' autoFocus/>
+      <input type='text' name='url' placeholder='Embeded Url'/>
+      <button>Submit</button>
+    </form>
+  </aside>
 )
 
-const EditVideoForm = ({handleEditVideo}) => (
-  <form className='addVideo' onSubmit={handleEditVideo}>
-    <h3>Edit video: </h3>
-    <label>Do you want to delete this video?</label>
-    <label><input type='radio' name='delete' value='no'/><span>No</span></label>
-    <label><input type='radio' name='delete' value='yes'/><span>Yes</span></label>
-    <button>Submit</button>
-  </form>
+const EditVideoForm = ({handleEditVideo, unMount}) => (
+  <aside>
+    <button onClick={unMount} >X</button>
+    <form className='messageBoxComponent' onSubmit={handleEditVideo}>
+      <h3>Edit video: </h3>
+      <label>Do you want to delete this video?</label>
+      <label><input type='radio' name='delete' value='no'/><span>No</span></label>
+      <label><input type='radio' name='delete' value='yes'/><span>Yes</span></label>
+      <input type='hidden' name='name' value='placeholder'/>
+      <button>Submit</button>
+    </form>
+  </aside>
 )
 
 class Videos extends Component{
@@ -43,25 +50,27 @@ class Videos extends Component{
   }
   
   handleAddVideo = event => {
+    event.preventDefault();
     const { title, url } = event.target;
     
     axios.post('/api/videos/youtube', { title: title.value, url: url.value })
-    .then(() => this.setState({addVideo: false}))
-    .catch(err => console.log('Axios Youtube Put Error:', err.message))
-    
+    .then((video) => this.setState({addVideo: false, videos: [...this.state.videos, video.data]}))
+    .catch(err => console.log('Axios Post Youtube Error message', err.message));
   }
   
   handleDoubleClick = event => {
-    event.preventDefault();
-    console.log(event.target.value)
     this.setState({editVideo: true})
   }
   
   handleEditVideo = event => {
+    event.preventDefault();
     console.log(event.target.delete.value);
     console.log(event.target);
 //    axios.delete('/api/videos/youtube')
   }
+  
+  handleUnmountEdit = () => this.setState({editVideo: false});
+  handleUnmountVideo = () => this.setState({addVideo: false});
   
   render(){
     return (
@@ -74,8 +83,8 @@ class Videos extends Component{
               <button onClick={this.handleReverse}>reverse</button>
               <button onClick={this.handleNewVideo}>+</button>
             </nav>
-            {this.state.addVideo ? <AddVideoForm handleAddVideo={this.handleAddVideo}/> : null}
-            {this.state.editVideo ? <EditVideoForm handleEditVideo={this.handleEditVideo} /> : null }
+            {this.state.addVideo ? <AddVideoForm handleAddVideo={this.handleAddVideo} unMount={this.handleUnmountVideo}/>: null}
+            {this.state.editVideo ? <EditVideoForm handleEditVideo={this.handleEditVideo} unMount={this.handleUnmountEdit}/> : null }
             <div className="rowContainer">
               {
                 this.state.videos.map(video => (

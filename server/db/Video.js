@@ -3,7 +3,7 @@ const conn = require('./conn'),
 
 const Video = conn.define('video', {
   title: Sequelize.STRING,
-  url: Sequelize.TEXT
+  url: { type: Sequelize.TEXT, validate: { isUrl: true } }
 })
 
 module.exports = Video;

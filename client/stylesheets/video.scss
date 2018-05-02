@@ -13,10 +13,10 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   overflow: scroll;
-}
-
-.rowContainer h3 {
-  font-weight: 100;
+  
+  h3 {
+    font-weight: 100;
+  }
 }
 
 .ccSection {
@@ -29,6 +29,16 @@
     button {
       background: pink;
       border-radius: 4px;
+      outline: none;
+    }
+
+    button:hover {
+      box-shadow: inset 2px 2px 2px grey;
+    }
+
+    button:active {
+      box-shadow: inset 7px 7px 7px grey;
+      color: white;
     }
   }
 }
@@ -43,32 +53,41 @@
   height:10rem;
 }
 
-.addVideo {
+//VideoForm component
+aside {
   width: 20rem;
-  height: 17rem;
-  background: white;
-  box-shadow: 10px 10px 10px black;
   position: absolute;
   left: 40%;
-  display: grid;
-  grid-template-rows: repeat(4, auto);
-  padding: 3rem;
   
-  h3 {
-    font-weight: 400;
-    margin: 0;
-  }
-  
-  input {
-    height: 2rem;
-    border-style: none;
-    border-bottom: 1px solid black;
+  > button {
+    float: right;
+    position: relative;
+    left: -2rem;
+    top: 1rem;
+    border-radius: 100px;
     outline: none;
-    font-size: 1.3rem;
   }
   
-  button {
-    height: 2rem;
+  .messageBoxComponent {
+    height: 17rem;
+    background: white;
+    box-shadow: 10px 10px 10px black;
+    display: grid;
+    grid-template-rows: repeat(4, auto);
+    padding: 3rem;
+
+    h3 {
+      font-weight: 400;
+      margin: 0;
+    }
+
+    input {
+      height: 2rem;
+      border-style: none;
+      border-bottom: 1px solid black;
+      outline: none;
+      font-size: 1.3rem;
+    }
   }
 }
 
@@ -81,3 +100,5 @@ span {
 .mashupSection {
   
 }
+
+
