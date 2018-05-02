@@ -19,6 +19,6 @@ server.get('/*', (req, res, next) => res.sendFile(resolve(__dirname, '..', 'dist
 
 server.use((err, req, res, next) => err && console.log(`Server Catch-All Error: ${err.message}`))
 
-db.conn.sync({ force: true })
+db.conn.sync()
 .then(() => db.seed())
 .then(() => server.listen(3000, '127.0.0.1', console.log('listening on port 3000')));
