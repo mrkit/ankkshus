@@ -56,9 +56,8 @@ main {
   margin: auto;
   margin-top: 0;
   margin-bottom: 0; }
-
-main h1 {
-  border-bottom: 1px solid thistle; }
+  main h1 {
+    border-bottom: 1px solid thistle; }
 
 footer {
   text-align-last: center; }
@@ -74,39 +73,34 @@ footer {
   box-shadow: -1px 5px 15px #a2b1a6;
   position: relative;
   top: 6rem; }
-
-.login form {
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  grid-row-gap: .3rem;
-  width: 17rem;
-  height: 17rem;
-  margin: auto;
-  margin-top: .3rem; }
-
-.login form label {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem; }
-
-.login form input {
-  outline: none;
-  font-size: 1rem;
-  border-style: none;
-  border-bottom: 1px solid black;
-  background-color: inherit;
-  margin-bottom: 2rem; }
-
-.login form button {
-  background: #c2ffc2; }
-
-.login button:last-child {
-  width: 17rem;
-  height: 3rem;
-  margin: auto;
-  margin-top: 0;
-  margin-bottom: .75rem; }
+  .login form {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-row-gap: .3rem;
+    width: 17rem;
+    height: 17rem;
+    margin: auto;
+    margin-top: .3rem; }
+    .login form label {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem; }
+    .login form input {
+      outline: none;
+      font-size: 1rem;
+      border-style: none;
+      border-bottom: 1px solid black;
+      background-color: inherit;
+      margin-bottom: 2rem; }
+    .login form button {
+      background: #c2ffc2; }
+    .login form button:last-child {
+      width: 17rem;
+      height: 3rem;
+      margin: auto;
+      margin-top: 0;
+      margin-bottom: .75rem; }
 
 /* ------ Imports ------ */
 .pageContainer {

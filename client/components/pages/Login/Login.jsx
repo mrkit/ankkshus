@@ -11,11 +11,11 @@ class Login extends Component {
   }
   
   handleUsername = ev => {
-    this.setState({username: ev.target.value})
+    this.setState({username: ev.target.value});
   }
   
   handlePassword = ev => {
-    this.setState({password: ev.target.value})
+    this.setState({password: ev.target.value});
   }
   
   handleLoginSubmit = ev => {
@@ -30,7 +30,7 @@ class Login extends Component {
             
 //    taken from login: <h1>{this.props.currentUser}</h1>
 
-    window.location.href="/"
+    window.location.href="/";
   } 
   
   handleSignUpSubmit = ev => {
@@ -43,7 +43,7 @@ class Login extends Component {
     
     this.setState({username: '', password:''});
     
-    window.location.href="/"
+    window.location.href="/";
   }
   
   handleClick = () => {

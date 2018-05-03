@@ -1,31 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
-const AddVideoForm = ({handleAddVideo, unMount}) => (
-  <aside>
-    <button onClick={unMount}>X</button>
-    <form className='messageBoxComponent' onSubmit={handleAddVideo}>
-      <h3>Add new video</h3>
-      <input type='text' name='title' placeholder='Title' autoFocus/>
-      <input type='text' name='url' placeholder='Embeded Url'/>
-      <button>Submit</button>
-    </form>
-  </aside>
-)
-
-const EditVideoForm = ({handleEditVideo, unMount}) => (
-  <aside>
-    <button onClick={unMount} >X</button>
-    <form className='messageBoxComponent' onSubmit={handleEditVideo}>
-      <h3>Edit video: </h3>
-      <label>Do you want to delete this video?</label>
-      <label><input type='radio' name='delete' value='no'/><span>No</span></label>
-      <label><input type='radio' name='delete' value='yes'/><span>Yes</span></label>
-      <input type='hidden' name='name' value='placeholder'/>
-      <button>Submit</button>
-    </form>
-  </aside>
-)
+import AddVideoForm from './messageBoxes/AddVideoForm';
+import EditVideoForm from './messageBoxes/EditVideoForm';
 
 class Videos extends Component{
   state = {
@@ -59,7 +35,8 @@ class Videos extends Component{
   }
   
   handleDoubleClick = event => {
-    this.setState({editVideo: true})
+    console.log('Double Click Found!', event.target);
+    this.setState({editVideo: true});
   }
   
   handleEditVideo = event => {

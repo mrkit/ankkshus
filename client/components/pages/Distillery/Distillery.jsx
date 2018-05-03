@@ -3,13 +3,9 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 class Distillery extends Component {
-  constructor(){
-    super();
-    this.state = {}
-  }
+  state = {}
   
   componentDidMount(){
-    
   }
   
   render(){
