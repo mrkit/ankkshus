@@ -4,9 +4,11 @@
   "description": "It's not my fault I don't know how many k's are in anxious",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --mode=production & node-sass --output-style compressed client/stylesheets/main.scss dist/main.css & forever start --id 'ankkshus' --minUptime 1000 --spinSleepTime 1000 server >> /var/log/forever/forever.log",
-    "dev": "webpack -w & nodemon -e scss -x 'npm run sass' & nodemon server",
-    "sass": "node-sass client/stylesheets/main.scss dist/main.css"
+    "start": "webpack --mode production & npm run sass:prod & NODE_ENV=production forever start --id 'ankkshus' --minUptime 1000 --spinSleepTime 1000 server >> /var/log/forever/forever.log",
+    "offline:prod": "webpack --mode production & npm run sass:prod & NODE_ENV=production node server",
+    "dev": "webpack -w --mode development & nodemon -e scss -x 'npm run sass' & NODE_ENV=development nodemon server",
+    "sass": "node-sass client/stylesheets/main.scss dist/main.css",
+    "sass:prod": "npm run sass -- --output-style compressed"
   },
   "keywords": [],
   "author": "mrkit",
@@ -23,6 +25,7 @@
     "compression": "^1.7.2",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.1",
+    "lodash.merge": "^4.6.1",
     "morgan": "^1.9.0",
     "node-sass": "^4.9.0",
     "pg": "^7.4.1",

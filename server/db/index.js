@@ -7,7 +7,7 @@ Quiz.belongsTo(User);
 User.hasMany(Quiz);
 
 const seed = () => {
-  Promise.all([
+  return Promise.all([
     Video.create({title: 'Episode 1', url: 'https://www.youtube.com/embed/1A_CAkYt3GY' }),
     Video.create({title: 'Episode 2', url: 'https://www.youtube.com/embed/NKEhdsnKKHs'}),
     Video.create({title: 'Episode 3', url: 'https://www.youtube.com/embed/1A_CAkYt3GY'}),

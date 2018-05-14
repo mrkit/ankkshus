@@ -1,7 +1,6 @@
 const { resolve } = require('path');
 
 module.exports = {
-    mode: 'development', 
     entry: './client/index.js',
     output: {
       filename: 'bundle.js',

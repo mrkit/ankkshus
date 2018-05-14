@@ -5,6 +5,8 @@ const express = require('express'),
       resolve = require('path').resolve,
       db = require('./db');
 
+console.log('Server index', process.env.NODE_ENV)
+
 server.use(express.static(resolve(__dirname, '..', 'dist')));
 server.use('/vendor', express.static(resolve(__dirname, '..', 'node_modules')));
 
@@ -19,6 +21,6 @@ server.get('/*', (req, res, next) => res.sendFile(resolve(__dirname, '..', 'dist
 
 server.use((err, req, res, next) => err && console.log(`Server Catch-All Error: ${err.message}`));
 
-db.conn.sync()
-.then(() => db.seed({ force: true }))
+db.conn.sync({ force: true })
+.then(() => db.seed())
 .then(() => server.listen(3000, '127.0.0.1', console.log('listening on port 3000')));
