@@ -3,3 +3,4 @@ assets/
 bundle.js
 .DS_Store
 .env.js
+dist/

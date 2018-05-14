@@ -5,7 +5,6 @@ import Main from './Main';
 import Footer from './Footer';
 
 class App extends Component {
-  state = {}
   
   componentDidMount(){
     const bizken = localStorage['bizken'];
