@@ -1,5 +1,5 @@
 const merge = require('lodash.merge');
-const secrets = require('../../../.env');
+const secrets = require('../../../assets/.env');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 

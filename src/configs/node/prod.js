@@ -1,4 +1,4 @@
-const {db, user, db_password, settings} = require('../../../.env.js');
+const {db, user, db_password, settings} = require('../../../assets/.env.js');
 
 
 module.exports = {
