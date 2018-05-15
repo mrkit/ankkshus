@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --mode production & NODE_ENV=production forever start --id 'ankkshus' --minUptime 1000 --spinSleepTime 1000 src/server >> /var/log/forever/forever.log",
-    "offline:prod": "webpack --mode production & npm run sass:prod & NODE_ENV=production node src/server",
+    "offline:prod": "webpack --mode production & NODE_ENV=production node src/server",
     "dev": "webpack -w --mode development & nodemon -e scss -x 'npm run sass' & NODE_ENV=development nodemon src/server",
     "sass": "node-sass src/stylesheets/main.scss dist/main.css",
-    "dev2": "webpack -w --mode development & NODE_ENV=development nodemon src/server"
+    "dev:nonpmsass": "webpack -w --mode development & NODE_ENV=development nodemon src/server"
   },
   "keywords": [],
   "author": "mrkit",
@@ -22,7 +22,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.3",
-    "compression": "^1.7.2",
+    "compression-webpack-plugin": "^1.1.11",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.1",
     "lodash.merge": "^4.6.1",

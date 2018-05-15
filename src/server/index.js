@@ -13,8 +13,7 @@ server.use('/assets', express.static(resolve(__dirname, '..', '..', 'assets')));
 server.use([
   morgan('dev'),
   bodyParser.json(),
-  bodyParser.urlencoded({ extended: true }),
-  require('compression')()
+  bodyParser.urlencoded({ extended: true })
 ]);
 
 server.use('/api', require('./api'));

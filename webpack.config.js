@@ -1,6 +1,7 @@
 const { resolve } = require('path'),
       HtmlWebpackPlugin = require('html-webpack-plugin'),
-      MiniCssExtractPlugin = require('mini-css-extract-plugin');
+      MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+      CompressionPlugin = require('compression-webpack-plugin');
       
 //const webpack = require('webpack'),
 //      webpackMerge = require('webpack-merge'),
@@ -50,7 +51,8 @@ module.exports = {
       //Options similar to the same options in webpackOptions.output. Both options are optional:
       filename: '[name].css',
       chunkFilename: '[id].css'
-    })
+    }),
+    new CompressionPlugin()
   ]
 };
 
