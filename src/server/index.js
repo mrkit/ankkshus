@@ -8,6 +8,7 @@ const express = require('express'),
 
 server.use(express.static(resolve(__dirname, '..', '..', 'dist')));
 server.use('/vendor', express.static(resolve(__dirname, '..', '..', 'node_modules')));
+server.use('/assets', express.static(resolve(__dirname, '..', '..', 'assets')));
 
 server.use([
   morgan('dev'),

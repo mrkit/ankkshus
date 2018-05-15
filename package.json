@@ -4,11 +4,11 @@
   "description": "It's not my fault I don't know how many k's are in anxious",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --mode production & npm run sass:prod & NODE_ENV=production forever start --id 'ankkshus' --minUptime 1000 --spinSleepTime 1000 src/server >> /var/log/forever/forever.log",
+    "start": "webpack --mode production & NODE_ENV=production forever start --id 'ankkshus' --minUptime 1000 --spinSleepTime 1000 src/server >> /var/log/forever/forever.log",
     "offline:prod": "webpack --mode production & npm run sass:prod & NODE_ENV=production node src/server",
     "dev": "webpack -w --mode development & nodemon -e scss -x 'npm run sass' & NODE_ENV=development nodemon src/server",
     "sass": "node-sass src/stylesheets/main.scss dist/main.css",
-    "sass:prod": "npm run sass -- --output-style compressed"
+    "dev2": "webpack -w --mode development & NODE_ENV=development nodemon src/server"
   },
   "keywords": [],
   "author": "mrkit",
