@@ -44,7 +44,7 @@ class Quiz extends Component{
     
     return (
      <section className="pageContainer">
-        <h1>Quizes!</h1>
+        <h1>Quizzes!</h1>
         <p>There will be more.</p>
         <section className="quizMain">
          <h1 className="title">Burns Depression Checklist</h1>
