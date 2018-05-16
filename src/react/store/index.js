@@ -5,13 +5,22 @@ import logger from 'redux-logger';
 
 //Action Types
 const UPDATE_SIGNIN_STATUS = 'UPDATE_SIGNIN_STATUS';
+const GET_VIDEOS = 'GET_VIDEOS';
 
 //Action Creators
 const updateSignInStatus = () => {
   
 }
 
+const getVideos = () => {
+  
+}
 //Thunk Creators
+const fetchVideos = () => {
+  return () => {
+    
+  }
+}
 
 //Reducer and Initial State
 const initialState = {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import AddVideoForm from './messageBoxes/AddVideoForm';
 import EditVideoForm from './messageBoxes/EditVideoForm';
+import { connect } from 'react-redux';
 
 class Videos extends Component{
   state = {
@@ -43,6 +44,7 @@ class Videos extends Component{
     event.preventDefault();
     console.log(event.target.delete.value);
     console.log(event.target);
+    console.log('find selected video value')
 //    axios.delete('/api/videos/youtube')
   }
   
@@ -81,4 +83,15 @@ class Videos extends Component{
   }
 }
 
+//const mapState =(state) => {
+//  return {
+//    videos: [],
+//    addVideo: false,
+//    editVideo: false
+//  }
+//};
+//
+//const mapDispatch = () => {};
+//
+//export default connect(mapState, mapDispatch)(Videos);
 export default Videos;
