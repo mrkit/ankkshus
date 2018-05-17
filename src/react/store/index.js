@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import axios from 'axios';
 
 
 //Action Types
@@ -12,13 +13,18 @@ const updateSignInStatus = () => {
   
 }
 
-const getVideos = () => {
-  
+const getVideos = videos => {
+  const action = {
+    type: GET_VIDEOS,
+    payload: videos
+  }
 }
 //Thunk Creators
 const fetchVideos = () => {
-  return () => {
-    
+  return dispatch => {
+    axios.get('/api/videos/youtube')
+    .then(res => res.data)
+    .then(videos = dispatch(getVideos(videos)))
   }
 }
 
@@ -30,6 +36,8 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch(action.type){
+    case GET_VIDEOS:
+      return action.payload;
     default:
       return state;
   }

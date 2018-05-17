@@ -8,21 +8,23 @@ class Videos extends Component{
   state = {
     videos: [],
     addVideo: false,
-    editVideo: false
+    editVideo: false,
+    selectedVideo: '',
+    rename: '',
   }
   
   componentDidMount(){
     axios.get('/api/videos/youtube')
     .then(res => res.data)
     .then(videos => this.setState({videos}))
-    .catch(err => console.log('Axios Youtube Get Error:', err.message))
+    .catch(err => console.log('Axios Youtube Error:', err.message))
   }
 
-  handleReverse = () => {
+  handleReverseVideoRow = () => {
     this.setState({videos: this.state.videos.reverse()})
   }
   
-  handleNewVideo = () => {
+  handleNewVideoSubmission = () => {
     this.setState({addVideo: true})
   }
   
@@ -32,20 +34,55 @@ class Videos extends Component{
     
     axios.post('/api/videos/youtube', { title: title.value, url: url.value })
     .then((video) => this.setState({addVideo: false, videos: [...this.state.videos, video.data]}))
-    .catch(err => console.log('Axios Post Youtube Error message', err.message));
+    .catch(err => console.log('Axios POST Youtube Error message', err.message));
   }
   
-  handleDoubleClick = event => {
-    console.log('Double Click Found!', event.target);
-    this.setState({editVideo: true});
+  handleDoubleClickToEditVideo = event => {
+    this.setState({editVideo: true, selectedVideo: event.target.innerText});
+  }
+  
+  handleRenameInputStateChange = event => {
+    this.setState({rename: event.target.value});
   }
   
   handleEditVideo = event => {
     event.preventDefault();
-    console.log(event.target.delete.value);
-    console.log(event.target);
-    console.log('find selected video value')
-//    axios.delete('/api/videos/youtube')
+    const deleteVideo = event.target.delete.value === 'yes' ? true : false;
+    const title = this.state.selectedVideo;
+    const renamedTitle = event.target.rename.value;
+    
+    if(deleteVideo){
+      //Add an are you sure box before this
+      axios.delete(`/api/videos/youtube/${title}`)
+      .then(() => this.setState({
+          selectedVideo: '', 
+          editVideo: false, 
+          videos: this.state.videos.filter(video => title !== video.title)
+        }))
+      .catch(err => console.log('Axios DELETE Youtube Error message', err.message));
+    } else {
+      //Unmount (closes dialogue box)
+      this.setState({editVideo: false});
+    }
+    
+    if(renamedTitle){
+      axios.put(`/api/videos/youtube/${title}`, { renamedTitle })
+      .then(row => this.setState({ 
+        rename: '',
+        videos: this.state.videos.map(video => { 
+          if(video.title === title){
+            return Object.assign({}, video, {title: renamedTitle});
+          } else {
+            return video;
+          }
+        }) 
+      }))
+      .catch(err => console.log('Axios PUT Youtube Error message', err.message));
+    } else {
+      //add invalid title warning?
+    }
+    
+    event.target.rename = '';
   }
   
   handleUnmountEdit = () => this.setState({editVideo: false});
@@ -59,16 +96,22 @@ class Videos extends Component{
           <section className="ccSection">
             <nav>
               <h2>Crash Course</h2>
-              <button onClick={this.handleReverse}>reverse</button>
-              <button onClick={this.handleNewVideo}>+</button>
+              <button onClick={this.handleReverseVideoRow}>reverse</button>
+              <button onClick={this.handleNewVideoSubmission}>+</button>
             </nav>
             {this.state.addVideo ? <AddVideoForm handleAddVideo={this.handleAddVideo} unMount={this.handleUnmountVideo}/>: null}
-            {this.state.editVideo ? <EditVideoForm handleEditVideo={this.handleEditVideo} unMount={this.handleUnmountEdit}/> : null }
+            {this.state.editVideo ? 
+              <EditVideoForm 
+                handleEditVideo={this.handleEditVideo} 
+                unMount={this.handleUnmountEdit} 
+                rename={this.state.rename} 
+                handleRename={this.handleRenameInputStateChange}
+                /> : null }
             <div className="rowContainer">
               {
                 this.state.videos.map(video => (
                   <article key={video.id}>
-                    <h3 onDoubleClick={this.handleDoubleClick}>{video.title}</h3>
+                    <h3 onDoubleClick={this.handleDoubleClickToEditVideo}>{video.title}</h3>
                     <iframe width="560" height="315" src={video.url} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
                   </article>
                 ))
@@ -85,7 +128,7 @@ class Videos extends Component{
 
 //const mapState =(state) => {
 //  return {
-//    videos: [],
+//    videos: state.videos,
 //    addVideo: false,
 //    editVideo: false
 //  }
