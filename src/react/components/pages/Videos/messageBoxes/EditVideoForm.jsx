@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditVideoForm = ({handleEditVideo, handleRename, unMount, rename}) => (
+const EditVideoForm = ({handleEditVideo, handleRename, unMount, rename, currentTitle}) => (
   <aside>
     <button onClick={unMount} >X</button>
     <form className='messageBoxComponent' onSubmit={handleEditVideo}>
@@ -8,7 +8,7 @@ const EditVideoForm = ({handleEditVideo, handleRename, unMount, rename}) => (
       <label>Do you want to delete this video?</label>
       <label><input type='radio' name='delete' value='no'/><span>No</span></label>
       <label><input type='radio' name='delete' value='yes'/><span>Yes</span></label>
-      <label><input onChange={handleRename} type='text' name='rename' value={rename} placeholder='Rename' autoFocus/></label>
+      <label><input onChange={handleRename} type='text' name='rename' value={rename} placeholder={`Rename: "${currentTitle}"`} autoFocus/></label>
       <button>Submit</button>
     </form>
   </aside>

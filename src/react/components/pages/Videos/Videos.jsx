@@ -10,7 +10,7 @@ class Videos extends Component{
     addVideo: false,
     editVideo: false,
     selectedVideo: '',
-    rename: '',
+    rename: ''
   }
   
   componentDidMount(){
@@ -106,6 +106,7 @@ class Videos extends Component{
                 unMount={this.handleUnmountEdit} 
                 rename={this.state.rename} 
                 handleRename={this.handleRenameInputStateChange}
+                currentTitle={this.state.selectedVideo}
                 /> : null }
             <div className="rowContainer">
               {
