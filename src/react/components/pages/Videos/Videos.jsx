@@ -92,7 +92,7 @@ class Videos extends Component{
     return (
       <section className="pageContainer">
          <h1>Video page</h1>
-          <p>YouTubes and Mashups and stuff.</p>
+          <p>Double click on an episode title to Edit or Delete a video.</p>
           <section className="ccSection">
             <nav>
               <h2>Crash Course</h2>
