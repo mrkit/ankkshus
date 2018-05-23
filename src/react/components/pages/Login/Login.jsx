@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { editCurrentUser } from '../../../store';
 
 class Login extends Component {
   state = {
     username: '',
     password: '',
-    signUp: false
+    signUp: false,
   }
   
   handleUsername = ev => {
@@ -18,34 +19,6 @@ class Login extends Component {
     this.setState({password: ev.target.value});
   }
   
-  handleLoginSubmit = ev => {
-    ev.preventDefault();
-    
-    const username = ev.target.username.value;
-    const password = ev.target.password.value;
-    
-    axios.post('/api/login', {username, password});
-
-    this.setState({username: '', password:''});
-            
-//    taken from login: <h1>{this.props.currentUser}</h1>
-
-    window.location.href="/";
-  } 
-  
-  handleSignUpSubmit = ev => {
-    ev.preventDefault();
-    
-    const username = ev.target.username.value;
-    const password = ev.target.password.value;
-    
-    axios.post('/api/signUp', {username, password});
-    
-    this.setState({username: '', password:''});
-    
-    window.location.href="/";
-  }
-  
   handleClick = () => {
     const { signUp } = this.state;
     signUp ? 
@@ -54,7 +27,8 @@ class Login extends Component {
   }
   
   render(){
-    const { handleLoginSubmit, handleSignUpSubmit, handleUsername, handlePassword, handleClick } = this;
+    const { handleUsername, handlePassword, handleClick } = this;
+    const { handleSignUpSubmit, handleLoginSubmit } = this.props;
     return (
       
       this.state.signUp ? 
@@ -90,6 +64,43 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   
+    handleLoginSubmit(ev){
+      ev.preventDefault();
+
+      const username = ev.target.username.value;
+      const password = ev.target.password.value;
+
+      axios.post('/api/login', {username, password})
+      .then(res => res.data)
+      .then(user => {
+        console.log('this is the user', user, props.history); 
+        dispatch(editCurrentUser(user.name));
+      })
+      .then(() => props.history.push('/'))
+      .catch(err => console.log(`Axios POST login error message: ${err.message}`));
+
+//      <Redirect to='/' />
+  //    window.location.href="/";
+    },
+  
+    handleSignUpSubmit(ev){
+    ev.preventDefault();
+    
+    const username = ev.target.username.value;
+    const password = ev.target.password.value;
+    
+    axios.post('/api/signUp', {username, password})
+    .then(res => res.data)
+    .then(user => {
+      console.log('This is the user', user);
+      dispatch(editCurrentUser(user.name));
+    })
+    .then(() => props.history.push('/'))
+    .catch(err => console.log(`Axios POST sign up error message ${err.message}`));
+   
+//    <Redirect to='/' />
+//    window.location.href="/";
+  }
 })
 
 export default connect(mapState, mapDispatch)(Login);

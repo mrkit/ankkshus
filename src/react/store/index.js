@@ -7,6 +7,7 @@ import axios from 'axios';
 //Action Types
 const UPDATE_SIGNIN_STATUS = 'UPDATE_SIGNIN_STATUS';
 const GET_VIDEOS = 'GET_VIDEOS';
+const EDIT_CURRENT_USER = 'EDIT_CURRENT_USER';
 
 //Action Creators
 const updateSignInStatus = () => {
@@ -19,6 +20,9 @@ const getVideos = videos => {
     payload: videos
   }
 }
+
+export const editCurrentUser = editedUser => ({ type: EDIT_CURRENT_USER, payload: editedUser });
+
 //Thunk Creators
 const fetchVideos = () => {
   return dispatch => {
@@ -31,13 +35,15 @@ const fetchVideos = () => {
 //Reducer and Initial State
 const initialState = {
   loginOrSignUp: 'Login',
-  currentUser: 'Guest'
+  currentUser: 'Guest',
 }
 
 const reducer = (state = initialState, action) => {
   switch(action.type){
     case GET_VIDEOS:
       return action.payload;
+    case EDIT_CURRENT_USER:
+      return Object.assign({}, state, { currentUser: action.payload });
     default:
       return state;
   }

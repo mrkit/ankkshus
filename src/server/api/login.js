@@ -6,15 +6,17 @@ router.post('/', (req, res, next) => {
   const name = req.body.username;
   const password = req.body.password
   
-  User.find({ where: { name, password }})
+  if(User.isValidPassword(password)){
+    User.find({ where: { name }})
     .then( user => {
-    if(user){
-      console.log('User found! Redirecting you to the home page')
-//      res.redirect('/')
-    } else {
-      console.log('That user does not exist, you should register a new user.')
-    }
-  })
+      if(user){
+        console.log('User found!')
+        res.send(user);
+      } else {
+        res.send('That user does not exist, you should register a new user.')
+      }
+    })
+  }
 });
 
 

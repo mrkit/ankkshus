@@ -1,9 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Home = () => (
+const Home = ({currentUser}) => (
   <section>
-    <h1>Sestra!</h1>
+    <h1>Welcome, {currentUser}!</h1>
   </section>
 )
 
-export default Home;
+const mapState = state => ({
+  currentUser: state.currentUser
+});
+
+export default connect(mapState)(Home);

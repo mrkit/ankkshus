@@ -17,7 +17,8 @@ router.post('/', (req, res, next)=> {
       } else { 
         console.log('Created new user!')
         User.create({ name , password})
-//          .then(()=> res.redirect('/google.com'));
+        .then(user=> res.send(user))
+        .catch(next);
       }
     })
     .catch(next);
