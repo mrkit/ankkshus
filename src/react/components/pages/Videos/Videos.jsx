@@ -110,12 +110,17 @@ class Videos extends Component{
                 /> : null }
             <div className="rowContainer">
               {
-                this.state.videos.map(video => (
-                  <article key={video.id}>
-                    <h3 onDoubleClick={this.handleDoubleClickToEditVideo}>{video.title}</h3>
-                    <iframe width="560" height="315" src={video.url} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
-                  </article>
-                ))
+                this.state.videos.map(video => {
+                  let thumburl = video.url.split('https://youtu.be/').join('');
+                  let thumbnail = `http://img.youtube.com/vi/${thumburl}/mqdefault.jpg`
+                  return (
+                    <article key={video.id}>
+                      <h3 onDoubleClick={this.handleDoubleClickToEditVideo}>{video.title}</h3>
+                      {/*<iframe width="560" height="315" src={video.url} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>*/}
+                      <a target='_blank' href={video.url}><img src={thumbnail} alt={video.title}/></a>
+                    </article>
+                  )
+               })
               }
             </div>
           </section>
