@@ -6,7 +6,7 @@ const AddVideoForm = ({handleAddVideo, unMount}) => (
     <form className='messageBoxComponent' onSubmit={handleAddVideo}>
       <h3>Add new video</h3>
       <input type='text' name='title' placeholder='Title' autoFocus/>
-      <input type='text' name='url' placeholder='Embeded Url'/>
+      <input type='text' name='url' placeholder='Youtube Url'/>
       <button>Submit</button>
     </form>
   </aside>
