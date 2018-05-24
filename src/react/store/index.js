@@ -8,6 +8,8 @@ import axios from 'axios';
 const UPDATE_SIGNIN_STATUS = 'UPDATE_SIGNIN_STATUS';
 const GET_VIDEOS = 'GET_VIDEOS';
 const EDIT_CURRENT_USER = 'EDIT_CURRENT_USER';
+const LOG_USER_IN = 'LOG_USER_IN';
+const LOG_USER_OUT = 'LOG_USER_OUT';
 
 //Action Creators
 const updateSignInStatus = () => {
@@ -20,6 +22,10 @@ const getVideos = videos => {
     payload: videos
   }
 }
+
+export const logUserIn = () => ({ type: LOG_USER_IN, payload: true });
+export const logUserOut = () => ({ type: LOG_USER_OUT, payload: false });
+
 
 export const editCurrentUser = editedUser => ({ type: EDIT_CURRENT_USER, payload: editedUser });
 
@@ -36,6 +42,7 @@ const fetchVideos = () => {
 const initialState = {
   loginOrSignUp: 'Login',
   currentUser: 'Guest',
+  loggedIn: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -44,6 +51,10 @@ const reducer = (state = initialState, action) => {
       return action.payload;
     case EDIT_CURRENT_USER:
       return Object.assign({}, state, { currentUser: action.payload });
+    case LOG_USER_IN:
+      return Object.assign({}, state, { loggedIn: action.payload });
+    case LOG_USER_OUT:
+      return Object.assign({}, state, { loggedIn: action.payload });
     default:
       return state;
   }

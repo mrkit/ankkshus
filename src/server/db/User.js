@@ -7,7 +7,7 @@ const User = conn.define('user', {
     type: Sequelize.STRING
   },
   password: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   }
 }, {
   hooks: {

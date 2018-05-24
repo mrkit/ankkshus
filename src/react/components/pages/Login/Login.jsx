@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { editCurrentUser } from '../../../store';
+import { editCurrentUser, logUserIn, logUserOut } from '../../../store';
 
 class Login extends Component {
   state = {
@@ -59,7 +59,8 @@ class Login extends Component {
 }
 
 const mapState = state => ({
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  loggedIn: state.loggedIn
 });
 
 const mapDispatch = dispatch => ({
@@ -75,6 +76,7 @@ const mapDispatch = dispatch => ({
       .then(user => {
         console.log('this is the user', user, props.history); 
         dispatch(editCurrentUser(user.name));
+        dispatch(logUserIn());
       })
       .then(() => props.history.push('/'))
       .catch(err => console.log(`Axios POST login error message: ${err.message}`));
@@ -88,12 +90,13 @@ const mapDispatch = dispatch => ({
     
     const username = ev.target.username.value;
     const password = ev.target.password.value;
-    
+
     axios.post('/api/signUp', {username, password})
     .then(res => res.data)
     .then(user => {
       console.log('This is the user', user);
       dispatch(editCurrentUser(user.name));
+      dispatch(logUserIn());
     })
     .then(() => props.history.push('/'))
     .catch(err => console.log(`Axios POST sign up error message ${err.message}`));

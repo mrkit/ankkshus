@@ -43,7 +43,6 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "It's not my fault that I don't know how many k's are in anxious",
       favicon: './assets/images/Ankkshus_favicon.ico',
       template: './src/index.html'
     }),
