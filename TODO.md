@@ -1,0 +1,1 @@
+Add functionality to Logout in Head.jsx
