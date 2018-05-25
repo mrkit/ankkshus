@@ -14,7 +14,7 @@ const Header = (props) => (
         <li><Link to="videos">Videos</Link></li>   
         <li><Link to="/distillery">The Distillery</Link></li>
         <li><Link to="/quiz">Quizzes</Link></li>
-        <li><Link to="/login">{props.loginOrSignUp}</Link></li>
+        <li><Link to="/login">{props.loggedIn ? 'Logout' : 'Login'}</Link></li>
       </ul>         
     </nav>
   </header>
@@ -22,8 +22,8 @@ const Header = (props) => (
 
 function mapStateToProps (state){
   return {
-    loginOrSignUp: state.loginOrSignUp,
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    loggedIn: state.loggedIn
   }
 }
 

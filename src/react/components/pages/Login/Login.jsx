@@ -29,6 +29,7 @@ class Login extends Component {
   render(){
     const { handleUsername, handlePassword, handleClick } = this;
     const { handleSignUpSubmit, handleLoginSubmit } = this.props;
+    
     return (
       
       this.state.signUp ? 
@@ -63,8 +64,7 @@ const mapState = state => ({
   loggedIn: state.loggedIn
 });
 
-const mapDispatch = dispatch => ({
-  
+const mapDispatch = (dispatch, props) => ({
     handleLoginSubmit(ev){
       ev.preventDefault();
 
@@ -74,15 +74,11 @@ const mapDispatch = dispatch => ({
       axios.post('/api/login', {username, password})
       .then(res => res.data)
       .then(user => {
-        console.log('this is the user', user, props.history); 
-        dispatch(editCurrentUser(user.name));
+        console.log('this is the user', user); 
+        dispatch(editCurrentUser(user.username));
         dispatch(logUserIn());
       })
-      .then(() => props.history.push('/'))
       .catch(err => console.log(`Axios POST login error message: ${err.message}`));
-
-//      <Redirect to='/' />
-  //    window.location.href="/";
     },
   
     handleSignUpSubmit(ev){
@@ -95,16 +91,14 @@ const mapDispatch = dispatch => ({
     .then(res => res.data)
     .then(user => {
       console.log('This is the user', user);
-      dispatch(editCurrentUser(user.name));
+      dispatch(editCurrentUser(user.username));
       dispatch(logUserIn());
     })
     .then(() => props.history.push('/'))
     .catch(err => console.log(`Axios POST sign up error message ${err.message}`));
-   
-//    <Redirect to='/' />
-//    window.location.href="/";
-  }
+    }
 })
+
 
 export default connect(mapState, mapDispatch)(Login);
 

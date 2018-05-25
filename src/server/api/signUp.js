@@ -6,22 +6,22 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next)=> {
-  const name = req.body.username;
-  const password = req.body.password;
+  const { username, password } = req.body;
   
-  console.log('SignUp Req Body:', name, password)
-  User.find({ where: { name , password }})
+  console.log('SignUp Req Body:', username, password);
+  
+  User.find({ where: { username , password }})
     .then(user => {
       if(user){
         console.log('This user already exits, go to login page');
       } else { 
         console.log('Created new user!')
-        User.create({ name , password})
+        User.create({ username , password})
         .then(user=> res.send(user))
-        .catch(next);
+        .catch(err => console.log('error from signUp', err.message));
       }
     })
-    .catch(next);
+    .catch(err => console.log('error from user fine on signUp', err.message));
 })
 
 module.exports = router;

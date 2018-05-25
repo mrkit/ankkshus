@@ -3,11 +3,13 @@ const conn = require('./conn'),
       bcrypt = require('bcrypt');
 
 const User = conn.define('user', {
-  name: {
-    type: Sequelize.STRING
+  username: {
+    type: Sequelize.STRING,
+    allowNull: false
   },
   password: {
-    type: Sequelize.TEXT
+    type: Sequelize.TEXT,
+    allowNull: false
   }
 }, {
   hooks: {

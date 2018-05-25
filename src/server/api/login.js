@@ -3,20 +3,26 @@ const { User } = require('../db').models;
 
 router.post('/', (req, res, next) => {
   console.log('This is the form data', req.body);
-  const name = req.body.username;
-  const password = req.body.password
+  const { username, password } = req.body;
   
-  if(User.isValidPassword(password)){
-    User.find({ where: { name }})
+  //you don't need { where: }, { username } alone will work
+  User.find({ where: { username }})
     .then( user => {
       if(user){
         console.log('User found!')
-        res.send(user);
+        User.isValidPassword(password)
+          .then(correctPw => {
+              if(correctPw){
+                console.log('This should be correct', correctPw);
+                res.send(user);
+              } else {
+                res.send('Wrong Password');
+              }
+          })
       } else {
         res.send('That user does not exist, you should register a new user.')
       }
     })
-  }
 });
 
 
