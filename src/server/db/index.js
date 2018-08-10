@@ -15,6 +15,26 @@ const seed = () => {
     Video.create({title: 'Episode 5', url: 'https://youtu.be/MLKrmw906TM'}),
     Video.create({title: 'Episode 6', url: 'https://youtu.be/5C-s4JrymKM'})
   ])
+  .then(() => {
+    return Quiz.create({
+      name: 'Burns Depression Checklist',
+      titles: ['Thoughts and Feelings', 'Activities and Personal Relationships',
+      'Physical Symptoms', 
+      'Suicidal Urges**'],
+      questions: [
+        'Feeling sad or down in the dumps',
+        'Feeling unhappy or blue',
+        'Crying spells or tearfulness',
+        'Feeling discouraged',
+        'Feeling hopeless', 
+        'Low self-esteem',
+        'Feeling worthless or inadequate',
+        'Guilt or shame',
+        'Criticizing yourself or blaming yourself',
+        'Difficulty making decisions'
+      ]
+    });
+  });
 }
 
 module.exports = {

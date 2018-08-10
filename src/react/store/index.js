@@ -41,7 +41,8 @@ const fetchVideos = () => {
 //Reducer and Initial State
 const initialState = {
   currentUser: 'Guest',
-  loggedIn: false
+  loggedIn: false,
+  logInOrOut: 'Login'
 }
 
 const reducer = (state = initialState, action) => {

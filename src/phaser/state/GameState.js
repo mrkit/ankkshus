@@ -46,7 +46,7 @@ var GameState = {
       peasant.scale.setTo(0.4);
       peasant.tint = Math.random() * 0xc93535;
       peasant.frame = Math.floor(Math.random() * 11);
-      peasant.animations.add('walking', [ 6, 2, 6, 2], 6, true)
+      peasant.animations.add('walking', [ 6, 2, 6, 2], 6, true);
       peasant.animations.add('hurting', [ 7, 8,], 2, false);
       this.peasants.add(peasant);
     }
@@ -96,6 +96,7 @@ var GameState = {
     this.game.physics.arcade.collide(this.boulder, this.platforms);
     this.game.physics.arcade.collide(this.peasants, this.platforms);
     this.game.physics.arcade.collide(this.goal, this.platforms);
+    this.game.physics.arcade.collide(this.luci, this.goal);
     
     if(this.luci.customParams.health <= 0) this.gameOver();
     
@@ -130,7 +131,7 @@ var GameState = {
     
     if(this.cursors.up.isDown ) {
       this.luci.body.velocity.y = -this.JUMPING_SPEED;
-      this.luci.play('jumping')
+      this.luci.play('jumping');
     } 
     
     this.peasants.forEach(function(peasant){
@@ -157,7 +158,6 @@ var GameState = {
     this.game.time.events.add(2000, function(){
     //true refreshes the game world, game cage property is next, then you can pass a variable. You can pass the player stats here too
           
-
     this.game.state.start('HomeState', true, false, 'You Died');
     }, this);
   },

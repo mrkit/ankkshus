@@ -16,7 +16,7 @@ router.post('/', (req, res, next)=> {
         console.log('This user already exits, go to login page');
       } else { 
         console.log('Created new user!')
-        User.create({ username , password})
+        return User.create({ username , password})
         .then(user=> res.send(user))
         .catch(err => console.log('error from signUp', err.message));
       }

@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
-import questions from './quizQuestions';
+//import questions from './quizQuestions';
+import axios from 'axios';
 
 class Quiz extends Component{
   state = {
-      questions: questions,
-      score: 0
+//    questions: questions,
+    score: 0,
+    quizzes: []
+  }
+  
+  componentDidMount(){
+    axios.get('/api/quizzes')
+    .then(res => res.data)
+    .then(quizzes => {
+      console.log('This is the quizzes', quizzes)
+      this.setState({ quizzes })
+    })
   }
   
   handleSubmit = event => {
@@ -40,7 +51,7 @@ class Quiz extends Component{
   
   render(){
     const { handleReset, handleSubmit } = this;
-    const { questions, counter, score } = this.state;
+    const { quizzes, counter, score } = this.state;
     
     return (
      <section className="pageContainer">
@@ -49,18 +60,18 @@ class Quiz extends Component{
         <section className="quizMain">
          <h1 className="title">Burns Depression Checklist</h1>
           <form onSubmit={handleSubmit}>
-            {questions.map(question => (
+            {quizzes.map(quiz => (
               <div>
-                <div><div className="titleStyle">{question.title}</div></div>
-                {question.qs.map(qs => (
-                  <div className="container" key={qs[0]}>
-                    <div className="cell1">{qs[0]}</div>
-                    <div className="questionStyle">{qs[1]}</div>
-                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${qs[0]}`} value='0' /> 0</div></label>
-                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${qs[0]}`} value='1' /> 1</div></label>
-                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${qs[0]}`} value='2' /> 2</div></label>
-                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${qs[0]}`} value='3' /> 3</div></label>
-                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${qs[0]}`} value='4' /> 4</div></label>
+                <div><div className="titleStyle">{quiz.title}</div></div>
+                {quiz.questions.map(question => (
+                  <div className="container" key={question[0]}>
+                    <div className="cell1">{question[0]}</div>
+                    <div className="questionStyle">{question[1]}</div>
+                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='0' /> 0</div></label>
+                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='1' /> 1</div></label>
+                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='2' /> 2</div></label>
+                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='3' /> 3</div></label>
+                    <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='4' /> 4</div></label>
                   </div>)
                  )}
               </div>

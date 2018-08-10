@@ -14,7 +14,6 @@ body, h1, h2 {
 
 #container {
   min-height: 50rem;
-  width: 100%;
   margin-top: 0;
   margin: auto;
   display: grid;
@@ -39,31 +38,31 @@ body, h1, h2 {
 
 header {
   display: grid;
-  grid-template-columns: 1fr 2fr .1fr;
+  grid-template-columns: 1fr 5fr;
   height: 2.5rem;
-  width: 100%;
   background: linear-gradient(to right, #f17058, #f2fafd);
   
   > nav {
-    position: relative;
-    top: .6rem;
-    height: 3rem;
+//    position: relative;
+//    top: .6rem;
+//    height: 3rem;
     
     ul{
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-column-gap: .3rem;
+      grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
       padding: 0;
-      margin:  0;
+      margin-top: .6rem;
       
       li {
         list-style: none;
-        font-size: 1.3rem;
+        padding: 0;
         text-align: center;
-        white-space: nowrap;
+//        font-size: 1.3rem;
+//        white-space: nowrap;
         
         a {
           text-decoration: none;
+          color: black;
         }
       }
     }
@@ -72,7 +71,8 @@ header {
 
 
 main {
-  width: 60rem;
+//  width: 60rem;
+  width: 80%;
   margin: auto;
   margin-top: 0;
   margin-bottom: 0;
@@ -143,13 +143,14 @@ footer {
 @import 'quiz';
 
 /* ------ Media Queries ----- */
-@media only screen and (max-width: 400px){
+@media (max-width: 450px){
   body {
-    width: 400px;
+//    width: 400px;
   }
   
   #container {
     background: url(/assets/images/citydragonweb.jpg) 10 4rem / 120% repeat;
+
   }
   
   #ankkshus {
