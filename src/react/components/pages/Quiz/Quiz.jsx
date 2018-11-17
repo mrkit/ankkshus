@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-//import questions from './quizQuestions';
+import questions from './quizQuestions';
 import axios from 'axios';
 
 class Quiz extends Component{
   state = {
-//    questions: questions,
+    questions: questions,
     score: 0,
     quizzes: []
   }
@@ -60,7 +60,7 @@ class Quiz extends Component{
         <section className="quizMain">
          <h1 className="title">Burns Depression Checklist</h1>
           <form onSubmit={handleSubmit}>
-            {quizzes.map(quiz => (
+            {/* quizzes.map(quiz => (
               <div>
                 <div><div className="titleStyle">{quiz.title}</div></div>
                 {quiz.questions.map(question => (
@@ -75,7 +75,7 @@ class Quiz extends Component{
                   </div>)
                  )}
               </div>
-            ))}
+            ))*/}
             <button className="submitStyle">Submit</button>
           </form>
           <button onClick={handleReset} className="resetStyle">Reset</button>
