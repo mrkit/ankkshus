@@ -1,69 +1,77 @@
-.quizMain {
-    background: rgba(255, 255, 255, 0.96);
-    border-radius: 10px;
-    box-shadow: 0px 0px 44px -9px #5d696b;
-    height: 44rem;
-    padding: 1rem;
-  }
-.container {
-    display: grid;
-    grid-template-columns: 24px 15fr 1fr 1fr 1fr 1fr 1fr;
-    border: 1px solid black;
-  }
+.quiz {
+}
+
+.quiz-main {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 10px;
+  box-shadow: 0px 0px 44px -9px #5d696b;
+  height: 44rem;
+  padding: 1rem;
+}
+
+.quiz-row {
+  background: aqua;
+  display: grid;
+  grid-template-columns: 24px 15fr 1fr 1fr 1fr 1fr 1fr;
+  border: 1px solid black;
+}
   
-.title {
-    grid-column: span 10;
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-  }
+.quiz-title {
+  grid-column: span 10;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
   
 .cell {
-    border-left: 1px solid black;
-    text-align: center;
-  }
+  border-left: 1px solid black;
+  text-align: center;
+}
   
-.cell1 {
-    text-align: center;
-    border-right: 1px solid black;
-    padding-right: 3px;
-  }
+.quiz-question-number {
+  text-align: center;
+  border-right: 1px solid black;
+  padding-right: 3px;
+  width: 1.5rem;
+  background: pink;
+}
   
-.questionStyle {
-    padding: 0 3px 0 3px;
-    text-align: left;
-  } 
+.quiz-question {
+//    padding: 0 3px 0 3px;
+  padding-left: 1rem;
+  text-align: left;
+} 
   
 .titleStyle {
-    text-align: center;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
-    border-top: 1px solid black;
-  }
+  text-align: center;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+}
   
 .inputStyle {
 /*    display: none;*/
-  } 
+} 
   
 .submitStyle {
-    width: 13rem;
-    position: relative;
-    left: -0.05rem;
-    top: 0rem;
-    height: 1.5rem;
-    outline: none;
-  }
-  
+  width: 13rem;
+  position: relative;
+  left: -0.05rem;
+  top: 0rem;
+  height: 1.5rem;
+  outline: none;
+}
+
 .resetStyle {
-    width: 15.7rem;
-    position: relative;
-    left: 12.85rem;
-    top: -1.5rem;
-    height: 1.5rem;
-    outline: none;
-  }
+  width: 15.7rem;
+  position: relative;
+  left: 12.85rem;
+  top: -1.5rem;
+  height: 1.5rem;
+  outline: none;
+}
   
  .scoreStyle {
-    position: relative;
-    left: 33.8rem;
-    top: -2.8rem;
-  }
+  position: relative;
+  left: 33.8rem;
+  top: -2.8rem;
+}

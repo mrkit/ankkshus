@@ -4,6 +4,7 @@ import axios from 'axios';
 import Quiz from './pages/Quiz/Quiz';
 import Login from './pages/Login/Login';
 import Distillery from './pages/Distillery/Distillery';
+import Distillery2 from './pages/Distillery/Distillery2/Distillery2';
 import Videos from './pages/Videos/Videos';
 import Home from './pages/Home';
 
@@ -19,6 +20,7 @@ class Main extends Component {
         <Route path='/distillery' component={Distillery} />
         <Route path='/quiz' component={Quiz} /> 
         <Route path='/login' component={Login} />
+        <Route path='/distillery2' component={Distillery2} />
       </main>
     )
   }

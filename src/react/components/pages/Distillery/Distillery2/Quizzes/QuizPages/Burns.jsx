@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import questions from './quizQuestions';
+import questions from '../../../../Quiz/quizQuestions';
 import axios from 'axios';
 
-class Quiz extends Component{
+class Burns extends Component{
   state = {
     questions: questions,
     score: 0,
@@ -52,8 +52,6 @@ class Quiz extends Component{
     
     return (
      <section className="quiz">
-        <h1>Quizzes!</h1>
-        <p>There will be more.</p>
         <section className="quiz-main">
          <h1 className="quiz-title">Quizzes</h1>
           <form onSubmit={handleSubmit}>
@@ -89,4 +87,4 @@ class Quiz extends Component{
   }
 }
 
-export default Quiz;
+export default Burns;

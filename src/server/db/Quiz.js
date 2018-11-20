@@ -4,7 +4,7 @@ const conn = require('./conn'),
 const Quiz = conn.define('quiz', {
   name: Sequelize.STRING,
   titles: Sequelize.ARRAY(Sequelize.TEXT),
-  question: Sequelize.ARRAY(Sequelize.TEXT),
+  questions: Sequelize.ARRAY(Sequelize.TEXT),
   score: Sequelize.INTEGER
 });
 
