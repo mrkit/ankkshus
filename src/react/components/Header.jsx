@@ -12,9 +12,7 @@ const Header = (props) => (
     <nav>
       <ul>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="videos">Videos</Link></li>   
         <li><Link to="/distillery">Distillery</Link></li>
-        <li><Link to="/quiz">Quizzes</Link></li>
         <li onClick={props.handleClick}><Link to="/login">{props.loggedIn ? 'Logout' : 'Login'}</Link></li>
       </ul>         
     </nav>

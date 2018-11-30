@@ -1,28 +1,22 @@
-import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import axios from 'axios';
+import React, { Component, Fragment } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import TableOfContents from './TableOfContents';
+import Videos from './Videos/Videos';
+import Quizzes from './Quizzes/Quizzes';
+import Games from './Games/Games';
+
 
 class Distillery extends Component {
-  state = {}
-  
-  componentDidMount(){
-  }
-  
   render(){
-    return(
-      <section className="pageContainer">
-        <h1>Welcome to the Distillery!</h1>
-        <p>We've got drinks and dinks, help yourself.</p>
-        <section className="ccSection">
-          <h2>Games:</h2>
-          <div className="rowContainer">
-            <article>
-              <h3><Link to="/luci">Luci</Link></h3>
-              <iframe width="560" height="315" src="/luci" frameBorder="0" allowFullScreen></iframe>
-            </article>
-          </div>
-        </section>
-      </section>
+    return (
+      <Fragment>
+        <Switch>
+          <Route exact path='/distillery/' component={TableOfContents}/>
+          <Route path='/distillery/quizzes/' component={Quizzes}/>
+          <Route path='/distillery/games/' component={Games}/>
+          <Route path='/distillery/videos' component={Videos} />
+        </Switch>
+      </Fragment>
     )
   }
 }

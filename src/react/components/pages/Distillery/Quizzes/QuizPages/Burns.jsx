@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import questions from '../../../../Quiz/quizQuestions';
+import questions from '../quizQuestions';
 import axios from 'axios';
 
 class Burns extends Component{

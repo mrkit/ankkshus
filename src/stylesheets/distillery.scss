@@ -1,0 +1,36 @@
+.table-of-contents {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 3rem;
+  
+  li {
+    list-style: none;
+    width: 15rem;
+    height: 5rem;
+    border: 1px solid black;
+    background: thistle;
+    display: grid;
+    
+    a {
+      display: grid;
+      align-items: center;
+      text-align: center;
+      width: inherit;
+      height: inherit;
+      text-decoration: none;
+      color: black;
+    }
+  }
+  
+  li:hover {
+    background: #807680;
+  }
+  
+  li:active {
+    background: #2c272c;
+    
+    a {
+      color: aliceblue;
+    }
+  }
+}
