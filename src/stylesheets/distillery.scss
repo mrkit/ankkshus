@@ -1,4 +1,7 @@
 .table-of-contents {
+  padding: 2rem;
+}
+.table-of-contents-categories {
   display: grid;
   grid-template-columns: auto;
   grid-gap: 3rem;
@@ -8,7 +11,7 @@
     width: 15rem;
     height: 5rem;
     border: 1px solid black;
-    background: thistle;
+    background: rgba(195, 227, 252, 0.95);
     display: grid;
     
     a {
@@ -23,11 +26,11 @@
   }
   
   li:hover {
-    background: #807680;
+    background: #0e39e4bb;
   }
   
   li:active {
-    background: #2c272c;
+    background: #635763;
     
     a {
       color: aliceblue;

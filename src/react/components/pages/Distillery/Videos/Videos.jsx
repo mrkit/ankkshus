@@ -89,45 +89,52 @@ class Videos extends Component{
   handleUnmountVideo = () => this.setState({addVideo: false});
   
   render(){
+    const { videos, rename, addVideo, editVideo, selectedVideo } = this.state;
+    const { handleReverseVideoRow, handleNewVideoSubmission, handleAddVideo, handleUnmountVideo, handleEditVideo, handleUnmountEdit, handleRenameInputStateChange, handleDoubleClickToEditVideo } = this;
+
     return (
-      <section className="pageContainer">
-         <h1>Video page</h1>
-          <p>Double click on an episode title to Edit or Delete a video.</p>
-          <section className="ccSection">
-            <nav>
-              <h2>Crash Course</h2>
-              <button onClick={this.handleReverseVideoRow}>reverse</button>
-              <button onClick={this.handleNewVideoSubmission}>+</button>
-            </nav>
-            {this.state.addVideo ? <AddVideoForm handleAddVideo={this.handleAddVideo} unMount={this.handleUnmountVideo}/>: null}
-            {this.state.editVideo ? 
-              <EditVideoForm 
-                handleEditVideo={this.handleEditVideo} 
-                unMount={this.handleUnmountEdit} 
-                rename={this.state.rename} 
-                handleRename={this.handleRenameInputStateChange}
-                currentTitle={this.state.selectedVideo}
-                /> : null }
-            <div className="rowContainer">
-              {
-                this.state.videos.map(video => {
-                  let thumburl = video.url.split('https://youtu.be/').join('');
-                  let thumbnail = `http://img.youtube.com/vi/${thumburl}/mqdefault.jpg`
-                  return (
-                    <article key={video.id}>
-                      <h3 onDoubleClick={this.handleDoubleClickToEditVideo}>{video.title}</h3>
-                      {/*<iframe width="560" height="315" src={video.url} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>*/}
-                      <a target='_blank' href={video.url}><img src={thumbnail} alt={video.title}/></a>
-                    </article>
-                  )
-               })
-              }
-            </div>
-          </section>
-          <section className="mashupSection">
-            <h2>Mashups</h2>
-          </section>
-      </section>
+      <div className='video'>
+        <nav className='video-nav'>
+          <h2 className='video-nav-title'>Videos</h2>
+          <ul className='video-nav-video-list'>
+            <li>Crash Course</li>
+          </ul>
+          
+          <div>
+            <button onClick={handleReverseVideoRow}>reverse</button>
+            <button onClick={handleNewVideoSubmission}>+</button>
+          </div>
+        </nav>
+        <section className="video-container">
+            <p>Double click on an episode title to Edit or Delete a video.</p>
+            <section className="ccSection">
+              {addVideo ? <AddVideoForm handleAddVideo={handleAddVideo} unMount={handleUnmountVideo}/>: null}
+              {editVideo ? 
+                <EditVideoForm 
+                  handleEditVideo={handleEditVideo} 
+                  unMount={handleUnmountEdit} 
+                  rename={rename} 
+                  handleRename={handleRenameInputStateChange}
+                  currentTitle={selectedVideo}
+                  /> : null }
+              <div className="video-container-row">
+                {
+                  videos.map(video => {
+                    let thumburl = video.url.split('https://youtu.be/').join('');
+                    let thumbnail = `http://img.youtube.com/vi/${thumburl}/mqdefault.jpg`
+                    return (
+                      <article key={video.id}>
+                        <h3 onDoubleClick={handleDoubleClickToEditVideo}>{video.title}</h3>
+                        {/*<iframe width="560" height="315" src={video.url} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>*/}
+                        <a target='_blank' href={video.url}><img src={thumbnail} alt={video.title}/></a>
+                      </article>
+                    )
+                })
+                }
+              </div>
+            </section>
+        </section>
+      </div>
     )
   }
 }

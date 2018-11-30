@@ -7,7 +7,7 @@
     "start": "webpack --mode production & NODE_ENV=production forever start --id 'ankkshus' --minUptime 1000 --spinSleepTime 1000 src/server >> /var/log/forever/forever.log",
     "offline:prod": "webpack --mode production & NODE_ENV=production node src/server",
     "dev": "webpack -w --mode development & nodemon -e scss -x 'npm run sass' & NODE_ENV=development nodemon src/server",
-    "sass": "node-sass src/stylesheets/main.scss dist/main.css",
+    "sass": "node-sass src/stylesheets/app.scss dist/app.css",
     "dev:nonpmsass": "webpack -w --mode development & NODE_ENV=development nodemon src/server"
   },
   "keywords": [],

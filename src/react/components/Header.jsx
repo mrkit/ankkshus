@@ -6,7 +6,7 @@ import { logUserOut } from '../store';
 const Header = (props) => ( 
   <header>
     <Link to="/">
-      <div id="ankkshus" className="fade"></div>
+      <div id="ankkshus" className="ankkshus"></div>
     </Link>
 
     <nav>

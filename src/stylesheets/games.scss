@@ -1,0 +1,23 @@
+.games {
+    padding: 2rem;
+
+    .games-list {
+        
+
+        .games-list-item {
+            list-style: none;
+
+            img {
+                width: 30rem;
+            }
+
+            img:hover {
+                box-shadow: 3px 6px 4px rgba(0, 0, 0, 0.541);
+            }
+
+            img:active {
+                box-shadow: 0px 3px 2px rgb(0, 0, 0);
+            }
+        }
+    }
+}
