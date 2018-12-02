@@ -1,3 +1,36 @@
 .home {
     padding: 2rem;
+
+    .home-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 1rem;
+      
+        li {
+          list-style: none;
+          height: 20rem;
+          border: 1px solid black;
+          text-align: center;
+          display: grid;
+          justify-content: center;
+          align-content: center;
+          font-size: 2rem;
+          font-weight: 300;
+          background: rgba(195, 227, 252, 0.95);
+        }
+
+        li:hover {
+            background: #0e39e4bb;
+            cursor: pointer;
+        }
+          
+        li:active {
+            background: #635763a9;
+            cursor: pointer;
+            
+            a {
+                color: aliceblue;
+            }
+        }
+    }
 }
