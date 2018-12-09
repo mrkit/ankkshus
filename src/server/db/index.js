@@ -1,7 +1,8 @@
 const conn = require('./conn'),
       User = require('./User'),
       Quiz = require('./Quiz'),
-      Video = require('./Video');
+      Video = require('./Video'),
+      Post = require('./Post');
 
 Quiz.belongsTo(User);
 User.hasMany(Quiz);
@@ -41,6 +42,6 @@ module.exports = {
   conn,
   seed,
   models: {
-    User, Quiz, Video
+    User, Quiz, Video, Post
   }
 }
