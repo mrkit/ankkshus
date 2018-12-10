@@ -5,10 +5,6 @@ import { createNewPost } from '../../../../store';
 
 class CreatePost extends Component {
 
- 
-
-  
-
   render() {
     const { handleCreatingPost } = this.props;
 

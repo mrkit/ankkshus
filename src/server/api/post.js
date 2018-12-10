@@ -3,7 +3,7 @@ const Post = require('../db').models.Post;
 
 r.get('/', (req, res, next) => {
   Post.findAll()
-  .then(posts => res.send(posts))
+  .then(posts => res.send(posts.reverse()))
   .catch(next);
 });
 
