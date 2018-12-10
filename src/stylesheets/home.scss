@@ -42,10 +42,11 @@
     }
 
     .home-article {
-        border: 1px solid black;
-        border-radius: 4px;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.749);
+      border: 1px solid black;
+      border-radius: 4px;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.749);
+      list-style: none;
 
         .home-article-title {
             background: rgb(174, 198, 174);

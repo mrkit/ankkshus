@@ -3,10 +3,10 @@ const LOG_USER_OUT = 'LOG_USER_OUT';
 const UPDATE_SIGNIN_STATUS = 'UPDATE_SIGNIN_STATUS';
 const EDIT_CURRENT_USER = 'EDIT_CURRENT_USER';
 
-const logUserIn = () => ({ type: LOG_USER_IN, payload: true });
-const logUserOut = () => ({ type: LOG_USER_OUT, payload: false });
-const editCurrentUser = editedUser => ({ type: EDIT_CURRENT_USER, payload: editedUser });
-const updateSignInStatus = () => ({});
+export const logUserIn = () => ({ type: LOG_USER_IN, payload: true });
+export const logUserOut = () => ({ type: LOG_USER_OUT, payload: false });
+export const editCurrentUser = editedUser => ({ type: EDIT_CURRENT_USER, payload: editedUser });
+export const updateSignInStatus = () => ({});
 
  const initialState = { 
   currentUser: 'Guest',
