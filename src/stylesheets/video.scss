@@ -5,8 +5,6 @@
   display: grid;
   grid-template-columns: 1fr 5fr;
 
- 
-
   .video-nav {
     background: #bdbdbd;
     padding: 1rem;
@@ -29,7 +27,6 @@
     .video-container-row {
       display: flex;
       flex-flow: wrap;
-      justify-content: space-between;
       
       h3 {
         font-weight: 100;
@@ -43,10 +40,7 @@
   }
 }
 
-
-
 .ccSection {
-  border-bottom: 1px solid black;
   
   > nav {
     display: grid;
@@ -121,10 +115,6 @@ span {
   position: relative;
   top: -0.5rem;
   left: .3rem;
-}
-
-.mashupSection {
-  
 }
 
 

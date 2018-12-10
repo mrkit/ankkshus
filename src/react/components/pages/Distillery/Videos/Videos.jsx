@@ -24,7 +24,14 @@ const Videos = ({ videos, addVideo }) => {
             <div className="video-container-row">
               {
                 videos.map(video => {
-                  let thumburl = video.url.split('https://youtu.be/').join('');
+                  let thumburl;
+                  //Slice off the non-id part based on where you get the youtube link from.
+                  if(video.url.slice(0, 17) === 'https://youtu.be/'){
+                    thumburl = video.url.split('https://youtu.be/').join('');
+                  } else {
+                    thumburl = video.url.split('https://www.youtube.com/watch?v=').join('');
+                  }
+
                   let thumbnail = `http://img.youtube.com/vi/${thumburl}/mqdefault.jpg`
                   return (
                     <article key={video.id}>

@@ -19,7 +19,7 @@ const VideosSidebar = ({ handleNewVideoSubmission, videoChannels }) => (
     </div>
     */}
     <div>
-      <button onClick={handleNewVideoSubmission}>+</button>
+      <button onClick={handleNewVideoSubmission}>Add New Video</button>
     </div>
   </nav>
 );
