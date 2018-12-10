@@ -5,10 +5,6 @@ import Main from './Main';
 import Footer from './Footer';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
   
   componentDidMount(){
     const bizken = localStorage['bizken'];
@@ -20,26 +16,14 @@ class App extends Component {
     }
   }
   
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, info) {
-    // You can also log the error to an error reporting service
-    logErrorToMyService(error, info);
-  }
-  
   render(){
-    
-     return this.state.hasError ?
-      <h1>Something went wrong!</h1> :
+     return (
       <div className="container">
         <Header />
         <Main />
         <Footer />
       </div>
-    
+    )
   }
 }
 

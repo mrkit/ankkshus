@@ -29,7 +29,7 @@ const Home = ({ currentUser, posts }) => (
 );
 
 const mapState = state => ({
-  currentUser: state.currentUser,
+  currentUser: state.users.currentUser,
   posts: state.posts
 });
 

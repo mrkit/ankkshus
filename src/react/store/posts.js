@@ -1,14 +1,14 @@
 import axios from 'axios';
 
-//Action Types
+//ACTION TYPES
 const GET_POSTS = 'GET_POSTS';
 const ADD_POST = 'ADD_POST';
 
-//Action Creators
-export const getPosts = posts => ({ type: GET_POSTS, payload: posts })
+//ACTION CREATORS
+export const getPosts = posts => ({ type: GET_POSTS, payload: posts });
 export const addPost = newPost => ({type: ADD_POST, payload: newPost });
 
-//Thunk Creators
+//THUNK CREATORS
 export const fetchPosts = () => dispatch => (
   axios.get('/api/ankkshusposts').then(res => res.data)
   .then(posts => dispatch(getPosts(posts)))
@@ -22,7 +22,7 @@ export const createNewPost = (title, date,  author, article) => dispatch => (
   .catch(err => `Axios create post error ${err.message}`)
 );
 
-//Reducer 
+//REDUCER
 const postReducer = (state = [], action) => {
   switch(action.type){
     case GET_POSTS:
@@ -32,6 +32,6 @@ const postReducer = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 
 export default postReducer;
