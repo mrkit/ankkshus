@@ -12,7 +12,6 @@ VideoChannels.hasMany(Video);
 const seed = () => {
   return VideoChannels.create({name: 'Crash Course Philosophy'})
   .then(channel => {
-    console.log('Channel', channel.id);
     return Promise.all([
       Video.create({title: 'Episode 1', url: 'https://youtu.be/1A_CAkYt3GY', videochannelId: channel.id }),
       Video.create({title: 'Episode 2', url: 'https://youtu.be/NKEhdsnKKHs', videochannelId: channel.id }),

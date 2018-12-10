@@ -41,16 +41,35 @@
         }
     }
 
+    .home-posts {
+        display:grid;
+        grid-gap: 1rem;
+    }
+
     .home-article {
       border: 1px solid black;
       border-radius: 4px;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.749);
+      background: rgba(255, 255, 255, 0.8);
       list-style: none;
 
         .home-article-title {
+            display: grid;
+            padding-left: 1rem;
+            grid-template-columns: 5fr .5fr;
             background: rgb(174, 198, 174);
             margin: 0;
+            > form {
+                align-self: center;
+            }
+        }
+
+        .home-article-author-date {
+            margin: 0;
+            background: #93a79321;    
+        }
+
+        .home-article-author-date, .home-article-article {
+            padding-left: 1rem;
         }
     }
 }

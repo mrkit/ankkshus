@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../store';
+import { fetchPosts, updatingPost, deletingPost } from '../../store';
 
-const Home = ({ currentUser, posts }) => (
+const Home = ({ currentUser, posts, handleDeletingPost }) => (
   <div className='home'>
     <h1>Welcome, {currentUser}!</h1>
     <p>Add new content.</p>
@@ -13,12 +13,18 @@ const Home = ({ currentUser, posts }) => (
         <li><Link to='/distillery/videos/'>Add a Video</Link></li>
         <li><Link to='/distillery/quizzes'>Add a Quiz</Link></li>
       </ul>
-      <ol>
+      <ol className='home-posts'>
         {
           posts.map(post => {
             return <li className='home-article' key={post.id}>
-            <h2 className='home-article-title'>{post.title}</h2>
-            <p className='home-article-author-date'><em>Author: {post.author}, Date: {post.date}</em></p>
+            <div className='home-article-title'>
+              <h2>{post.title}</h2>
+              <form onSubmit={handleDeletingPost}>
+                <input type='hidden' value={post.id} name='id'/>
+                <button>Delete</button>
+              </form>
+            </div>
+            <p className='home-article-author-date'><em>{post.author} - {post.date}</em></p>
             <p className='home-article-article'>{post.article}</p>
             </li>
           })
@@ -34,7 +40,11 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  fetchPosts: dispatch(fetchPosts())
+  fetchPosts: dispatch(fetchPosts()),
+  handleDeletingPost: e => {
+    e.preventDefault();
+    dispatch(deletingPost(e.target.id.value))
+  }
 });
 
 export default connect(mapState, mapDispatch)(Home);

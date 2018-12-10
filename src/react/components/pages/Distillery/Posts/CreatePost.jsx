@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createNewPost } from '../../../../store';
 
@@ -48,7 +49,7 @@ const mapDispatch = (dispatch, ownProps) => ({
     e.target.title.value = '';
     e.target.article.value = '';
 
-    //Redirect to home page
+    //Redirects to home page
     ownProps.history.push('/');
   }
 });
