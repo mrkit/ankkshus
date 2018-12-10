@@ -1,12 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addVideoTrue } from '../../../../store';
+import { addVideoTrue, fetchChannels } from '../../../../store';
 
-const VideosSidebar = ({ handleNewVideoSubmission }) => (
+const VideosSidebar = ({ handleNewVideoSubmission, videoChannels }) => (
   <nav className='video-nav'>
     <h2 className='video-nav-title'>Videos</h2>
     <ul className='video-nav-video-list'>
-      <li>Crash Course</li>
+      {
+        videoChannels.map(channel => (
+          <li key={channel.id}>{channel.name}</li>
+        ))
+      }
     </ul>
     {/* 
     <div>
@@ -21,13 +25,14 @@ const VideosSidebar = ({ handleNewVideoSubmission }) => (
 );
 
 const mapState = state => ({
-  
-});
+  videoChannels: state.videoChannels
+})
 
 const mapDispatch = dispatch => ({
   handleNewVideoSubmission: e => {
     dispatch(addVideoTrue());
-  }
+  },
+  fetchChannels: dispatch(fetchChannels())
   
 });
 
