@@ -31,7 +31,7 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   handleSubmitEditVideo: e => {
-
+    
   },
   handleRename: e => {
     console.log('Handle Rename', e.target.value)

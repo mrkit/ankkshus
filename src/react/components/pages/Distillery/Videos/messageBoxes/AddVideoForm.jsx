@@ -19,9 +19,12 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
   handleAddVideo: e => {
+    e.preventDefault();
+
     const title = e.target.title.value;
     const url = e.target.url.value;
     dispatch(addingVideo(title, url));
+    dispatch(addVideoFalse());
   },
   
   handleUnmountAddVideoComponent: e => {
