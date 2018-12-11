@@ -9,7 +9,7 @@ Quiz.belongsTo(User);
 User.hasMany(Quiz);
 VideoChannels.hasMany(Video);
 
-const seed = () => {
+let seed = () => {
   return VideoChannels.create({name: 'Crash Course Philosophy'})
   .then(channel => {
     return Promise.all([
@@ -43,21 +43,13 @@ const seed = () => {
   });
 };
 
-if(process.env.NODE_ENV === 'development'){
   module.exports = {
     conn,
-    seed,
+    seed: process.env.NODE_ENV === 'development' ? seed : () => console.log('No seed on production build'),
     models: {
       User, Quiz, Video, VideoChannels, Post
     }
   }
-} else {
-  module.exports = {
-    conn,
-    models: {
-      User, Quiz, Video, VideoChannels, Post
-    }
-  }
-}
+
 
 
