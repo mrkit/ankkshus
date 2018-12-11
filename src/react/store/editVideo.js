@@ -4,11 +4,17 @@ import axios from 'axios';
 const REVERSE_VIDEOS = 'REVERSE_VIDEOS';
 const ADD_VIDEO_TRUE = 'ADD_VIDEO_TRUE';
 const ADD_VIDEO_FALSE = 'ADD_VIDEO_FALSE';
+const EDIT_VIDEO_TRUE = 'EDIT_VIDEO_TRUE';
+const EDIT_VIDEO_FALSE = 'EDIT_VIDEO_FALSE';
+const RENAME_VIDEO_TITLE = 'RENAME_VIDEO_TITLE';
 
 //ACTION CREATORS
 export const reverseVideos = videos => ({ type: GET_VIDEOS, payload: videos.reverse() });
 export const addVideoTrue = () => ({ type: ADD_VIDEO_TRUE, payload: true });
 export const addVideoFalse = () => ({ type: ADD_VIDEO_FALSE, payload: false });
+export const editVideoTrue = () => ({ type: EDIT_VIDEO_TRUE, payload: true });
+export const editVideoFalse = () => ({ type: EDIT_VIDEO_FALSE, payload: false });
+export const renameVideoTitle = renamedTitle => ({ type: RENAME_VIDEO_TITLE, payload: renamedTitle });
 
 //INITIAL STATE - Remember this becomes an object within an object once used with combinedReducer.
 const initialState = {
@@ -28,6 +34,12 @@ const editVideoReducer = (state = initialState, action) => {
       return { ...state, addVideo: action.payload };
     case ADD_VIDEO_FALSE:
       return { ...state, addVideo: action.payload };
+    case EDIT_VIDEO_TRUE:
+      return { ...state, editVideo: action.payload };
+    case EDIT_VIDEO_FALSE:
+      return { ...state, editVideo: action.payload };
+    case RENAME_VIDEO_TITLE:
+      return { ...state, rename: action.payload }
     default:
       return state;
   }

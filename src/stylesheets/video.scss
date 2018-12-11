@@ -28,13 +28,31 @@
       display: flex;
       flex-flow: wrap;
       
-      h3 {
-        font-weight: 100;
-      }
+    
 
-      img {
-        width: 15rem;
-        height: 9rem;
+      .video-container-row-video {
+        
+        h3 {
+          font-weight: 100;
+          margin-top: 0;
+        }
+  
+        img {
+          width: 15rem;
+          height: 9rem;
+          border: .4rem solid whitesmoke;
+          border-radius: 4px;
+          box-shadow: 0.1rem 0.3rem 0.5rem #5a5555ab;
+        }
+
+        img:hover {
+          box-shadow: 0.1rem 0.3rem 1rem .4rem #5a5555ab;
+          filter: saturate(2.5);
+        }
+
+        img:active {
+          box-shadow: 0.1rem 0.1rem .1rem .2rem #5a5555ab;
+        }
       }
     }
   }

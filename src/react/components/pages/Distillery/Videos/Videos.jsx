@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import VideosSidebar from './VideosSidebar';
 import AddVideoForm from './messageBoxes/AddVideoForm';
 import EditVideoForm from './messageBoxes/EditVideoForm';
-import { fetchVideos } from '../../../../store';
+import { fetchVideos, editVideoTrue } from '../../../../store';
 
-const Videos = ({ videos, addVideo }) => {
+const Videos = ({ videos, addVideo, editVideo, handleMountEditVideoComponent }) => {
   return (
     <div className='video'>
       <VideosSidebar />
@@ -13,14 +14,7 @@ const Videos = ({ videos, addVideo }) => {
           <p>Double click on an episode title to Edit or Delete a video.</p>
           <section className="ccSection">
             {addVideo ? <AddVideoForm />: null}
-            {/*editVideo ? 
-              <EditVideoForm 
-                handleEditVideo={handleEditVideo} 
-                unMount={handleUnmountEdit} 
-                rename={rename} 
-                handleRename={handleRenameInputStateChange}
-                currentTitle={selectedVideo}
-                /> : null */}
+            {editVideo ? <EditVideoForm /> : null }
             <div className="video-container-row">
               {
                 videos.map(video => {
@@ -32,12 +26,19 @@ const Videos = ({ videos, addVideo }) => {
                     thumburl = video.url.split('https://www.youtube.com/watch?v=').join('');
                   }
 
-                  let thumbnail = `http://img.youtube.com/vi/${thumburl}/mqdefault.jpg`
-                  return (
-                    <article key={video.id}>
-                      <h3 >{video.title}</h3>
+                  let thumbnail = `http://img.youtube.com/vi/${thumburl}/mqdefault.jpg`;
 
+                  // Figure out how to get the title from the url
+                  // axios.get(`https://www.youtube.com/oembed?format=json&url=${video.url}`)
+                  // .then(res => res.data)
+                  // .then(thing => console.log('Axios', thing))
+                  // .catch(err => console.log(err.message))
+                  // let title = JSON.parse(`https://www.youtube.com/oembed?format=json&url=${video.url}`);
+
+                  return (
+                    <article key={video.id} className='video-container-row-video'>
                       <a target='_blank' href={video.url}><img src={thumbnail} alt={video.title}/></a>
+                      <h3 onDoubleClick={handleMountEditVideoComponent}>{video.title}</h3>
                     </article>
                   )
               })
@@ -53,13 +54,14 @@ const Videos = ({ videos, addVideo }) => {
 const mapState =(state) => ({
   videos: state.videos,
   addVideo: state.editVideo.addVideo,
-  editVideo: state.editVideo.editVideo,
-  selectedVideo: state.editVideoselectedVideo,
-  rename: state.editVideo.rename
+  editVideo: state.editVideo.editVideo
 });
 
 const mapDispatch = dispatch => ({
   fetchVideos: dispatch(fetchVideos()),
+  handleMountEditVideoComponent: e => {
+    dispatch(editVideoTrue());
+  }
 });
 
 export default connect(mapState, mapDispatch)(Videos);

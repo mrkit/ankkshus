@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addingVideo, addVideoFalse } from '../../../../../store';
 
-
 const AddVideoForm = ({handleAddVideo, handleUnmountAddVideoComponent }) => (
   <aside>
     <button onClick={handleUnmountAddVideoComponent}>X</button>
