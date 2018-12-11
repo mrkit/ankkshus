@@ -15,7 +15,7 @@ const Videos = ({ videos, addVideo, editVideo, handleMountEditVideoComponent }) 
           <section className="ccSection">
             {addVideo ? <AddVideoForm />: null}
             {editVideo ? <EditVideoForm /> : null }
-            <div className="video-container-row">
+            <ul className="video-container-ul">
               {
                 videos.map(video => {
                   let thumburl;
@@ -28,22 +28,15 @@ const Videos = ({ videos, addVideo, editVideo, handleMountEditVideoComponent }) 
 
                   let thumbnail = `http://img.youtube.com/vi/${thumburl}/mqdefault.jpg`;
 
-                  // Figure out how to get the title from the url
-                  // axios.get(`https://www.youtube.com/oembed?format=json&url=${video.url}`)
-                  // .then(res => res.data)
-                  // .then(thing => console.log('Axios', thing))
-                  // .catch(err => console.log(err.message))
-                  // let title = JSON.parse(`https://www.youtube.com/oembed?format=json&url=${video.url}`);
-
                   return (
-                    <article key={video.id} className='video-container-row-video'>
+                    <li key={video.id} className='video-container-ul-li'>
                       <a target='_blank' href={video.url}><img src={thumbnail} alt={video.title}/></a>
                       <h3 onDoubleClick={handleMountEditVideoComponent}>{video.title}</h3>
-                    </article>
+                    </li>
                   )
               })
               }
-            </div>
+            </ul>
           </section>
       </section>
     </div>

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 //ACTION TYPES
-const REVERSE_VIDEOS = 'REVERSE_VIDEOS';
 const ADD_VIDEO_TRUE = 'ADD_VIDEO_TRUE';
 const ADD_VIDEO_FALSE = 'ADD_VIDEO_FALSE';
 const EDIT_VIDEO_TRUE = 'EDIT_VIDEO_TRUE';
@@ -9,7 +8,6 @@ const EDIT_VIDEO_FALSE = 'EDIT_VIDEO_FALSE';
 const RENAME_VIDEO_TITLE = 'RENAME_VIDEO_TITLE';
 
 //ACTION CREATORS
-export const reverseVideos = videos => ({ type: REVERSE_VIDEOS, payload: videos.reverse() });
 export const addVideoTrue = () => ({ type: ADD_VIDEO_TRUE, payload: true });
 export const addVideoFalse = () => ({ type: ADD_VIDEO_FALSE, payload: false });
 export const editVideoTrue = () => ({ type: EDIT_VIDEO_TRUE, payload: true });
@@ -28,8 +26,6 @@ const initialState = {
 //REDUCER
 const editVideoReducer = (state = initialState, action) => {
   switch(action.type){
-    case REVERSE_VIDEOS:
-      return { ...state, reverseVideo: action.payload };
     case ADD_VIDEO_TRUE:
       return { ...state, addVideo: action.payload };
     case ADD_VIDEO_FALSE:

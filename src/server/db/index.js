@@ -49,7 +49,4 @@ let seed = () => {
     models: {
       User, Quiz, Video, VideoChannels, Post
     }
-  }
-
-
-
+  };

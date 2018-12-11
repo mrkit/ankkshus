@@ -27,7 +27,7 @@ export const addingVideo = (title, url) => dispatch => (
 const videosReducer = (state = [], action) => {
   switch(action.type){
     case GET_VIDEOS:
-      return action.payload;
+      return [...action.payload];
     case ADD_VIDEO:
       return [...state, action.payload];
     case REVERSE_VIDEOS:
