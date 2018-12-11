@@ -16,6 +16,8 @@ export const fetchChannels = () => dispatch => (
 //REDUCER
 const videoChannelsReducer = (state = [], action) => {
   switch(action.type){
+    case GET_CHANNELS:
+      return [...action.payload];
     default:
       return state;
   }

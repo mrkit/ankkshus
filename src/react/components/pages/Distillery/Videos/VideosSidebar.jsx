@@ -7,9 +7,10 @@ const VideosSidebar = ({ handleNewVideoSubmission, videoChannels }) => (
     <h2 className='video-nav-title'>Videos</h2>
     <ul className='video-nav-video-list'>
       {
-        videoChannels.map(channel => (
-          <li key={channel.id}>{channel.name}</li>
-        ))
+        videoChannels.map(channel => {
+          console.log('channel map', channel)
+          return <li key={channel.id}>{channel.name}</li>
+        })
       }
     </ul>
     {/* 
@@ -18,7 +19,7 @@ const VideosSidebar = ({ handleNewVideoSubmission, videoChannels }) => (
       <button onClick={handleNewVideoSubmission}>+</button>
     </div>
     */}
-    <div>
+    <div className='video-nav-buttons'>
       <button onClick={handleNewVideoSubmission}>Add New Video</button>
     </div>
   </nav>
