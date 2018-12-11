@@ -3,10 +3,12 @@ import axios from 'axios';
 //ACTION TYPES
 const GET_VIDEOS = 'GET_VIDEOS';
 const ADD_VIDEO = 'ADD_VIDEO';
+const REVERSE_VIDEOS = 'REVERSE_VIDEOS';
 
 //ACTION CREATORS
 const getVideos = videos => ({ type: GET_VIDEOS, payload: videos });
 const addVideo = video => ({ type: ADD_VIDEO, payload: video });
+export const reverseVideos = () => ({ type: REVERSE_VIDEOS  });
 
 //THUNK CREATORS
 export const fetchVideos = () => dispatch => (
@@ -28,6 +30,8 @@ const videosReducer = (state = [], action) => {
       return action.payload;
     case ADD_VIDEO:
       return [...state, action.payload];
+    case REVERSE_VIDEOS:
+      return [...state.reverse()]
     default:
       return state;
   }

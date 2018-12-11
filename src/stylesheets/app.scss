@@ -21,8 +21,6 @@ body, h1, h2 {
   background: url(/assets/images/citydragonweb.jpg) 0 1rem / 100% no-repeat fixed;
 }
 
-
-
 .login {
   display: grid;
   grid-template-rows: 2fr 1fr;
@@ -74,17 +72,6 @@ body, h1, h2 {
   }
 }
 
-/* ------ Imports ------ */
-
-@import 'header';
-@import 'main';
-@import 'footer';
-@import 'home';
-@import 'video';
-@import 'quiz';
-@import 'distillery';
-@import 'games';
-@import 'createpost';
 
 /* ------ Media Queries ----- */
 @media (max-width: 450px){
@@ -117,13 +104,28 @@ body, h1, h2 {
         grid-template-rows: repeat(5, 1fr);
       }
     }
-  }
-  
+  }   
+
   main {
     width: 400px;
+
+ 
   }
   
   footer {
     width: 400px;
   }
 }
+
+
+/* ------ Imports ------ */
+
+@import 'header';
+@import 'main';
+@import 'home';
+@import 'createpost';
+@import 'distillery';
+@import 'video';
+@import 'quiz';
+@import 'games';
+@import 'footer';

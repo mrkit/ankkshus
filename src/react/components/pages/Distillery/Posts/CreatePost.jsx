@@ -21,17 +21,6 @@ class CreatePost extends Component {
   }
 };
 
-const dateStamp = () => {
-  const currentDate = new Date(),
-    date = currentDate.getDate(),
-    month = currentDate.getMonth()+1,
-    year = currentDate.getFullYear();
-
-  const pad = month => month < 10 ? '0'+month : month;
-
-  return `${pad(month)}/${date}/${year}`
-};
-
 const mapState = state => ({
   currentUser: state.users.currentUser,
 });
@@ -41,9 +30,9 @@ const mapDispatch = (dispatch, ownProps) => ({
     e.preventDefault();
 
     const title = e.target.title.value,
-          article = e.target.article.value;
-    const date = dateStamp();
-    const author = currentUser;
+          article = e.target.article.value,
+          date = new Date().toLocaleString([], { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric', hour: '2-digit', minute:'2-digit'}),
+          author = currentUser;
 
     dispatch(createNewPost(title, date,  author, article));
     e.target.title.value = '';

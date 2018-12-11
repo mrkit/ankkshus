@@ -9,7 +9,7 @@ const EDIT_VIDEO_FALSE = 'EDIT_VIDEO_FALSE';
 const RENAME_VIDEO_TITLE = 'RENAME_VIDEO_TITLE';
 
 //ACTION CREATORS
-export const reverseVideos = videos => ({ type: GET_VIDEOS, payload: videos.reverse() });
+export const reverseVideos = videos => ({ type: REVERSE_VIDEOS, payload: videos.reverse() });
 export const addVideoTrue = () => ({ type: ADD_VIDEO_TRUE, payload: true });
 export const addVideoFalse = () => ({ type: ADD_VIDEO_FALSE, payload: false });
 export const editVideoTrue = () => ({ type: EDIT_VIDEO_TRUE, payload: true });

@@ -73,3 +73,18 @@
         }
     }
 }
+
+@media (max-width: 450px){
+    .home {
+        .home-options {
+            height: 20rem;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-columns: none;
+            grid-gap: .3rem;
+    
+            li {
+                height: 5rem;
+            }
+        }
+    }
+  }  
