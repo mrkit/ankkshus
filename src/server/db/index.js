@@ -43,10 +43,21 @@ const seed = () => {
   });
 };
 
-module.exports = {
-  conn,
-  seed,
-  models: {
-    User, Quiz, Video, VideoChannels, Post
+if(process.env.NODE_ENV === 'development'){
+  module.exports = {
+    conn,
+    seed,
+    models: {
+      User, Quiz, Video, VideoChannels, Post
+    }
+  }
+} else {
+  module.exports = {
+    conn,
+    models: {
+      User, Quiz, Video, VideoChannels, Post
+    }
   }
 }
+
+
