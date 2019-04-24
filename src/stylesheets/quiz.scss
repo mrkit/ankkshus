@@ -1,11 +1,14 @@
 .quiz {
+  display: grid;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .quiz-main {
+  width: 70vw;
   background: rgba(255, 255, 255, 0.96);
   border-radius: 10px;
   box-shadow: 0px 0px 44px -9px #5d696b;
-  height: 44rem;
   padding: 1rem;
 }
 

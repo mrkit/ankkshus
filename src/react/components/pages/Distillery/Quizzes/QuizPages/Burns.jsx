@@ -51,37 +51,34 @@ class Burns extends Component{
     const { quizzes, counter, score, questionNum } = this.state;
     
     return (
-     <section className="quiz">
-        <section className="quiz-main">
-         <h1 className="quiz-title">Quizzes</h1>
-          <form onSubmit={handleSubmit}>
-            { quizzes.map(quiz => (
-              <div>
-                <div><div className="titleStyle">{quiz.name}</div></div>
-                {quiz.titles.map(title => (
-                  <Fragment>
-                    <div className="quiz-title" key={title[0]}>{title}</div>
-                    {quiz.questions.map((question, i) => (
-                      <div className="quiz-row" key={question[0]}>
-                        <div className="quiz-question-number">{i+1}</div>
-                        <div className="quiz-question">{question}</div>
-                        <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='0'/> 0</div></label>
-                        <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='1' /> 1</div></label>
-                        <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='2' /> 2</div></label>
-                        <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='3' /> 3</div></label>
-                        <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='4' /> 4</div></label>
-                      </div>)
-                   )}
-                   
-                   </Fragment>)
-                )}
-              </div>
-            ))}
-            <button className="submitStyle">Submit</button>
-          </form>
-          <button onClick={handleReset} className="resetStyle">Reset</button>
-          <div className="scoreStyle">Total: {score}</div>
-        </section>
+      <section className="quiz-main">
+        <form onSubmit={handleSubmit}>
+          { quizzes.map(quiz => (
+            <div>
+              <div><div className="titleStyle">{quiz.name}</div></div>
+              {quiz.titles.map(title => (
+                <Fragment>
+                  <div className="quiz-title" key={title[0]}>{title}</div>
+                  {quiz.questions.map((question, i) => (
+                    <div className="quiz-row" key={question[0]}>
+                      <div className="quiz-question-number">{i+1}</div>
+                      <div className="quiz-question">{question}</div>
+                      <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='0'/> 0</div></label>
+                      <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='1' /> 1</div></label>
+                      <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='2' /> 2</div></label>
+                      <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='3' /> 3</div></label>
+                      <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='4' /> 4</div></label>
+                    </div>)
+                 )}
+
+                 </Fragment>)
+              )}
+            </div>
+          ))}
+          <button className="submitStyle">Submit</button>
+        </form>
+        <button onClick={handleReset} className="resetStyle">Reset</button>
+        <div className="scoreStyle">Total: {score}</div>
       </section>
     )
   }

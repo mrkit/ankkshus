@@ -10,6 +10,7 @@ body, h1, h2 {
   font-family: sans-serif;
   font-weight: 100;
   margin: 0;
+  overflow-x: hidden; //I have this because of the Burns quiz causing there to be a x scroll even though there's not content. Can't figure it out just yet.
 }
 
 .container {
@@ -17,7 +18,7 @@ body, h1, h2 {
   margin-top: 0;
   margin: auto;
   display: grid;
-  grid-template-rows: .7fr 9fr 1fr;
+  grid-template-rows: .5fr 9fr .5fr;
   background: url(/assets/images/citydragonweb.jpg) 0 1rem / 100% no-repeat fixed;
 }
 
@@ -114,7 +115,6 @@ body, h1, h2 {
   
   footer {
     width: 400px;
-    background: black;
   }
 }
 

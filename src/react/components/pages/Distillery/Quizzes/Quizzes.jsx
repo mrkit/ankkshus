@@ -5,8 +5,9 @@ import Burns from './QuizPages/Burns';
 class Quizzes extends Component {
   render(){
     return (
-      <Fragment>
+      <section className="quiz">
         <nav>
+          <h2>Quizzes Page </h2>
           <ul>
             <li><Link to='/distillery/'>Distillery Home</Link></li>
             <li><Link to='/distillery/quizzes/'>Quiz List</Link></li>
@@ -14,10 +15,10 @@ class Quizzes extends Component {
           </ul>
         </nav>
         <Switch>
-          <Route exact path='/distillery/quizzes/' render={() => <h1>Quizzes Page </h1>}/>
-          <Route path='/distillery/quizzes/burns/' component={Burns}/>
+            <Route exact path='/distillery/quizzes/' render={() => <h2>Hello</h2>}/>
+            <Route path='/distillery/quizzes/burns/' component={Burns}/>
         </Switch>
-      </Fragment>
+      </section>
     )
   }
 }

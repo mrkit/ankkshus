@@ -13,4 +13,4 @@ render(
     </Provider>
   </Router>,
   document.getElementById('root')
-)
+);
