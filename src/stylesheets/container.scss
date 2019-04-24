@@ -1,7 +1,5 @@
 .container {
-  min-height: 50rem;
-  margin-top: 0;
-  margin: auto;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: .5fr 9fr .5fr;
   background: url(/assets/images/citydragonweb.jpg) 0 1rem / 100% no-repeat fixed;
