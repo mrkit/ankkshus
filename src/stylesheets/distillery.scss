@@ -11,9 +11,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 0.5fr 0.8fr 5fr;
-    min-width: 30vw;
 
-    
     .distillery-sidebar-title {
       justify-self: start;
       width: 100%; //makes the underline extend
@@ -24,14 +22,15 @@
     .distillery-sidebar-main-tabs {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(calc(20vw/3), 1fr));
-      justify-content: space-between;
       padding: 0;
       
       li {
         list-style: none;
         border: 1px solid black;
         padding: 2rem;
-        
+        display: grid;
+        min-width: max-content;
+
         a {
           text-decoration: none;
           color: navajowhite;

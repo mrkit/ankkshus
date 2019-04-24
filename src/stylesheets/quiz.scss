@@ -2,6 +2,8 @@
   display: grid;
   grid-template-rows: 1fr 5fr;
   justify-content: center;
+  max-height: 87vh;
+  overflow: scroll;
   
   h1 {
     font-size: 2rem;
@@ -10,7 +12,7 @@
 }
 
 .quiz-main {
-  width: 70vw;
+  width: 60vw;
   background: rgba(255, 255, 255, 0.96);
   border-radius: 10px;
   box-shadow: 0px 0px 44px -9px #5d696b;
@@ -18,9 +20,9 @@
 }
 
 .quiz-row {
-  background: aqua;
+  background: #c5ffff;
   display: grid;
-  grid-template-columns: 24px 15fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 24px 35vw repeat(5, 1fr);
   border: 1px solid black;
 }
   
@@ -40,7 +42,7 @@
   border-right: 1px solid black;
   padding-right: 3px;
   width: 1.5rem;
-  background: pink;
+  background: #eadbed;
 }
   
 .quiz-question {

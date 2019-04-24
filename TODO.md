@@ -22,3 +22,7 @@ and takes an array of links
             <li><Link to='/distillery/quizzes/burns/'>Burns Checklist</Link></li>
           </ul>
         </nav>
+        
+        
+        
+Fix Distillery sidebar resize tabs

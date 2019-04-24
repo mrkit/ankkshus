@@ -8,7 +8,7 @@ class Quizzes extends Component {
       <section className="quiz">
         <h1>Quizzes</h1>
         <Switch>
-            <Route exact path='/distillery/quizzes/' render={() => <h2>Hello</h2>}/>
+            <Route exact path='/distillery/quizzes/' component={Burns}/>
             <Route path='/distillery/quizzes/burns/' component={Burns}/>
         </Switch>
       </section>
