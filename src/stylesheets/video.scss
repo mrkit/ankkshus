@@ -1,10 +1,5 @@
 .video {
-  max-height: 100vh;
-  min-height: 100vh;
-  background: rgba(255, 255, 255, 0.63);
-  border-radius: 10px;
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+
 
   .video-nav {
     background: linear-gradient(-11deg, #bdbdbd, #3f4486);
@@ -111,43 +106,7 @@
   height:10rem;
 }
 
-//VideoForm component
-aside {
-  width: 20rem;
-  position: absolute;
-  left: 40%;
-  
-  > button {
-    float: right;
-    position: relative;
-    left: -2rem;
-    top: 1rem;
-    border-radius: 100px;
-    outline: none;
-  }
-  
-  .messageBoxComponent {
-    height: 20rem;
-    background: white;
-    box-shadow: 10px 10px 10px black;
-    display: grid;
-    grid-template-rows: repeat(4, auto);
-    padding: 3rem;
 
-    h3 {
-      font-weight: 400;
-      margin: 0;
-    }
-
-    input {
-      height: 2rem;
-      border-style: none;
-      border-bottom: 1px solid black;
-      outline: none;
-      font-size: 1.3rem;
-    }
-  }
-}
 
 span {
   position: relative;

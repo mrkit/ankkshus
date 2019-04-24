@@ -1,7 +1,12 @@
 .quiz {
   display: grid;
+  grid-template-rows: 1fr 12fr;
   justify-content: center;
-  margin-bottom: 2rem;
+  
+  h1 {
+    font-size: 2rem;
+    justify-self: center;
+  }
 }
 
 .quiz-main {
