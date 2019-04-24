@@ -9,7 +9,7 @@ import CreatePost from './Posts/CreatePost';
 class Distillery extends Component {
   render(){
     return (
-      <Fragment>
+      <section className='distillery'>
         <Switch>
           <Route exact path='/distillery/' component={TableOfContents}/>
           <Route path='/distillery/quizzes/' component={Quizzes}/>
@@ -17,7 +17,7 @@ class Distillery extends Component {
           <Route path='/distillery/videos' component={Videos} />
           <Route path='/distillery/createpost/' component={CreatePost}/>
         </Switch>
-      </Fragment>
+      </section>
     )
   }
 }

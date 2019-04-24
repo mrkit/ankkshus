@@ -16,34 +16,33 @@
           background: rgba(195, 227, 252, 0.95);
 
           a {
-              color: black;
-              text-decoration: none;
-              width: inherit;
-              height: inherit;
-              display:  grid;
-              align-content: center;
-              justify-content: center;
+            color: black;
+            text-decoration: none;
+            display:  grid;
+            align-content: center;
+            justify-content: center;
+            text-align: center;
           }
         }
 
         li:hover {
-            background: #0e39e4bb;
-            cursor: pointer;
+          background: #0e39e4bb;
+          cursor: pointer;
         }
           
         li:active {
-            background: #635763a9;
-            cursor: pointer;
-            
-            a {
-                color: aliceblue;
-            }
+          background: #635763a9;
+          cursor: pointer;
+
+          a {
+            color: aliceblue;
+          }
         }
     }
 
     .home-posts {
-        display:grid;
-        grid-gap: 1rem;
+      display:grid;
+      grid-gap: 1rem;
     }
 
     .home-article {
@@ -53,38 +52,23 @@
       list-style: none;
 
         .home-article-title {
-            display: grid;
-            padding-left: 1rem;
-            grid-template-columns: 5fr .5fr;
-            background: rgb(174, 198, 174);
-            margin: 0;
-            > form {
-                align-self: center;
-            }
+          display: grid;
+          padding-left: 1rem;
+          grid-template-columns: 5fr .5fr;
+          background: rgb(174, 198, 174);
+          margin: 0;
+          > form {
+            align-self: center;
+          }
         }
 
         .home-article-author-date {
-            margin: 0;
-            background: #93a79321;    
+          margin: 0;
+          background: #93a79321;    
         }
 
         .home-article-author-date, .home-article-article {
-            padding-left: 1rem;
+          padding-left: 1rem;
         }
     }
 }
-
-@media (max-width: 450px){
-    .home {
-        .home-options {
-            height: 20rem;
-            grid-template-rows: 1fr 1fr 1fr;
-            grid-template-columns: none;
-            grid-gap: .3rem;
-    
-            li {
-                height: 5rem;
-            }
-        }
-    }
-  }  
