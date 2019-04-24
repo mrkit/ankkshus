@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import TableOfContents from './TableOfContents';
+import DistillerySidebar from './DistillerySidebar';
 import Videos from './Videos/Videos';
 import Quizzes from './Quizzes/Quizzes';
 import Games from './Games/Games';
@@ -10,17 +10,10 @@ class Distillery extends Component {
   render(){
     return (
       <section className='distillery'>
-        <aside className='distillery-sidebar'>
-          <h2>This is the new distillery</h2>
-          <ul className='table-of-contents-categories'>
-            <li><Link to='/distillery/videos'>Videos</Link></li>
-            <li><Link to='/distillery/quizzes'>Quizzes</Link></li>
-            <li><Link to='/distillery/games'>Games</Link></li>
-          </ul>   
-        </aside>
-        <section class="distillery-main">
+        <DistillerySidebar/>
+        <section className="distillery-main">
           <Switch>
-            <Route exact path='/distillery/' component={TableOfContents}/>
+            <Route exact path='/distillery/' render={() => console.log('temp')}/>
             <Route path='/distillery/quizzes/' component={Quizzes}/>
             <Route path='/distillery/games/' component={Games}/>
             <Route path='/distillery/videos' component={Videos} />
