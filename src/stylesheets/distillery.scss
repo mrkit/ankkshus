@@ -27,7 +27,6 @@
       li {
         list-style: none;
         border: 1px solid black;
-        padding: 2rem;
         display: grid;
         min-width: max-content;
 
@@ -36,6 +35,17 @@
           color: navajowhite;
           display: grid;
           justify-content: center;
+          align-items: center;
+          width: inherit;
+          height: inherit;
+        }
+        
+        a:hover {
+          background: #5c6eff;
+        }
+        
+        a:active {
+          background: #42007b;
         }
       }
     }

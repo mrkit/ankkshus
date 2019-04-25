@@ -1,14 +1,15 @@
 .create-post {
   grid-column: 1/3;
+  display: grid;
+  grid-template-rows: 1fr 5fr 1fr;
+  justify-content: center;
+  align-content: center;
 
   > form {
       display: grid;
-      grid-template-rows: 1fr 5fr 1fr;
+      grid-template-rows: .5fr 4fr .5fr;
       grid-gap: 2rem;
-      width: 75%;
-      height:  30rem;
-      margin:  auto;
-      margin-top: 2rem;
+      width: 65vw;
 
     input, textarea {
       outline: none;

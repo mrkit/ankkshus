@@ -15,53 +15,6 @@ body {
 
 h1, h2 { font-weight: inherit; }
 
-
-/* ------ Media Queries ----- */
-
-//@media (max-width: 1450px){
-//  .distillery-sidebar {
-//  }
-//}
-  
-@media (max-width: 550px){
-  .container {
-    height: 100vh;
-    
-    nav {
-      grid-column: 1/3;
-    }
-
-    .home {
-      .home-options {
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-columns: 1fr;
-        grid-gap: .3rem;
-
-        li {
-          height: 5rem;
-        }
-      }
-    }
-    
-    .distillery {
-      grid-template-rows: 20vh 1fr;
-      grid-template-columns: 1fr;
-        
-    .distillery-sidebar {
-      width: inherit;
-      grid-template-rows: .5fr 0.3fr 1.3fr;
-      text-align: center;
-     }
-    }
-  }
-  
-  .ankkshus {
-    display: none;
-  }
-
-  
-}
-
 /* ------ Imports ------ */
 @import 'container';
 @import 'header';
@@ -74,3 +27,92 @@ h1, h2 { font-weight: inherit; }
 @import 'games';
 @import 'login';
 @import 'footer';
+
+
+/* ------ Media Queries ----- */
+
+//@media (max-width: 1450px){
+//  .distillery-sidebar {
+//  }
+//}
+  
+@media (max-width: 550px){
+  .container {
+    background-size: 72rem;
+    background-position: -29rem 23rem;
+    grid-template-rows: 1fr 10fr 1fr;
+    
+    nav {
+      grid-column: 1/3;
+      
+      ul {
+        padding: 0;
+      }
+    }
+
+    .home {
+      display: grid;
+      text-align: center;
+      grid-template-rows: 0fr 0.2fr;
+      
+      .home-options {
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-gap: .3rem;
+        padding: 0;
+
+        li {
+          height: 5rem;
+        }
+      }
+    }
+    
+    .distillery {
+      grid-template-rows: 16vh 1fr;
+      grid-template-columns: 1fr;
+        
+      .distillery-sidebar {
+        width: inherit;
+        grid-template-rows: .5fr 0.3fr 1.3fr;
+        text-align: center;
+        
+        .distillery-sidebar-title {
+          margin: 0;
+        }
+        
+        .distillery-sidebar-main-tabs {
+          height: 7vh;
+        }
+       }
+      
+      .distillery-main {
+        
+        
+        .quiz-main {
+          width: 100vw;
+          padding: 0;
+        }
+      }
+      
+      .create-post {
+        
+        > form {
+          width: 100vw;
+          
+          input, textarea {
+            border-bottom: 1px solid black;
+            background: transparent;
+          }
+        }
+      }
+    }
+  }
+  
+  .ankkshus {
+    display: none;
+  }
+
+  
+}
+
+
