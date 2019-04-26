@@ -22,7 +22,7 @@ h1, h2 { font-weight: inherit; }
 @import 'home';
 @import 'createpost';
 @import 'distillery';
-@import 'video';
+@import 'videos';
 @import 'quiz';
 @import 'games';
 @import 'login';
@@ -49,6 +49,10 @@ h1, h2 { font-weight: inherit; }
         padding: 0;
       }
     }
+    
+    main {
+      padding-bottom: 0;
+    }
 
     .home {
       display: grid;
@@ -68,7 +72,7 @@ h1, h2 { font-weight: inherit; }
     }
     
     .distillery {
-      grid-template-rows: 16vh 1fr;
+      grid-template-rows: 17vh 1fr;
       grid-template-columns: 1fr;
         
       .distillery-sidebar {
@@ -105,6 +109,22 @@ h1, h2 { font-weight: inherit; }
           }
         }
       }
+    }
+  }
+  
+  .game {
+    justify-content: center;
+    
+    h1 {
+      text-align: center;
+    }
+  }
+  
+  .video-container {
+    justify-items: center;
+    
+    .video-container-ul {
+      justify-content: center;
     }
   }
   

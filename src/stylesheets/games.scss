@@ -1,21 +1,36 @@
 .games {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    justify-content: center;
+    max-height: 87vh;
+    overflow: scroll;
+  
+    h1 {
+      font-size: 2rem;
+      justify-self: center;
+    }
 
     .games-list {
-        
+      padding: 0;
+      display: grid;
+      grid-template-rows: repeat(auto-fill, minmax(1fr, 25rem));
 
         .games-list-item {
             list-style: none;
 
-            img {
-                width: 30rem;
+            .games-list-item-thumbnail {
+              object-fit: contain;
+              height: 10rem;
+              
             }
 
             img:hover {
-                box-shadow: 3px 6px 4px rgba(0, 0, 0, 0.541);
+              box-shadow: 0.1rem 0.3rem 1rem .4rem #5a5555ab;
+              filter: saturate(2.5);
             }
 
             img:active {
-                box-shadow: 0px 3px 2px rgb(0, 0, 0);
+              box-shadow: 0.1rem 0.1rem .1rem .2rem #5a5555ab;
             }
         }
     }

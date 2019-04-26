@@ -6,12 +6,12 @@ import { Switch, Route, Link } from 'react-router-dom';
 class Games extends Component {
   render(){
     return (
-      <div className='games'>
+      <section className='games'>
         <h1>Games</h1>
         <ul className='games-list'>
-          <li className='games-list-item'><Link to="/luci"><img src="/assets/images/luci/thumbnail.jpg" alt="Luci"/></Link></li>
+          <li className='games-list-item'><Link to="/luci"><img src="/assets/images/luci/thumbnail.jpg" alt="Luci" className="games-list-item-thumbnail"/></Link></li>
         </ul>
-      </div>
+      </section>
     )
   }
 }

@@ -1,12 +1,29 @@
 .video-container {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    justify-content: center;
+    max-height: 87vh;
+    overflow: scroll;
+  
+    h1 {
+      font-size: 2rem;
+      justify-self: center;
+    }
+    
+  p {
+    background: #f5f5f582;
+    width: fit-content;
+  }
 
   .video-container-ul {
     display: flex;
     flex-flow: wrap;
+//    max-height: 87vh;
 
     .video-container-ul-li {
       list-style: none;
       margin: 1rem;
+
 
       h3 {
         font-weight: 100;

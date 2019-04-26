@@ -9,6 +9,7 @@ import { fetchVideos, editVideoTrue } from '../../../../store';
 const Videos = ({ videos, addVideo, editVideo, handleMountEditVideoComponent }) => {
   return (
     <section className="video-container">
+       <h1>Videos</h1>
         <p>Double click on an episode title to Edit or Delete a video.</p>
         <section className="ccSection">
           {addVideo ? <AddVideoForm />: null}
