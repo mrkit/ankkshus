@@ -6,7 +6,7 @@ router.post('/', (req, res, next) => {
   const { username, password } = req.body;
   
   //you don't need { where: }, { username } alone will work
-  User.find({ where: { username }})
+  User.findOne({ where: { username }})
     .then( user => {
       if(user){
         console.log('User found!')

@@ -31,10 +31,11 @@ h1, h2 { font-weight: inherit; }
 
 /* ------ Media Queries ----- */
 
-//@media (max-width: 1450px){
-//  .distillery-sidebar {
-//  }
-//}
+@media (max-width: 1450px){
+  .home .home-options li {
+    height: 15rem;
+  }
+}
   
 @media (max-width: 550px){
   .container {
@@ -52,6 +53,7 @@ h1, h2 { font-weight: inherit; }
     
     main {
       padding-bottom: 0;
+//      overflow: scroll;
     }
 
     .home {
@@ -91,6 +93,8 @@ h1, h2 { font-weight: inherit; }
       
       .distillery-main {
         
+        .video-container {
+        }
         
         .quiz-main {
           width: 100vw;
@@ -123,8 +127,13 @@ h1, h2 { font-weight: inherit; }
   .video-container {
     justify-items: center;
     
+    >p {
+      text-align: center;
+    }
+    
     .video-container-ul {
       justify-content: center;
+      padding: 0;
     }
   }
   

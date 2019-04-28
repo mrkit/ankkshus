@@ -86,7 +86,7 @@ const mapDispatch = (dispatch, props) => ({
     
     const username = ev.target.username.value;
     const password = ev.target.password.value;
-
+      console.log('Handle Signup Axios', username, password);
     axios.post('/api/signUp', {username, password})
     .then(res => res.data)
     .then(user => {

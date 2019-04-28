@@ -25,4 +25,5 @@ and takes an array of links
         
         
         
-Fix Distillery sidebar resize tabs
+Fix overflow-x issue for the distillery
+Make the distillery the parent for all distillery children.

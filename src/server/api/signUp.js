@@ -10,7 +10,7 @@ router.post('/', (req, res, next)=> {
   
   console.log('SignUp Req Body:', username, password);
   
-  User.find({ where: { username , password }})
+  User.findOne({ where: { username , password }})
     .then(user => {
       if(user){
         console.log('This user already exits, go to login page');

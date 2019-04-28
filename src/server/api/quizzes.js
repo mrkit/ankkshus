@@ -5,6 +5,6 @@ router.get('/', (req, res, next) => {
   Quiz.findAll()
   .then(quiz => res.send(quiz))
   .catch(next);
-})
+});
 
 module.exports = router;
