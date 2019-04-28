@@ -42,6 +42,7 @@ h1, h2 { font-weight: inherit; }
     background-size: 72rem;
     background-position: -29rem 23rem;
     grid-template-rows: 1fr 10fr 1fr;
+    height: inherit;
     
     nav {
       grid-column: 1/3;
