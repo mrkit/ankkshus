@@ -1,22 +1,32 @@
-import React, { Component, Fragment } from 'react';
-import questions from '../quizQuestions';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 class Burns extends Component{
   state = {
-    questions: questions,
+    questions: [],
+    sections: [],
     score: 0,
     questionNum: 1,
-    quizzes: []
+    title: ''
   }
   
   componentDidMount(){
-    axios.get('/api/quizzes')
+    //Temp setup?
+    //Get quiz titles
+    axios.get('/api/quizzes/title')
     .then(res => res.data)
-    .then(quizzes => {
-      console.log('Quiz from database, not from the original quizQuestions page. Notice the difference and why there are mistakes between that and the new seeded quizzes', quizzes)
-      this.setState({ quizzes })
-    });
+    .then(title => this.setState({ title }))
+    .catch(err => console.log(err.message));
+    
+    axios.get('/api/quizzes/sections')
+    .then(res => res.data)
+    .then(sections => this.setState({ sections }))
+    .catch(err => console.log(err.message));
+    
+    axios.get('/api/quizzes/questions')
+    .then(res => res.data)
+    .then(questions => this.setState({ questions }))
+    .catch(err => console.log(err.message));
   }
   
   handleSubmit = event => {
@@ -48,35 +58,44 @@ class Burns extends Component{
   
   render(){
     const { handleReset, handleSubmit, handleQuestionNumIncrease } = this;
-    const { quizzes, counter, score, questionNum } = this.state;
+    const { title, counter, score, questionNum, sections, questions } = this.state;
     
     return (
       <section className="quiz-main">
         <form onSubmit={handleSubmit}>
-          { quizzes.map(quiz => (
-            <div>
-              <div><div className="titleStyle">{quiz.name}</div></div>
-              {quiz.titles.map(title => (
-                <Fragment>
-                  <div className="quiz-title" key={title[0]}>{title}</div>
-                  {quiz.questions.map((question, i) => (
-                    <div className="quiz-row" key={question[0]}>
-                      <div className="quiz-question-number">{i+1}</div>
-                      <div className="quiz-question">{question}</div>
-                      <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='0'/> 0</div></label>
-                      <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='1' /> 1</div></label>
-                      <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='2' /> 2</div></label>
-                      <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='3' /> 3</div></label>
-                      <label><div className="cell"><input className="inputStyle" type="radio" name={`question${question[0]}`} value='4' /> 4</div></label>
-                    </div>)
-                 )}
-
-                 </Fragment>)
-              )}
-            </div>
-          ))}
+          <h2 className="titleStyle">{title}</h2>
+          <ul className="quiz-main-ul">
+          {
+            sections.map(section => {
+              return (
+                <li className="quiz-section" key={section.id}>
+                  <h3>{section.section}</h3>
+                  {
+                    questions.map(question => {
+                      if(question.quizsectionId === section.id){
+                      return (
+                        <div className="quiz-row" key={question.id}>
+                          {question.question}
+                          <div className="quiz-row-scores">
+                            <input type="radio" name={question.question} value="0"/>0
+                            <input type="radio" name={question.question} value="1"/>1
+                            <input type="radio" name={question.question} value="2"/>2
+                            <input type="radio" name={question.question} value="3"/>3
+                            <input type="radio" name={question.question} value="4"/>4
+                          </div>
+                        </div>
+                      )
+                      }
+                    })
+                  }
+                </li>
+              )
+            })
+          }
+          </ul>
           <button className="submitStyle">Submit</button>
         </form>
+        
         <button onClick={handleReset} className="resetStyle">Reset</button>
         <div className="scoreStyle">Total: {score}</div>
       </section>

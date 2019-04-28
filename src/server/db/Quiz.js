@@ -1,14 +1,32 @@
 const conn = require('./conn'),
       Sequelize = conn.Sequelize;
 
-const Quiz = conn.define('quiz', {
-  name: Sequelize.STRING,
-  titles: Sequelize.ARRAY(Sequelize.TEXT),
-  questions: Sequelize.ARRAY(Sequelize.TEXT),
-  score: Sequelize.INTEGER
+//const Quiz = conn.define('quiz', {
+//  name: Sequelize.STRING,
+//  titles: Sequelize.ARRAY(Sequelize.TEXT),
+//  questions: Sequelize.ARRAY(Sequelize.TEXT),
+//  score: Sequelize.INTEGER
+//});
+
+const QuizTitles = conn.define('quiztitle', {
+  title: Sequelize.STRING
 });
 
-//other columns may be needed, like:
-//question number grouping sequelize array of numbers. How many questions per title.
+const QuizSections = conn.define('quizsection', {
+  section: Sequelize.STRING
+});
 
-module.exports = Quiz;
+const QuizQuestions = conn.define('quizquestion', {
+  question: Sequelize.TEXT,
+  score: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  }
+});
+
+QuizTitles.hasMany(QuizSections);
+QuizSections.hasMany(QuizQuestions);
+QuizSections.belongsTo(QuizTitles);
+QuizQuestions.belongsTo(QuizSections);
+
+module.exports = { QuizTitles, QuizSections, QuizQuestions };

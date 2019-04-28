@@ -18,12 +18,31 @@
   border-radius: 10px;
   box-shadow: 0px 0px 44px -9px #5d696b;
   padding: 1rem;
-}
 
-.quiz-row {
-  display: grid;
-  grid-template-columns: 24px 35vw repeat(5, 1fr);
-  border: 1px solid black;
+  .quiz-main-ul {
+    padding: 0;
+  }
+
+  .quiz-section {
+    list-style: none;
+
+    .quiz-row {
+      display: grid;
+    //  grid-template-columns: 24px 35vw repeat(5, 1fr);
+      grid-template-columns: 35vw 1fr;
+
+      .quiz-row-scores {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 20px);
+        justify-content: end;
+      }
+
+    } 
+
+    .quiz-row:nth-child(odd){
+      background: #e3f2fc;
+    }
+  }
 }
   
 .quiz-title {
@@ -52,9 +71,7 @@
   
 .titleStyle {
   text-align: center;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-  border-top: 1px solid black;
+  border: 1px solid black;
 }
   
 .inputStyle {
