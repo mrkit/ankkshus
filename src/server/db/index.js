@@ -73,9 +73,12 @@ let seed = () => {
       
 };
 
+//   seed: process.env.NODE_ENV === 'development' ? seed : () => console.log('No seed on production build') // try seeding again..
+
+
   module.exports = {
     conn,
-    seed: process.env.NODE_ENV === 'development' ? seed : () => console.log('No seed on production build'),
+    seed,
     models: {
       User, QuizTitles, QuizSections, QuizQuestions, Video, VideoChannels, Post
     }
