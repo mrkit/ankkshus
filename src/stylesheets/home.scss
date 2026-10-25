@@ -1,73 +1,73 @@
 .home {
-  
-    .home-options {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 1rem;
-      
-        li {
-          list-style: none;
-          height: 20rem;
-          border: 1px solid black;
-          display: grid;
-          font-size: 2rem;
-          font-weight: 300;
-          background: rgba(195, 227, 252, 0.95);
+  .home-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
 
-          a {
-            color: black;
-            text-decoration: none;
-            display:  grid;
-            align-content: center;
-            justify-content: center;
-            text-align: center;
-          }
-        }
-
-        li:hover {
-          background: #0e39e4bb;
-          cursor: pointer;
-        }
-          
-        li:active {
-          background: #635763a9;
-          cursor: pointer;
-
-          a {
-            color: aliceblue;
-          }
-        }
-    }
-
-    .home-posts {
-      display:grid;
-      grid-gap: 1rem;
-    }
-
-    .home-article {
-      border: 1px solid black;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.8);
+    li {
       list-style: none;
+      height: 20rem;
+      border: 1px solid black;
+      display: grid;
+      font-size: 2rem;
+      font-weight: 300;
+      background: rgba(195, 227, 252, 0.95);
 
-        .home-article-title {
-          display: grid;
-          padding-left: 1rem;
-          grid-template-columns: 5fr .5fr;
-          background: rgb(174, 198, 174);
-          margin: 0;
-          > form {
-            align-self: center;
-          }
-        }
-
-        .home-article-author-date {
-          margin: 0;
-          background: #93a79321;    
-        }
-
-        .home-article-author-date, .home-article-article {
-          padding-left: 1rem;
-        }
+      a {
+        color: black;
+        text-decoration: none;
+        display: grid;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+      }
     }
+
+    li:hover {
+      background: #0e39e4bb;
+      cursor: pointer;
+    }
+
+    li:active {
+      background: #635763a9;
+      cursor: pointer;
+
+      a {
+        color: aliceblue;
+      }
+    }
+  }
+
+  .home-posts {
+    display: grid;
+    grid-gap: 1rem;
+  }
+
+  .home-article {
+    border: 1px solid black;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    list-style: none;
+
+    .home-article-title {
+      display: grid;
+      padding-left: 1rem;
+      grid-template-columns: 5fr 0.5fr;
+      background: rgb(174, 198, 174);
+      margin: 0;
+      > form {
+        align-self: center;
+      }
+    }
+
+    .home-article-author-date {
+      margin: 0;
+      background: #93a79321;
+    }
+
+    .home-article-author-date,
+    .home-article-article {
+      padding-left: 1rem;
+    }
+  }
 }

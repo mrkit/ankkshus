@@ -7,22 +7,23 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
 
 ## Next
 
+- [ ] Test the Luci game in a browser with the real assets · added 2026-10-25
+  - assets/ is gitignored and was missing from the checkout the port was built in
+  - check the boot, the level load, the sounds, and the missing-asset message
 - [ ] Decide whether to merge the modernize branch to master · added 2026-10-25
-  - Option: merge after Opus review passes and you run the app once on your own machine
-  - Option: keep the branch and merge later, if Luci or the Distillery needs more testing first
-- [ ] Ask an agent to fix the sign-up duplicate check in src/server/api/signUp.js · level: quick · added 2026-10-25
-  - the lookup matches on username AND the raw password, but stored passwords are bcrypt hashes, so it never finds an existing user
-  - duplicates can be created (read in the code, not reproduced)
-- [ ] Ask an agent to stop returning password hashes from /api/login and /api/signUp · level: quick · added 2026-10-25
-  - both responses send the full user row, including the bcrypt hash (seen in a local run)
-- [ ] Ask an agent to make User.isValidPassword an instance method · level: standard · added 2026-10-25
-  - it reads this.password on the class, which is undefined when read cold
-  - login returns correct results on the running server (checked: right password true, wrong false), so the root cause of why it works there is not traced
-- [ ] Test the Luci popup in a browser · added 2026-10-25
-  - the /luci route calls window.open inside an effect; check a popup blocker does not stop it
-- [ ] Ask an agent to move the Sass @import rules to @use · level: standard · added 2026-10-25
-  - Dart Sass warns that @import is removed in Dart Sass 3.0.0
-- [ ] Ask an agent to port the Luci game from Phaser 2 to Phaser 4 · level: judgement · added 2026-10-25
-  - Phaser 2.6.2 is pinned and works; this is a rewrite, not an upgrade
+  - Option: merge after you have run it locally once with your real assets and database
+  - Option: keep the branch until the Luci game is checked
+- [ ] Decide how to deploy the new build on the TrueNAS · added 2026-10-25
+  - the new build runs `npm run build`, then `npm start` with DATABASE_URL and JWT_SECRET set
+  - Option: update the compose file and Dockerfile on the TrueNAS to build with Node 22 and run `node src/server/index.js`
+  - Option: keep pm2 and point it at `src/server/index.js`
+  - the repo has no Dockerfile, so the TrueNAS compose setup is out of sight from here
+- [ ] Decide on schema migrations before the next schema change · added 2026-10-25
+  - Option: add sequelize-cli migrations now
+  - Option: keep `sync()` and accept that schema changes are manual
+- [ ] Decide how to authorize the Distillery pages · added 2026-10-25
+  - writes are gated by a session cookie, but the Distillery pages are public to read
+  - Option: keep it: this is a personal site and reads are meant to be public
+  - Option: gate the Distillery behind login too
 
 ## Waiting

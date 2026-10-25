@@ -1,54 +1,49 @@
 {
   "name": "ankkshus",
-  "version": "5.0.0",
   "description": "It's not my fault I don't know how many k's are in anxious",
-  "main": "index.js",
+  "main": "src/server/index.js",
   "private": true,
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12"
   },
   "scripts": {
-    "start": "webpack --mode production & NODE_ENV=production pm2 start --name ankkshus src/server >> ~/logs/forever/ankkshus.log",
-    "offline:prod": "webpack --mode production & NODE_ENV=production node src/server",
-    "dev": "webpack -w --mode development & sass --watch src/stylesheets/app.scss dist/app.css & NODE_ENV=development nodemon src/server",
-    "sass": "sass src/stylesheets/app.scss dist/app.css",
-    "dev:nonpmsass": "webpack -w --mode development & NODE_ENV=development nodemon src/server"
+    "dev": "concurrently -n api,web -c blue,green \"node --watch --env-file-if-exists=.env src/server/index.js\" \"vite\"",
+    "build": "vite build",
+    "start": "node --env-file-if-exists=.env src/server/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "db:seed": "node --env-file-if-exists=.env src/server/db/seed-cli.js"
   },
   "keywords": [],
   "author": "mrkit",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1",
-    "bcrypt": "^6",
-    "body-parser": "^2",
-    "express": "^5",
-    "lodash.merge": "^4",
-    "morgan": "^1",
-    "pg": "^8",
-    "pg-hstore": "^2",
-    "phaser": "2.6.2",
-    "react": "^19",
-    "react-dom": "^19",
-    "react-redux": "^9",
-    "react-router-dom": "^7",
-    "redux": "^5",
-    "redux-logger": "^3",
-    "redux-thunk": "^3",
-    "sequelize": "^6"
+    "@reduxjs/toolkit": "^2.13.0",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "^1.12.1",
+    "pg": "^8.23.1",
+    "phaser": "^4.2.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-redux": "^9.3.0",
+    "react-router-dom": "^7.18.4",
+    "sequelize": "^6.37.8",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@babel/core": "^7",
-    "@babel/preset-env": "^7",
-    "@babel/preset-react": "^7",
-    "babel-loader": "^10",
-    "compression-webpack-plugin": "^11",
-    "css-loader": "^7",
-    "html-webpack-plugin": "^5",
-    "mini-css-extract-plugin": "^2",
-    "nodemon": "^3",
-    "sass": "^1",
-    "sass-loader": "^16",
-    "webpack": "^5",
-    "webpack-cli": "^6"
-  }
+    "@biomejs/biome": "^2.6.3",
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.6",
+    "sass": "^1.106.1",
+    "supertest": "^7.3.1",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "type": "module",
+  "version": "5.0.0"
 }
