@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
-import Quizzes from './Quizzes/Quizzes';
+import { Link } from 'react-router-dom';
 
 class DistillerySidebar extends Component {
   render(){
@@ -11,7 +10,7 @@ class DistillerySidebar extends Component {
           <li><Link to='/distillery/videos'>Videos</Link></li>
           <li><Link to='/distillery/quizzes'>Quizzes</Link></li>
           <li><Link to='/distillery/games'>Games</Link></li>
-        </ul>   
+        </ul>
       </aside>
     )
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import withNavigate from '../../withNavigate';
 import { editCurrentUser, logUserIn, logUserOut } from '../../../store';
 
 class Login extends Component {
@@ -94,11 +94,11 @@ const mapDispatch = (dispatch, props) => ({
       dispatch(editCurrentUser(user.username));
       dispatch(logUserIn());
     })
-    .then(() => props.history.push('/'))
+    .then(() => props.navigate('/'))
     .catch(err => console.log(`Axios POST sign up error message ${err.message}`));
     }
 })
 
 
-export default connect(mapState, mapDispatch)(Login);
+export default withNavigate(connect(mapState, mapDispatch)(Login));
 

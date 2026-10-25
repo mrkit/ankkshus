@@ -13,8 +13,7 @@ const baseConfig = {
   db: {
     url: '',
     settings: {
-      logging: false,
-      operatorsAliases: false
+      logging: false
     }
   }
 }

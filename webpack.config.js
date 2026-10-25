@@ -25,26 +25,24 @@ module.exports = {
       loader: 'babel-loader',
       options: {
         presets: ['@babel/preset-env', '@babel/preset-react'],
+        // Class properties, dynamic import, import.meta, numeric separators
+        // and JSON superset are all in @babel/preset-env now.
         plugins: [
-          // Stage 2
-          ["@babel/plugin-proposal-decorators", { "legacy": true }],
-          "@babel/plugin-proposal-function-sent",
-          "@babel/plugin-proposal-export-namespace-from",
-          "@babel/plugin-proposal-numeric-separator",
-          "@babel/plugin-proposal-throw-expressions",
-
-          // Stage 3
-          "@babel/plugin-syntax-dynamic-import",
-          "@babel/plugin-syntax-import-meta",
-          ["@babel/plugin-proposal-class-properties", { "loose": false }],
-          "@babel/plugin-proposal-json-strings"
+          ["@babel/plugin-proposal-decorators", { "legacy": true }]
         ]
       }
     }, {
       test: /\.(scss|css)$/,
       use: [
-        MiniCssExtractPlugin.loader, 
-        'css-loader', 
+        MiniCssExtractPlugin.loader,
+        {
+          loader: 'css-loader',
+          options: {
+            // Leave root-relative urls such as /assets/... alone.
+            // Express serves them at runtime.
+            url: { filter: url => !url.startsWith('/') }
+          }
+        },
         'sass-loader'
       ]
     }]

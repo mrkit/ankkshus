@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import withNavigate from '../../../withNavigate';
 import { createNewPost } from '../../../../store';
 
 class CreatePost extends Component {
@@ -39,8 +39,8 @@ const mapDispatch = (dispatch, ownProps) => ({
     e.target.article.value = '';
 
     //Redirects to home page
-    ownProps.history.push('/');
+    ownProps.navigate('/');
   }
 });
 
-export default connect(mapState, mapDispatch)(CreatePost);
+export default withNavigate(connect(mapState, mapDispatch)(CreatePost));
