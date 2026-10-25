@@ -4,7 +4,6 @@
 :root {
   // The table: one committed field, and card stock laid on it.
   --felt: #1e4d3a;
-  --felt-deep: #163b2d;
   --felt-line: rgba(244, 235, 214, 0.1);
   --felt-text: #f4ebd6;
   --felt-text-soft: #bfd3c6;
@@ -20,7 +19,6 @@
   --player-a: #c9402b;
   --player-b: #2c56a6;
   --gold: #d9a93a;
-  --gold-deep: #b4871f;
   --danger: #a33a2a;
 
   // Board spaces, pale gold to night. The only data colour.
@@ -40,15 +38,8 @@
     0,
     0.5
   );
-  --shadow-raise: 0 2px 0 rgba(0, 0, 0, 0.16), 0 18px 36px -16px rgba(
-    0,
-    0,
-    0,
-    0.55
-  );
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 
   --font-display: "Grandstander Variable", "Grandstander", system-ui, sans-serif;
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;

@@ -1,0 +1,607 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T00:00:00Z",
+  "title": "Design System: ankkshus",
+  "extensions": {
+    "colorMeta": {
+      "felt": {
+        "role": "primary",
+        "displayName": "Felt Green",
+        "canonical": "oklch(38.2% 0.061 164)",
+        "tonalRamp": [
+          "oklch(15% 0.061 164)",
+          "oklch(26% 0.061 164)",
+          "oklch(37% 0.061 164)",
+          "oklch(48% 0.061 164)",
+          "oklch(60% 0.061 164)",
+          "oklch(72% 0.061 164)",
+          "oklch(84% 0.061 164)",
+          "oklch(95% 0.061 164)"
+        ]
+      },
+      "felt-text": {
+        "role": "primary",
+        "displayName": "Cream On Felt",
+        "canonical": "oklch(94.2% 0.029 88)",
+        "tonalRamp": [
+          "oklch(15% 0.029 88)",
+          "oklch(26% 0.029 88)",
+          "oklch(37% 0.029 88)",
+          "oklch(48% 0.029 88)",
+          "oklch(60% 0.029 88)",
+          "oklch(72% 0.029 88)",
+          "oklch(84% 0.029 88)",
+          "oklch(95% 0.029 88)"
+        ]
+      },
+      "felt-text-soft": {
+        "role": "primary",
+        "displayName": "Soft Cream On Felt",
+        "canonical": "oklch(84.8% 0.028 157)",
+        "tonalRamp": [
+          "oklch(15% 0.028 157)",
+          "oklch(26% 0.028 157)",
+          "oklch(37% 0.028 157)",
+          "oklch(48% 0.028 157)",
+          "oklch(60% 0.028 157)",
+          "oklch(72% 0.028 157)",
+          "oklch(84% 0.028 157)",
+          "oklch(95% 0.028 157)"
+        ]
+      },
+      "card": {
+        "role": "primary",
+        "displayName": "Card Stock",
+        "canonical": "oklch(94.2% 0.029 88)",
+        "tonalRamp": [
+          "oklch(15% 0.029 88)",
+          "oklch(26% 0.029 88)",
+          "oklch(37% 0.029 88)",
+          "oklch(48% 0.029 88)",
+          "oklch(60% 0.029 88)",
+          "oklch(72% 0.029 88)",
+          "oklch(84% 0.029 88)",
+          "oklch(95% 0.029 88)"
+        ]
+      },
+      "card-edge": {
+        "role": "neutral",
+        "displayName": "Card Edge",
+        "canonical": "oklch(87.3% 0.045 87)",
+        "tonalRamp": [
+          "oklch(15% 0.045 87)",
+          "oklch(26% 0.045 87)",
+          "oklch(37% 0.045 87)",
+          "oklch(48% 0.045 87)",
+          "oklch(60% 0.045 87)",
+          "oklch(72% 0.045 87)",
+          "oklch(84% 0.045 87)",
+          "oklch(95% 0.045 87)"
+        ]
+      },
+      "card-well": {
+        "role": "neutral",
+        "displayName": "Card Well",
+        "canonical": "oklch(90.6% 0.038 87)",
+        "tonalRamp": [
+          "oklch(15% 0.038 87)",
+          "oklch(26% 0.038 87)",
+          "oklch(37% 0.038 87)",
+          "oklch(48% 0.038 87)",
+          "oklch(60% 0.038 87)",
+          "oklch(72% 0.038 87)",
+          "oklch(84% 0.038 87)",
+          "oklch(95% 0.038 87)"
+        ]
+      },
+      "input-paper": {
+        "role": "neutral",
+        "displayName": "Input Paper",
+        "canonical": "oklch(98.6% 0.014 85)",
+        "tonalRamp": [
+          "oklch(15% 0.014 85)",
+          "oklch(26% 0.014 85)",
+          "oklch(37% 0.014 85)",
+          "oklch(48% 0.014 85)",
+          "oklch(60% 0.014 85)",
+          "oklch(72% 0.014 85)",
+          "oklch(84% 0.014 85)",
+          "oklch(95% 0.014 85)"
+        ]
+      },
+      "ink": {
+        "role": "primary",
+        "displayName": "Ink",
+        "canonical": "oklch(22.5% 0.010 67)",
+        "tonalRamp": [
+          "oklch(15% 0.010 67)",
+          "oklch(26% 0.010 67)",
+          "oklch(37% 0.010 67)",
+          "oklch(48% 0.010 67)",
+          "oklch(60% 0.010 67)",
+          "oklch(72% 0.010 67)",
+          "oklch(84% 0.010 67)",
+          "oklch(95% 0.010 67)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "oklch(45.5% 0.020 70)",
+        "tonalRamp": [
+          "oklch(15% 0.020 70)",
+          "oklch(26% 0.020 70)",
+          "oklch(37% 0.020 70)",
+          "oklch(48% 0.020 70)",
+          "oklch(60% 0.020 70)",
+          "oklch(72% 0.020 70)",
+          "oklch(84% 0.020 70)",
+          "oklch(95% 0.020 70)"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Faint Ink",
+        "canonical": "oklch(51.5% 0.022 75)",
+        "tonalRamp": [
+          "oklch(15% 0.022 75)",
+          "oklch(26% 0.022 75)",
+          "oklch(37% 0.022 75)",
+          "oklch(48% 0.022 75)",
+          "oklch(60% 0.022 75)",
+          "oklch(72% 0.022 75)",
+          "oklch(84% 0.022 75)",
+          "oklch(95% 0.022 75)"
+        ]
+      },
+      "player-a": {
+        "role": "secondary",
+        "displayName": "Ember Red",
+        "canonical": "oklch(56.6% 0.177 32)",
+        "tonalRamp": [
+          "oklch(15% 0.177 32)",
+          "oklch(26% 0.177 32)",
+          "oklch(37% 0.177 32)",
+          "oklch(48% 0.177 32)",
+          "oklch(60% 0.177 32)",
+          "oklch(72% 0.177 32)",
+          "oklch(84% 0.177 32)",
+          "oklch(95% 0.177 32)"
+        ]
+      },
+      "player-b": {
+        "role": "secondary",
+        "displayName": "Cobalt",
+        "canonical": "oklch(46.8% 0.137 262)",
+        "tonalRamp": [
+          "oklch(15% 0.137 262)",
+          "oklch(26% 0.137 262)",
+          "oklch(37% 0.137 262)",
+          "oklch(48% 0.137 262)",
+          "oklch(60% 0.137 262)",
+          "oklch(72% 0.137 262)",
+          "oklch(84% 0.137 262)",
+          "oklch(95% 0.137 262)"
+        ]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Gold Foil",
+        "canonical": "oklch(76.0% 0.136 84)",
+        "tonalRamp": [
+          "oklch(15% 0.136 84)",
+          "oklch(26% 0.136 84)",
+          "oklch(37% 0.136 84)",
+          "oklch(48% 0.136 84)",
+          "oklch(60% 0.136 84)",
+          "oklch(72% 0.136 84)",
+          "oklch(84% 0.136 84)",
+          "oklch(95% 0.136 84)"
+        ]
+      },
+      "danger": {
+        "role": "tertiary",
+        "displayName": "Danger Rust",
+        "canonical": "oklch(49.5% 0.142 31)",
+        "tonalRamp": [
+          "oklch(15% 0.142 31)",
+          "oklch(26% 0.142 31)",
+          "oklch(37% 0.142 31)",
+          "oklch(48% 0.142 31)",
+          "oklch(60% 0.142 31)",
+          "oklch(72% 0.142 31)",
+          "oklch(84% 0.142 31)",
+          "oklch(95% 0.142 31)"
+        ]
+      },
+      "space-1": {
+        "role": "tertiary",
+        "displayName": "Pale Gold (0-5)",
+        "canonical": "oklch(88.0% 0.099 90)",
+        "tonalRamp": [
+          "oklch(15% 0.099 90)",
+          "oklch(26% 0.099 90)",
+          "oklch(37% 0.099 90)",
+          "oklch(48% 0.099 90)",
+          "oklch(60% 0.099 90)",
+          "oklch(72% 0.099 90)",
+          "oklch(84% 0.099 90)",
+          "oklch(95% 0.099 90)"
+        ]
+      },
+      "space-2": {
+        "role": "tertiary",
+        "displayName": "Amber (6-10)",
+        "canonical": "oklch(76.6% 0.129 75)",
+        "tonalRamp": [
+          "oklch(15% 0.129 75)",
+          "oklch(26% 0.129 75)",
+          "oklch(37% 0.129 75)",
+          "oklch(48% 0.129 75)",
+          "oklch(60% 0.129 75)",
+          "oklch(72% 0.129 75)",
+          "oklch(84% 0.129 75)",
+          "oklch(95% 0.129 75)"
+        ]
+      },
+      "space-3": {
+        "role": "tertiary",
+        "displayName": "Rust (11-25)",
+        "canonical": "oklch(61.2% 0.141 41)",
+        "tonalRamp": [
+          "oklch(15% 0.141 41)",
+          "oklch(26% 0.141 41)",
+          "oklch(37% 0.141 41)",
+          "oklch(48% 0.141 41)",
+          "oklch(60% 0.141 41)",
+          "oklch(72% 0.141 41)",
+          "oklch(84% 0.141 41)",
+          "oklch(95% 0.141 41)"
+        ]
+      },
+      "space-4": {
+        "role": "tertiary",
+        "displayName": "Plum (26-50)",
+        "canonical": "oklch(50.4% 0.098 351)",
+        "tonalRamp": [
+          "oklch(15% 0.098 351)",
+          "oklch(26% 0.098 351)",
+          "oklch(37% 0.098 351)",
+          "oklch(48% 0.098 351)",
+          "oklch(60% 0.098 351)",
+          "oklch(72% 0.098 351)",
+          "oklch(84% 0.098 351)",
+          "oklch(95% 0.098 351)"
+        ]
+      },
+      "space-5": {
+        "role": "tertiary",
+        "displayName": "Indigo (51-75)",
+        "canonical": "oklch(44.3% 0.097 286)",
+        "tonalRamp": [
+          "oklch(15% 0.097 286)",
+          "oklch(26% 0.097 286)",
+          "oklch(37% 0.097 286)",
+          "oklch(48% 0.097 286)",
+          "oklch(60% 0.097 286)",
+          "oklch(72% 0.097 286)",
+          "oklch(84% 0.097 286)",
+          "oklch(95% 0.097 286)"
+        ]
+      },
+      "space-6": {
+        "role": "tertiary",
+        "displayName": "Night (76-100)",
+        "canonical": "oklch(32.1% 0.067 277)",
+        "tonalRamp": [
+          "oklch(15% 0.067 277)",
+          "oklch(26% 0.067 277)",
+          "oklch(37% 0.067 277)",
+          "oklch(48% 0.067 277)",
+          "oklch(60% 0.067 277)",
+          "oklch(72% 0.067 277)",
+          "oklch(84% 0.067 277)",
+          "oklch(95% 0.067 277)"
+        ]
+      },
+      "space-empty": {
+        "role": "tertiary",
+        "displayName": "Empty Space",
+        "canonical": "oklch(90.3% 0.037 88)",
+        "tonalRamp": [
+          "oklch(15% 0.037 88)",
+          "oklch(26% 0.037 88)",
+          "oklch(37% 0.037 88)",
+          "oklch(48% 0.037 88)",
+          "oklch(60% 0.037 88)",
+          "oklch(72% 0.037 88)",
+          "oklch(84% 0.037 88)",
+          "oklch(95% 0.037 88)"
+        ]
+      },
+      "felt-line": {
+        "role": "neutral",
+        "displayName": "Felt Rule",
+        "canonical": "rgba(244, 235, 214, 0.1)",
+        "tonalRamp": [
+          "oklch(15% 0.029 88)",
+          "oklch(26% 0.029 88)",
+          "oklch(37% 0.029 88)",
+          "oklch(48% 0.029 88)",
+          "oklch(60% 0.029 88)",
+          "oklch(72% 0.029 88)",
+          "oklch(84% 0.029 88)",
+          "oklch(95% 0.029 88)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The page H1 only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Panel H2s and quiz section titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "H3s inside panels: note titles, answer sections."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "The word ankkshus in the top bar (1.35rem) and login card (1.6rem)."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose and controls; tabular numerals on by default."
+      },
+      "body-small": {
+        "displayName": "Body Small",
+        "purpose": "Metadata, help text, table cells, legend (0.9rem), footer (0.9rem)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase table column headers only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-card",
+        "value": "0 1px 0 rgba(0, 0, 0, 0.12), 0 12px 28px -14px rgba(0, 0, 0, 0.5)",
+        "purpose": "Every card panel lying on the felt."
+      },
+      {
+        "name": "shadow-topbar",
+        "value": "0 2px 0 rgba(0, 0, 0, 0.14), 0 10px 24px -14px rgba(0, 0, 0, 0.45)",
+        "purpose": "The sticky top bar."
+      },
+      {
+        "name": "tile-edge",
+        "value": "inset 0 -3px 0 rgba(0, 0, 0, 0.12)",
+        "purpose": "Board spaces with a check-in."
+      },
+      {
+        "name": "piece-drop",
+        "value": "drop-shadow(0 3px 2px rgba(0, 0, 0, 0.35))",
+        "purpose": "Dragon pieces standing on the board (filter, not box-shadow)."
+      },
+      {
+        "name": "space-hover",
+        "value": "inset 0 -3px 0 rgba(0, 0, 0, 0.12), 0 0 0 3px var(--gold)",
+        "purpose": "Pointer hover on a board space that is a link."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Piece slide, first-load deal, button press."
+      },
+      {
+        "name": "piece-slide",
+        "value": "translate 600ms var(--ease-out)",
+        "purpose": "A dragon piece moving to its new space; reduced motion: opacity 200ms ease."
+      },
+      {
+        "name": "deal",
+        "value": "opacity 180ms var(--ease-out), translate 180ms var(--ease-out); @starting-style opacity 0, translate 0 6px; 40ms stagger per child up to 8",
+        "purpose": "First paint of the home greeting and grid; reduced motion: opacity only."
+      },
+      {
+        "name": "control",
+        "value": "background-color 120ms ease, color 120ms ease, border-color 120ms ease",
+        "purpose": "Buttons, nav links, chips, scale options; reduced motion removes button transitions."
+      },
+      {
+        "name": "result-reveal",
+        "value": "450ms setTimeout before the new check-in is added to the result board",
+        "purpose": "Lets the piece be seen moving after a save."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "scale-words",
+        "value": "420px",
+        "purpose": "Below this the scale options hide their words."
+      },
+      {
+        "name": "board-cols",
+        "value": "560px",
+        "purpose": "Board goes from 6 to 8 columns."
+      },
+      {
+        "name": "topbar-wrap",
+        "value": "720px",
+        "purpose": "Below this the nav wraps to a second row; check-in library goes to 2 columns above it."
+      },
+      {
+        "name": "home-columns",
+        "value": "900px",
+        "purpose": "Home becomes content plus a 320px right column."
+      },
+      {
+        "name": "page-max",
+        "value": "1180px",
+        "purpose": "Max width of main and the top bar inner."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action on a surface: Check in today, Begin, Save.",
+      "html": "<button class=\"ds-btn ds-btn-primary\">Check in today</button>",
+      "css": ".ds-btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:44px;padding:0 1.1em;border-radius:var(--radius,8px);border:2px solid transparent;font:600 1.0625rem/1 system-ui,sans-serif;cursor:pointer;text-decoration:none;transition:transform 120ms var(--ease-out,cubic-bezier(.23,1,.32,1)),background-color 120ms ease,color 120ms ease,border-color 120ms ease}.ds-btn:active{transform:translateY(1px)}.ds-btn:disabled{cursor:not-allowed;opacity:.55;transform:none}.ds-btn:focus-visible{outline:3px solid var(--gold,#d9a93a);outline-offset:2px}.ds-btn-primary{background:var(--player-b,#2c56a6);color:var(--card,#f4ebd6)}.ds-btn-primary:hover:not(:disabled){background:#244a93}"
+    },
+    {
+      "name": "Gold Button",
+      "kind": "button",
+      "refersTo": "button-gold",
+      "description": "Gold foil action, used once: Do it now on the history page.",
+      "html": "<button class=\"ds-btn ds-btn-gold\">Do it now</button>",
+      "css": ".ds-btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:44px;padding:0 1.1em;border-radius:var(--radius,8px);border:2px solid transparent;font:600 1.0625rem/1 system-ui,sans-serif;cursor:pointer;transition:transform 120ms var(--ease-out,cubic-bezier(.23,1,.32,1)),background-color 120ms ease}.ds-btn:active{transform:translateY(1px)}.ds-btn:focus-visible{outline:3px solid var(--gold,#d9a93a);outline-offset:2px}.ds-btn-gold{background:var(--gold,#d9a93a);color:var(--ink,#1f1b17)}.ds-btn-gold:hover:not(:disabled){background:#e6b84f}"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Outlined secondary action in currentColor: Write a note, Back, Not now.",
+      "html": "<button class=\"ds-btn ds-btn-quiet\">Write a note</button>",
+      "css": ".ds-btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:44px;padding:0 1.1em;border-radius:var(--radius,8px);border:2px solid transparent;font:600 1.0625rem/1 system-ui,sans-serif;cursor:pointer;color:var(--ink,#1f1b17);transition:transform 120ms var(--ease-out,cubic-bezier(.23,1,.32,1)),background-color 120ms ease}.ds-btn:active{transform:translateY(1px)}.ds-btn:focus-visible{outline:3px solid var(--gold,#d9a93a);outline-offset:2px}.ds-btn-quiet{background:transparent;border-color:currentColor}.ds-btn-quiet:hover:not(:disabled){background:rgba(0,0,0,.06)}"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Lighter cream field on card stock; cobalt caret and focus border.",
+      "html": "<label class=\"ds-field\"><span>Title</span><input class=\"ds-input\" placeholder=\"What is it about?\"></label>",
+      "css": ".ds-field{display:grid;gap:6px;color:var(--ink,#1f1b17);font:1.0625rem/1.5 system-ui,sans-serif}.ds-field>span{font-weight:600;font-size:.95rem}.ds-input{width:100%;font:inherit;color:var(--ink,#1f1b17);background:#fffaf0;border:2px solid var(--card-edge,#e2d4b4);border-radius:var(--radius,8px);padding:10px 12px;min-height:44px;caret-color:var(--player-b,#2c56a6)}.ds-input::placeholder{color:var(--ink-faint,#6f665a)}.ds-input:focus{border-color:var(--player-b,#2c56a6);outline:none}"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky card-stock bar: dragon mark and wordmark, pill nav links, signed-in name.",
+      "html": "<header class=\"ds-topbar\"><a class=\"ds-wordmark\" href=\"#\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M4 26 L10 8 L14 18 L18 6 L24 20 L28 12 L26 26 Z\" fill=\"currentColor\"/></svg>ankkshus</a><nav><ul><li><a href=\"#\" aria-current=\"page\">Home</a></li><li><a href=\"#\">Check-in</a></li><li><a href=\"#\">Notes</a></li><li><a href=\"#\">Videos</a></li><li><a href=\"#\">Luci</a></li></ul></nav><span class=\"ds-who\">mrkit <span aria-hidden=\"true\">·</span> <button class=\"ds-btn-link\" type=\"button\">Log out</button></span></header>",
+      "css": ".ds-topbar{display:flex;align-items:center;gap:16px;padding:10px 16px;background:var(--card,#f4ebd6);color:var(--ink,#1f1b17);box-shadow:0 2px 0 rgba(0,0,0,.14),0 10px 24px -14px rgba(0,0,0,.45);font:1.0625rem/1.5 system-ui,sans-serif}.ds-wordmark{display:inline-flex;align-items:center;gap:8px;font-family:'Grandstander Variable',Grandstander,system-ui,sans-serif;font-weight:800;font-size:1.35rem;letter-spacing:-.02em;text-decoration:none;color:var(--ink,#1f1b17)}.ds-wordmark svg{color:var(--player-a,#c9402b)}.ds-topbar nav{margin-left:auto}.ds-topbar ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}.ds-topbar nav a{display:inline-flex;align-items:center;min-height:40px;padding:0 12px;border-radius:999px;text-decoration:none;color:var(--ink-soft,#5e554b);font-weight:600;white-space:nowrap;transition:background-color 120ms ease,color 120ms ease}.ds-topbar nav a[aria-current=page]{background:var(--ink,#1f1b17);color:var(--card,#f4ebd6)}.ds-topbar nav a:hover:not([aria-current=page]){background:var(--card-well,#ebdfc4);color:var(--ink,#1f1b17)}.ds-topbar nav a:focus-visible{outline:3px solid var(--gold,#d9a93a);outline-offset:2px}.ds-who{display:inline-flex;align-items:center;gap:8px;color:var(--ink-soft,#5e554b);font-weight:600}.ds-btn-link{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:.18em}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Pill toggle for video channels; pressed is ink on cream.",
+      "html": "<div class=\"ds-chips\"><button class=\"ds-chip\" aria-pressed=\"true\">All</button><button class=\"ds-chip\" aria-pressed=\"false\">Crash Course Philosophy</button></div>",
+      "css": ".ds-chips{display:flex;gap:6px;flex-wrap:wrap}.ds-chip{border-radius:999px;border:2px solid var(--card-edge,#e2d4b4);background:var(--card,#f4ebd6);color:var(--ink,#1f1b17);padding:6px 12px;font:600 1.0625rem/1.2 system-ui,sans-serif;min-height:36px;cursor:pointer}.ds-chip[aria-pressed=true]{background:var(--ink,#1f1b17);border-color:var(--ink,#1f1b17);color:var(--card,#f4ebd6)}.ds-chip:focus-visible{outline:3px solid var(--gold,#d9a93a);outline-offset:2px}"
+    },
+    {
+      "name": "Card Panel",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Card stock on the felt: the container for anything a person reads.",
+      "html": "<section class=\"ds-card\"><h2>Notes</h2><p class=\"ds-muted\">sis · today</p><p>Beat you at Catan next time.</p></section>",
+      "css": ".ds-card{background:var(--card,#f4ebd6);color:var(--ink,#1f1b17);border-radius:var(--radius-lg,14px);box-shadow:0 1px 0 rgba(0,0,0,.12),0 12px 28px -14px rgba(0,0,0,.5);padding:clamp(18px,3vw,28px);font:1.0625rem/1.5 system-ui,sans-serif;font-variant-numeric:tabular-nums}.ds-card h2{font-family:'Grandstander Variable',Grandstander,system-ui,sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:0 0 6px;font-size:clamp(1.375rem,1.1rem + 1.2vw,1.875rem)}.ds-card p{margin:0}.ds-card p+p{margin-top:.75em}.ds-muted{color:var(--ink-soft,#5e554b);font-size:.95rem}"
+    },
+    {
+      "name": "Board",
+      "kind": "custom",
+      "refersTo": "board-space",
+      "description": "Serpentine track of square spaces on a faint grid, coloured by Burns range, with a dragon piece on the latest space.",
+      "html": "<div class=\"ds-board\"><div class=\"ds-space ds-start\" data-next=\"right\">Start</div><a class=\"ds-space ds-band-4\" data-next=\"right\" href=\"#\">50<span class=\"ds-date\">Oct 25</span></a><a class=\"ds-space ds-band-3\" data-next=\"right\" href=\"#\">24<span class=\"ds-date\">Oct 25</span></a><div class=\"ds-space ds-empty\" data-next=\"right\"></div><div class=\"ds-space ds-empty\" data-next=\"right\"></div><div class=\"ds-space ds-empty\"></div><div class=\"ds-pieces\"><div class=\"ds-piece\" style=\"--row:0;--col:2\"><svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M8 48 L20 20 L30 36 L40 12 L52 40 L58 28 L56 50 Z\" fill=\"var(--player-b,#2c56a6)\"/></svg></div></div></div>",
+      "css": ".ds-board{--gap:8px;position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--gap);padding:var(--gap);background:var(--card-well,#ebdfc4);border-radius:var(--radius,8px);background-image:repeating-linear-gradient(0deg,transparent 0 calc(100%/6 - 1px),rgba(31,27,23,.07) 0 calc(100%/6)),repeating-linear-gradient(90deg,transparent 0 calc(100%/6 - 1px),rgba(31,27,23,.07) 0 calc(100%/6));font:700 clamp(.7rem,.55rem + .6vw,.95rem)/1.2 system-ui,sans-serif}.ds-space{position:relative;aspect-ratio:1;border-radius:6px;color:var(--ink,#1f1b17);background:var(--space-empty,#e9dec4);box-shadow:inset 0 -3px 0 rgba(0,0,0,.12);display:grid;align-content:start;justify-items:start;padding:5px 7px;text-decoration:none}.ds-space::after{content:'';position:absolute;background:rgba(31,27,23,.3);border-radius:3px;top:50%;height:6px;width:calc(var(--gap) + 4px);margin-top:-3px;right:calc(-1*var(--gap) - 2px)}.ds-space:not([data-next])::after{display:none}.ds-band-3{background:var(--space-3,#c8623a);color:var(--card,#f4ebd6)}.ds-band-4{background:var(--space-4,#8e4b6b);color:var(--card,#f4ebd6)}.ds-start{background:var(--gold,#d9a93a);font-family:'Grandstander Variable',Grandstander,system-ui,sans-serif}.ds-empty{background:transparent;box-shadow:inset 0 0 0 1px rgba(31,27,23,.1)}.ds-date{position:absolute;left:6px;bottom:4px;font-size:.625rem;font-weight:600;opacity:.8}.ds-space:is(a):hover{box-shadow:inset 0 -3px 0 rgba(0,0,0,.12),0 0 0 3px var(--gold,#d9a93a)}.ds-space:focus-visible{outline:3px solid var(--gold,#d9a93a);outline-offset:2px}.ds-pieces{position:absolute;inset:var(--gap);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--gap);pointer-events:none}.ds-piece{grid-area:1/1;aspect-ratio:1;display:grid;place-items:center;translate:calc(var(--col)*(100% + var(--gap))) calc(var(--row)*(100% + var(--gap)));transform:translate(-22%,18%) scale(.6);transition:translate 600ms var(--ease-out,cubic-bezier(.23,1,.32,1));filter:drop-shadow(0 3px 2px rgba(0,0,0,.35))}.ds-piece svg{width:100%;height:100%}@media (prefers-reduced-motion:reduce){.ds-piece{transition:opacity 200ms ease}}"
+    },
+    {
+      "name": "Scale 0 to 4",
+      "kind": "custom",
+      "refersTo": "scale-option",
+      "description": "Five equal radio tiles for a Burns item; checked is ink on cream.",
+      "html": "<fieldset class=\"ds-question\"><legend>Feeling sad or down in the dumps</legend><div class=\"ds-scale\"><label><input type=\"radio\" name=\"q\" value=\"0\">0<small>Not at all</small></label><label><input type=\"radio\" name=\"q\" value=\"1\">1<small>Somewhat</small></label><label><input type=\"radio\" name=\"q\" value=\"2\" checked>2<small>Moderately</small></label><label><input type=\"radio\" name=\"q\" value=\"3\">3<small>A lot</small></label><label><input type=\"radio\" name=\"q\" value=\"4\">4<small>Extremely</small></label></div></fieldset>",
+      "css": ".ds-question{border:0;margin:0;padding:0;display:grid;gap:10px;color:var(--ink,#1f1b17);font:1.0625rem/1.5 system-ui,sans-serif}.ds-question legend{font-weight:600;padding:0}.ds-scale{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.ds-scale label{position:relative;display:grid;place-items:center;gap:2px;min-height:56px;border-radius:var(--radius,8px);background:#fffaf0;border:2px solid var(--card-edge,#e2d4b4);cursor:pointer;font-weight:700;text-align:center;padding:6px 2px;transition:background-color 120ms ease,border-color 120ms ease,color 120ms ease}.ds-scale small{font-weight:500;font-size:.7rem;color:var(--ink-soft,#5e554b);line-height:1.1}.ds-scale input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}.ds-scale label:has(input:checked){background:var(--ink,#1f1b17);border-color:var(--ink,#1f1b17);color:var(--card,#f4ebd6)}.ds-scale label:has(input:checked) small{color:var(--card-edge,#e2d4b4)}.ds-scale label:has(input:focus-visible){outline:3px solid var(--gold,#d9a93a);outline-offset:2px}"
+    },
+    {
+      "name": "History Table",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "One type size; rank by weight; uppercase column headers; band swatch before the total.",
+      "html": "<table class=\"ds-history\"><thead><tr><th>When</th><th>Who</th><th>Total</th><th></th></tr></thead><tbody><tr><td><strong>today</strong><br><span class=\"ds-muted\">Sunday, October 25</span></td><td>mrkit</td><td class=\"ds-num\"><span class=\"ds-swatch\" style=\"background:var(--space-3,#c8623a)\"></span>24</td><td><a href=\"#\">Open</a></td></tr><tr><td><strong>yesterday</strong><br><span class=\"ds-muted\">Saturday, October 24</span></td><td>sis</td><td class=\"ds-num\"><span class=\"ds-swatch\" style=\"background:var(--space-4,#8e4b6b)\"></span>50</td><td><a href=\"#\">Open</a></td></tr></tbody></table>",
+      "css": ".ds-history{width:100%;border-collapse:collapse;font:.95rem/1.5 system-ui,sans-serif;color:var(--ink,#1f1b17);font-variant-numeric:tabular-nums}.ds-history th,.ds-history td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--card-edge,#e2d4b4);vertical-align:middle}.ds-history th{font-weight:700;text-transform:uppercase;font-size:.78rem;letter-spacing:.06em;color:var(--ink-soft,#5e554b)}.ds-num{font-weight:700}.ds-swatch{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:-2px;margin-right:8px}.ds-muted{color:var(--ink-soft,#5e554b)}.ds-history a{color:var(--player-b,#2c56a6);text-decoration-thickness:1px;text-underline-offset:.18em}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Family Game Table",
+    "overview": "The page is a felt-green table. Everything a person reads sits on card stock laid on the felt: a cream panel with dark brown ink and a short shadow underneath. There are two players, a brother and a sister, each with a colour and a dragon piece. Each check-in is one square space on a serpentine track, coloured by the Burns range it falls in. A person's piece stands on their latest space.\n\nThe site has one committed field colour and one data colour scale. Hierarchy comes from size and weight, never from ornament, kickers, or decoration. The display face is a rounded, heavy, hand-lettered sans; body text is the system face so that notes and tables read like plain writing. The whole thing is built phone-first: the board is six columns at phone width and eight above 560px, every control is at least 44px tall, and the top bar wraps its links onto a second row below 720px.\n\nThe world refuses the wellness-app arrangement and the D&D costume. There is no big score, no ring, no streak, no parchment texture, no blackletter, no gothic border. A check-in total is shown at body size inside a sentence that quotes Burns' own range, so it is material to weigh rather than a verdict.",
+    "keyCharacteristics": [
+      "One field colour (felt green) under cream card panels; dark brown ink, never black.",
+      "Two player colours (ember red, cobalt) that mean \"her\" and \"him\" and nothing else; gold is foil for focus, the Start space, and one button.",
+      "A six-step board scale from pale gold to night is the only data colour.",
+      "Grandstander Variable, bold, slightly tight, for every heading and the wordmark; system stack with tabular numerals for everything else.",
+      "A faint 40px ruled grid on the felt and a faint cell grid inside the board.",
+      "Motion is small and rare: pieces slide 600ms on an exponential ease-out; the first load deals panels in over 180ms."
+    ],
+    "rules": [
+      {
+        "name": "The One Data Colour Rule",
+        "body": "Only the six board-scale colours encode a value. Player colours identify a person, gold marks focus or the Start space, and nothing else carries meaning by hue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink Not Black Rule",
+        "body": "Text on card stock is `ink` (#1f1b17). Pure black appears nowhere, including shadows, which are translucent black at 12% to 55%.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Players Rule",
+        "body": "`player-a` and `player-b` are assigned by sign-up order in `src/lib/players.js` and are never used as a brand accent. The primary button borrows cobalt because it is the host's colour, not because cobalt is \"the brand\".",
+        "section": "colors"
+      },
+      {
+        "name": "The Rank By Weight Rule",
+        "body": "Inside a table or a list, rows share one size and rank is carried by weight (700 for the total or the relative date, 400 for the long date). The uppercase column header is the only size change a table makes.",
+        "section": "typography"
+      },
+      {
+        "name": "The Number In A Sentence Rule",
+        "body": "A check-in total appears at body size (1.1rem in `.result-total`) as \"Total 24.\" followed by Burns' own range for it. It is never set in display size, never alone, and never coloured by the danger token.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Kicker Rule",
+        "body": "Headings carry their own weight. There is no eyebrow, kicker, or overline above any heading; `.eyebrow-free` exists only to make that explicit.",
+        "section": "typography"
+      },
+      {
+        "name": "The Card On Felt Rule",
+        "body": "Shadows exist only to say \"this panel is lying on the table\". A shadow is never used for hover, for emphasis, or on a control.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Soft Ground Rule",
+        "body": "The felt carries a radial highlight (`rgba(255,255,255,0.08)` ellipse at 50% -20%) and a 40px ruled grid at 10% cream. Panels never carry textures or gradients.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do put everything a person reads on a `.card` panel; the felt holds only headings, muted lines, the progress row and the footer.",
+      "Do keep every control at 44px or taller and real: `<button>`, `<a>`, `<input>`, with the global 3px gold `:focus-visible` ring.",
+      "Do colour a value only with the six `space-n` tokens and always show the matching legend or Burns sentence beside it.",
+      "Do show a total as \"Total N.\" at body size inside a sentence that quotes Burns' range, followed by the line that a checklist is not a diagnosis.",
+      "Do build phone width first: one column, six board columns, wrapping top bar; widen at 560, 720 and 900px.",
+      "Do keep tables at one size with rank by weight; headers are the only uppercase text in the system.",
+      "Do keep every page behind login; the login card is the only surface an unauthenticated visitor sees.",
+      "Do move a piece with `translate` on `--ease-out` at 600ms and give reduced motion an opacity-only path."
+    ],
+    "donts": [
+      "Don't show a score large, alone, in red, or with a verdict word of your own; Burns' label is quoted, never asserted.",
+      "Don't add rings, streaks, progress percentages, or any wellness-app chart; the board is the only picture of change.",
+      "Don't use parchment, blackletter, gothic borders, or textured panels; panels are flat cream with one shadow.",
+      "Don't use `player-a` or `player-b` as a decorative accent; they name a person.",
+      "Don't add kickers, eyebrows, or overlines above headings.",
+      "Don't set body text or UI copy in Grandstander; it is for headings, the wordmark, and the Start space only.",
+      "Don't use pure black for text or shadow, or a system display face in place of Grandstander.",
+      "Don't add hover-only affordances outside `@media (hover: hover) and (pointer: fine)`.",
+      "Don't carry the Luci game's colours (#0052e7 sky, #3d8f3a ground, #9be36b alien) onto any surface other than its home-page card; the game is its own world."
+    ]
+  }
+}
