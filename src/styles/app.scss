@@ -1,0 +1,526 @@
+@use "board";
+@use "pages";
+
+:root {
+  // The table: one committed field, and card stock laid on it.
+  --felt: #1e4d3a;
+  --felt-deep: #163b2d;
+  --felt-line: rgba(244, 235, 214, 0.1);
+  --felt-text: #f4ebd6;
+  --felt-text-soft: #bfd3c6;
+
+  --card: #f4ebd6;
+  --card-edge: #e2d4b4;
+  --card-well: #ebdfc4;
+  --ink: #1f1b17;
+  --ink-soft: #5e554b;
+  --ink-faint: #6f665a;
+
+  // Player pieces and foil.
+  --player-a: #c9402b;
+  --player-b: #2c56a6;
+  --gold: #d9a93a;
+  --gold-deep: #b4871f;
+  --danger: #a33a2a;
+
+  // Board spaces, pale gold to night. The only data colour.
+  --space-1: #f1d58a;
+  --space-2: #e3a64a;
+  --space-3: #c8623a;
+  --space-4: #8e4b6b;
+  --space-5: #4f4a86;
+  --space-6: #2b2f55;
+  --space-empty: #e9dec4;
+
+  --radius: 8px;
+  --radius-lg: 14px;
+  --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.12), 0 12px 28px -14px rgba(
+    0,
+    0,
+    0,
+    0.5
+  );
+  --shadow-raise: 0 2px 0 rgba(0, 0, 0, 0.16), 0 18px 36px -16px rgba(
+    0,
+    0,
+    0,
+    0.55
+  );
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --font-display: "Grandstander Variable", "Grandstander", system-ui, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+
+  --measure: 68ch;
+  --gutter: clamp(16px, 4vw, 40px);
+
+  color-scheme: dark;
+  accent-color: var(--player-b);
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--felt);
+  background-image:
+    radial-gradient(
+      ellipse at 50% -20%,
+      rgba(255, 255, 255, 0.08),
+      transparent 60%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 39px,
+      var(--felt-line) 39px 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 39px,
+      var(--felt-line) 39px 40px
+    );
+  color: var(--felt-text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+}
+
+h2 {
+  font-size: clamp(1.375rem, 1.1rem + 1.2vw, 1.875rem);
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+p {
+  margin: 0;
+}
+
+p + p {
+  margin-top: 0.75em;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+// Card stock laid on the felt. Panels hold anything a person reads.
+.card {
+  background: var(--card);
+  color: var(--ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: clamp(18px, 3vw, 28px);
+
+  ::selection {
+    background: var(--player-b);
+    color: var(--card);
+  }
+
+  a {
+    color: var(--player-b);
+  }
+
+  // Buttons rendered as links keep their own colours inside a card.
+  .btn-primary {
+    color: var(--card);
+  }
+
+  .btn-gold {
+    color: var(--ink);
+  }
+
+  .btn-quiet {
+    color: var(--ink);
+  }
+
+  .btn-danger {
+    color: var(--danger);
+  }
+
+  .muted {
+    color: var(--ink-soft);
+  }
+}
+
+.muted {
+  color: var(--felt-text-soft);
+}
+
+.eyebrow-free {
+  // Headings carry their own weight; this class exists so nothing is tempted to add a kicker.
+  display: none;
+}
+
+// Controls. Every button is a real button; the primary is cobalt on card stock.
+.btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 44px;
+  padding: 0 1.1em;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    transform 120ms var(--ease-out),
+    background-color 120ms ease,
+    color 120ms ease,
+    border-color 120ms ease;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    transform: none;
+  }
+}
+
+.btn-primary {
+  background: var(--player-b);
+  color: var(--card);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not(:disabled) {
+      background: #244a93;
+    }
+  }
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not(:disabled) {
+      background: #e6b84f;
+    }
+  }
+}
+
+.btn-quiet {
+  background: transparent;
+  color: inherit;
+  border-color: currentColor;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:not(:disabled) {
+      background: rgba(0, 0, 0, 0.06);
+    }
+  }
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border-color: currentColor;
+}
+
+.btn-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  min-height: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+
+  > span {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+}
+
+.input,
+.textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: #fffaf0;
+  border: 2px solid var(--card-edge);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  min-height: 44px;
+  caret-color: var(--player-b);
+
+  &::placeholder {
+    color: var(--ink-faint);
+  }
+
+  &:focus {
+    border-color: var(--player-b);
+    outline: none;
+  }
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 7.5em;
+  line-height: 1.5;
+}
+
+.error {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.card .error {
+  background: #f8e3dd;
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+
+// Shell.
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  // One column pinned to the viewport, so no child can widen the page.
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--card);
+  color: var(--ink);
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.14),
+    0 10px 24px -14px rgba(0, 0, 0, 0.45);
+
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px var(--gutter);
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    color: var(--ink);
+
+    svg {
+      color: var(--player-a);
+    }
+  }
+
+  nav {
+    margin-left: auto;
+
+    ul {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--ink-soft);
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background-color 120ms ease, color 120ms ease;
+
+      &[aria-current="page"] {
+        background: var(--ink);
+        color: var(--card);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover:not([aria-current="page"]) {
+          background: var(--card-well);
+          color: var(--ink);
+        }
+      }
+    }
+  }
+
+  .who {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-soft);
+    font-weight: 600;
+
+    .btn-link {
+      color: var(--ink-soft);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .topbar-inner {
+      flex-wrap: wrap;
+      row-gap: 6px;
+    }
+
+    nav {
+      order: 3;
+      flex-basis: 100%;
+      margin-left: 0;
+
+      ul {
+        flex-wrap: wrap;
+        row-gap: 2px;
+      }
+    }
+
+    .who {
+      margin-left: auto;
+    }
+  }
+}
+
+main {
+  width: 100%;
+  min-width: 0;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 40px) var(--gutter) 56px;
+}
+
+footer {
+  padding: 20px var(--gutter) 28px;
+  text-align: center;
+  color: var(--felt-text-soft);
+  font-size: 0.9rem;
+}
+
+.page-title {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  .muted {
+    margin-top: 4px;
+  }
+}
+
+.stack {
+  display: grid;
+  gap: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+// First-load deal: tens of times a day, so barely there.
+.deal > * {
+  opacity: 1;
+  translate: 0 0;
+  transition: opacity 180ms var(--ease-out), translate 180ms var(--ease-out);
+
+  @starting-style {
+    opacity: 0;
+    translate: 0 6px;
+  }
+}
+
+@for $i from 1 through 8 {
+  .deal > :nth-child(#{$i}) {
+    transition-delay: #{($i - 1) * 40}ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deal > * {
+    translate: 0 0;
+
+    @starting-style {
+      translate: 0 0;
+    }
+  }
+
+  .btn {
+    transition: none;
+  }
+}

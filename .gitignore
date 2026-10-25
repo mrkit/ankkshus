@@ -6,3 +6,6 @@ bundle.js
 dist/
 .env
 coverage/
+.pstack/
+.impeccable/review/
+.impeccable/mocks/

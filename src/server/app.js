@@ -8,6 +8,7 @@ import { errorHandler, notFound } from './middleware/errors.js';
 import authRouter from './routes/auth.js';
 import postsRouter from './routes/posts.js';
 import quizzesRouter from './routes/quizzes.js';
+import usersRouter from './routes/users.js';
 import videoChannelsRouter from './routes/videoChannels.js';
 import videosRouter from './routes/videos.js';
 
@@ -26,6 +27,7 @@ export function createApp() {
   app.use('/api/videos', videosRouter);
   app.use('/api/video-channels', videoChannelsRouter);
   app.use('/api/quizzes', quizzesRouter);
+  app.use('/api/users', usersRouter);
   app.use('/api', notFound);
 
   // In production the built site is served by this process. In development Vite serves it.

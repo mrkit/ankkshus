@@ -1,209 +1,213 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   useCreateVideoMutation,
   useDeleteVideoMutation,
   useGetVideoChannelsQuery,
   useGetVideosQuery,
-  useMeQuery,
-  useUpdateVideoMutation,
 } from '../../app/api.js';
+import { relativeDate } from '../../lib/dates.js';
+import { youtubeId } from './youtube.js';
 
-// Accepts youtu.be and youtube.com/watch?v= links. Returns null for anything else.
-export function youtubeId(url) {
-  const match = /(?:youtu\.be\/|[?&]v=)([\w-]{6,})/.exec(url);
-  return match ? match[1] : null;
-}
-
-function VideoForm({ onDone }) {
+function AddVideo({ channels, onDone }) {
   const [createVideo, { isLoading, error }] = useCreateVideoMutation();
 
   async function handleSubmit(event) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
+    const channel = form.get('channel');
     const result = await createVideo({
       title: form.get('title'),
       url: form.get('url'),
+      videoChannelId: channel ? Number(channel) : null,
     });
     if (!result.error) onDone();
   }
 
   return (
-    <aside>
-      <button type="button" onClick={onDone} aria-label="Close">
-        X
-      </button>
-      <form className="messageBoxComponent" onSubmit={handleSubmit}>
-        <h3>Add new video</h3>
-        <input type="text" name="title" placeholder="Title" required />
-        <input type="url" name="url" placeholder="Youtube Url" required />
-        <button type="submit" disabled={isLoading}>
-          Submit
-        </button>
-        {error && <p role="alert">Could not add that video. Check the URL.</p>}
-      </form>
-    </aside>
-  );
-}
-
-function EditVideoForm({ video, onDone }) {
-  const [updateVideo, updateState] = useUpdateVideoMutation();
-  const [deleteVideo, deleteState] = useDeleteVideoMutation();
-  const [wantsDelete, setWantsDelete] = useState(false);
-  const [rename, setRename] = useState('');
-  const busy = updateState.isLoading || deleteState.isLoading;
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-    if (wantsDelete) {
-      const result = await deleteVideo(video.id);
-      if (!result.error) onDone();
-      return;
-    }
-    const title = rename.trim();
-    if (!title) return onDone();
-    const result = await updateVideo({ id: video.id, title });
-    if (!result.error) onDone();
-  }
-
-  return (
-    <aside>
-      <button type="button" onClick={onDone} aria-label="Close">
-        X
-      </button>
-      <form className="messageBoxComponent" onSubmit={handleSubmit}>
-        <h3>Edit video</h3>
-        <p>Do you want to delete this video?</p>
-        <label>
+    <section className="card">
+      <form className="video-form" onSubmit={handleSubmit}>
+        <h2>Add a video</h2>
+        <label className="field">
+          <span>Title</span>
           <input
-            type="radio"
-            name="delete"
-            value="no"
-            checked={!wantsDelete}
-            onChange={() => setWantsDelete(false)}
-          />
-          <span>No</span>
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="delete"
-            value="yes"
-            checked={wantsDelete}
-            onChange={() => setWantsDelete(true)}
-          />
-          <span>Yes</span>
-        </label>
-        <label>
-          <input
+            className="input"
             type="text"
-            name="rename"
-            value={rename}
-            onChange={(e) => setRename(e.target.value)}
-            placeholder={`Rename: "${video.title}"`}
-            disabled={wantsDelete}
+            name="title"
+            required
+            maxLength={200}
           />
         </label>
-        <button type="submit" disabled={busy}>
-          Submit
-        </button>
-      </form>
-    </aside>
-  );
-}
-
-export function VideosPage() {
-  const { data: me } = useMeQuery();
-  const { data: videos = [], isError } = useGetVideosQuery();
-  const { data: channels = [] } = useGetVideoChannelsQuery();
-  const [showAdd, setShowAdd] = useState(false);
-  const [editing, setEditing] = useState(null);
-  const [reversed, setReversed] = useState(false);
-  const [channelId, setChannelId] = useState(null);
-  const signedIn = Boolean(me?.user);
-
-  const shown = videos
-    .filter((video) => channelId === null || video.videoChannelId === channelId)
-    .slice()
-    .sort((a, b) => (reversed ? b.id - a.id : a.id - b.id));
-
-  return (
-    <section className="video-container">
-      <h1>Videos</h1>
-      <p>Double click on an episode title to Edit or Delete a video.</p>
-
-      <nav className="video-nav">
-        <h2 className="video-nav-title">Videos</h2>
-        <ul className="video-nav-video-list">
-          <li>
-            <button
-              type="button"
-              className="link-button"
-              onClick={() => setChannelId(null)}
-            >
-              All
-            </button>
-          </li>
-          {channels.map((channel) => (
-            <li key={channel.id}>
-              <button
-                type="button"
-                className="link-button"
-                onClick={() => setChannelId(channel.id)}
-              >
-                {channel.name}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <div className="video-nav-buttons">
-          {signedIn ? (
-            <button type="button" onClick={() => setShowAdd(true)}>
-              Add New Video
-            </button>
-          ) : (
-            <Link to="/login">Log in to add videos</Link>
-          )}
-          <button type="button" onClick={() => setReversed((r) => !r)}>
-            Reverse Order
+        <label className="field">
+          <span>YouTube link</span>
+          <input
+            className="input"
+            type="url"
+            name="url"
+            placeholder="https://youtu.be/…"
+            required
+          />
+        </label>
+        {channels.length > 0 && (
+          <label className="field">
+            <span>Channel</span>
+            <select className="input" name="channel" defaultValue="">
+              <option value="">None</option>
+              {channels.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+        {error && (
+          <p className="error" role="alert">
+            Could not add that video. Check the link.
+          </p>
+        )}
+        <div className="row">
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={isLoading}
+          >
+            Add it
+          </button>
+          <button type="button" className="btn btn-quiet" onClick={onDone}>
+            Cancel
           </button>
         </div>
-      </nav>
+      </form>
+    </section>
+  );
+}
 
-      <section className="ccSection">
-        {showAdd && <VideoForm onDone={() => setShowAdd(false)} />}
-        {editing && (
-          <EditVideoForm video={editing} onDone={() => setEditing(null)} />
+export function VideosPage({ user }) {
+  const { data: videos = [], isError } = useGetVideosQuery();
+  const { data: channels = [] } = useGetVideoChannelsQuery();
+  const [deleteVideo] = useDeleteVideoMutation();
+  const [adding, setAdding] = useState(false);
+  const [channelId, setChannelId] = useState(null);
+
+  const shown = videos.filter(
+    (v) => channelId === null || v.videoChannelId === channelId,
+  );
+
+  return (
+    <>
+      <div className="page-title">
+        <div>
+          <h1>Videos</h1>
+          <p className="muted">Things to watch, then talk about.</p>
+        </div>
+        {!adding && (
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => setAdding(true)}
+          >
+            Add a video
+          </button>
+        )}
+      </div>
+
+      <div className="stack">
+        {adding && (
+          <AddVideo channels={channels} onDone={() => setAdding(false)} />
         )}
 
-        {isError && <p role="alert">Could not load videos.</p>}
+        {channels.length > 0 && (
+          <div className="video-tools">
+            <div className="chips" role="group" aria-label="Channel">
+              <button
+                type="button"
+                className="chip"
+                aria-pressed={channelId === null}
+                onClick={() => setChannelId(null)}
+              >
+                All
+              </button>
+              {channels.map((c) => (
+                <button
+                  type="button"
+                  className="chip"
+                  key={c.id}
+                  aria-pressed={channelId === c.id}
+                  onClick={() => setChannelId(c.id)}
+                >
+                  {c.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
 
-        <ul className="video-container-ul">
+        {isError && (
+          <p className="error" role="alert">
+            Could not load the videos.
+          </p>
+        )}
+        {shown.length === 0 && !isError && (
+          <section className="card">
+            <p className="empty">Nothing in this pile yet.</p>
+          </section>
+        )}
+
+        <div className="video-grid deal">
           {shown.map((video) => {
             const id = youtubeId(video.url);
             return (
-              <li key={video.id} className="video-container-ul-li">
-                <a target="_blank" rel="noopener" href={video.url}>
+              <article className="card video-tile" key={video.id}>
+                <a
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label={`Watch ${video.title} on YouTube`}
+                >
                   {id ? (
                     <img
                       src={`https://img.youtube.com/vi/${id}/mqdefault.jpg`}
-                      alt={video.title}
+                      alt=""
+                      width="320"
+                      height="180"
+                      loading="lazy"
                     />
                   ) : (
-                    video.title
+                    <span className="video-title">{video.title}</span>
                   )}
                 </a>
-                <h3
-                  onDoubleClick={() => signedIn && setEditing(video)}
-                  title={signedIn ? 'Double click to edit' : undefined}
+                <a
+                  className="video-title"
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener"
                 >
                   {video.title}
-                </h3>
-              </li>
+                </a>
+                <div className="video-meta">
+                  <span>
+                    {video.addedBy ? `added by ${video.addedBy.username}` : ''}
+                  </span>
+                  <span>{relativeDate(video.createdAt)}</span>
+                </div>
+                {(video.addedById === user.id || video.addedById === null) && (
+                  <button
+                    type="button"
+                    className="btn-link"
+                    style={{ justifySelf: 'start', color: 'var(--danger)' }}
+                    onClick={() => {
+                      if (window.confirm(`Remove “${video.title}”?`))
+                        deleteVideo(video.id);
+                    }}
+                  >
+                    Remove
+                  </button>
+                )}
+              </article>
             );
           })}
-        </ul>
-      </section>
-    </section>
+        </div>
+      </div>
+    </>
   );
 }

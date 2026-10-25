@@ -1,6 +1,6 @@
 import { sequelize } from './index.js';
 import './models.js';
-import { seedIfEmpty } from './seed.js';
+import { seedMissing } from './seed.js';
 
 await sequelize.sync();
 console.log(

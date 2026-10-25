@@ -5,15 +5,20 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: '/api/', credentials: 'same-origin' }),
-  tagTypes: ['Me', 'Posts', 'Videos', 'VideoChannels', 'Quizzes'],
+  tagTypes: [
+    'Me',
+    'Users',
+    'Posts',
+    'Videos',
+    'VideoChannels',
+    'Quizzes',
+    'Attempts',
+  ],
   endpoints: (build) => ({
-    me: build.query({
-      query: () => 'auth/me',
-      providesTags: ['Me'],
-    }),
+    me: build.query({ query: () => 'auth/me', providesTags: ['Me'] }),
     signUp: build.mutation({
       query: (body) => ({ url: 'auth/signup', method: 'POST', body }),
-      invalidatesTags: ['Me'],
+      invalidatesTags: ['Me', 'Users'],
     }),
     login: build.mutation({
       query: (body) => ({ url: 'auth/login', method: 'POST', body }),
@@ -23,11 +28,9 @@ export const api = createApi({
       query: () => ({ url: 'auth/logout', method: 'POST' }),
       invalidatesTags: ['Me'],
     }),
+    users: build.query({ query: () => 'users', providesTags: ['Users'] }),
 
-    getPosts: build.query({
-      query: () => 'posts',
-      providesTags: ['Posts'],
-    }),
+    getPosts: build.query({ query: () => 'posts', providesTags: ['Posts'] }),
     createPost: build.mutation({
       query: (body) => ({ url: 'posts', method: 'POST', body }),
       invalidatesTags: ['Posts'],
@@ -41,10 +44,7 @@ export const api = createApi({
       invalidatesTags: ['Posts'],
     }),
 
-    getVideos: build.query({
-      query: () => 'videos',
-      providesTags: ['Videos'],
-    }),
+    getVideos: build.query({ query: () => 'videos', providesTags: ['Videos'] }),
     createVideo: build.mutation({
       query: (body) => ({ url: 'videos', method: 'POST', body }),
       invalidatesTags: ['Videos'],
@@ -61,7 +61,6 @@ export const api = createApi({
       query: (id) => ({ url: `videos/${id}`, method: 'DELETE' }),
       invalidatesTags: ['Videos'],
     }),
-
     getVideoChannels: build.query({
       query: () => 'video-channels',
       providesTags: ['VideoChannels'],
@@ -69,7 +68,31 @@ export const api = createApi({
 
     getQuizzes: build.query({
       query: () => 'quizzes',
+      providesTags: ['Quizzes', 'Attempts'],
+    }),
+    getQuiz: build.query({
+      query: (slug) => `quizzes/${slug}`,
       providesTags: ['Quizzes'],
+    }),
+    getQuizAttempts: build.query({
+      query: (slug) => `quizzes/${slug}/attempts`,
+      providesTags: ['Attempts'],
+    }),
+    getAttempts: build.query({
+      query: (weeks = 52) => `quizzes/attempts?weeks=${weeks}`,
+      providesTags: ['Attempts'],
+    }),
+    getAttempt: build.query({
+      query: (id) => `quizzes/attempts/${id}`,
+      providesTags: ['Attempts'],
+    }),
+    saveAttempt: build.mutation({
+      query: ({ slug, answers }) => ({
+        url: `quizzes/${slug}/attempts`,
+        method: 'POST',
+        body: { answers },
+      }),
+      invalidatesTags: ['Attempts'],
     }),
   }),
 });
@@ -79,6 +102,7 @@ export const {
   useSignUpMutation,
   useLoginMutation,
   useLogoutMutation,
+  useUsersQuery,
   useGetPostsQuery,
   useCreatePostMutation,
   useUpdatePostMutation,
@@ -89,4 +113,9 @@ export const {
   useDeleteVideoMutation,
   useGetVideoChannelsQuery,
   useGetQuizzesQuery,
+  useGetQuizQuery,
+  useGetQuizAttemptsQuery,
+  useGetAttemptsQuery,
+  useGetAttemptQuery,
+  useSaveAttemptMutation,
 } = api;

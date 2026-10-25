@@ -5,6 +5,85 @@ same commit as the change it describes. Check here before proposing something
 that was already rejected.
 
 
+
+## 2026-10-25 — Redesign as the family game table, with dragons as the pieces
+
+**Chosen.** The whole site is behind login and reads as a board game table:
+a felt-green ground, card-stock panels, Grandstander for display type, and
+one signature move: each check-in is a space on a serpentine board track,
+and each person is a dragon piece standing on their latest space. Six
+dragon kinds are drawn as SVG components (`src/dragons/`). The piece slides
+to its new space on the result screen after a check-in is saved.
+
+**Why.** Anthony pinned the world: the family played a lot of board games
+(D&D once), and his sister loves dragons of different kinds. The old look
+(indigo header, a "city dragon" photo, Burns' 25 items on one page) was
+evidence of the subject, not a system. Operate-mode rules from the design
+skill hold: the world lends type, palette, density and one move; navigation
+and controls stay standard web ones.
+
+**Considered and rejected.**
+
+- "The almanac": check-ins drawn as weather over weeks. The roll assigned it
+  and it was built as far as a direction contract, then Anthony scrapped it
+  for the board-game world. Recorded in `design/point-of-view.md`.
+- "The fridge door" (taped notes and magnets), "the seasons folio"
+  (botanical plates), and the plain wellness-app look: offered in the same
+  round and left on the table.
+- A D&D costume: parchment, blackletter, gothic borders. Rejected before
+  presenting; the family played D&D once, board games often.
+- Two separate tracks, one per person. Rejected: one shared track says
+  "same table"; two tracks say "two dashboards".
+
+## 2026-10-25 — Check-ins become a library of quizzes with saved attempts
+
+**Chosen.** Generic quiz tables (quiz, section, question, attempt, answer).
+Each check-in is its own quiz: the Burns checklist as a repeatable scored
+checklist, and each CBT course section as a written worksheet paired with its
+video. Every completed attempt is saved with a date, per person, and both
+people can read each other's. The runner shows one part per step, never the
+whole list, and ends on the saved total with Burns' own range words beside
+it, plus the piece moving on the board.
+
+**Why.** Anthony's answers: "keeping up with her" needs check-ins saved over
+time, and "there should be multiple quizzes, so it's not all stuffed into
+one". The framework skill's rules for the shape: chunk to working memory
+(P1), close the loop at the end (P44), reward returning not speed (P33),
+material not verdicts (A17), and production over recognition for the
+worksheets (P20).
+
+**Considered and rejected.**
+
+- One flat `quizQuestions` table with a quiz id. Rejected: worksheets need
+  free text and checklists need 0 to 4, and attempts need their own rows.
+- Showing a chart of totals over time. Rejected for this round: the board is
+  the signature move and does the same job with less to explain. A chart can
+  sit on the history page later if the two of them want it.
+- Naming the board spaces by terrain (meadow, woods, swamp). Rejected: a bad
+  week drawn as a swamp is a verdict. Spaces carry the number and a colour;
+  the legend uses Burns' words.
+
+## 2026-10-25 — Luci rebuilt as a dependency-free canvas game
+
+**Chosen.** The game is plain canvas 2D and Web Audio, drawn procedurally,
+in `src/game/`. No Phaser, no image or audio files. The level is designed
+from the physics so it is beatable, with touch controls for phones.
+
+**Why.** The original art and audio live in a gitignored folder that is not
+in this checkout, so the Phaser 4 port could never be tested or shipped from
+git. Anthony: "it does not have to be Phaser, use what makes sense; it needs
+to work effectively". A scripted run in a headless browser wins the full
+level in six jumps, and standing still dies to the boulder. The chunk is
+17 kB instead of 1.37 MB.
+
+**Considered and rejected.**
+
+- Keep Phaser 4 and generate placeholder art. Rejected: 1.37 MB for a game
+  drawn with rectangles and circles, and still unverifiable here.
+- Ask for the asset folder and keep the original sprites. Rejected for now:
+  the game should work from a clean clone. The old art can be added back as
+  an option later if wanted.
+
 ## 2026-10-25 — Full modernization: Vite, RTK Query, cookie sessions, ESM, Biome, Vitest
 
 **Chosen.** Vite replaces webpack. Client data goes through RTK Query, which

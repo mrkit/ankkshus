@@ -1,0 +1,222 @@
+// The board: a serpentine track of square spaces, one per check-in, with a
+// dragon piece per person standing on their latest space.
+.board {
+  --cols: 6;
+  --gap: 8px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: var(--gap);
+  padding: var(--gap);
+  background: var(--card-well);
+  border-radius: var(--radius);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 calc(100% / 6 - 1px),
+      rgba(31, 27, 23, 0.07) 0 calc(100% / 6)
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 calc(100% / 6 - 1px),
+      rgba(31, 27, 23, 0.07) 0 calc(100% / 6)
+    );
+
+  @media (min-width: 560px) {
+    --cols: 8;
+  }
+}
+
+.space {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  font-size: clamp(0.7rem, 0.55rem + 0.6vw, 0.95rem);
+  color: var(--ink);
+  background: var(--space-empty);
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  padding: 5px 7px;
+  text-decoration: none;
+
+  // The track: a short bar from this space toward the next one.
+  &::after {
+    content: "";
+    position: absolute;
+    background: rgba(31, 27, 23, 0.3);
+    border-radius: 3px;
+    z-index: 0;
+  }
+
+  &[data-next="right"]::after,
+  &[data-next="left"]::after {
+    top: 50%;
+    height: 6px;
+    width: calc(var(--gap) + 4px);
+    margin-top: -3px;
+  }
+
+  &[data-next="right"]::after {
+    right: calc(-1 * var(--gap) - 2px);
+  }
+
+  &[data-next="left"]::after {
+    left: calc(-1 * var(--gap) - 2px);
+  }
+
+  &[data-next="down"]::after {
+    left: 50%;
+    width: 6px;
+    height: calc(var(--gap) + 4px);
+    margin-left: -3px;
+    bottom: calc(-1 * var(--gap) - 2px);
+  }
+
+  &:not([data-next])::after {
+    display: none;
+  }
+
+  &.band-1 {
+    background: var(--space-1);
+  }
+  &.band-2 {
+    background: var(--space-2);
+  }
+  &.band-3 {
+    background: var(--space-3);
+    color: var(--card);
+  }
+  &.band-4 {
+    background: var(--space-4);
+    color: var(--card);
+  }
+  &.band-5 {
+    background: var(--space-5);
+    color: var(--card);
+  }
+  &.band-6 {
+    background: var(--space-6);
+    color: var(--card);
+  }
+
+  &.start {
+    background: var(--gold);
+    font-family: var(--font-display);
+    letter-spacing: 0;
+    cursor: default;
+  }
+
+  &.empty {
+    background: transparent;
+    box-shadow: inset 0 0 0 1px rgba(31, 27, 23, 0.1);
+    cursor: default;
+  }
+
+  .space-date {
+    position: absolute;
+    left: 6px;
+    bottom: 4px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    opacity: 0.8;
+
+    // Phone cells are about 50px, too small for a date beside a piece.
+    // The date is on the space's detail page.
+    @media (max-width: 559px) {
+      display: none;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:not(.start):not(.empty):hover {
+      box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.12), 0 0 0 3px var(--gold);
+    }
+  }
+}
+
+// A piece is sized to one cell, so translating by 100% moves it one space.
+.piece-layer {
+  position: absolute;
+  inset: var(--gap);
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  gap: var(--gap);
+  pointer-events: none;
+}
+
+.piece {
+  grid-area: 1 / 1;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  translate: calc(var(--col) * (100% + var(--gap)))
+    calc(var(--row) * (100% + var(--gap)));
+  transition: translate 600ms var(--ease-out);
+  filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.35));
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  // Pieces stand in the lower-right corner, clear of the number and the date.
+  // When both are on one space, the second steps up to the upper-right.
+  transform: translate(30%, 22%) scale(0.56);
+
+  &[data-slot="1"].shared {
+    transform: translate(30%, -24%) scale(0.56);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piece {
+    transition: opacity 200ms ease;
+  }
+}
+
+.board-legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+
+  @media (min-width: 560px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  i {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+}
+
+.players {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+
+  .player {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+  }
+}

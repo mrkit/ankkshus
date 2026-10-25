@@ -1,0 +1,488 @@
+// Home.
+.home-grid {
+  display: grid;
+  gap: 20px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: start;
+  }
+}
+
+.home-side {
+  display: grid;
+  gap: 16px;
+}
+
+.greeting {
+  margin-bottom: 20px;
+
+  .muted {
+    margin-top: 4px;
+  }
+}
+
+.board-card {
+  .board-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+}
+
+// Notes.
+.note {
+  .note-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+
+  .note-meta {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .note-body {
+    white-space: pre-wrap;
+    max-width: var(--measure);
+    margin-top: 10px;
+  }
+
+  .note-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.note-form {
+  display: grid;
+  gap: 14px;
+  max-width: var(--measure);
+}
+
+// Game card on the home side.
+.luci-card {
+  display: grid;
+  gap: 12px;
+  text-decoration: none;
+
+  .luci-art {
+    border-radius: var(--radius);
+    background: #0052e7;
+    aspect-ratio: 16 / 9;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 22%;
+      background: #3d8f3a;
+    }
+
+    svg {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}
+
+.card.luci-card a,
+.card a.plain {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Check-in library.
+.quiz-list {
+  display: grid;
+  gap: 16px;
+
+  @media (min-width: 720px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.quiz-tile {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+
+  .quiz-meta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+
+  .quiz-last {
+    display: grid;
+    gap: 4px;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  .row {
+    margin-top: 6px;
+  }
+}
+
+// Quiz runner.
+.runner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+}
+
+.runner-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--felt-text-soft);
+  font-weight: 600;
+
+  ol {
+    display: flex;
+    gap: 6px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    width: 28px;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(244, 235, 214, 0.25);
+
+    &.done {
+      background: var(--gold);
+    }
+
+    &.now {
+      background: var(--card);
+    }
+  }
+}
+
+.question {
+  display: grid;
+  gap: 10px;
+  padding: 16px 0;
+  border-top: 1px solid var(--card-edge);
+
+  &:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  legend,
+  .question-prompt {
+    font-weight: 600;
+    padding: 0;
+    max-width: var(--measure);
+  }
+
+  .question-help {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+}
+
+.scale {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+
+  label {
+    position: relative;
+    display: grid;
+    place-items: center;
+    gap: 2px;
+    min-height: 56px;
+    border-radius: var(--radius);
+    background: #fffaf0;
+    border: 2px solid var(--card-edge);
+    cursor: pointer;
+    font-weight: 700;
+    text-align: center;
+    padding: 6px 2px;
+    transition:
+      background-color 120ms ease,
+      border-color 120ms ease,
+      color 120ms ease;
+
+    small {
+      font-weight: 500;
+      font-size: 0.7rem;
+      color: var(--ink-soft);
+      line-height: 1.1;
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+      inset: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    &:has(input:checked) {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--card);
+
+      small {
+        color: var(--card-edge);
+      }
+    }
+
+    &:has(input:focus-visible) {
+      outline: 3px solid var(--gold);
+      outline-offset: 2px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    label small {
+      display: none;
+    }
+  }
+}
+
+.runner-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.result {
+  display: grid;
+  gap: 18px;
+
+  // The total reads at body size inside the Burns sentence.
+  .result-total {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 1.1rem;
+  }
+
+  .result-band {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    i {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+    }
+  }
+}
+
+.crisis {
+  background: #fff3d6;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-size: 0.95rem;
+}
+
+// History table: one type size, rank by weight.
+.history {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+
+  th,
+  td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--card-edge);
+    vertical-align: middle;
+  }
+
+  th {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+  }
+
+  td.num {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .swatch {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    vertical-align: -2px;
+    margin-right: 8px;
+  }
+}
+
+.answers {
+  display: grid;
+  gap: 14px;
+
+  .answer {
+    border-top: 1px solid var(--card-edge);
+    padding-top: 12px;
+    display: grid;
+    gap: 4px;
+
+    &:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .muted {
+      font-size: 0.95rem;
+    }
+
+    .answer-text {
+      white-space: pre-wrap;
+    }
+  }
+
+  h3 {
+    margin-top: 10px;
+  }
+}
+
+// Videos.
+.video-tools {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+
+  .chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    border-radius: 999px;
+    border: 2px solid var(--card-edge);
+    background: var(--card);
+    color: var(--ink);
+    padding: 6px 12px;
+    font: inherit;
+    font-weight: 600;
+    min-height: 36px;
+    cursor: pointer;
+
+    &[aria-pressed="true"] {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: var(--card);
+    }
+  }
+}
+
+.video-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.video-tile {
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    background: var(--card-well);
+  }
+
+  .video-title {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .video-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+}
+
+.video-form {
+  display: grid;
+  gap: 12px;
+  max-width: 560px;
+}
+
+// Login.
+.login-wrap {
+  min-height: calc(100dvh - 80px);
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+}
+
+.login {
+  width: min(100%, 420px);
+  display: grid;
+  gap: 16px;
+
+  .login-mark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.6rem;
+
+    svg {
+      color: var(--player-a);
+    }
+  }
+
+  form {
+    display: grid;
+    gap: 12px;
+  }
+}
+
+.empty {
+  color: var(--ink-soft);
+}
+
+.card .empty {
+  padding: 8px 0;
+}

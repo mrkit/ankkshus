@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import { Video } from '../db/models.js';
+import { User, Video } from '../db/models.js';
 import { requireAuth } from '../middleware/auth.js';
 import { idParam, validateBody } from '../middleware/validate.js';
 
@@ -10,19 +10,28 @@ const videoFields = z.object({
   videoChannelId: z.number().int().positive().nullish(),
 });
 
+const withAdder = {
+  include: [{ model: User, as: 'addedBy', attributes: ['id', 'username'] }],
+};
+
 const router = Router();
 
-router.get('/', async (req, res) => {
+router.get('/', requireAuth, async (req, res) => {
   const where = req.query.channelId
     ? { videoChannelId: idParam.parse(req.query.channelId) }
     : {};
-  const videos = await Video.findAll({ where, order: [['id', 'ASC']] });
-  res.json(videos);
+  res.json(
+    await Video.findAll({
+      ...withAdder,
+      where,
+      order: [['createdAt', 'DESC']],
+    }),
+  );
 });
 
 router.post('/', requireAuth, validateBody(videoFields), async (req, res) => {
-  const video = await Video.create(req.body);
-  res.status(201).json(video);
+  const video = await Video.create({ ...req.body, addedById: req.user.id });
+  res.status(201).json(await Video.findByPk(video.id, withAdder));
 });
 
 router.put(
@@ -34,8 +43,8 @@ router.put(
     const video = await Video.findByPk(id);
     if (!video) return res.status(404).json({ error: 'Video not found' });
 
-    const updated = await video.update(req.body);
-    res.json(updated);
+    await video.update(req.body);
+    res.json(await Video.findByPk(id, withAdder));
   },
 );
 

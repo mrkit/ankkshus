@@ -1,7 +1,7 @@
 import { createApp } from './app.js';
 import { config } from './config.js';
 import { sequelize } from './db/index.js';
-import { seedIfEmpty } from './db/seed.js';
+import { seedMissing } from './db/seed.js';
 import './db/models.js';
 
 const dbName = new URL(config.databaseUrl).pathname.replace(/^\//, '');
@@ -11,7 +11,10 @@ function explainConnectionError(err) {
   if (err.parent?.code === '3D000') {
     return `Database "${dbName}" does not exist. Create it with: createdb ${dbName}`;
   }
-  if (err.parent?.code === 'ECONNREFUSED' || err.original?.code === 'ECONNREFUSED') {
+  if (
+    err.parent?.code === 'ECONNREFUSED' ||
+    err.original?.code === 'ECONNREFUSED'
+  ) {
     return `Cannot reach Postgres at ${new URL(config.databaseUrl).host}. Is it running?`;
   }
   return null;
@@ -28,7 +31,9 @@ try {
 
 // Creates tables that are missing and keeps existing data. Schema changes need migrations.
 await sequelize.sync();
-if (await seedIfEmpty()) console.log('Seeded sample content');
+const seeded = await seedMissing();
+if (seeded.videos || seeded.quizzes)
+  console.log(`Seeded ${seeded.videos} videos and ${seeded.quizzes} quizzes`);
 
 createApp().listen(config.port, '127.0.0.1', () => {
   console.log(`Listening on http://127.0.0.1:${config.port}`);

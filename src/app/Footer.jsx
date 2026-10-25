@@ -1,7 +1,8 @@
 export function Footer() {
   return (
     <footer>
-      <h6>created by mrkit</h6>
+      created by mrkit. It's not my fault I don't know how many k's are in
+      anxious.
     </footer>
   );
 }
