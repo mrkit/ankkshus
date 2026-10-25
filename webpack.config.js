@@ -24,12 +24,7 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel-loader',
       options: {
-        presets: ['@babel/preset-env', '@babel/preset-react'],
-        // Class properties, dynamic import, import.meta, numeric separators
-        // and JSON superset are all in @babel/preset-env now.
-        plugins: [
-          ["@babel/plugin-proposal-decorators", { "legacy": true }]
-        ]
+        presets: ['@babel/preset-env', '@babel/preset-react']
       }
     }, {
       test: /\.(scss|css)$/,

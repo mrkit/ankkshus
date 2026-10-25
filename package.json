@@ -38,7 +38,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7",
-    "@babel/plugin-proposal-decorators": "^7",
     "@babel/preset-env": "^7",
     "@babel/preset-react": "^7",
     "babel-loader": "^10",
@@ -49,9 +48,7 @@
     "nodemon": "^3",
     "sass": "^1",
     "sass-loader": "^16",
-    "style-loader": "^4",
     "webpack": "^5",
-    "webpack-cli": "^6",
-    "webpack-merge": "^6"
+    "webpack-cli": "^6"
   }
 }
