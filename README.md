@@ -34,19 +34,20 @@ dragon and colour for now.
 
 ## Scripts
 
-| Command                           | What it does                                                                 |
-| --------------------------------- | ---------------------------------------------------------------------------- |
-| `npm run dev`                     | API with watch mode and the Vite dev server together                         |
-| `npm run build`                   | Builds the client and the game into `dist/`                                  |
-| `npm start`                       | Runs the API in production. Serves `dist/` if it exists. Needs `JWT_SECRET`. |
-| `npm run db:seed`                 | Adds any missing sample videos and quizzes                                   |
+| Command                           | What it does                                                                                     |
+| --------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `npm run dev`                     | API with watch mode and the Vite dev server together                                             |
+| `npm run build`                   | Builds the client and the game into `dist/`                                                      |
+| `npm start`                       | Runs the API in production. Serves `dist/` if it exists. Needs `JWT_SECRET`.                     |
+| `npm run db:seed`                 | Adds any missing sample videos and quizzes                                                       |
 | `npm run db:reset -- --yes`       | Drops every table and rebuilds them with the sample content; refuses when NODE_ENV is production |
-| `npm test`                        | API tests. Needs `TEST_DATABASE_URL`, and the name must contain "test"       |
-| `npm run lint` / `npm run format` | Biome                                                                        |
+| `npm test`                        | API tests. Needs `TEST_DATABASE_URL`, and the name must contain "test"                           |
+| `npm run lint` / `npm run format` | Biome                                                                                            |
 
 ## Content
 
-- Quizzes are defined in `src/server/db/quizzes/*.js` and listed in `seed.js`. A quiz is a `checklist` (items scored 0 to 4, a total is kept) or a `worksheet` (written prompts). Add a file, list it, restart.
+- Quizzes are defined in `src/server/db/quizzes/*.js` and listed in `seed.js`. A quiz is a `checklist` (items scored 0 to 4, a total is kept) or a `worksheet` (written prompts; `text` is one line, `longtext` a paragraph). Add a file, list it, restart.
+- `quizzes/cbt.js` holds the online CBT course as eleven worksheet quizzes, one per course video. The videos and original worksheets live in a Google Drive share, and each quiz links to its own.
 - `assets/` is gitignored. Vite serves it from the site root, so `assets/images/x.png` is `/images/x.png`. The game needs nothing from it.
 
 ## Design

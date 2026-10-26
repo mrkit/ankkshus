@@ -7,10 +7,11 @@ import {
   VideoChannel,
 } from './models.js';
 import burns from './quizzes/burns.js';
+import cbt from './quizzes/cbt.js';
 
 // Every quiz definition the site ships. Adding a file here and listing it is
 // enough: the seed adds any quiz whose slug is not in the database yet.
-export const quizDefinitions = [burns];
+export const quizDefinitions = [burns, ...cbt];
 
 const videoEpisodes = [
   'https://youtu.be/1A_CAkYt3GY',

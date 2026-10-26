@@ -225,3 +225,39 @@ which the old linter preset (`none`) let through.
 - Renaming the new tables so they stop colliding with the old names. Rejected:
   the old tables stay behind as orphans, and the next column change hits the
   same wall.
+
+## 2026-10-26 — The CBT course as eleven written check-ins, one per video, prompts in our words
+
+**Chosen.** `src/server/db/quizzes/cbt.js` turns the online CBT course into
+eleven worksheet quizzes: the intro questionnaire, one per section 1 to 8, and
+section 6 split into "why my journal matters" plus a morning journal and an
+evening journal, since those two are daily. Each quiz links the section's
+video in the sister's Google Drive share. One part per worksheet, one prompt
+per row of the worksheet's form, and a final "in your own words" prompt. A
+short answer (`text`) is a single-line input; a long one is a textarea. The
+course's lists (example problems, unhealthy behaviours, emotion words, the ten
+thought traps) are paraphrased in the help text, and each worked example is
+summarised in one line.
+
+**Why.** The sister sent the course as 19 worksheets and 9 videos, and the
+worksheets are forms whose rows are the questions (the forms are images in the
+.docx files; the rows were read from those). One quiz per video keeps each one
+short enough to do in a sitting, lets the daily journals build a history of
+their own, and keeps the three section-6 pieces from blurring. The prompts are
+rewritten rather than copied because the course is someone else's copyrighted
+material and the site only needs the structure. Framework rules applied: one
+idea per prompt (P25), written answers rather than ticks (P20), one recall
+prompt at the end of each quiz (P16, P29), help text that hands over material
+rather than a verdict (A17), and a size the person can finish (P32).
+
+**Considered and rejected.**
+
+- One "CBT" quiz with 19 parts. Rejected: it would take an hour, and the user
+  asked for separate quizzes.
+- Storing the worksheet .docx files and videos in the repo. Rejected: the
+  videos are 23 to 91 MB each, the files are hers, and a link to the Drive
+  share does the job; both of them already have access.
+- Copying the worksheet text verbatim. Rejected: copyright, and the forms are
+  images anyway.
+- Making every answer required. Rejected: the course itself says to leave
+  blank what you are not sure about, and a blank prompt costs nothing.

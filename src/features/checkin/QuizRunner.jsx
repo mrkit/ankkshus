@@ -176,14 +176,25 @@ export function QuizRunner({ user }) {
                 <label className="field">
                   <span className="question-prompt">{q.prompt}</span>
                   {q.help && <span className="question-help">{q.help}</span>}
-                  <textarea
-                    className="textarea"
-                    rows={q.type === 'longtext' ? 6 : 3}
-                    value={answers[q.id] ?? ''}
-                    onChange={(e) =>
-                      setAnswers((a) => ({ ...a, [q.id]: e.target.value }))
-                    }
-                  />
+                  {q.type === 'longtext' ? (
+                    <textarea
+                      className="textarea"
+                      rows={6}
+                      value={answers[q.id] ?? ''}
+                      onChange={(e) =>
+                        setAnswers((a) => ({ ...a, [q.id]: e.target.value }))
+                      }
+                    />
+                  ) : (
+                    <input
+                      className="input"
+                      type="text"
+                      value={answers[q.id] ?? ''}
+                      onChange={(e) =>
+                        setAnswers((a) => ({ ...a, [q.id]: e.target.value }))
+                      }
+                    />
+                  )}
                 </label>
               </div>
             ),
