@@ -47,7 +47,7 @@ async function loadQuiz(slug) {
 }
 
 // Every quiz with its size and the newest attempt per person.
-router.get('/', requireAuth, async (req, res) => {
+router.get('/', requireAuth, async (_req, res) => {
   const quizzes = await Quiz.findAll({
     include: fullInclude,
     order: [['order', 'ASC'], ...fullOrder],

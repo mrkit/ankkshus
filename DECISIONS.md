@@ -195,3 +195,33 @@ The wrapper keeps the diff to one line per call site.
 - Rewriting both as function components with hooks. Rejected: it is a larger
   change to code the migration does not otherwise touch.
 - Keeping `withRouter`. Rejected: it does not exist in React Router 6 or later.
+
+## 2026-10-26 — Refuse an older database at boot, and rebuild it with `db:reset`; migrations wait
+
+**Chosen.** After `sync()`, the server compares every model's columns with the
+table in the database and stops with one line listing what is missing, plus
+the two ways out. `npm run db:reset -- --yes` drops every table and enum type
+in the database and rebuilds them with the sample content. It refuses to run
+with `NODE_ENV=production`, and without `--yes` it only prints what it would
+drop. The Biome linter now runs the recommended rules plus
+`noUndeclaredVariables`, on JavaScript only.
+
+**Why.** `sync()` creates tables that are missing and never alters one that
+exists. The redesign changed the quiz, post and video tables, so a database
+created by the previous version kept its old columns and the server crashed
+on the first seed insert with a stack trace. Nothing is deployed and no
+database holds anyone's data, so dropping and rebuilding loses nothing today.
+The seed command had also been calling a function that no longer existed,
+which the old linter preset (`none`) let through.
+
+**Considered and rejected.**
+
+- Migrations with `umzug` or `sequelize-cli` now. Rejected for this change:
+  the schema is still moving and nobody's data exists yet, so a migration per
+  table buys nothing. They are the answer once the site holds real check-ins,
+  and the decision stays on NEXT_ACTIONS.
+- `sync({ alter: true })`. Rejected: it fails on a new `NOT NULL` column with
+  no default, and it can drop or retype columns on a database that matters.
+- Renaming the new tables so they stop colliding with the old names. Rejected:
+  the old tables stay behind as orphans, and the next column change hits the
+  same wall.

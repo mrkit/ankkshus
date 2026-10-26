@@ -4,6 +4,8 @@
   --cols: 6;
   --gap: 8px;
   position: relative;
+  list-style: none;
+  margin: 0;
   display: grid;
   grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
   gap: var(--gap);
@@ -27,9 +29,16 @@
   }
 }
 
-.space {
+// A cell holds the grid position; the space inside it fills the cell.
+.cell {
   position: relative;
   aspect-ratio: 1;
+  min-width: 0;
+}
+
+.space {
+  position: absolute;
+  inset: 0;
   border-radius: 6px;
   border: 0;
   padding: 0;
@@ -189,11 +198,13 @@
   @media (min-width: 560px) {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  margin-top: 12px;
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
   font-size: 0.9rem;
   color: var(--ink-soft);
 
-  span {
+  li {
     display: inline-flex;
     align-items: center;
     gap: 6px;

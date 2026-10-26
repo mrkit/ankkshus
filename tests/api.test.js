@@ -3,6 +3,7 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createApp } from '../src/server/app.js';
 import { sequelize } from '../src/server/db/index.js';
 import { Post, Video } from '../src/server/db/models.js';
+import { missingColumns } from '../src/server/db/schema.js';
 import { seedMissing } from '../src/server/db/seed.js';
 import '../src/server/db/models.js';
 
@@ -166,5 +167,13 @@ describe('api', () => {
 
   it('seeds only what is missing', async () => {
     expect(await seedMissing()).toEqual({ videos: 0, quizzes: 0 });
+  });
+
+  it('reports a column the models expect and the database lacks', async () => {
+    expect(await missingColumns()).toEqual([]);
+    await sequelize.query('ALTER TABLE videos DROP COLUMN "addedById"');
+    expect(await missingColumns()).toEqual(['videos.addedById']);
+    await sequelize.query('ALTER TABLE videos ADD COLUMN "addedById" integer');
+    expect(await missingColumns()).toEqual([]);
   });
 });

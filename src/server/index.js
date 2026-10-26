@@ -1,6 +1,7 @@
 import { createApp } from './app.js';
 import { config } from './config.js';
 import { sequelize } from './db/index.js';
+import { missingColumns } from './db/schema.js';
 import { seedMissing } from './db/seed.js';
 import './db/models.js';
 
@@ -29,8 +30,17 @@ try {
   process.exit(1);
 }
 
-// Creates tables that are missing and keeps existing data. Schema changes need migrations.
+// Creates tables that are missing and keeps existing data. It never adds a
+// column to an existing table, so an older database is refused with a hint
+// instead of crashing on the first insert.
 await sequelize.sync();
+const missing = await missingColumns();
+if (missing.length) {
+  console.error(
+    `\nThe tables in "${dbName}" are from an older version of this app. Missing: ${missing.join(', ')}.\nRun npm run db:reset -- --yes to drop and rebuild them (nothing is kept), or point DATABASE_URL at a new database.\n`,
+  );
+  process.exit(1);
+}
 const seeded = await seedMissing();
 if (seeded.videos || seeded.quizzes)
   console.log(`Seeded ${seeded.videos} videos and ${seeded.quizzes} quizzes`);

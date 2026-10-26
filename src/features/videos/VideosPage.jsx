@@ -118,7 +118,8 @@ export function VideosPage({ user }) {
 
         {channels.length > 0 && (
           <div className="video-tools">
-            <div className="chips" role="group" aria-label="Channel">
+            <fieldset className="chips">
+              <legend className="sr-only">Channel</legend>
               <button
                 type="button"
                 className="chip"
@@ -138,7 +139,7 @@ export function VideosPage({ user }) {
                   {c.name}
                 </button>
               ))}
-            </div>
+            </fieldset>
           </div>
         )}
 

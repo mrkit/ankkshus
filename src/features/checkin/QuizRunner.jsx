@@ -32,6 +32,7 @@ export function QuizRunner({ user }) {
   const [result, setResult] = useState(null);
   const [previous, setPrevious] = useState(null);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: scrolls to the top whenever the step changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [step]);
@@ -74,10 +75,7 @@ export function QuizRunner({ user }) {
 
   return (
     <div className="runner">
-      <div
-        className="runner-progress"
-        aria-label={`Step ${step} of ${sections.length}`}
-      >
+      <div className="runner-progress">
         <ol aria-hidden="true">
           {sections.map((s, i) => (
             <li

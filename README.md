@@ -23,7 +23,11 @@ npm run dev        # API on :3000, Vite on :5173 (proxies /api)
 
 On start the server creates any missing tables and adds what is missing:
 the sample videos when there are none, and any quiz whose slug is not in the
-database yet. It never drops tables.
+database yet. It never drops a table and never adds a column to an existing
+one. When the tables are from an older version of this app, the server stops
+and lists the missing columns. Then either run `npm run db:reset -- --yes`,
+which drops every table in that database and rebuilds them with the sample
+content, or point `DATABASE_URL` at a new database.
 
 The first two people to sign up are the two players. Sign-up order picks the
 dragon and colour for now.
@@ -36,6 +40,7 @@ dragon and colour for now.
 | `npm run build`                   | Builds the client and the game into `dist/`                                  |
 | `npm start`                       | Runs the API in production. Serves `dist/` if it exists. Needs `JWT_SECRET`. |
 | `npm run db:seed`                 | Adds any missing sample videos and quizzes                                   |
+| `npm run db:reset -- --yes`       | Drops every table and rebuilds them with the sample content; refuses when NODE_ENV is production |
 | `npm test`                        | API tests. Needs `TEST_DATABASE_URL`, and the name must contain "test"       |
 | `npm run lint` / `npm run format` | Biome                                                                        |
 

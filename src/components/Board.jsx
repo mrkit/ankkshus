@@ -70,59 +70,48 @@ export function Board({
         </div>
       )}
 
-      <div
-        className="board"
-        role="list"
-        aria-label="Check-ins, oldest to newest"
-      >
+      <ol className="board" aria-label="Check-ins, oldest to newest">
         {Array.from({ length: totalCells }, (_, i) => {
           const { row, col } = cellFor(i, cols);
+          // A cell is a fixed position on the grid, so its key is that position.
+          const key = `${row}-${col}`;
           const style = { gridRow: row + 1, gridColumn: col + 1 };
           const next = nextFor(i, cols, totalCells);
           const space = spaces[i];
           if (!space)
             return (
-              <div
-                key={i}
-                className="space empty"
-                style={style}
-                data-next={next}
-                aria-hidden="true"
-              />
+              <li key={key} className="cell" style={style} aria-hidden="true">
+                <span className="space empty" data-next={next} />
+              </li>
             );
           if (space.start) {
             return (
-              <div
-                key="start"
-                className="space start"
-                style={style}
-                data-next={next}
-                role="listitem"
-              >
-                Start
-              </div>
+              <li key={key} className="cell" style={style}>
+                <span className="space start" data-next={next}>
+                  Start
+                </span>
+              </li>
             );
           }
           const band = bandFor(space.total);
           return (
-            <Link
-              key={space.id}
-              to={`/check-in/attempts/${space.id}`}
-              className={`space band-${band?.n ?? 0}`}
-              style={style}
-              data-next={next}
-              role="listitem"
-              aria-label={`${space.user?.username ?? 'Someone'} on ${shortDate(space.completedAt)}, total ${space.total}`}
-            >
-              {space.total}
-              <span className="space-date" aria-hidden="true">
-                {shortDate(space.completedAt)}
-              </span>
-            </Link>
+            <li key={key} className="cell" style={style}>
+              <Link
+                to={`/check-in/attempts/${space.id}`}
+                className={`space band-${band?.n ?? 0}`}
+                data-next={next}
+                aria-label={`${space.user?.username ?? 'Someone'} on ${shortDate(space.completedAt)}, total ${space.total}`}
+              >
+                {space.total}
+                <span className="space-date" aria-hidden="true">
+                  {shortDate(space.completedAt)}
+                </span>
+              </Link>
+            </li>
           );
         })}
 
-        <div className="piece-layer" aria-hidden="true">
+        <li className="piece-layer" aria-hidden="true">
           {pieces.map(({ player, index }) => {
             const { row, col } = cellFor(index, cols);
             const Dragon = player.dragon.Component;
@@ -141,18 +130,18 @@ export function Board({
               </div>
             );
           })}
-        </div>
-      </div>
+        </li>
+      </ol>
 
       {legend && (
-        <div className="board-legend" aria-label="Burns' ranges">
+        <ul className="board-legend" aria-label="Burns' ranges">
           {BANDS.map((b) => (
-            <span key={b.n}>
+            <li key={b.n}>
               <i style={{ background: bandColor(b) }} />
               {b.min}–{b.max} {b.label.toLowerCase()}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </div>
   );

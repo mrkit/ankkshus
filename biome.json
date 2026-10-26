@@ -9,8 +9,12 @@
   },
   "linter": {
     "enabled": true,
+    "includes": ["**", "!**/*.scss"],
     "rules": {
-      "preset": "none"
+      "preset": "recommended",
+      "correctness": {
+        "noUndeclaredVariables": "error"
+      }
     }
   },
   "javascript": {

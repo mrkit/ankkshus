@@ -15,7 +15,7 @@ const withAuthor = {
 
 const router = Router();
 
-router.get('/', requireAuth, async (req, res) => {
+router.get('/', requireAuth, async (_req, res) => {
   const posts = await Post.findAll({
     ...withAuthor,
     order: [['createdAt', 'DESC']],
