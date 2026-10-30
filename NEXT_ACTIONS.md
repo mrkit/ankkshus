@@ -7,10 +7,6 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
 
 ## Next
 
-- [ ] Run `npm run db:reset -- --yes` in the project folder, once · added 2026-10-26
-  - the local `ankkshus` database has tables from the previous version, and the server now refuses to start on it with the list of missing columns
-  - it holds 0 users, 0 notes, 0 check-ins and the 6 sample videos, which the reset seeds again
-  - Option: instead set `DATABASE_URL=postgres://localhost/ankkshus_dev` in `.env`; that database already has the new tables, a test sign-up "anthony", one note and two check-ins
 - [ ] Read the eleven CBT check-ins on the Check-in page and tell an agent what to reword · added 2026-10-26
   - the prompts are rewritten from your sister's worksheets, not copied; the lists and examples are paraphrased in the help text
   - each one links the section's video in her Google Drive share; the link opens Drive and needs your Google login
