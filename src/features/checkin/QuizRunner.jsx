@@ -173,11 +173,12 @@ export function QuizRunner({ user }) {
               </fieldset>
             ) : (
               <div className="question" key={q.id}>
-                <label className="field">
+                <label className="field" htmlFor={`q-${q.id}`}>
                   <span className="question-prompt">{q.prompt}</span>
                   {q.help && <span className="question-help">{q.help}</span>}
                   {q.type === 'longtext' ? (
                     <textarea
+                      id={`q-${q.id}`}
                       className="textarea"
                       rows={6}
                       value={answers[q.id] ?? ''}
@@ -187,6 +188,7 @@ export function QuizRunner({ user }) {
                     />
                   ) : (
                     <input
+                      id={`q-${q.id}`}
                       className="input"
                       type="text"
                       value={answers[q.id] ?? ''}
