@@ -3,10 +3,9 @@
 name: ankkshus
 description: Two players at the family game table; each check-in is a space on a board, each person a dragon piece.
 colors:
-felt: "#1e4d3a"
-felt-line: "rgba(244, 235, 214, 0.1)"
-felt-text: "#f4ebd6"
-felt-text-soft: "#bfd3c6"
+table: "#3a2a20"
+table-text: "#f4ebd6"
+table-text-soft: "#d6c6ad"
 card: "#f4ebd6"
 card-edge: "#e2d4b4"
 card-well: "#ebdfc4"
@@ -167,18 +166,18 @@ Recorded on 2026-10-25 from the shipped code: `src/styles/app.scss`, `src/styles
 
 **Creative North Star: "The Family Game Table"**
 
-The page is a felt-green table. Everything a person reads sits on card stock laid on the felt: a cream panel with dark brown ink and a short shadow underneath. There are two players, a brother and a sister, each with a colour and a dragon piece. Each check-in is one square space on a serpentine track, coloured by the Burns range it falls in. A person's piece stands on their latest space.
+The page is a dark walnut table. Everything a person reads sits on card stock laid on the table: a cream panel with dark brown ink and a short shadow underneath. There are two players, a brother and a sister, each with a colour and a dragon piece. Each check-in is one square space on a serpentine track, coloured by the Burns range it falls in. A person's piece stands on their latest space.
 
 The site has one committed field colour and one data colour scale. Hierarchy comes from size and weight, never from ornament, kickers, or decoration. The display face is a rounded, heavy, hand-lettered sans; body text is the system face so that notes and tables read like plain writing. The whole thing is built phone-first: the board is six columns at phone width and eight above 560px, every control is at least 44px tall, and the top bar wraps its links onto a second row below 720px.
 
 The world refuses the wellness-app arrangement and the D&D costume. There is no big score, no ring, no streak, no parchment texture, no blackletter, no gothic border. A check-in total is shown at body size inside a sentence that quotes Burns' own range, so it is material to weigh rather than a verdict.
 
 **Key Characteristics:**
-- One field colour (felt green) under cream card panels; dark brown ink, never black.
+- One field colour (dark walnut) under cream card panels; dark brown ink, never black.
 - Two player colours (ember red, cobalt) that mean "her" and "him" and nothing else; gold is foil for focus, the Start space, and one button.
 - A six-step board scale from pale gold to night is the only data colour.
 - Grandstander Variable, bold, slightly tight, for every heading and the wordmark; system stack with tabular numerals for everything else.
-- A faint 40px ruled grid on the felt and a faint cell grid inside the board.
+- No grid or ruled pattern anywhere: the table and the board plate are plain colour.
 - Motion is small and rare: pieces slide 600ms on an exponential ease-out; the first load deals panels in over 180ms.
 
 ## Colors
@@ -187,15 +186,15 @@ A warm, dark table with light card stock on it, two saturated player colours, go
 
 ### Primary
 
-- **Felt** (`felt`): the page background, the one committed field.
-- **Card** (`card`): every panel, the top bar, and the text colour on the felt. Felt text at rest is this cream; secondary text on the felt is `felt-text-soft`.
+- **Table** (`table`): the page background, the one committed field.
+- **Card** (`card`): every panel, the top bar, and the text colour on the table. Table text at rest is this cream; secondary text on the table is `table-text-soft`.
 - **Ink** (`ink`): all text on card stock, the current nav pill, the checked scale option, the pressed chip. `ink-soft` is secondary text on card; `ink-faint` is placeholder text only.
 
 ### Secondary
 
 - **Ember red** (`player-a`): the first player's piece, her legend swatch, and the dragon mark in the wordmark and the login mark. Never used for errors.
 - **Cobalt** (`player-b`): the second player's piece, the primary button, links inside panels, the input caret and focus border, and `accent-color`.
-- **Gold** (`gold`): the 3px focus ring on every element, the Start space, the board space hover ring, finished progress steps, text selection on the felt, and the `btn-gold` action ("Do it now").
+- **Gold** (`gold`): the 3px focus ring on every element, the Start space, the board space hover ring, finished progress steps, text selection on the table, and the `btn-gold` action ("Do it now").
 
 ### Tertiary
 
@@ -207,7 +206,6 @@ A warm, dark table with light card stock on it, two saturated player colours, go
 - **Card edge** (`card-edge`): 2px borders on inputs, scale options, and chips; 1px rules between questions, answers, and table rows.
 - **Card well** (`card-well`): the board's base under the spaces, nav link hover, and the image placeholder behind thumbnails.
 - **Input paper** (`input-paper`): the lighter cream inside inputs, textareas, and scale options, so they read as fields on the card.
-- **Felt line** (`felt-line`): the 1px rules of the 40px grid drawn on the felt.
 
 ### Named Rules
 
@@ -256,7 +254,7 @@ The top bar is sticky at the top with the wordmark on the left, nav in the middl
 
 ## Elevation & Depth
 
-Depth is the physical stack of card stock on felt. Panels and the top bar carry a short offset shadow; nothing else lifts. Fields and the board sit in slightly different creams (`input-paper`, `card-well`) rather than casting shadows. The board's spaces have an inset 3px bottom edge so they read as tiles; dragon pieces have a drop shadow so they stand on the tile.
+Depth is the physical stack of card stock on the table. Panels and the top bar carry a short offset shadow; nothing else lifts. Fields and the board sit in slightly different creams (`input-paper`, `card-well`) rather than casting shadows. The board's spaces have an inset 3px bottom edge so they read as tiles; dragon pieces have a drop shadow so they stand on the tile.
 
 ### Shadow Vocabulary
 
@@ -268,9 +266,9 @@ Depth is the physical stack of card stock on felt. Panels and the top bar carry 
 
 ### Named Rules
 
-**The Card On Felt Rule.** Shadows exist only to say "this panel is lying on the table". A shadow is never used for hover, for emphasis, or on a control.
+**The Card On Table Rule.** Shadows exist only to say "this panel is lying on the table". A shadow is never used for hover, for emphasis, or on a control.
 
-**The Soft Ground Rule.** The felt carries a radial highlight (`rgba(255,255,255,0.08)` ellipse at 50% -20%) and a 40px ruled grid at 10% cream. Panels never carry textures or gradients.
+**The Soft Ground Rule.** The table carries a radial highlight (`rgba(255,255,255,0.08)` ellipse at 50% -20%) and nothing else: no grid. Panels never carry textures or gradients.
 
 ## Shapes
 
@@ -316,7 +314,7 @@ Pill buttons (`.chip`) at 36px with a 2px `card-edge` border on `card`, weight 6
 
 ### The Board (signature)
 
-A serpentine track of square spaces on a `card-well` plate with a faint 1/6 cell grid at 7% ink. The first space is "Start" in gold, set in Grandstander. Each following space is one check-in: a link filled with its band colour, the total top-left at 700 weight (`clamp(0.7rem, 0.55rem + 0.6vw, 0.95rem)`), the short date bottom-left at 0.625rem and 80% opacity. Cells with no check-in are outlined only. Track bars join consecutive spaces. The last twelve check-ins show on the home board; the result page shows eleven plus the new one.
+A serpentine track of square spaces on a plain `card-well` plate. The first space is "Start" in gold, set in Grandstander. Each following space is one check-in: a link filled with its band colour, the total top-left at 700 weight (`clamp(0.7rem, 0.55rem + 0.6vw, 0.95rem)`), the short date bottom-left at 0.625rem and 80% opacity. Cells with no check-in are outlined only. Track bars join consecutive spaces. The last twelve check-ins show on the home board; the result page shows eleven plus the new one.
 
 Pieces are 60% of a cell, standing in the lower corners (slot 0 at `translate(22%, 18%)`, slot 1 at `translate(-22%, 18%)`) so the number stays readable. A piece is positioned by `--row` and `--col` and slides with `transition: translate 600ms var(--ease-out)`. Under `prefers-reduced-motion: reduce` the slide is replaced by a 200ms opacity transition. On the result page the new check-in is withheld for 450ms and then revealed, so the piece is seen to move.
 
@@ -328,7 +326,7 @@ Six flat SVG silhouettes in `src/dragons/dragons.jsx`: Red dragon, Sea serpent, 
 
 ### Quiz runner
 
-A 760px column. Progress is a row of 28x6px bars at 3px radius: 25% cream for pending, gold for done, cream for the current part, with "Part n of m" beside it in `felt-text-soft` at 600. Each section is a card with the H2, an intro in `.muted`, and questions separated by 1px `card-edge` rules with 16px vertical padding.
+A 760px column. Progress is a row of 28x6px bars at 3px radius: 25% cream for pending, gold for done, cream for the current part, with "Part n of m" beside it in `table-text-soft` at 600. Each section is a card with the H2, an intro in `.muted`, and questions separated by 1px `card-edge` rules with 16px vertical padding.
 
 The 0 to 4 scale is five equal columns at a 6px gap. Each option is a label with a hidden radio: `input-paper`, 2px `card-edge` border, 8px radius, 56px minimum height, the digit at 700 over a word ("Not at all" to "Extremely") at 500 and 0.7rem in `ink-soft`. Checked becomes ink with cream text. Keyboard focus draws the 3px gold ring. Below 420px the words are hidden and the digits stay.
 
@@ -348,7 +346,7 @@ The result card says "Saved." as an H1, then "Total N." at body size with the ba
 
 ### Do:
 
-- **Do** put everything a person reads on a `.card` panel; the felt holds only headings, muted lines, the progress row and the footer.
+- **Do** put everything a person reads on a `.card` panel; the table holds only headings, muted lines, the progress row and the footer.
 - **Do** keep every control at 44px or taller and real: `<button>`, `<a>`, `<input>`, with the global 3px gold `:focus-visible` ring.
 - **Do** colour a value only with the six `space-n` tokens and always show the matching legend or Burns sentence beside it.
 - **Do** show a total as "Total N." at body size inside a sentence that quotes Burns' range, followed by the line that a checklist is not a diagnosis.

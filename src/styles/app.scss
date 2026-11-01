@@ -2,11 +2,10 @@
 @use "pages";
 
 :root {
-  // The table: one committed field, and card stock laid on it.
-  --felt: #1e4d3a;
-  --felt-line: rgba(244, 235, 214, 0.1);
-  --felt-text: #f4ebd6;
-  --felt-text-soft: #bfd3c6;
+  // The table: plain dark walnut, and card stock laid on it.
+  --table: #3a2a20;
+  --table-text: #f4ebd6;
+  --table-text-soft: #d6c6ad;
 
   --card: #f4ebd6;
   --card-edge: #e2d4b4;
@@ -65,24 +64,13 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
-  background: var(--felt);
-  background-image:
-    radial-gradient(
-      ellipse at 50% -20%,
-      rgba(255, 255, 255, 0.08),
-      transparent 60%
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent 0 39px,
-      var(--felt-line) 39px 40px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0 39px,
-      var(--felt-line) 39px 40px
-    );
-  color: var(--felt-text);
+  background: var(--table);
+  background-image: radial-gradient(
+    ellipse at 50% -20%,
+    rgba(255, 255, 255, 0.08),
+    transparent 60%
+  );
+  color: var(--table-text);
   font-family: var(--font-body);
   font-size: 1.0625rem;
   line-height: 1.5;
@@ -137,7 +125,7 @@ a {
   border-radius: 4px;
 }
 
-// Card stock laid on the felt. Panels hold anything a person reads.
+// Card stock laid on the table. Panels hold anything a person reads.
 .card {
   background: var(--card);
   color: var(--ink);
@@ -177,7 +165,7 @@ a {
 }
 
 .muted {
-  color: var(--felt-text-soft);
+  color: var(--table-text-soft);
 }
 
 .eyebrow-free {
@@ -446,7 +434,7 @@ main {
 footer {
   padding: 20px var(--gutter) 28px;
   text-align: center;
-  color: var(--felt-text-soft);
+  color: var(--table-text-soft);
   font-size: 0.9rem;
 }
 

@@ -4,24 +4,24 @@
   "title": "Design System: ankkshus",
   "extensions": {
     "colorMeta": {
-      "felt": {
+      "table": {
         "role": "primary",
-        "displayName": "Felt Green",
-        "canonical": "oklch(38.2% 0.061 164)",
+        "displayName": "Walnut Table",
+        "canonical": "oklch(30.1% 0.030 53)",
         "tonalRamp": [
-          "oklch(15% 0.061 164)",
-          "oklch(26% 0.061 164)",
-          "oklch(37% 0.061 164)",
-          "oklch(48% 0.061 164)",
-          "oklch(60% 0.061 164)",
-          "oklch(72% 0.061 164)",
-          "oklch(84% 0.061 164)",
-          "oklch(95% 0.061 164)"
+          "oklch(15% 0.030 53)",
+          "oklch(26% 0.030 53)",
+          "oklch(37% 0.030 53)",
+          "oklch(48% 0.030 53)",
+          "oklch(60% 0.030 53)",
+          "oklch(72% 0.030 53)",
+          "oklch(84% 0.030 53)",
+          "oklch(95% 0.030 53)"
         ]
       },
-      "felt-text": {
+      "table-text": {
         "role": "primary",
-        "displayName": "Cream On Felt",
+        "displayName": "Cream On Table",
         "canonical": "oklch(94.2% 0.029 88)",
         "tonalRamp": [
           "oklch(15% 0.029 88)",
@@ -34,19 +34,19 @@
           "oklch(95% 0.029 88)"
         ]
       },
-      "felt-text-soft": {
+      "table-text-soft": {
         "role": "primary",
-        "displayName": "Soft Cream On Felt",
-        "canonical": "oklch(84.8% 0.028 157)",
+        "displayName": "Soft Cream On Table",
+        "canonical": "oklch(83.3% 0.038 79)",
         "tonalRamp": [
-          "oklch(15% 0.028 157)",
-          "oklch(26% 0.028 157)",
-          "oklch(37% 0.028 157)",
-          "oklch(48% 0.028 157)",
-          "oklch(60% 0.028 157)",
-          "oklch(72% 0.028 157)",
-          "oklch(84% 0.028 157)",
-          "oklch(95% 0.028 157)"
+          "oklch(15% 0.038 79)",
+          "oklch(26% 0.038 79)",
+          "oklch(37% 0.038 79)",
+          "oklch(48% 0.038 79)",
+          "oklch(60% 0.038 79)",
+          "oklch(72% 0.038 79)",
+          "oklch(84% 0.038 79)",
+          "oklch(95% 0.038 79)"
         ]
       },
       "card": {
@@ -318,21 +318,6 @@
           "oklch(84% 0.037 88)",
           "oklch(95% 0.037 88)"
         ]
-      },
-      "felt-line": {
-        "role": "neutral",
-        "displayName": "Felt Rule",
-        "canonical": "rgba(244, 235, 214, 0.1)",
-        "tonalRamp": [
-          "oklch(15% 0.029 88)",
-          "oklch(26% 0.029 88)",
-          "oklch(37% 0.029 88)",
-          "oklch(48% 0.029 88)",
-          "oklch(60% 0.029 88)",
-          "oklch(72% 0.029 88)",
-          "oklch(84% 0.029 88)",
-          "oklch(95% 0.029 88)"
-        ]
       }
     },
     "typographyMeta": {
@@ -369,7 +354,7 @@
       {
         "name": "shadow-card",
         "value": "0 1px 0 rgba(0, 0, 0, 0.12), 0 12px 28px -14px rgba(0, 0, 0, 0.5)",
-        "purpose": "Every card panel lying on the felt."
+        "purpose": "Every card panel lying on the table."
       },
       {
         "name": "shadow-topbar",
@@ -500,7 +485,7 @@
       "name": "Card Panel",
       "kind": "card",
       "refersTo": "card",
-      "description": "Card stock on the felt: the container for anything a person reads.",
+      "description": "Card stock on the table: the container for anything a person reads.",
       "html": "<section class=\"ds-card\"><h2>Notes</h2><p class=\"ds-muted\">sis · today</p><p>Beat you at Catan next time.</p></section>",
       "css": ".ds-card{background:var(--card,#f4ebd6);color:var(--ink,#1f1b17);border-radius:var(--radius-lg,14px);box-shadow:0 1px 0 rgba(0,0,0,.12),0 12px 28px -14px rgba(0,0,0,.5);padding:clamp(18px,3vw,28px);font:1.0625rem/1.5 system-ui,sans-serif;font-variant-numeric:tabular-nums}.ds-card h2{font-family:'Grandstander Variable',Grandstander,system-ui,sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:0 0 6px;font-size:clamp(1.375rem,1.1rem + 1.2vw,1.875rem)}.ds-card p{margin:0}.ds-card p+p{margin-top:.75em}.ds-muted{color:var(--ink-soft,#5e554b);font-size:.95rem}"
     },
@@ -508,9 +493,9 @@
       "name": "Board",
       "kind": "custom",
       "refersTo": "board-space",
-      "description": "Serpentine track of square spaces on a faint grid, coloured by Burns range, with a dragon piece on the latest space.",
+      "description": "Serpentine track of square spaces on a plain plate, coloured by Burns range, with a dragon piece on the latest space.",
       "html": "<div class=\"ds-board\"><div class=\"ds-space ds-start\" data-next=\"right\">Start</div><a class=\"ds-space ds-band-4\" data-next=\"right\" href=\"#\">50<span class=\"ds-date\">Oct 25</span></a><a class=\"ds-space ds-band-3\" data-next=\"right\" href=\"#\">24<span class=\"ds-date\">Oct 25</span></a><div class=\"ds-space ds-empty\" data-next=\"right\"></div><div class=\"ds-space ds-empty\" data-next=\"right\"></div><div class=\"ds-space ds-empty\"></div><div class=\"ds-pieces\"><div class=\"ds-piece\" style=\"--row:0;--col:2\"><svg viewBox=\"0 0 64 64\" aria-hidden=\"true\"><path d=\"M8 48 L20 20 L30 36 L40 12 L52 40 L58 28 L56 50 Z\" fill=\"var(--player-b,#2c56a6)\"/></svg></div></div></div>",
-      "css": ".ds-board{--gap:8px;position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--gap);padding:var(--gap);background:var(--card-well,#ebdfc4);border-radius:var(--radius,8px);background-image:repeating-linear-gradient(0deg,transparent 0 calc(100%/6 - 1px),rgba(31,27,23,.07) 0 calc(100%/6)),repeating-linear-gradient(90deg,transparent 0 calc(100%/6 - 1px),rgba(31,27,23,.07) 0 calc(100%/6));font:700 clamp(.7rem,.55rem + .6vw,.95rem)/1.2 system-ui,sans-serif}.ds-space{position:relative;aspect-ratio:1;border-radius:6px;color:var(--ink,#1f1b17);background:var(--space-empty,#e9dec4);box-shadow:inset 0 -3px 0 rgba(0,0,0,.12);display:grid;align-content:start;justify-items:start;padding:5px 7px;text-decoration:none}.ds-space::after{content:'';position:absolute;background:rgba(31,27,23,.3);border-radius:3px;top:50%;height:6px;width:calc(var(--gap) + 4px);margin-top:-3px;right:calc(-1*var(--gap) - 2px)}.ds-space:not([data-next])::after{display:none}.ds-band-3{background:var(--space-3,#c8623a);color:var(--card,#f4ebd6)}.ds-band-4{background:var(--space-4,#8e4b6b);color:var(--card,#f4ebd6)}.ds-start{background:var(--gold,#d9a93a);font-family:'Grandstander Variable',Grandstander,system-ui,sans-serif}.ds-empty{background:transparent;box-shadow:inset 0 0 0 1px rgba(31,27,23,.1)}.ds-date{position:absolute;left:6px;bottom:4px;font-size:.625rem;font-weight:600;opacity:.8}.ds-space:is(a):hover{box-shadow:inset 0 -3px 0 rgba(0,0,0,.12),0 0 0 3px var(--gold,#d9a93a)}.ds-space:focus-visible{outline:3px solid var(--gold,#d9a93a);outline-offset:2px}.ds-pieces{position:absolute;inset:var(--gap);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--gap);pointer-events:none}.ds-piece{grid-area:1/1;aspect-ratio:1;display:grid;place-items:center;translate:calc(var(--col)*(100% + var(--gap))) calc(var(--row)*(100% + var(--gap)));transform:translate(-22%,18%) scale(.6);transition:translate 600ms var(--ease-out,cubic-bezier(.23,1,.32,1));filter:drop-shadow(0 3px 2px rgba(0,0,0,.35))}.ds-piece svg{width:100%;height:100%}@media (prefers-reduced-motion:reduce){.ds-piece{transition:opacity 200ms ease}}"
+      "css": ".ds-board{--gap:8px;position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--gap);padding:var(--gap);background:var(--card-well,#ebdfc4);border-radius:var(--radius,8px);font:700 clamp(.7rem,.55rem + .6vw,.95rem)/1.2 system-ui,sans-serif}.ds-space{position:relative;aspect-ratio:1;border-radius:6px;color:var(--ink,#1f1b17);background:var(--space-empty,#e9dec4);box-shadow:inset 0 -3px 0 rgba(0,0,0,.12);display:grid;align-content:start;justify-items:start;padding:5px 7px;text-decoration:none}.ds-space::after{content:'';position:absolute;background:rgba(31,27,23,.3);border-radius:3px;top:50%;height:6px;width:calc(var(--gap) + 4px);margin-top:-3px;right:calc(-1*var(--gap) - 2px)}.ds-space:not([data-next])::after{display:none}.ds-band-3{background:var(--space-3,#c8623a);color:var(--card,#f4ebd6)}.ds-band-4{background:var(--space-4,#8e4b6b);color:var(--card,#f4ebd6)}.ds-start{background:var(--gold,#d9a93a);font-family:'Grandstander Variable',Grandstander,system-ui,sans-serif}.ds-empty{background:transparent;box-shadow:inset 0 0 0 1px rgba(31,27,23,.1)}.ds-date{position:absolute;left:6px;bottom:4px;font-size:.625rem;font-weight:600;opacity:.8}.ds-space:is(a):hover{box-shadow:inset 0 -3px 0 rgba(0,0,0,.12),0 0 0 3px var(--gold,#d9a93a)}.ds-space:focus-visible{outline:3px solid var(--gold,#d9a93a);outline-offset:2px}.ds-pieces{position:absolute;inset:var(--gap);display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--gap);pointer-events:none}.ds-piece{grid-area:1/1;aspect-ratio:1;display:grid;place-items:center;translate:calc(var(--col)*(100% + var(--gap))) calc(var(--row)*(100% + var(--gap)));transform:translate(-22%,18%) scale(.6);transition:translate 600ms var(--ease-out,cubic-bezier(.23,1,.32,1));filter:drop-shadow(0 3px 2px rgba(0,0,0,.35))}.ds-piece svg{width:100%;height:100%}@media (prefers-reduced-motion:reduce){.ds-piece{transition:opacity 200ms ease}}"
     },
     {
       "name": "Scale 0 to 4",
@@ -531,13 +516,13 @@
   ],
   "narrative": {
     "northStar": "The Family Game Table",
-    "overview": "The page is a felt-green table. Everything a person reads sits on card stock laid on the felt: a cream panel with dark brown ink and a short shadow underneath. There are two players, a brother and a sister, each with a colour and a dragon piece. Each check-in is one square space on a serpentine track, coloured by the Burns range it falls in. A person's piece stands on their latest space.\n\nThe site has one committed field colour and one data colour scale. Hierarchy comes from size and weight, never from ornament, kickers, or decoration. The display face is a rounded, heavy, hand-lettered sans; body text is the system face so that notes and tables read like plain writing. The whole thing is built phone-first: the board is six columns at phone width and eight above 560px, every control is at least 44px tall, and the top bar wraps its links onto a second row below 720px.\n\nThe world refuses the wellness-app arrangement and the D&D costume. There is no big score, no ring, no streak, no parchment texture, no blackletter, no gothic border. A check-in total is shown at body size inside a sentence that quotes Burns' own range, so it is material to weigh rather than a verdict.",
+    "overview": "The page is a dark walnut table. Everything a person reads sits on card stock laid on the table: a cream panel with dark brown ink and a short shadow underneath. There are two players, a brother and a sister, each with a colour and a dragon piece. Each check-in is one square space on a serpentine track, coloured by the Burns range it falls in. A person's piece stands on their latest space.\n\nThe site has one committed field colour and one data colour scale. Hierarchy comes from size and weight, never from ornament, kickers, or decoration. The display face is a rounded, heavy, hand-lettered sans; body text is the system face so that notes and tables read like plain writing. The whole thing is built phone-first: the board is six columns at phone width and eight above 560px, every control is at least 44px tall, and the top bar wraps its links onto a second row below 720px.\n\nThe world refuses the wellness-app arrangement and the D&D costume. There is no big score, no ring, no streak, no parchment texture, no blackletter, no gothic border. A check-in total is shown at body size inside a sentence that quotes Burns' own range, so it is material to weigh rather than a verdict.",
     "keyCharacteristics": [
-      "One field colour (felt green) under cream card panels; dark brown ink, never black.",
+      "One field colour (dark walnut) under cream card panels; dark brown ink, never black.",
       "Two player colours (ember red, cobalt) that mean \"her\" and \"him\" and nothing else; gold is foil for focus, the Start space, and one button.",
       "A six-step board scale from pale gold to night is the only data colour.",
       "Grandstander Variable, bold, slightly tight, for every heading and the wordmark; system stack with tabular numerals for everything else.",
-      "A faint 40px ruled grid on the felt and a faint cell grid inside the board.",
+      "No grid or ruled pattern anywhere: the table and the board plate are plain colour.",
       "Motion is small and rare: pieces slide 600ms on an exponential ease-out; the first load deals panels in over 180ms."
     ],
     "rules": [
@@ -572,18 +557,18 @@
         "section": "typography"
       },
       {
-        "name": "The Card On Felt Rule",
+        "name": "The Card On Table Rule",
         "body": "Shadows exist only to say \"this panel is lying on the table\". A shadow is never used for hover, for emphasis, or on a control.",
         "section": "elevation"
       },
       {
         "name": "The Soft Ground Rule",
-        "body": "The felt carries a radial highlight (`rgba(255,255,255,0.08)` ellipse at 50% -20%) and a 40px ruled grid at 10% cream. Panels never carry textures or gradients.",
+        "body": "The table carries a radial highlight (`rgba(255,255,255,0.08)` ellipse at 50% -20%) and nothing else: no grid. Panels never carry textures or gradients.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do put everything a person reads on a `.card` panel; the felt holds only headings, muted lines, the progress row and the footer.",
+      "Do put everything a person reads on a `.card` panel; the table holds only headings, muted lines, the progress row and the footer.",
       "Do keep every control at 44px or taller and real: `<button>`, `<a>`, `<input>`, with the global 3px gold `:focus-visible` ring.",
       "Do colour a value only with the six `space-n` tokens and always show the matching legend or Burns sentence beside it.",
       "Do show a total as \"Total N.\" at body size inside a sentence that quotes Burns' range, followed by the line that a checklist is not a diagnosis.",

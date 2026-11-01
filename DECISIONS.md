@@ -261,3 +261,26 @@ rather than a verdict (A17), and a size the person can finish (P32).
   images anyway.
 - Making every answer required. Rejected: the course itself says to leave
   blank what you are not sure about, and a blank prompt costs nothing.
+
+## 2026-11-01 — A plain dark walnut table replaces the green graph-paper felt
+
+**Chosen.** The page background is plain dark walnut (`#3a2a20`) with the
+soft radial highlight kept. The 40px ruled grid on the page and the cell grid
+inside the board plate are gone. The tokens are renamed from `felt*` to
+`table*`, and secondary text on the table moves from a green-grey to a warm
+cream (`#d6c6ad`). Contrast on the walnut: body cream 11.6:1, soft cream
+8.2:1.
+
+**Why.** Anthony said he hates the green graph-paper background. Walnut keeps
+the family-game-table idea, keeps cream text readable, and lets the cream
+cards and the board's band colours stand out without competing with a
+pattern.
+
+**Considered and rejected.**
+
+- Keep the green and drop only the grid. Rejected: he named the green as
+  well as the grid.
+- A wood-grain texture. Rejected: DESIGN.md keeps textures off the page, and
+  a CSS wood grain would be another pattern to dislike.
+- A light page with dark text. Rejected: it would flip every colour on the
+  page, and the cream cards need a darker field to sit on.
