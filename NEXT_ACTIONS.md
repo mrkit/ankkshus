@@ -19,12 +19,13 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
   - Option: let each person pick from the six in a settings page (an agent can add it; level: standard)
 - [ ] Test the Luci game on a phone · added 2026-10-25
   - touch controls and audio were only checked by reading; keyboard play was checked in a headless browser
-- [ ] Decide how to deploy ankkshus on the TrueNAS · added 2026-10-25
-  - `npm run build`, then `npm start` with DATABASE_URL and JWT_SECRET set; Node 22.12+; `npm start` sets NODE_ENV=production
-  - nothing to migrate (checked 2026-11-01): no ankkshus container, folder or database on the TrueNAS or the Synology; the 2018–2020 AWS deploy's RDS host no longer resolves; both of you sign up fresh
-  - the TrueNAS has no compose file for it yet, and no Postgres besides Immich's
-  - Option: a new folder under /mnt/kj/docker/websites/ with a compose file for the app (Node 22) and its own Postgres container, behind cloudflared
-  - Option: the app container only, with a database added to an existing Postgres; less to run, but it couples this site to another app's database
+- [ ] Add ankkshus.com as a public hostname on the TrueNAS tunnel, pointing at http://192.168.1.57:8095 · added 2026-11-01
+  - Cloudflare Zero Trust dashboard → Networks → Tunnels → the tunnel → Public hostnames; the tunnel is token-managed, so an agent cannot add it from the command line
+  - ankkshus.com is on Cloudflare and has no record yet
+  - the site is running there already: http://192.168.1.57:8095 answers on the LAN
+- [ ] Sign up both seats as soon as the hostname works · added 2026-11-01
+  - sign-up closes after two accounts, so a stranger who finds the site first could take one
+  - over https only; the session cookie is not kept on the LAN address
 - [ ] Decide on schema migrations before the next schema change · added 2026-10-25
   - Option: add sequelize-cli migrations now
   - Option: keep `sync()` and `db:reset` until the site holds real check-ins; a schema change then means a rebuild

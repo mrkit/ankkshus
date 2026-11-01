@@ -30,7 +30,21 @@ which drops every table in that database and rebuilds them with the sample
 content, or point `DATABASE_URL` at a new database.
 
 The first two people to sign up are the two players. Sign-up order picks the
-dragon and colour for now.
+dragon and colour for now. After two accounts exist, sign-up is refused.
+
+## Deploy
+
+It runs on the TrueNAS in `/mnt/kj/docker/websites/ankkshus`, from
+`compose.yml`: the app container (`ankkshus`, port 8095 on the host) and its
+own Postgres 17 (`ankkshus-db`), whose data is in `./data/postgres` there. The
+`.env` beside the compose file holds `JWT_SECRET` and `POSTGRES_PASSWORD`, and
+is readable by its owner only.
+
+To deploy a change: `git pull && sudo -n docker compose up -d --build --force-recreate`.
+
+The Cloudflare tunnel's public hostname points at `http://192.168.1.57:8095`.
+Session cookies are `Secure` in production, so signing in works over https
+only, not on the LAN address.
 
 ## Scripts
 

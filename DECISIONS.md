@@ -284,3 +284,26 @@ pattern.
   a CSS wood grain would be another pattern to dislike.
 - A light page with dark text. Rejected: it would flip every colour on the
   page, and the cream cards need a darker field to sit on.
+
+## 2026-11-01 — Deploy as two containers on the TrueNAS, and close sign-up at two seats
+
+**Chosen.** The site runs from `compose.yml` in
+`/mnt/kj/docker/websites/ankkshus`: one image that builds the client and runs
+the API (Node 22), and its own Postgres 17 container with data in
+`./data/postgres`. Host port 8095, reached through the existing cloudflared
+tunnel. Sign-up refuses a third account.
+
+**Why.** No earlier deployment holds data: nothing on the TrueNAS or the
+Synology, and the 2018–2020 AWS database's hostname no longer resolves
+(checked 2026-11-01). A public site with open sign-up would let anyone read
+the notes and check-ins, and the product has exactly two people.
+
+**Considered and rejected.**
+
+- A database inside Immich's Postgres, the only other one on the TrueNAS.
+  Rejected: an Immich upgrade could take this site down with it.
+- An invite code for sign-up. Rejected for now: more UI, and a two-seat limit
+  covers the case once both have signed up. The gap is the time between the
+  hostname going live and the second sign-up.
+- Cloudflare Access in front. Rejected for now: the app already has its own
+  login, and Access would mean a second sign-in on her phone.
