@@ -9,3 +9,4 @@ coverage/
 .pstack/
 .impeccable/review/
 .impeccable/mocks/
+/data/

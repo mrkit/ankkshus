@@ -14,10 +14,17 @@ const credentials = z.object({
   password: z.string().min(8).max(200),
 });
 
+// The site is for two people. Once both have signed up, nobody else can.
+export const SEATS = 2;
+
 const router = Router();
 
 router.post('/signup', validateBody(credentials), async (req, res) => {
   const { username, password } = req.body;
+  if ((await User.count()) >= SEATS)
+    return res
+      .status(403)
+      .json({ error: 'Both seats at this table are taken. Sign in instead.' });
   const existing = await User.findOne({ where: { username } });
   if (existing)
     return res.status(409).json({ error: 'That username is taken' });

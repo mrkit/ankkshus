@@ -2,18 +2,22 @@ import request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createApp } from '../src/server/app.js';
 import { sequelize } from '../src/server/db/index.js';
-import { Post, Video } from '../src/server/db/models.js';
+import { Post, User, Video } from '../src/server/db/models.js';
 import { missingColumns } from '../src/server/db/schema.js';
 import { seedMissing } from '../src/server/db/seed.js';
 import '../src/server/db/models.js';
 
 const app = createApp();
 
+// Creates the user directly, because sign-up closes after two seats.
 async function agentFor(username) {
   const agent = request.agent(app);
-  await agent
-    .post('/api/auth/signup')
-    .send({ username, password: `${username}-long-password` });
+  const password = `${username}-long-password`;
+  if (!(await User.findOne({ where: { username } })))
+    await User.create({
+      username,
+      passwordHash: await User.hashPassword(password),
+    });
   await agent
     .post('/api/auth/login')
     .send({ username, password: `${username}-long-password` });
@@ -45,6 +49,18 @@ describe('api', () => {
       .post('/api/auth/signup')
       .send({ username: 'carol', password: 'another-pw-1' });
     expect(res.status).toBe(409);
+  });
+
+  it('closes sign-up once both seats are taken', async () => {
+    const second = await request(app)
+      .post('/api/auth/signup')
+      .send({ username: 'dave', password: 'long-enough-pw' });
+    expect(second.status).toBe(201);
+    const third = await request(app)
+      .post('/api/auth/signup')
+      .send({ username: 'erin', password: 'long-enough-pw' });
+    expect(third.status).toBe(403);
+    expect(await User.findOne({ where: { username: 'erin' } })).toBeNull();
   });
 
   it('rejects a wrong password and an unknown user with the same message', async () => {

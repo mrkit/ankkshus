@@ -45,6 +45,6 @@ const seeded = await seedMissing();
 if (seeded.videos || seeded.quizzes)
   console.log(`Seeded ${seeded.videos} videos and ${seeded.quizzes} quizzes`);
 
-createApp().listen(config.port, '127.0.0.1', () => {
-  console.log(`Listening on http://127.0.0.1:${config.port}`);
+createApp().listen(config.port, config.host, () => {
+  console.log(`Listening on http://${config.host}:${config.port}`);
 });

@@ -9,6 +9,8 @@ if (!jwtSecret) {
 export const config = {
   isProd,
   port: Number(process.env.PORT ?? 3000),
+  // 0.0.0.0 inside a container, so the published port reaches it.
+  host: process.env.HOST ?? '127.0.0.1',
   databaseUrl: process.env.DATABASE_URL ?? 'postgres://localhost/ankkshus',
   jwtSecret,
   sessionDays: 7,

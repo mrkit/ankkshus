@@ -22,6 +22,8 @@ export function createApp() {
   app.use(express.json({ limit: '100kb' }));
   app.use(cookieParser());
 
+  // Public, for the container healthcheck.
+  app.get('/api/health', (_req, res) => res.json({ ok: true }));
   app.use('/api/auth', authRouter);
   app.use('/api/posts', postsRouter);
   app.use('/api/videos', videosRouter);
