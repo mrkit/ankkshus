@@ -6,10 +6,20 @@ import './models.js';
 import { dropEverything } from './schema.js';
 import { seedMissing } from './seed.js';
 
-const dbName = new URL(config.databaseUrl).pathname.replace(/^\//, '');
+const dbUrl = new URL(config.databaseUrl);
+const dbName = dbUrl.pathname.replace(/^\//, '');
 
 if (config.isProd) {
   console.error('db:reset does not run with NODE_ENV=production.');
+  process.exit(1);
+}
+
+// A second guard for a server where NODE_ENV was never set: only a database on
+// this machine can be reset. An empty host is a local socket.
+if (!['', 'localhost', '127.0.0.1', '[::1]'].includes(dbUrl.hostname)) {
+  console.error(
+    `db:reset only runs against a database on this machine, and DATABASE_URL points at "${dbUrl.hostname}".`,
+  );
   process.exit(1);
 }
 

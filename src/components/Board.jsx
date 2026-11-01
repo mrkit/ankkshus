@@ -70,7 +70,12 @@ export function Board({
         </div>
       )}
 
-      <ol className="board" aria-label="Check-ins, oldest to newest">
+      <ol
+        className="board"
+        // biome-ignore lint/a11y/noRedundantRoles: Safari drops list semantics from a list with list-style: none
+        role="list"
+        aria-label="Check-ins, oldest to newest"
+      >
         {Array.from({ length: totalCells }, (_, i) => {
           const { row, col } = cellFor(i, cols);
           // A cell is a fixed position on the grid, so its key is that position.
@@ -134,7 +139,8 @@ export function Board({
       </ol>
 
       {legend && (
-        <ul className="board-legend" aria-label="Burns' ranges">
+        // biome-ignore lint/a11y/noRedundantRoles: Safari drops list semantics from a list with list-style: none
+        <ul className="board-legend" role="list" aria-label="Burns' ranges">
           {BANDS.map((b) => (
             <li key={b.n}>
               <i style={{ background: bandColor(b) }} />

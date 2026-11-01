@@ -34,15 +34,15 @@ dragon and colour for now.
 
 ## Scripts
 
-| Command                           | What it does                                                                                     |
-| --------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `npm run dev`                     | API with watch mode and the Vite dev server together                                             |
-| `npm run build`                   | Builds the client and the game into `dist/`                                                      |
-| `npm start`                       | Runs the API in production. Serves `dist/` if it exists. Needs `JWT_SECRET`.                     |
-| `npm run db:seed`                 | Adds any missing sample videos and quizzes                                                       |
-| `npm run db:reset -- --yes`       | Drops every table and rebuilds them with the sample content; refuses when NODE_ENV is production |
-| `npm test`                        | API tests. Needs `TEST_DATABASE_URL`, and the name must contain "test"                           |
-| `npm run lint` / `npm run format` | Biome                                                                                            |
+| Command                           | What it does                                                                                           |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `npm run dev`                     | API with watch mode and the Vite dev server together                                                   |
+| `npm run build`                   | Builds the client and the game into `dist/`                                                            |
+| `npm start`                       | Runs the API with NODE_ENV=production. Serves `dist/` if it exists. Needs `JWT_SECRET`.                |
+| `npm run db:seed`                 | Adds any missing sample videos and quizzes                                                             |
+| `npm run db:reset -- --yes`       | Drops every table and rebuilds them with the sample content; local databases only, never in production |
+| `npm test`                        | API tests. Needs `TEST_DATABASE_URL`, and the name must contain "test"                                 |
+| `npm run lint` / `npm run format` | Biome                                                                                                  |
 
 ## Content
 

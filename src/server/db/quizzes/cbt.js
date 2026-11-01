@@ -2,7 +2,8 @@
 // one quiz per course video, one part per worksheet, one prompt per row of
 // the worksheet's form. The prompts are in our words; the course's videos and
 // original worksheets stay in her Google Drive share and are linked from each
-// quiz. Each quiz ends with one recall prompt in the person's own words.
+// quiz. Most quizzes end with one recall prompt in the person's own words; the
+// intro, the one-question "why" and the two daily journals do not.
 
 const drive = (id) => `https://drive.google.com/file/d/${id}/view`;
 const text = (prompt, help) => ({ prompt, help, type: 'text' });

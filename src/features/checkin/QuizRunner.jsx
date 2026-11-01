@@ -181,6 +181,7 @@ export function QuizRunner({ user }) {
                       id={`q-${q.id}`}
                       className="textarea"
                       rows={6}
+                      maxLength={5000}
                       value={answers[q.id] ?? ''}
                       onChange={(e) =>
                         setAnswers((a) => ({ ...a, [q.id]: e.target.value }))
@@ -191,6 +192,11 @@ export function QuizRunner({ user }) {
                       id={`q-${q.id}`}
                       className="input"
                       type="text"
+                      maxLength={5000}
+                      // Enter in a one-line answer would submit the part early.
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') e.preventDefault();
+                      }}
                       value={answers[q.id] ?? ''}
                       onChange={(e) =>
                         setAnswers((a) => ({ ...a, [q.id]: e.target.value }))
