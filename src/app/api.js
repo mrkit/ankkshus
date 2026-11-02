@@ -16,14 +16,6 @@ export const api = createApi({
   ],
   endpoints: (build) => ({
     me: build.query({ query: () => 'auth/me', providesTags: ['Me'] }),
-    signUp: build.mutation({
-      query: (body) => ({ url: 'auth/signup', method: 'POST', body }),
-      invalidatesTags: ['Me', 'Users'],
-    }),
-    login: build.mutation({
-      query: (body) => ({ url: 'auth/login', method: 'POST', body }),
-      invalidatesTags: ['Me'],
-    }),
     logout: build.mutation({
       query: () => ({ url: 'auth/logout', method: 'POST' }),
       invalidatesTags: ['Me'],
@@ -99,8 +91,6 @@ export const api = createApi({
 
 export const {
   useMeQuery,
-  useSignUpMutation,
-  useLoginMutation,
   useLogoutMutation,
   useUsersQuery,
   useGetPostsQuery,

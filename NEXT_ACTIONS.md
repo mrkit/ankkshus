@@ -23,9 +23,13 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
   - Cloudflare Zero Trust dashboard → Networks → Tunnels → the tunnel → Public hostnames; the tunnel is token-managed, so an agent cannot add it from the command line
   - ankkshus.com is on Cloudflare and has no record yet
   - the site is running there already: http://192.168.1.57:8095 answers on the LAN
-- [ ] Sign up both seats as soon as the hostname works · added 2026-11-01
-  - sign-up closes after two accounts, so a stranger who finds the site first could take one
-  - over https only; the session cookie is not kept on the LAN address
+- [ ] Create both passkeys at https://ankkshus.com once the hostname works · added 2026-11-01
+  - "Setting up a seat?" on the sign-in page; name, then the setup code; 1Password offers to save the passkey
+  - save hers to the shared family vault; the first seat is the red dragon, the second the sea serpent
+  - read the setup code with: ssh kj grep SETUP_CODE /mnt/kj/docker/websites/ankkshus/.env
+  - after both exist, sign-up is refused; to close it for good, blank SETUP_CODE in that .env and redeploy
+- [ ] Run `npm run db:reset -- --yes` in the project folder before the next `npm run dev` · added 2026-11-01
+  - the users table there still has the old password column, and the server refuses to start on it; it holds 0 users
 - [ ] Decide on schema migrations before the next schema change · added 2026-10-25
   - Option: add sequelize-cli migrations now
   - Option: keep `sync()` and `db:reset` until the site holds real check-ins; a schema change then means a rebuild

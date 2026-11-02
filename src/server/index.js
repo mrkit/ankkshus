@@ -1,7 +1,7 @@
 import { createApp } from './app.js';
 import { config } from './config.js';
 import { sequelize } from './db/index.js';
-import { missingColumns } from './db/schema.js';
+import { leftoverColumns, missingColumns } from './db/schema.js';
 import { seedMissing } from './db/seed.js';
 import './db/models.js';
 
@@ -35,9 +35,16 @@ try {
 // instead of crashing on the first insert.
 await sequelize.sync();
 const missing = await missingColumns();
-if (missing.length) {
+const leftover = await leftoverColumns();
+if (missing.length || leftover.length) {
+  const found = [
+    missing.length && `Missing: ${missing.join(', ')}.`,
+    leftover.length && `No longer used: ${leftover.join(', ')}.`,
+  ]
+    .filter(Boolean)
+    .join(' ');
   console.error(
-    `\nThe tables in "${dbName}" are from an older version of this app. Missing: ${missing.join(', ')}.\nRun npm run db:reset -- --yes to drop and rebuild them (nothing is kept), or point DATABASE_URL at a new database.\n`,
+    `\nThe tables in "${dbName}" are from an older version of this app. ${found}\nRun npm run db:reset -- --yes to drop and rebuild them (nothing is kept), or point DATABASE_URL at a new database.\n`,
   );
   process.exit(1);
 }

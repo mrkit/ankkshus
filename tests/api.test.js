@@ -1,28 +1,26 @@
+import jwt from 'jsonwebtoken';
 import request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createApp } from '../src/server/app.js';
+import { config } from '../src/server/config.js';
 import { sequelize } from '../src/server/db/index.js';
 import { Post, User, Video } from '../src/server/db/models.js';
-import { missingColumns } from '../src/server/db/schema.js';
+import { leftoverColumns, missingColumns } from '../src/server/db/schema.js';
 import { seedMissing } from '../src/server/db/seed.js';
 import '../src/server/db/models.js';
 
 const app = createApp();
 
-// Creates the user directly, because sign-up closes after two seats.
+// Passkeys need a real authenticator, so tests seat a user directly and hand
+// the agent a session cookie signed the way the server signs one.
 async function agentFor(username) {
-  const agent = request.agent(app);
-  const password = `${username}-long-password`;
-  if (!(await User.findOne({ where: { username } })))
-    await User.create({
-      username,
-      passwordHash: await User.hashPassword(password),
-    });
-  await agent
-    .post('/api/auth/login')
-    .send({ username, password: `${username}-long-password` });
-  return agent;
+  const [user] = await User.findOrCreate({ where: { username } });
+  const token = jwt.sign({ sub: String(user.id) }, config.jwtSecret);
+  return request.agent(app).set('Cookie', `session=${token}`);
 }
+
+const seat = (username, setupCode = config.setupCode) =>
+  request(app).post('/api/auth/register/options').send({ username, setupCode });
 
 describe('api', () => {
   beforeAll(async () => {
@@ -34,45 +32,54 @@ describe('api', () => {
     await sequelize.close();
   });
 
-  it('signs up and never returns the password hash', async () => {
-    const res = await request(app)
-      .post('/api/auth/signup')
-      .send({ username: 'carol', password: 'long-enough-pw' });
-    expect(res.status).toBe(201);
-    expect(res.body.user.username).toBe('carol');
-    expect(JSON.stringify(res.body)).not.toMatch(/passwordHash|\$2[aby]\$/);
-    expect(res.headers['set-cookie'][0]).toMatch(/^session=.*HttpOnly/);
+  it('asks for the setup code before offering a passkey', async () => {
+    expect((await seat('carol', 'wrong-code')).status).toBe(403);
+    const res = await seat('carol');
+    expect(res.status).toBe(200);
+    expect(res.body.rp.id).toBe('localhost');
+    expect(res.body.user.name).toBe('carol');
+    expect(res.body.challenge).toBeTruthy();
+    expect(res.headers['set-cookie'][0]).toMatch(
+      /^passkey-challenge=.*HttpOnly/,
+    );
   });
 
-  it('rejects a duplicate username with 409', async () => {
-    const res = await request(app)
-      .post('/api/auth/signup')
-      .send({ username: 'carol', password: 'another-pw-1' });
-    expect(res.status).toBe(409);
-  });
-
-  it('closes sign-up once both seats are taken', async () => {
-    const second = await request(app)
-      .post('/api/auth/signup')
-      .send({ username: 'dave', password: 'long-enough-pw' });
-    expect(second.status).toBe(201);
-    const third = await request(app)
-      .post('/api/auth/signup')
-      .send({ username: 'erin', password: 'long-enough-pw' });
+  it('refuses a taken name and a third seat', async () => {
+    await User.create({ username: 'carol' });
+    expect((await seat('carol')).status).toBe(409);
+    await User.create({ username: 'dave' });
+    const third = await seat('erin');
     expect(third.status).toBe(403);
-    expect(await User.findOne({ where: { username: 'erin' } })).toBeNull();
+    expect(third.body.error).toMatch(/Both seats/);
+    await User.destroy({ where: { username: ['carol', 'dave'] } });
   });
 
-  it('rejects a wrong password and an unknown user with the same message', async () => {
-    const wrong = await request(app)
-      .post('/api/auth/login')
-      .send({ username: 'carol', password: 'not-the-pw' });
-    const unknown = await request(app)
-      .post('/api/auth/login')
-      .send({ username: 'nobody', password: 'not-the-pw' });
-    expect(wrong.status).toBe(401);
+  it('refuses a passkey response without a challenge, or from an unknown passkey', async () => {
+    const stale = await request(app)
+      .post('/api/auth/login/verify')
+      .send({ id: 'abc', response: {} });
+    expect(stale.status).toBe(400);
+
+    const agent = request.agent(app);
+    const options = await agent.post('/api/auth/login/options');
+    expect(options.status).toBe(200);
+    expect(options.body.rpId).toBe('localhost');
+    const unknown = await agent
+      .post('/api/auth/login/verify')
+      .send({ id: 'not-a-known-credential', response: {} });
     expect(unknown.status).toBe(401);
-    expect(wrong.body).toEqual(unknown.body);
+  });
+
+  it('serves the signed-in person from a session', async () => {
+    const alice = await agentFor('alice');
+    const me = await alice.get('/api/auth/me');
+    expect(me.status).toBe(200);
+    expect(me.body.user.username).toBe('alice');
+    expect(Object.keys(me.body.user).sort()).toEqual([
+      'createdAt',
+      'id',
+      'username',
+    ]);
   });
 
   it('keeps every read behind login', async () => {
@@ -191,5 +198,17 @@ describe('api', () => {
     expect(await missingColumns()).toEqual(['videos.addedById']);
     await sequelize.query('ALTER TABLE videos ADD COLUMN "addedById" integer');
     expect(await missingColumns()).toEqual([]);
+  });
+
+  it('reports a required column the models no longer have', async () => {
+    expect(await leftoverColumns()).toEqual([]);
+    await sequelize.query(
+      `ALTER TABLE "users" ADD COLUMN "passwordHash" TEXT NOT NULL DEFAULT 'x'`,
+    );
+    await sequelize.query(
+      'ALTER TABLE "users" ALTER COLUMN "passwordHash" DROP DEFAULT',
+    );
+    expect(await leftoverColumns()).toEqual(['users.passwordHash']);
+    await sequelize.query('ALTER TABLE "users" DROP COLUMN "passwordHash"');
   });
 });

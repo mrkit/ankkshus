@@ -1,26 +1,30 @@
 import { useState } from 'react';
-import { useLoginMutation, useSignUpMutation } from '../../app/api.js';
+import { useDispatch } from 'react-redux';
+import { api } from '../../app/api.js';
 import { DragonMark } from '../../dragons/dragons.jsx';
-
-function errorMessage(error) {
-  if (!error) return null;
-  if (error.status === 409) return 'That name is taken at this table.';
-  if (error.status === 401) return 'That name and password do not match.';
-  if (error.data?.issues)
-    return error.data.issues.map((i) => `${i.path}: ${i.message}`).join(' ');
-  return 'Something went wrong. Try again.';
-}
+import { createSeat, signInWithPasskey } from './passkeys.js';
 
 export function LoginPage() {
+  const dispatch = useDispatch();
   const [mode, setMode] = useState('login');
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [login, loginState] = useLoginMutation();
-  const [signUp, signUpState] = useSignUpMutation();
+  const [setupCode, setSetupCode] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState(null);
 
   const isSignUp = mode === 'signup';
-  const state = isSignUp ? signUpState : loginState;
-  const submit = isSignUp ? signUp : login;
+
+  async function run(ceremony) {
+    setBusy(true);
+    setError(null);
+    try {
+      await ceremony();
+      dispatch(api.util.invalidateTags(['Me', 'Users']));
+    } catch (err) {
+      setError(err.message);
+      setBusy(false);
+    }
+  }
 
   return (
     <div className="login-wrap">
@@ -29,63 +33,76 @@ export function LoginPage() {
           <DragonMark size={34} />
           ankkshus
         </div>
-        <p className="muted">A table for two. Sign in to sit down.</p>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            submit({ username, password });
-          }}
-        >
-          <label className="field">
-            <span>Name</span>
-            <input
-              className="input"
-              type="text"
-              name="username"
-              autoComplete="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              minLength={3}
-            />
-          </label>
-          <label className="field">
-            <span>Password</span>
-            <input
-              className="input"
-              type="password"
-              name="password"
-              autoComplete={isSignUp ? 'new-password' : 'current-password'}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength={isSignUp ? 8 : undefined}
-            />
-          </label>
-          {isSignUp && <p className="muted">Eight characters or more.</p>}
-          <button
-            type="submit"
-            className="btn btn-primary"
-            disabled={state.isLoading}
+        {isSignUp ? (
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              run(() => createSeat({ username, setupCode }));
+            }}
           >
-            {isSignUp ? 'Create my seat' : 'Sit down'}
-          </button>
-          {state.error && (
-            <p className="error" role="alert">
-              {errorMessage(state.error)}
+            <p className="muted">
+              A seat is a name and a passkey. Your device or password manager
+              saves the passkey; save it to a shared vault to hand it on.
             </p>
-          )}
-        </form>
+            <label className="field">
+              <span>Name</span>
+              <input
+                className="input"
+                type="text"
+                name="username"
+                autoComplete="off"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                minLength={2}
+              />
+            </label>
+            <label className="field">
+              <span>Setup code</span>
+              <input
+                className="input"
+                type="password"
+                name="setup-code"
+                autoComplete="off"
+                value={setupCode}
+                onChange={(e) => setSetupCode(e.target.value)}
+                required
+              />
+            </label>
+            <button type="submit" className="btn btn-primary" disabled={busy}>
+              Create the passkey
+            </button>
+          </form>
+        ) : (
+          <div className="stack">
+            <p className="muted">A table for two. Sign in to sit down.</p>
+            <button
+              type="button"
+              className="btn btn-primary"
+              disabled={busy}
+              onClick={() => run(signInWithPasskey)}
+            >
+              Sign in with a passkey
+            </button>
+          </div>
+        )}
+
+        {error && (
+          <p className="error" role="alert">
+            {error}
+          </p>
+        )}
 
         <button
           type="button"
           className="btn-link"
-          onClick={() => setMode(isSignUp ? 'login' : 'signup')}
+          onClick={() => {
+            setMode(isSignUp ? 'login' : 'signup');
+            setError(null);
+          }}
         >
-          {isSignUp
-            ? 'I already have a seat'
-            : 'First time here? Create a seat'}
+          {isSignUp ? 'I already have a seat' : 'Setting up a seat?'}
         </button>
       </div>
     </div>

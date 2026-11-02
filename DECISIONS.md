@@ -307,3 +307,25 @@ the notes and check-ins, and the product has exactly two people.
   hostname going live and the second sign-up.
 - Cloudflare Access in front. Rejected for now: the app already has its own
   login, and Access would mean a second sign-in on her phone.
+
+## 2026-11-01 — Passkeys only, with a setup code to create a seat
+
+**Chosen.** Passwords are gone. Signing in is one button that asks the device
+or password manager for a passkey; no name is typed. Creating a seat takes a
+name and a setup code (`SETUP_CODE` on the server), then registers a
+discoverable passkey. Sign-up still stops at two seats. Challenges travel in a
+five-minute signed cookie, so the server keeps no ceremony state. Library:
+SimpleWebAuthn 13, the same one the roadmap site uses.
+
+**Why.** Anthony asked for passkeys, and plans to create his sister's from
+1Password into their shared family vault, so she never sets one up herself.
+The setup code closes the gap the two-seat limit left open: a stranger who
+finds the site before both seats exist cannot take one.
+
+**Considered and rejected.**
+
+- Passkeys beside passwords. Rejected: a password would stay the weak way in.
+- Invite links per person, as on the roadmap site. Rejected: more routes and
+  a token table for two people who are set up once, by the same person.
+- SimpleWebAuthn 14. Rejected for now: 13.x is what the roadmap site runs, and
+  its API is the one checked here.

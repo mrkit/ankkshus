@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import { DataTypes } from 'sequelize';
 import { sequelize } from './index.js';
 
@@ -8,24 +7,20 @@ export const User = sequelize.define('user', {
     allowNull: false,
     unique: true,
   },
-  passwordHash: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
 });
 
-// The hash stays on the server, whichever route serializes the row.
 User.prototype.toJSON = function toJSON() {
   return { id: this.id, username: this.username, createdAt: this.createdAt };
 };
 
-User.prototype.checkPassword = function checkPassword(plain) {
-  return bcrypt.compare(plain, this.passwordHash);
-};
-
-User.hashPassword = function hashPassword(plain) {
-  return bcrypt.hash(plain, 12);
-};
+// Sign-in is by passkey only. A person can have more than one (a phone and a
+// shared password-manager vault, say); each row is one credential.
+export const Passkey = sequelize.define('passkey', {
+  credentialId: { type: DataTypes.STRING(512), allowNull: false, unique: true },
+  publicKey: { type: DataTypes.BLOB, allowNull: false },
+  counter: { type: DataTypes.BIGINT, allowNull: false, defaultValue: 0 },
+  transports: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull: true },
+});
 
 export const Post = sequelize.define('post', {
   title: { type: DataTypes.STRING, allowNull: false },
@@ -86,6 +81,9 @@ export const QuizAnswer = sequelize.define('quizAnswer', {
   score: { type: DataTypes.INTEGER, allowNull: true },
   text: { type: DataTypes.TEXT, allowNull: true },
 });
+
+User.hasMany(Passkey, { onDelete: 'CASCADE' });
+Passkey.belongsTo(User);
 
 User.hasMany(Post, { foreignKey: 'authorId', as: 'posts' });
 Post.belongsTo(User, { foreignKey: 'authorId', as: 'author' });

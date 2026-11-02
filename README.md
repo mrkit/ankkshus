@@ -29,22 +29,27 @@ and lists the missing columns. Then either run `npm run db:reset -- --yes`,
 which drops every table in that database and rebuilds them with the sample
 content, or point `DATABASE_URL` at a new database.
 
-The first two people to sign up are the two players. Sign-up order picks the
-dragon and colour for now. After two accounts exist, sign-up is refused.
+Sign-in is by passkey only. A seat is a name plus a passkey, and creating one
+needs the setup code (`SETUP_CODE`; `dev-setup` in development). After two
+seats exist, sign-up is refused. The first seat is the red dragon, the second
+the sea serpent. To hand someone a seat, create it from a password manager and
+save the passkey to a shared vault. A passkey belongs to one origin:
+`http://localhost:5173` under `npm run dev`, `PASSKEY_ORIGIN` elsewhere.
 
 ## Deploy
 
 It runs on the TrueNAS in `/mnt/kj/docker/websites/ankkshus`, from
 `compose.yml`: the app container (`ankkshus`, port 8095 on the host) and its
 own Postgres 17 (`ankkshus-db`), whose data is in `./data/postgres` there. The
-`.env` beside the compose file holds `JWT_SECRET` and `POSTGRES_PASSWORD`, and
-is readable by its owner only.
+`.env` beside the compose file holds `JWT_SECRET`, `POSTGRES_PASSWORD` and
+`SETUP_CODE`, and is readable by its owner only. `PASSKEY_ORIGIN` defaults to
+`https://ankkshus.com` in the compose file.
 
 To deploy a change: `git pull && sudo -n docker compose up -d --build --force-recreate`.
 
 The Cloudflare tunnel's public hostname points at `http://192.168.1.57:8095`.
-Session cookies are `Secure` in production, so signing in works over https
-only, not on the LAN address.
+Passkeys and the `Secure` session cookie both need `https://ankkshus.com`; the
+LAN address serves pages but cannot sign anyone in.
 
 ## Scripts
 

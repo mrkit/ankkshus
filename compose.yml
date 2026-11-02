@@ -1,5 +1,5 @@
 # The site and its own Postgres. On the TrueNAS: /mnt/kj/docker/websites/ankkshus.
-# Needs a .env beside this file with JWT_SECRET and POSTGRES_PASSWORD.
+# Needs a .env beside this file with JWT_SECRET, POSTGRES_PASSWORD and SETUP_CODE.
 # Deploy: git pull && sudo -n docker compose up -d --build --force-recreate
 services:
   app:
@@ -9,6 +9,9 @@ services:
     restart: unless-stopped
     environment:
       JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+      PASSKEY_ORIGIN: ${PASSKEY_ORIGIN:-https://ankkshus.com}
+      # Leave empty to close sign-up for good once both seats are made.
+      SETUP_CODE: ${SETUP_CODE:-}
       DATABASE_URL: postgres://ankkshus:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@db/ankkshus
     ports:
       - "${PORT:-8095}:3000"
