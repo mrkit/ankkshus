@@ -24,10 +24,11 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
   - save hers to the shared family vault; the first seat is the red dragon, the second the sea serpent
   - read the setup code with: ssh kj grep SETUP_CODE /mnt/kj/docker/websites/ankkshus/.env
   - after both exist, sign-up is refused; to close it for good, blank SETUP_CODE in that .env and redeploy
-- [ ] Find the original Luci art and song and tell an agent where they are · added 2026-11-05
-  - files the old code loaded: images/luci/background.png, ground.png, boulder.png (the Sun), goal.png, logo.png, preloadBar.png, spritesheets/alien.png and blue.png, audio/song.mp3
-  - not found in mrkit/Luci or this repo's history, on the TrueNAS, in Google Drive, or in Drive/1-Projects/Web_ankkshus
-  - until then the game draws its own art, and the rolling sun is drawn in code
+- [ ] Decide: put the original Luci art and song back into the game? · added 2026-11-05
+  - found in Drive/3-Resources/Websites/Assets and .env files from production websites/ankkshus/assets
+  - has every file the old game loaded, plus song.mp3, block.png, thumbnail.jpg, and the original wallpapers citydragonweb.jpg and citydragonweb-night.jpg
+  - Option: an agent swaps the drawn art for these sprites and plays the song; level: standard
+  - Option: keep the drawn version
 - [ ] Run `npm run db:reset -- --yes` in the project folder before the next `npm run dev` · added 2026-11-01
   - the users table there still has the old password column, and the server refuses to start on it; it holds 0 users
 - [ ] Decide on schema migrations before the next schema change · added 2026-10-25
