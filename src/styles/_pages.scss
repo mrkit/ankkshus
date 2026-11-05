@@ -169,7 +169,7 @@
     width: 28px;
     height: 6px;
     border-radius: 3px;
-    background: rgba(244, 235, 214, 0.25);
+    background: rgba(31, 27, 23, 0.16);
 
     &.done {
       background: var(--gold);
@@ -457,17 +457,12 @@
   display: grid;
   gap: 16px;
 
+  // The original ankkshus logo, line art on the card.
   .login-mark {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.6rem;
-
-    svg {
-      color: var(--player-a);
-    }
+    display: block;
+    width: min(100%, 300px);
+    height: auto;
+    margin: 0 auto 4px;
   }
 
   form {

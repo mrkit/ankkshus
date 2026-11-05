@@ -329,3 +329,28 @@ finds the site before both seats exist cannot take one.
   a token table for two people who are set up once, by the same person.
 - SimpleWebAuthn 14. Rejected for now: 13.x is what the roadmap site runs, and
   its API is the one checked here.
+
+## 2026-11-05 — The first ankkshus's watercolour and logo replace the walnut; Luci's boulder becomes the Sun
+
+**Chosen.** The page ground is the city-dragon watercolour from the first
+ankkshus, on paper white, with a light paper wash at the top. The original
+logo sits on the sign-in card and its ribbon in the footer. The red dragon
+mark and Grandstander stay. Text on the page turns from cream to ink. In
+Luci, the rolling boulder is drawn as the Sun, the sky's own sun is gone, and
+a "Back to ankkshus" link and Esc leave the game.
+
+**Why.** Anthony: "get rid of that disgusting brown background", use the old
+images, "for the wallpaper use the dragon". He likes the orange dragon and the
+font. The round thing in the original game was the Sun, not a boulder, and the
+game page had no way back to the site.
+
+**Considered and rejected.**
+
+- Commit the images to the repo. Rejected: the wallpaper is an Adobe Stock
+  image and the repo is public. The images stay in the gitignored `assets/`,
+  with a copy on the TrueNAS that the Docker build reads.
+- The original logo in the top bar in place of the dragon mark. Rejected: it
+  is a 1000x800 line drawing that is unreadable at 28px, and Anthony asked to
+  keep the dragon.
+- Wait for the original Luci art before changing the game. Rejected for now:
+  the files are not found. The Sun is drawn in code until they turn up.

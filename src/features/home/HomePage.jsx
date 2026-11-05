@@ -133,7 +133,7 @@ export function HomePage({ user }) {
             </div>
             <h2>Play Luci</h2>
             <p className="muted">
-              Run right, jump the gaps, stay ahead of the boulder.
+              Run right, jump the gaps, stay ahead of the sun.
             </p>
           </a>
         </aside>

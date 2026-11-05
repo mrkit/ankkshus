@@ -8,7 +8,7 @@ board, and each person is a dragon piece.
 ## Stack
 
 - **Client:** React 19, React Router 7, Redux Toolkit with RTK Query, Vite, Sass. Display face Grandstander, self-hosted from npm.
-- **Game:** plain canvas 2D and Web Audio in `src/game/`, no assets, built as a second Vite entry (`luci.html`).
+- **Game:** plain canvas 2D and Web Audio in `src/game/`, drawn in code with no image files, built as a second Vite entry (`luci.html`).
 - **Server:** Node 22.12+, Express 5, Sequelize 6 on Postgres, zod validation, httpOnly cookie sessions. Every route is behind login.
 
 ## Setup
@@ -67,7 +67,8 @@ LAN address serves pages but cannot sign anyone in.
 
 - Quizzes are defined in `src/server/db/quizzes/*.js` and listed in `seed.js`. A quiz is a `checklist` (items scored 0 to 4, a total is kept) or a `worksheet` (written prompts; `text` is one line, `longtext` a paragraph). Add a file, list it, restart.
 - `quizzes/cbt.js` holds the online CBT course as eleven worksheet quizzes, one per course video. The videos and original worksheets live in a Google Drive share, and each quiz links to its own.
-- `assets/` is gitignored. Vite serves it from the site root, so `assets/images/x.png` is `/images/x.png`. The game needs nothing from it.
+- `assets/` is gitignored. Vite serves it from the site root, so `assets/images/x.png` is `/images/x.png`, and the build copies it into `dist/`. The game needs nothing from it.
+- The site needs five files in `assets/images/`, made from the first ankkshus (`Drive/1-Projects/Web_ankkshus/ankkshus 2.0/public/images`): `city-dragon-2400.webp` and `city-dragon-1400.webp` (the wallpaper, an Adobe Stock image, so it stays out of this public repo), `ankkshus-logo.png`, `ankkshus-ribbon.png` and `favicon.png`. The TrueNAS keeps its own copy in `assets/images/` beside the compose file; the Docker build picks it up.
 
 ## Design
 

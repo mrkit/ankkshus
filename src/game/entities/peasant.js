@@ -27,7 +27,7 @@ export class Peasant {
     return this.hit ? Math.min(1, this.hitTime / FALL_TIME) : 0;
   }
 
-  update(dt, boulder) {
+  update(dt, sun) {
     if (this.hit) {
       this.hitTime += dt;
       return;
@@ -39,7 +39,7 @@ export class Peasant {
       this.x = Math.max(start + EDGE, Math.min(end - EDGE, this.x));
       this.speed = -this.speed;
     }
-    if (boulder.hitsPoint(this.x, this.y - 40, 20)) this.hitTime = 0;
+    if (sun.hitsPoint(this.x, this.y - 40, 20)) this.hitTime = 0;
   }
 }
 

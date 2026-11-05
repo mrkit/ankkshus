@@ -1,18 +1,18 @@
 import {
-  BOULDER_AIR_SPEED,
-  BOULDER_GROUND_SPEED,
   GRAVITY,
   GROUND_Y,
+  SUN_AIR_SPEED,
+  SUN_GROUND_SPEED,
 } from '../level.js';
 
-export const BOULDER_RADIUS = 130;
+export const SUN_RADIUS = 130;
 
 // Spawns off screen to the left, falls for about a second, then rolls along
 // the ground line. It never falls into a gap, so it stays a threat for the
 // whole level.
-export class Boulder {
+export class Sun {
   constructor() {
-    this.r = BOULDER_RADIUS;
+    this.r = SUN_RADIUS;
     this.x = -700;
     this.y = GROUND_Y - this.r - 450;
     this.vy = 0;
@@ -21,7 +21,7 @@ export class Boulder {
   }
 
   update(dt) {
-    const vx = this.onGround ? BOULDER_GROUND_SPEED : BOULDER_AIR_SPEED;
+    const vx = this.onGround ? SUN_GROUND_SPEED : SUN_AIR_SPEED;
     this.x += vx * dt;
     if (!this.onGround) {
       this.vy += GRAVITY * dt;

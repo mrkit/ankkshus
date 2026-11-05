@@ -19,15 +19,15 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
   - Option: let each person pick from the six in a settings page (an agent can add it; level: standard)
 - [ ] Test the Luci game on a phone · added 2026-10-25
   - touch controls and audio were only checked by reading; keyboard play was checked in a headless browser
-- [ ] Add ankkshus.com as a public hostname on the TrueNAS tunnel, pointing at http://192.168.1.57:8095 · added 2026-11-01
-  - Cloudflare Zero Trust dashboard → Networks → Tunnels → the tunnel → Public hostnames; the tunnel is token-managed, so an agent cannot add it from the command line
-  - ankkshus.com is on Cloudflare and has no record yet
-  - the site is running there already: http://192.168.1.57:8095 answers on the LAN
-- [ ] Create both passkeys at https://ankkshus.com once the hostname works · added 2026-11-01
+- [ ] Create both passkeys at https://ankkshus.com · added 2026-11-01
   - "Setting up a seat?" on the sign-in page; name, then the setup code; 1Password offers to save the passkey
   - save hers to the shared family vault; the first seat is the red dragon, the second the sea serpent
   - read the setup code with: ssh kj grep SETUP_CODE /mnt/kj/docker/websites/ankkshus/.env
   - after both exist, sign-up is refused; to close it for good, blank SETUP_CODE in that .env and redeploy
+- [ ] Find the original Luci art and song and tell an agent where they are · added 2026-11-05
+  - files the old code loaded: images/luci/background.png, ground.png, boulder.png (the Sun), goal.png, logo.png, preloadBar.png, spritesheets/alien.png and blue.png, audio/song.mp3
+  - not found in mrkit/Luci or this repo's history, on the TrueNAS, in Google Drive, or in Drive/1-Projects/Web_ankkshus
+  - until then the game draws its own art, and the rolling sun is drawn in code
 - [ ] Run `npm run db:reset -- --yes` in the project folder before the next `npm run dev` · added 2026-11-01
   - the users table there still has the old password column, and the server refuses to start on it; it holds 0 users
 - [ ] Decide on schema migrations before the next schema change · added 2026-10-25

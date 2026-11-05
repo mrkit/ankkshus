@@ -3,9 +3,9 @@
 name: ankkshus
 description: Two players at the family game table; each check-in is a space on a board, each person a dragon piece.
 colors:
-table: "#3a2a20"
-table-text: "#f4ebd6"
-table-text-soft: "#d6c6ad"
+table: "#f6f3ec"
+table-text: "#1f1b17"
+table-text-soft: "#4a433b"
 card: "#f4ebd6"
 card-edge: "#e2d4b4"
 card-well: "#ebdfc4"
@@ -166,14 +166,14 @@ Recorded on 2026-10-25 from the shipped code: `src/styles/app.scss`, `src/styles
 
 **Creative North Star: "The Family Game Table"**
 
-The page is a dark walnut table. Everything a person reads sits on card stock laid on the table: a cream panel with dark brown ink and a short shadow underneath. There are two players, a brother and a sister, each with a colour and a dragon piece. Each check-in is one square space on a serpentine track, coloured by the Burns range it falls in. A person's piece stands on their latest space.
+The page is the city-dragon watercolour from the first ankkshus, on paper white, with a paper wash at the top so headings on the sky stay readable. Everything a person reads sits on card stock laid on the table: a cream panel with dark brown ink and a short shadow underneath. There are two players, a brother and a sister, each with a colour and a dragon piece. Each check-in is one square space on a serpentine track, coloured by the Burns range it falls in. A person's piece stands on their latest space.
 
 The site has one committed field colour and one data colour scale. Hierarchy comes from size and weight, never from ornament, kickers, or decoration. The display face is a rounded, heavy, hand-lettered sans; body text is the system face so that notes and tables read like plain writing. The whole thing is built phone-first: the board is six columns at phone width and eight above 560px, every control is at least 44px tall, and the top bar wraps its links onto a second row below 720px.
 
 The world refuses the wellness-app arrangement and the D&D costume. There is no big score, no ring, no streak, no parchment texture, no blackletter, no gothic border. A check-in total is shown at body size inside a sentence that quotes Burns' own range, so it is material to weigh rather than a verdict.
 
 **Key Characteristics:**
-- One field colour (dark walnut) under cream card panels; dark brown ink, never black.
+- One field: the city-dragon watercolour on paper white (#F6F3EC), under cream card panels; dark brown ink, never black, on the table and on the cards.
 - Two player colours (ember red, cobalt) that mean "her" and "him" and nothing else; gold is foil for focus, the Start space, and one button.
 - A six-step board scale from pale gold to night is the only data colour.
 - Grandstander Variable, bold, slightly tight, for every heading and the wordmark; system stack with tabular numerals for everything else.
@@ -187,7 +187,7 @@ A warm, dark table with light card stock on it, two saturated player colours, go
 ### Primary
 
 - **Table** (`table`): the page background, the one committed field.
-- **Card** (`card`): every panel, the top bar, and the text colour on the table. Table text at rest is this cream; secondary text on the table is `table-text-soft`.
+- **Card** (`card`): every panel, the top bar, and the top bar. Text on the table is `table-text` (ink); secondary text on the table is `table-text-soft`.
 - **Ink** (`ink`): all text on card stock, the current nav pill, the checked scale option, the pressed chip. `ink-soft` is secondary text on card; `ink-faint` is placeholder text only.
 
 ### Secondary
@@ -326,7 +326,7 @@ Six flat SVG silhouettes in `src/dragons/dragons.jsx`: Red dragon, Sea serpent, 
 
 ### Quiz runner
 
-A 760px column. Progress is a row of 28x6px bars at 3px radius: 25% cream for pending, gold for done, cream for the current part, with "Part n of m" beside it in `table-text-soft` at 600. Each section is a card with the H2, an intro in `.muted`, and questions separated by 1px `card-edge` rules with 16px vertical padding.
+A 760px column. Progress is a row of 28x6px bars at 3px radius: 16% ink for pending, gold for done, cream for the current part, with "Part n of m" beside it in `table-text-soft` at 600. Each section is a card with the H2, an intro in `.muted`, and questions separated by 1px `card-edge` rules with 16px vertical padding.
 
 The 0 to 4 scale is five equal columns at a 6px gap. Each option is a label with a hidden radio: `input-paper`, 2px `card-edge` border, 8px radius, 56px minimum height, the digit at 700 over a word ("Not at all" to "Extremely") at 500 and 0.7rem in `ink-soft`. Checked becomes ink with cream text. Keyboard focus draws the 3px gold ring. Below 420px the words are hidden and the digits stay.
 

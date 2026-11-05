@@ -120,41 +120,57 @@ export function drawPeasant(ctx, p) {
   ctx.restore();
 }
 
-export function drawBoulder(ctx, b) {
+// The sun rolls in from the left. Rays turn with it so the roll reads.
+export function drawSun(ctx, b) {
   ctx.save();
   ctx.translate(b.x, b.y);
+
+  const glow = ctx.createRadialGradient(0, 0, b.r * 0.8, 0, 0, b.r * 1.9);
+  glow.addColorStop(0, 'rgba(255, 196, 61, 0.45)');
+  glow.addColorStop(1, 'rgba(255, 196, 61, 0)');
+  ctx.fillStyle = glow;
+  ctx.beginPath();
+  ctx.arc(0, 0, b.r * 1.9, 0, Math.PI * 2);
+  ctx.fill();
+
   ctx.rotate(b.angle);
-  const rock = ctx.createRadialGradient(
-    -b.r * 0.35,
-    -b.r * 0.35,
+  ctx.fillStyle = '#ffb02e';
+  const rays = 12;
+  for (let i = 0; i < rays; i++) {
+    const a = (i / rays) * Math.PI * 2;
+    const half = Math.PI / rays / 1.6;
+    const tip = b.r * (i % 2 ? 1.38 : 1.55);
+    ctx.beginPath();
+    ctx.moveTo(
+      Math.cos(a - half) * b.r * 0.92,
+      Math.sin(a - half) * b.r * 0.92,
+    );
+    ctx.lineTo(Math.cos(a) * tip, Math.sin(a) * tip);
+    ctx.lineTo(
+      Math.cos(a + half) * b.r * 0.92,
+      Math.sin(a + half) * b.r * 0.92,
+    );
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  const face = ctx.createRadialGradient(
+    -b.r * 0.3,
+    -b.r * 0.3,
     b.r * 0.1,
     0,
     0,
     b.r,
   );
-  rock.addColorStop(0, '#b4b4b4');
-  rock.addColorStop(1, '#4e4e4e');
-  ctx.fillStyle = rock;
+  face.addColorStop(0, '#fff3a8');
+  face.addColorStop(0.55, '#ffd23f');
+  face.addColorStop(1, '#f59a1b');
+  ctx.fillStyle = face;
   ctx.beginPath();
   ctx.arc(0, 0, b.r, 0, Math.PI * 2);
   ctx.fill();
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-  for (let i = 0; i < 5; i++) {
-    const a = (i / 5) * Math.PI * 2;
-    const d = b.r * (0.45 + (i % 2) * 0.2);
-    const s = b.r * 0.22;
-    ctx.beginPath();
-    ctx.moveTo(Math.cos(a) * d - s, Math.sin(a) * d - s * 0.6);
-    ctx.lineTo(Math.cos(a) * d + s * 0.8, Math.sin(a) * d - s * 0.9);
-    ctx.lineTo(Math.cos(a) * d + s * 0.6, Math.sin(a) * d + s * 0.8);
-    ctx.lineTo(Math.cos(a) * d - s * 0.7, Math.sin(a) * d + s * 0.5);
-    ctx.closePath();
-    ctx.fill();
-  }
-  ctx.strokeStyle = '#2e2e2e';
+  ctx.strokeStyle = '#e07b0c';
   ctx.lineWidth = 6;
-  ctx.beginPath();
-  ctx.arc(0, 0, b.r - 3, 0, Math.PI * 2);
   ctx.stroke();
   ctx.restore();
 }

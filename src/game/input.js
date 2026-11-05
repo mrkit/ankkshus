@@ -52,6 +52,10 @@ export class Input {
 
   onKey(e, down) {
     if (down && e.repeat) return;
+    if (e.key === 'Escape') {
+      if (down) window.location.assign('/');
+      return;
+    }
     if (e.key === 'm' || e.key === 'M') {
       if (down) this.mutePressed = true;
       return;

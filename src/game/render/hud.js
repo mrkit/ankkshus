@@ -52,7 +52,7 @@ function progress(x) {
   );
 }
 
-export function drawHud(ctx, { luciX, boulderX, muted, input }) {
+export function drawHud(ctx, { luciX, sunX, muted, input }) {
   const barX = 460;
   const barW = 1000;
   const barY = 40;
@@ -62,9 +62,9 @@ export function drawHud(ctx, { luciX, boulderX, muted, input }) {
   ctx.fill();
   ctx.fillStyle = '#ffffff';
   ctx.fillRect(barX, barY - 2, barW * progress(luciX), 4);
-  ctx.fillStyle = '#9a9a9a';
+  ctx.fillStyle = '#ffb02e';
   ctx.beginPath();
-  ctx.arc(barX + barW * progress(boulderX), barY, 7, 0, Math.PI * 2);
+  ctx.arc(barX + barW * progress(sunX), barY, 7, 0, Math.PI * 2);
   ctx.fill();
   ctx.fillStyle = '#5fd14b';
   ctx.beginPath();
@@ -132,8 +132,8 @@ export function drawTitle(ctx, time, message, touch) {
   text(ctx, 'TOUCH TO START', WIDTH / 2, 560, 52, '#ffffff');
   ctx.restore();
   const help = touch
-    ? 'Hold the arrows to run and tap the up button to jump. Outrun the boulder.'
-    : 'Arrow keys or WASD to run, Space or Up to jump, M to mute. Outrun the boulder.';
+    ? 'Hold the arrows to run and tap the up button to jump. Outrun the sun.'
+    : 'Arrow keys or WASD to run, Space or Up to jump, M to mute, Esc to leave. Outrun the sun.';
   text(ctx, help, WIDTH / 2, 640, 28, 'rgba(255, 255, 255, 0.85)', 'normal');
 }
 

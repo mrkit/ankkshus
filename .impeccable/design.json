@@ -6,47 +6,47 @@
     "colorMeta": {
       "table": {
         "role": "primary",
-        "displayName": "Walnut Table",
-        "canonical": "oklch(30.1% 0.030 53)",
+        "displayName": "Paper Under The Wallpaper",
+        "canonical": "oklch(96.5% 0.010 87)",
         "tonalRamp": [
-          "oklch(15% 0.030 53)",
-          "oklch(26% 0.030 53)",
-          "oklch(37% 0.030 53)",
-          "oklch(48% 0.030 53)",
-          "oklch(60% 0.030 53)",
-          "oklch(72% 0.030 53)",
-          "oklch(84% 0.030 53)",
-          "oklch(95% 0.030 53)"
+          "oklch(15% 0.010 87)",
+          "oklch(26% 0.010 87)",
+          "oklch(37% 0.010 87)",
+          "oklch(48% 0.010 87)",
+          "oklch(60% 0.010 87)",
+          "oklch(72% 0.010 87)",
+          "oklch(84% 0.010 87)",
+          "oklch(95% 0.010 87)"
         ]
       },
       "table-text": {
         "role": "primary",
-        "displayName": "Cream On Table",
-        "canonical": "oklch(94.2% 0.029 88)",
+        "displayName": "Ink On Table",
+        "canonical": "oklch(22.5% 0.010 67)",
         "tonalRamp": [
-          "oklch(15% 0.029 88)",
-          "oklch(26% 0.029 88)",
-          "oklch(37% 0.029 88)",
-          "oklch(48% 0.029 88)",
-          "oklch(60% 0.029 88)",
-          "oklch(72% 0.029 88)",
-          "oklch(84% 0.029 88)",
-          "oklch(95% 0.029 88)"
+          "oklch(15% 0.010 67)",
+          "oklch(26% 0.010 67)",
+          "oklch(37% 0.010 67)",
+          "oklch(48% 0.010 67)",
+          "oklch(60% 0.010 67)",
+          "oklch(72% 0.010 67)",
+          "oklch(84% 0.010 67)",
+          "oklch(95% 0.010 67)"
         ]
       },
       "table-text-soft": {
         "role": "primary",
-        "displayName": "Soft Cream On Table",
-        "canonical": "oklch(83.3% 0.038 79)",
+        "displayName": "Soft Ink On Table",
+        "canonical": "oklch(38.7% 0.016 71)",
         "tonalRamp": [
-          "oklch(15% 0.038 79)",
-          "oklch(26% 0.038 79)",
-          "oklch(37% 0.038 79)",
-          "oklch(48% 0.038 79)",
-          "oklch(60% 0.038 79)",
-          "oklch(72% 0.038 79)",
-          "oklch(84% 0.038 79)",
-          "oklch(95% 0.038 79)"
+          "oklch(15% 0.016 71)",
+          "oklch(26% 0.016 71)",
+          "oklch(37% 0.016 71)",
+          "oklch(48% 0.016 71)",
+          "oklch(60% 0.016 71)",
+          "oklch(72% 0.016 71)",
+          "oklch(84% 0.016 71)",
+          "oklch(95% 0.016 71)"
         ]
       },
       "card": {
@@ -516,9 +516,9 @@
   ],
   "narrative": {
     "northStar": "The Family Game Table",
-    "overview": "The page is a dark walnut table. Everything a person reads sits on card stock laid on the table: a cream panel with dark brown ink and a short shadow underneath. There are two players, a brother and a sister, each with a colour and a dragon piece. Each check-in is one square space on a serpentine track, coloured by the Burns range it falls in. A person's piece stands on their latest space.\n\nThe site has one committed field colour and one data colour scale. Hierarchy comes from size and weight, never from ornament, kickers, or decoration. The display face is a rounded, heavy, hand-lettered sans; body text is the system face so that notes and tables read like plain writing. The whole thing is built phone-first: the board is six columns at phone width and eight above 560px, every control is at least 44px tall, and the top bar wraps its links onto a second row below 720px.\n\nThe world refuses the wellness-app arrangement and the D&D costume. There is no big score, no ring, no streak, no parchment texture, no blackletter, no gothic border. A check-in total is shown at body size inside a sentence that quotes Burns' own range, so it is material to weigh rather than a verdict.",
+    "overview": "The page is the city-dragon watercolour from the first ankkshus, on paper white, with a paper wash at the top so headings on the sky stay readable. Everything a person reads sits on card stock laid on the table: a cream panel with dark brown ink and a short shadow underneath. There are two players, a brother and a sister, each with a colour and a dragon piece. Each check-in is one square space on a serpentine track, coloured by the Burns range it falls in. A person's piece stands on their latest space.\n\nThe site has one committed field colour and one data colour scale. Hierarchy comes from size and weight, never from ornament, kickers, or decoration. The display face is a rounded, heavy, hand-lettered sans; body text is the system face so that notes and tables read like plain writing. The whole thing is built phone-first: the board is six columns at phone width and eight above 560px, every control is at least 44px tall, and the top bar wraps its links onto a second row below 720px.\n\nThe world refuses the wellness-app arrangement and the D&D costume. There is no big score, no ring, no streak, no parchment texture, no blackletter, no gothic border. A check-in total is shown at body size inside a sentence that quotes Burns' own range, so it is material to weigh rather than a verdict.",
     "keyCharacteristics": [
-      "One field colour (dark walnut) under cream card panels; dark brown ink, never black.",
+      "One field: the city-dragon watercolour on paper white (#F6F3EC), under cream card panels; dark brown ink, never black, on the table and on the cards.",
       "Two player colours (ember red, cobalt) that mean \"her\" and \"him\" and nothing else; gold is foil for focus, the Start space, and one button.",
       "A six-step board scale from pale gold to night is the only data colour.",
       "Grandstander Variable, bold, slightly tight, for every heading and the wordmark; system stack with tabular numerals for everything else.",

@@ -42,11 +42,6 @@ export function drawBackground(ctx, camX) {
   ctx.fillStyle = sky;
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-  ctx.fillStyle = '#fff2a8';
-  ctx.beginPath();
-  ctx.arc(1600, 150, 70, 0, Math.PI * 2);
-  ctx.fill();
-
   ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
   for (const [cx, cy, s] of CLOUDS) {
     let sx = (((cx - camX * 0.3) % CLOUD_PERIOD) + CLOUD_PERIOD) % CLOUD_PERIOD;

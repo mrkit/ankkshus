@@ -4,6 +4,5 @@ dist
 .git
 coverage
 tests
-assets
 .impeccable
 design

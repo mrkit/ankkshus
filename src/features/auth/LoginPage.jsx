@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { api } from '../../app/api.js';
-import { DragonMark } from '../../dragons/dragons.jsx';
 import { createSeat, signInWithPasskey } from './passkeys.js';
 
 export function LoginPage() {
@@ -29,10 +28,14 @@ export function LoginPage() {
   return (
     <div className="login-wrap">
       <div className="login card">
-        <div className="login-mark">
-          <DragonMark size={34} />
-          ankkshus
-        </div>
+        <h1 className="sr-only">ankkshus</h1>
+        <img
+          className="login-mark"
+          src="/images/ankkshus-logo.png"
+          alt=""
+          width="600"
+          height="472"
+        />
 
         {isSignUp ? (
           <form

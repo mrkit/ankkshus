@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>It's not my fault that I don't know how many k's are in anxious</title>
-  <link rel="icon" href="/images/Ankkshus_favicon.ico">
+  <link rel="icon" href="/images/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <style>
     html, body {
@@ -24,9 +24,33 @@
       display: block;
       touch-action: none;
     }
+    /* The way out of the game. It sits over the sky's top-left corner, clear of the controls. */
+    .back {
+      position: fixed;
+      top: max(12px, env(safe-area-inset-top));
+      left: max(12px, env(safe-area-inset-left));
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.45);
+      color: #fff;
+      font: 600 16px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+      text-decoration: none;
+    }
+    .back:focus-visible {
+      outline: 3px solid #ffd23f;
+      outline-offset: 2px;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .back:hover { background: rgba(0, 0, 0, 0.7); }
+    }
   </style>
 </head>
 <body>
+  <a class="back" href="/"><span aria-hidden="true">&larr;</span> Back to ankkshus</a>
   <script type="module" src="./src/game/main.js"></script>
 </body>
 </html>
