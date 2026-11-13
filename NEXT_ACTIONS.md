@@ -7,7 +7,16 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
 
 ## Next
 
+- [ ] Click through the fear-of-death section yourself before you tell her it is there · added 2026-11-13
+  - https://ankkshus.com/fear: six short steps, a ladder, and "The fear is here" two-minute tool
+  - the wording is in src/features/fear/steps.js; tell an agent anything to reword
+  - your own entries are private to your seat, so trying it does not show up for her
+- [ ] Fill in My people at https://ankkshus.com/manual/people, or do it with her · added 2026-11-13
+  - car insurance, roadside help, landlord or home insurance, plumber and the rest; each one turns into a call button on the manual pages
+  - the "Where things are" note is for the breaker box, main water shut-off and gas shut-off
+
 - [ ] Read the eleven CBT check-ins on the Check-in page and tell an agent what to reword · added 2026-10-26
+  - Check-in is now archived: Settings (the gear) → The old site
   - the prompts are rewritten from your sister's worksheets, not copied; the lists and examples are paraphrased in the help text
   - each one links the section's video in her Google Drive share; the link opens Drive and needs your Google login
   - the morning and evening journals are meant to be done daily, so their history grows

@@ -354,3 +354,35 @@ game page had no way back to the site.
   keep the dragon.
 - Wait for the original Luci art before changing the game. Rejected for now:
   the files are not found. The Sun is drawn in code until they turn up.
+
+## 2026-11-13 — The site becomes a "what to do when" manual and a fear-of-death section; the old pages move to Settings
+
+**Chosen.** The home page and top bar now show two sections. The first is a
+manual of 21 situations: car crash, dead battery, fridge, leaks, gas, fire,
+health, lost wallet and others. Each has steps for right now, who to call,
+and what to do after. Its call buttons come from a shared "My people" list
+that either seat fills in. Where the steps differ, the manual shows both the
+renter's branch and the owner's branch. The second section is about the
+fear of death. It has six short steps built on CBT for death anxiety, a
+ladder of exposure steps, a two-minute tool, and spaced review questions.
+Check-in, Notes, Videos and Luci are archived under a Settings (gear) link.
+Nothing is deleted.
+
+**Why.** A manual of what to do in what situation was asked for, written so
+that nobody has to put it together on a bad day. Anthony also asked for an
+interactive section, built with the framework, for getting past a fear of
+death. He chose to archive the old site in Settings rather than remove it. Notes on the fear section and its evidence are in
+`design/fear-section.md`.
+
+**Considered and rejected.**
+
+- Delete the old pages. Rejected: Anthony asked for an archived version.
+- Hard-code her numbers into the manual. Rejected: any change would need a
+  code edit. The editable list lets either of them keep it current.
+- A generic manual with no names or numbers. Rejected: "who do you call" was
+  half of her request.
+- Renter-only or owner-only steps. Rejected: Anthony asked for both branches.
+- A reading-only fear section. Rejected: retrieval and graded exposure are
+  what the framework and the CBT evidence point to. Reading about death
+  without doing anything would work like the avoidance the section tries to
+  undo.

@@ -1,9 +1,11 @@
 # ankkshus
 
-A private site for two people, a brother and his sister, to keep up with each
-other. Notes, a depression checklist kept over time, videos to watch, and the
-Luci game. Themed as the family game table: each check-in is a space on a
-board, and each person is a dragon piece.
+A private site for two people, a brother and his sister. It has two sections:
+a "what to do when" manual (car crash, dead battery, fridge, leaks, gas, lost
+wallet), whose call buttons come from a shared list of people and numbers,
+and a step-by-step section for the fear of death. The first version of the
+site (notes, a depression checklist, videos and the Luci game) is archived
+under Settings.
 
 ## Stack
 
@@ -64,6 +66,9 @@ LAN address serves pages but cannot sign anyone in.
 | `npm run lint` / `npm run format` | Biome                                                                                                  |
 
 ## Content
+
+- The manual is `src/features/manual/situations.js`. Each situation has steps for right now, who to call (roles from `contacts.js`, optionally limited to renters or owners), what to do after, and the sources its safety steps were checked against.
+- The fear-of-death section is `src/features/fear/steps.js`. Its design and evidence are in `design/fear-section.md`. Entries are private to each seat.
 
 - Quizzes are defined in `src/server/db/quizzes/*.js` and listed in `seed.js`. A quiz is a `checklist` (items scored 0 to 4, a total is kept) or a `worksheet` (written prompts; `text` is one line, `longtext` a paragraph). Add a file, list it, restart.
 - `quizzes/cbt.js` holds the online CBT course as eleven worksheet quizzes, one per course video. The videos and original worksheets live in a Google Drive share, and each quiz links to its own.

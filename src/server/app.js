@@ -6,6 +6,8 @@ import morgan from 'morgan';
 import { config } from './config.js';
 import { errorHandler, notFound } from './middleware/errors.js';
 import authRouter from './routes/auth.js';
+import contactsRouter from './routes/contacts.js';
+import fearRouter from './routes/fear.js';
 import postsRouter from './routes/posts.js';
 import quizzesRouter from './routes/quizzes.js';
 import usersRouter from './routes/users.js';
@@ -30,6 +32,8 @@ export function createApp() {
   app.use('/api/video-channels', videoChannelsRouter);
   app.use('/api/quizzes', quizzesRouter);
   app.use('/api/users', usersRouter);
+  app.use('/api/contacts', contactsRouter);
+  app.use('/api/fear', fearRouter);
   app.use('/api', notFound);
 
   // In production the built site is served by this process. In development Vite serves it.

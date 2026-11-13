@@ -188,6 +188,57 @@ describe('api', () => {
     expect(foreign.status).toBe(400);
   });
 
+  it('shares one contacts list between seats and clears a blank slot', async () => {
+    const alice = await agentFor('alice');
+    const bob = await agentFor('bob');
+    const saved = await alice
+      .put('/api/contacts/landlord')
+      .send({ name: 'Pat', phone: '555-0100', note: '' });
+    expect(saved.status).toBe(200);
+    expect(saved.body).toMatchObject({
+      role: 'landlord',
+      name: 'Pat',
+      note: null,
+    });
+
+    const seen = await bob.get('/api/contacts');
+    expect(seen.body.map((c) => c.name)).toEqual(['Pat']);
+
+    expect((await bob.put('/api/contacts/Bad Role!').send({})).status).toBe(
+      400,
+    );
+    expect(
+      (await bob.put('/api/contacts/landlord').send({ name: '', phone: '' }))
+        .status,
+    ).toBe(204);
+    expect((await alice.get('/api/contacts')).body).toEqual([]);
+    expect((await request(app).get('/api/contacts')).status).toBe(401);
+  });
+
+  it('keeps fear-section entries private to each seat', async () => {
+    const alice = await agentFor('alice');
+    const bob = await agentFor('bob');
+    const entry = await alice.post('/api/fear').send({
+      step: 'ladder',
+      answers: { rungs: [{ text: 'Say the word', rating: 3 }] },
+    });
+    expect(entry.status).toBe(201);
+    expect(entry.body.answers.rungs[0].rating).toBe(3);
+
+    const log = await alice
+      .post('/api/fear')
+      .send({ step: 'now', before: 7, after: 4 });
+    expect(log.status).toBe(201);
+    expect(
+      (await alice.post('/api/fear').send({ step: 'now', before: 11 })).status,
+    ).toBe(400);
+
+    expect((await alice.get('/api/fear')).body).toHaveLength(2);
+    expect((await bob.get('/api/fear')).body).toHaveLength(0);
+    expect((await bob.delete(`/api/fear/${log.body.id}`)).status).toBe(404);
+    expect((await alice.delete(`/api/fear/${log.body.id}`)).status).toBe(204);
+  });
+
   it('seeds only what is missing', async () => {
     expect(await seedMissing()).toEqual({ videos: 0, quizzes: 0 });
   });

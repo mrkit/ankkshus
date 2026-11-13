@@ -1,0 +1,835 @@
+// The manual and the fear-of-death section.
+
+.lede {
+  max-width: var(--measure);
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  // Paper wash so the line stays readable over the busy part of the wallpaper.
+  background: rgba(246, 243, 236, 0.88);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--table-text);
+  text-decoration: none;
+}
+
+.tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--card-well);
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  font-weight: 600;
+  vertical-align: 1px;
+}
+
+// The 911 strip. The one place red is a background.
+.sos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  padding: 14px 18px;
+  border-radius: var(--radius-lg);
+  background: var(--danger);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+
+  span {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.25rem;
+  }
+}
+
+// Manual list.
+.manual-search {
+  margin-bottom: 16px;
+
+  .input {
+    min-height: 52px;
+    font-size: 1.05rem;
+    box-shadow: var(--shadow-card);
+  }
+}
+
+.manual-groups {
+  display: grid;
+  gap: 16px;
+
+  @media (min-width: 760px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+.manual-group h2 {
+  margin-bottom: 8px;
+}
+
+.situation-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li + li {
+    border-top: 1px solid var(--card-edge);
+  }
+}
+
+.card a.situation-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+
+  &::after {
+    content: "›";
+    margin-left: auto;
+    color: var(--ink-faint);
+    font-size: 1.3rem;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: var(--player-b);
+    }
+  }
+}
+
+.danger-dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--danger);
+}
+
+.manual-foot {
+  margin-top: 20px;
+  max-width: var(--measure);
+}
+
+// One situation.
+.situation {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  .sos {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+}
+
+.do-list {
+  margin: 0;
+  padding-left: 1.4em;
+  display: grid;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.steps-box {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--card-well);
+
+  h3 {
+    margin-bottom: 6px;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 1.4em;
+    display: grid;
+    gap: 4px;
+  }
+}
+
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px 0;
+
+  & + & {
+    border-top: 1px solid var(--card-edge);
+  }
+}
+
+.contact-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 220px;
+}
+
+.contact-label {
+  font-weight: 700;
+}
+
+.contact-name {
+  font-weight: 600;
+}
+
+.contact-why,
+.contact-note {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.call-btn {
+  flex: none;
+}
+
+.sources {
+  font-size: 0.9rem;
+}
+
+// My people.
+.fixed-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.people-group {
+  margin-top: 16px;
+
+  > h2 {
+    margin-bottom: 4px;
+  }
+}
+
+.role-form {
+  display: grid;
+  gap: 10px;
+  padding: 16px 0;
+  scroll-margin-top: 90px;
+
+  & + & {
+    border-top: 1px solid var(--card-edge);
+  }
+}
+
+.role-head h3 {
+  margin-bottom: 2px;
+}
+
+.role-fields {
+  display: grid;
+  gap: 10px;
+
+  @media (min-width: 700px) {
+    grid-template-columns: 1fr 1fr;
+
+    .role-note {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+// Fear of death.
+.welcome-back {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: var(--shadow-card);
+  max-width: var(--measure);
+}
+
+.fear-grid {
+  display: grid;
+  gap: 16px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: start;
+  }
+}
+
+.next-card {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.next-title {
+  font-size: 1.2rem;
+}
+
+.short-version {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+.review-card {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  border-left: 6px solid var(--gold);
+}
+
+.ladder {
+  margin: 0 0 12px;
+  padding-left: 1.4em;
+  display: grid;
+  gap: 8px;
+
+  li {
+    display: grid;
+  }
+
+  .ladder-text {
+    font-weight: 600;
+  }
+
+  .ladder-meta {
+    font-size: 0.9rem;
+  }
+
+  .is-easier .ladder-text {
+    color: var(--player-b);
+  }
+}
+
+.log-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  li + li {
+    border-top: 1px solid var(--card-edge);
+  }
+}
+
+.step-list {
+  margin: 8px 0 0;
+  padding-left: 1.4em;
+  display: grid;
+  gap: 6px;
+
+  .is-done a {
+    color: var(--ink-soft);
+  }
+}
+
+.care-card p {
+  font-size: 0.95rem;
+}
+
+.fear-step {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+
+  h1 {
+    margin: 0;
+  }
+
+  h1:focus {
+    outline: none;
+  }
+}
+
+.step-head {
+  display: grid;
+  gap: 4px;
+}
+
+.step-page {
+  display: grid;
+  gap: 18px;
+  justify-items: stretch;
+
+  > .btn {
+    justify-self: start;
+  }
+}
+
+.step-nav .stop-link {
+  margin-left: auto;
+  color: var(--table-text);
+}
+
+.done-card {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+
+  h1,
+  h2 {
+    margin: 0;
+  }
+}
+
+.block-text {
+  max-width: var(--measure);
+
+  h3 {
+    margin-bottom: 4px;
+  }
+
+  p {
+    line-height: 1.55;
+  }
+}
+
+.ask {
+  display: grid;
+  gap: 12px;
+}
+
+.reveal {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  background: var(--card-well);
+  border-left: 4px solid var(--player-b);
+
+  h3 {
+    margin: 0;
+  }
+
+  blockquote {
+    margin: 0;
+    padding-left: 12px;
+    border-left: 3px solid var(--card-edge);
+    font-style: italic;
+  }
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  cursor: pointer;
+
+  input {
+    width: 20px;
+    height: 20px;
+    flex: none;
+  }
+}
+
+.checks {
+  border: 0;
+  margin: 0;
+  padding: 0;
+
+  legend {
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+}
+
+.rate-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+
+  .rate10 {
+    margin: 0 0 10px 30px;
+  }
+}
+
+.rate10 {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.rate10-row {
+  display: grid;
+  grid-template-columns: repeat(11, minmax(0, 1fr));
+  gap: 4px;
+  max-width: 520px;
+
+  label {
+    position: relative;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    cursor: pointer;
+  }
+
+  span {
+    display: grid;
+    place-items: center;
+    min-height: 44px;
+    border-radius: var(--radius);
+    background: #fffaf0;
+    border: 2px solid var(--card-edge);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    transition: background-color 120ms ease, border-color 120ms ease;
+  }
+
+  input:focus-visible + span {
+    outline: 3px solid var(--player-b);
+    outline-offset: 2px;
+  }
+
+  .is-on span {
+    background: var(--player-b);
+    border-color: var(--player-b);
+    color: var(--card);
+  }
+}
+
+.rate10-ends {
+  display: flex;
+  justify-content: space-between;
+  max-width: 520px;
+  margin-top: 4px;
+  font-size: 0.85rem;
+}
+
+.traps {
+  display: grid;
+  gap: 18px;
+}
+
+.trap-item {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+
+  legend {
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+}
+
+.trap-options {
+  display: grid;
+  gap: 8px;
+
+  @media (min-width: 600px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn {
+    justify-content: flex-start;
+    text-align: left;
+    line-height: 1.25;
+    padding-block: 8px;
+  }
+
+  .is-right {
+    background: var(--player-b);
+    border-color: var(--player-b);
+    color: var(--card);
+  }
+
+  .is-wrong {
+    border-color: var(--danger);
+    color: var(--danger);
+  }
+}
+
+.trap-feedback {
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: var(--card-well);
+  line-height: 1.5;
+}
+
+.sources-box {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    min-height: 32px;
+  }
+
+  ul {
+    margin: 6px 0 0;
+    padding-left: 1.2em;
+  }
+
+  .tag {
+    margin-left: 0;
+  }
+}
+
+// The alarm picture.
+.sim {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--card-well);
+}
+
+.sim-now {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+
+  @media (max-width: 520px) {
+    grid-template-columns: minmax(0, 1fr) auto;
+
+    .sim-label {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.sim-label {
+  font-weight: 600;
+}
+
+.sim-num {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.sim-meter {
+  height: 18px;
+  border-radius: 999px;
+  background: #fffaf0;
+  overflow: hidden;
+
+  span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--space-1), var(--space-3));
+    transform-origin: left center;
+    transition: transform 400ms var(--ease-out);
+  }
+}
+
+.sim-history {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 90px;
+
+  li {
+    flex: 1 1 0;
+    max-width: 40px;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .bar {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .let .bar {
+    background: var(--player-b);
+  }
+
+  .push .bar {
+    background: #9a9187;
+  }
+}
+
+.sim-key {
+  font-size: 0.88rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sim-meter span {
+    transition: none;
+  }
+}
+
+.ladder-builder {
+  ul {
+    list-style: none;
+    margin: 0 0 12px;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 2px 0;
+  }
+
+  li + li {
+    border-top: 1px solid var(--card-edge);
+  }
+}
+
+.ladder-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  margin-left: 30px;
+
+  .input {
+    width: auto;
+    min-width: 72px;
+  }
+}
+
+.ladder-own .input {
+  flex: 1 1 220px;
+}
+
+.compare {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 0;
+  width: 100%;
+
+  div {
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    background: var(--card-well);
+  }
+
+  dt {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  dd {
+    margin: 2px 0 0;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.6rem;
+  }
+}
+
+// Settings.
+.settings-grid {
+  display: grid;
+  gap: 16px;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+.archive-list {
+  margin: 10px 0 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: 6px;
+}
+
+// Home.
+.manual-card .quick-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+
+  @media (min-width: 560px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 14px;
+    border-radius: var(--radius);
+    background: var(--card-well);
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+.nudge {
+  margin-top: 14px;
+  color: var(--ink-soft);
+}
+
+.fear-card {
+  display: grid;
+  gap: 12px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+// Settings link in the top bar: a gear, with its word on wide screens.
+.topbar .nav-settings {
+  gap: 6px;
+
+  @media (max-width: 720px) {
+    .nav-settings-label {
+      display: none;
+    }
+  }
+}

@@ -82,6 +82,26 @@ export const QuizAnswer = sequelize.define('quizAnswer', {
   text: { type: DataTypes.TEXT, allowNull: true },
 });
 
+// The manual's "who to call" list. One shared row per role (landlord,
+// mechanic...), so either seat can fill in a number and both see it.
+export const Contact = sequelize.define('contact', {
+  role: { type: DataTypes.STRING(48), allowNull: false, unique: true },
+  name: { type: DataTypes.STRING(120), allowNull: true },
+  phone: { type: DataTypes.STRING(40), allowNull: true },
+  note: { type: DataTypes.STRING(500), allowNull: true },
+  updatedById: { type: DataTypes.INTEGER, allowNull: true },
+});
+
+// One saved piece of work in the fear-of-death section: a finished step, a
+// ladder rung tried, or a quick "the fear is here" log. Answers are the
+// step's own fields, kept as JSON so a step's questions can change.
+export const FearEntry = sequelize.define('fearEntry', {
+  step: { type: DataTypes.STRING(48), allowNull: false },
+  answers: { type: DataTypes.JSONB, allowNull: false, defaultValue: {} },
+  before: { type: DataTypes.INTEGER, allowNull: true },
+  after: { type: DataTypes.INTEGER, allowNull: true },
+});
+
 User.hasMany(Passkey, { onDelete: 'CASCADE' });
 Passkey.belongsTo(User);
 
@@ -107,3 +127,6 @@ QuizAttempt.hasMany(QuizAnswer, { as: 'answers', onDelete: 'CASCADE' });
 QuizAnswer.belongsTo(QuizAttempt);
 QuizAnswer.belongsTo(QuizQuestion, { as: 'question' });
 QuizQuestion.hasMany(QuizAnswer, { onDelete: 'CASCADE' });
+
+User.hasMany(FearEntry, { onDelete: 'CASCADE' });
+FearEntry.belongsTo(User);

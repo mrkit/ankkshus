@@ -4,9 +4,18 @@ import { AttemptDetail } from '../features/checkin/AttemptDetail.jsx';
 import { CheckInLibrary } from '../features/checkin/CheckInLibrary.jsx';
 import { QuizHistory } from '../features/checkin/QuizHistory.jsx';
 import { QuizRunner } from '../features/checkin/QuizRunner.jsx';
+import { FearNow } from '../features/fear/FearNow.jsx';
+import { FearPage } from '../features/fear/FearPage.jsx';
+import { ReviewPage } from '../features/fear/ReviewPage.jsx';
+import { RungSession } from '../features/fear/RungSession.jsx';
+import { StepRunner } from '../features/fear/StepRunner.jsx';
 import { HomePage } from '../features/home/HomePage.jsx';
+import { ManualPage } from '../features/manual/ManualPage.jsx';
+import { PeoplePage } from '../features/manual/PeoplePage.jsx';
+import { SituationPage } from '../features/manual/SituationPage.jsx';
 import { NewNotePage } from '../features/notes/NewNotePage.jsx';
 import { NotesPage } from '../features/notes/NotesPage.jsx';
+import { SettingsPage } from '../features/settings/SettingsPage.jsx';
 import { VideosPage } from '../features/videos/VideosPage.jsx';
 import { useMeQuery } from './api.js';
 import { Footer } from './Footer.jsx';
@@ -29,11 +38,20 @@ export function App() {
 
   return (
     <div className="shell">
-      <TopBar user={user} />
+      <TopBar />
       <main>
         <Routes>
           <Route path="/" element={<HomePage user={user} />} />
           <Route path="/login" element={<Navigate to="/" replace />} />
+          <Route path="/manual" element={<ManualPage />} />
+          <Route path="/manual/people" element={<PeoplePage />} />
+          <Route path="/manual/:slug" element={<SituationPage />} />
+          <Route path="/fear" element={<FearPage />} />
+          <Route path="/fear/now" element={<FearNow />} />
+          <Route path="/fear/rung" element={<RungSession />} />
+          <Route path="/fear/step/:slug" element={<StepRunner />} />
+          <Route path="/fear/review/:slug" element={<ReviewPage />} />
+          <Route path="/settings" element={<SettingsPage user={user} />} />
           <Route path="/check-in" element={<CheckInLibrary user={user} />} />
           <Route
             path="/check-in/attempts/:id"

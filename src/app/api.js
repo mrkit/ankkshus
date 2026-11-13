@@ -13,6 +13,8 @@ export const api = createApi({
     'VideoChannels',
     'Quizzes',
     'Attempts',
+    'Contacts',
+    'Fear',
   ],
   endpoints: (build) => ({
     me: build.query({ query: () => 'auth/me', providesTags: ['Me'] }),
@@ -86,6 +88,32 @@ export const api = createApi({
       }),
       invalidatesTags: ['Attempts'],
     }),
+
+    getContacts: build.query({
+      query: () => 'contacts',
+      providesTags: ['Contacts'],
+    }),
+    saveContact: build.mutation({
+      query: ({ role, ...body }) => ({
+        url: `contacts/${role}`,
+        method: 'PUT',
+        body,
+      }),
+      invalidatesTags: ['Contacts'],
+    }),
+
+    getFearEntries: build.query({
+      query: () => 'fear',
+      providesTags: ['Fear'],
+    }),
+    saveFearEntry: build.mutation({
+      query: (body) => ({ url: 'fear', method: 'POST', body }),
+      invalidatesTags: ['Fear'],
+    }),
+    deleteFearEntry: build.mutation({
+      query: (id) => ({ url: `fear/${id}`, method: 'DELETE' }),
+      invalidatesTags: ['Fear'],
+    }),
   }),
 });
 
@@ -108,4 +136,9 @@ export const {
   useGetAttemptsQuery,
   useGetAttemptQuery,
   useSaveAttemptMutation,
+  useGetContactsQuery,
+  useSaveContactMutation,
+  useGetFearEntriesQuery,
+  useSaveFearEntryMutation,
+  useDeleteFearEntryMutation,
 } = api;
