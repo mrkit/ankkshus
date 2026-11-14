@@ -38,7 +38,8 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
   - Option: let each person pick from the six in a settings page (an agent can add it; level: standard)
 - [ ] Test the Luci game on a phone · added 2026-10-25
   - touch controls and audio were only checked by reading; keyboard play was checked in a headless browser
-- [ ] Create both passkeys at https://ankkshus.com · added 2026-11-01
+- [ ] Set up her passkey at https://ankkshus.com · added 2026-11-01
+  - yours exists (seat 1, made 2026-11-05); hers is the second and last seat
   - "Setting up a seat?" on the sign-in page; name, then the setup code; 1Password offers to save the passkey
   - save hers to the shared family vault; the first seat is the red dragon, the second the sea serpent
   - read the setup code with: ssh kj grep SETUP_CODE /mnt/kj/docker/websites/ankkshus/.env
