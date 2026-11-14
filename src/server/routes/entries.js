@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import { FearEntry } from '../db/models.js';
+import { Entry } from '../db/models.js';
 import { requireAuth } from '../middleware/auth.js';
 import { idParam, validateBody } from '../middleware/validate.js';
 
@@ -23,7 +23,7 @@ const router = Router();
 // Only the signed-in person's own entries. Neither seat sees the other's.
 router.get('/', requireAuth, async (req, res) => {
   res.json(
-    await FearEntry.findAll({
+    await Entry.findAll({
       where: { userId: req.user.id },
       order: [['createdAt', 'DESC']],
     }),
@@ -31,13 +31,13 @@ router.get('/', requireAuth, async (req, res) => {
 });
 
 router.post('/', requireAuth, validateBody(entryFields), async (req, res) => {
-  const entry = await FearEntry.create({ ...req.body, userId: req.user.id });
+  const entry = await Entry.create({ ...req.body, userId: req.user.id });
   res.status(201).json(entry);
 });
 
 router.delete('/:id', requireAuth, async (req, res) => {
   const id = idParam.parse(req.params.id);
-  const count = await FearEntry.destroy({
+  const count = await Entry.destroy({
     where: { id, userId: req.user.id },
   });
   if (!count) return res.status(404).json({ error: 'Entry not found' });

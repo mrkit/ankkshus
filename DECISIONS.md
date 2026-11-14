@@ -386,3 +386,32 @@ death. He chose to archive the old site in Settings rather than remove it. Notes
   what the framework and the CBT evidence point to. Reading about death
   without doing anything would work like the avoidance the section tries to
   undo.
+
+## 2026-11-13 — Calm editorial look; a Therapy section and a feelings map; the course files live in assets/cbt behind sign-in
+
+**Chosen.** The look changes to calm editorial:
+- Newsreader serif headings and a system sans for body text.
+- Warm paper white, deep ink, and one muted teal accent.
+- Hairline rules instead of card shadows. The nav marks the current page with an underline.
+- The watercolour shows faintly, on the home page only.
+
+A Therapy section holds the CBT course, sections 5 to 8. Each section has its video, a question before watching, a recall question after, a practice, and the worksheets:
+- section 5: a thought-trap sorter
+- section 6: a 14-day journal strip
+- section 7: a label swap
+- section 8: a toolbox
+
+A feelings map lets the user place a feeling on two axes (pleasantness and energy), pick the nearest word, and save it with what happened. The fear-of-death entries table is renamed `entries` and also holds the therapy notes and feelings check-ins. The course videos and Word files sit in the gitignored `assets/cbt/`, and the server serves `/cbt/*` only to a signed-in person.
+
+**Why.**
+- **The look:** Anthony said the old look "feels too childish" and picked calm editorial from three options.
+- **Therapy:** he asked for the downloaded course to go in the assets folder and become interactive in a way that fits the site.
+- **Feelings map:** he asked for an interactive circumplex like the one in *Permission to Feel*.
+
+**Considered and rejected.**
+
+- "Soft modern app" (sans only, flat tinted tiles, no wallpaper) and "dark and quiet" (navy ground). Anthony chose editorial.
+- Serve the course files as plain static files. Rejected: anyone with the URL could fetch a paid course and personal worksheets.
+- A separate gitignored `media/` folder. Rejected: Anthony asked for the assets folder, and a sign-in check on `/cbt` protects it there.
+- Reproduce the Mood Meter's grid and word set. Rejected: it is someone else's published design. The map uses the circumplex model (Russell, 1980) with its own hand-placed words.
+- Embed the videos from Drive. Rejected: Drive asks for a Google sign-in, and the files are private to the person who shared them.

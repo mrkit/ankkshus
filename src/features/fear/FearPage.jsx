@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useGetFearEntriesQuery } from '../../app/api.js';
+import { useGetEntriesQuery } from '../../app/api.js';
 import { relativeDate } from '../../lib/dates.js';
 import { progressFrom } from './progress.js';
 import { REVIEWS, STEPS } from './steps.js';
 
 export function FearPage() {
-  const { data: entries = [], isLoading } = useGetFearEntriesQuery();
+  const { data: entries = [], isLoading } = useGetEntriesQuery();
   if (isLoading) return <p className="muted">Loading…</p>;
 
   const p = progressFrom(entries);

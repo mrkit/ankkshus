@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  useGetFearEntriesQuery,
-  useSaveFearEntryMutation,
-} from '../../app/api.js';
+import { useGetEntriesQuery, useSaveEntryMutation } from '../../app/api.js';
 import { progressFrom } from './progress.js';
 import { Rate10 } from './Rate10.jsx';
 
 // One go at a ladder rung, set up as an experiment: predict, do it, compare.
 export function RungSession() {
-  const { data: entries = [], isLoading: loading } = useGetFearEntriesQuery();
+  const { data: entries = [], isLoading: loading } = useGetEntriesQuery();
   const [rung, setRung] = useState(null);
   const [page, setPage] = useState(0);
   const [predicted, setPredicted] = useState(null);
@@ -18,7 +15,7 @@ export function RungSession() {
   const [end, setEnd] = useState(null);
   const [happened, setHappened] = useState('');
   const [saved, setSaved] = useState(false);
-  const [save, { isLoading, error }] = useSaveFearEntryMutation();
+  const [save, { isLoading, error }] = useSaveEntryMutation();
 
   if (loading) return <p className="muted">Loading…</p>;
   const { ladder, nextRung } = progressFrom(entries);

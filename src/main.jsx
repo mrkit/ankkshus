@@ -1,4 +1,4 @@
-import '@fontsource-variable/grandstander';
+import '@fontsource-variable/newsreader';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';

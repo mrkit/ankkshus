@@ -1,9 +1,11 @@
 # ankkshus
 
-A private site for two people, a brother and his sister. It has two sections:
-a "what to do when" manual (car crash, dead battery, fridge, leaks, gas, lost
-wallet), whose call buttons come from a shared list of people and numbers,
-and a step-by-step section for the fear of death. The first version of the
+A private site for two people, a brother and his sister. It has four
+sections. The first is a "what to do when" manual (car crash, dead battery,
+fridge, leaks, gas, lost wallet), whose call buttons come from a shared list
+of people and numbers. The second is Therapy, the CBT course sections 5 to 8
+with videos, practice and worksheets. The third is a feelings map. The
+fourth is a step-by-step section for the fear of death. The first version of the
 site (notes, a depression checklist, videos and the Luci game) is archived
 under Settings.
 
@@ -68,6 +70,8 @@ LAN address serves pages but cannot sign anyone in.
 ## Content
 
 - The manual is `src/features/manual/situations.js`. Each situation has steps for right now, who to call (roles from `contacts.js`, optionally limited to renters or owners), what to do after, and the sources its safety steps were checked against.
+- Therapy is `src/features/therapy/course.js`. The videos and original worksheets are in `assets/cbt/` (gitignored: `section-5.mp4` to `section-8.mp4` and nine `worksheet-*.docx`, downloaded from the Drive share on 2026-11-13). The server sends `/cbt/*` only to a signed-in person. The TrueNAS keeps its own copy in `assets/cbt/`, as it does for the images.
+- The feelings map is `src/features/feel/`. Its words and their positions are in `words.js`.
 - The fear-of-death section is `src/features/fear/steps.js`. Its design and evidence are in `design/fear-section.md`. Entries are private to each seat.
 
 - Quizzes are defined in `src/server/db/quizzes/*.js` and listed in `seed.js`. A quiz is a `checklist` (items scored 0 to 4, a total is kept) or a `worksheet` (written prompts; `text` is one line, `longtext` a paragraph). Add a file, list it, restart.

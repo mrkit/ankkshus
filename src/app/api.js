@@ -14,7 +14,7 @@ export const api = createApi({
     'Quizzes',
     'Attempts',
     'Contacts',
-    'Fear',
+    'Entries',
   ],
   endpoints: (build) => ({
     me: build.query({ query: () => 'auth/me', providesTags: ['Me'] }),
@@ -102,17 +102,17 @@ export const api = createApi({
       invalidatesTags: ['Contacts'],
     }),
 
-    getFearEntries: build.query({
-      query: () => 'fear',
-      providesTags: ['Fear'],
+    getEntries: build.query({
+      query: () => 'entries',
+      providesTags: ['Entries'],
     }),
-    saveFearEntry: build.mutation({
-      query: (body) => ({ url: 'fear', method: 'POST', body }),
-      invalidatesTags: ['Fear'],
+    saveEntry: build.mutation({
+      query: (body) => ({ url: 'entries', method: 'POST', body }),
+      invalidatesTags: ['Entries'],
     }),
-    deleteFearEntry: build.mutation({
-      query: (id) => ({ url: `fear/${id}`, method: 'DELETE' }),
-      invalidatesTags: ['Fear'],
+    deleteEntry: build.mutation({
+      query: (id) => ({ url: `entries/${id}`, method: 'DELETE' }),
+      invalidatesTags: ['Entries'],
     }),
   }),
 });
@@ -138,7 +138,7 @@ export const {
   useSaveAttemptMutation,
   useGetContactsQuery,
   useSaveContactMutation,
-  useGetFearEntriesQuery,
-  useSaveFearEntryMutation,
-  useDeleteFearEntryMutation,
+  useGetEntriesQuery,
+  useSaveEntryMutation,
+  useDeleteEntryMutation,
 } = api;

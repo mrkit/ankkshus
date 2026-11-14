@@ -7,6 +7,11 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
 
 ## Next
 
+- [ ] Look over the new calm editorial look and tell an agent what to change · added 2026-11-13
+  - home, Manual, Therapy, Feelings and Fear of death all use it; the archived Check-in pages keep some old board styling
+- [ ] Play one Therapy video on your phone · added 2026-11-13
+  - https://ankkshus.com/therapy/5; the files are 29 to 91 MB and stream from the TrueNAS
+
 - [ ] Click through the fear-of-death section yourself before you tell her it is there · added 2026-11-13
   - https://ankkshus.com/fear: six short steps, a ladder, and "The fear is here" two-minute tool
   - the wording is in src/features/fear/steps.js; tell an agent anything to reword

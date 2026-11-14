@@ -3,26 +3,28 @@
 @use "guide";
 
 :root {
-  // The table: the city-dragon watercolour from the first ankkshus, on its
-  // own paper white, with card stock laid on it.
-  --table: #f6f3ec;
-  --table-text: #1f1b17;
-  --table-text-soft: #4a433b;
+  // Calm editorial: warm paper, deep ink, one muted teal. Hairline rules
+  // instead of shadows. The watercolour appears faintly on the home page only.
+  --table: #f7f5ef;
+  --table-text: #1c1b19;
+  --table-text-soft: #57524a;
 
-  --card: #f4ebd6;
-  --card-edge: #e2d4b4;
-  --card-well: #ebdfc4;
-  --ink: #1f1b17;
-  --ink-soft: #5e554b;
-  --ink-faint: #6f665a;
+  --card: #fffdf9;
+  --card-edge: #e4ded1;
+  --card-well: #f2eee5;
+  --ink: #1c1b19;
+  --ink-soft: #57524a;
+  --ink-faint: #7a7469;
 
-  // Player pieces and foil.
-  --player-a: #c9402b;
-  --player-b: #2c56a6;
-  --gold: #d9a93a;
-  --danger: #a33a2a;
+  // --player-b is the accent everywhere; the names stay from the board era
+  // because the archived Check-in pages still use them.
+  --player-a: #a8432f;
+  --player-b: #1d6a65;
+  --accent: var(--player-b);
+  --gold: #b58a3c;
+  --danger: #9e3a2c;
 
-  // Board spaces, pale gold to night. The only data colour.
+  // Board spaces, used only by the archived Check-in board.
   --space-1: #f1d58a;
   --space-2: #e3a64a;
   --space-3: #c8623a;
@@ -31,21 +33,16 @@
   --space-6: #2b2f55;
   --space-empty: #e9dec4;
 
-  --radius: 8px;
-  --radius-lg: 14px;
-  --shadow-card: 0 1px 0 rgba(0, 0, 0, 0.12), 0 12px 28px -14px rgba(
-    0,
-    0,
-    0,
-    0.5
-  );
+  --radius: 6px;
+  --radius-lg: 8px;
+  --shadow-card: none;
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 
-  --font-display: "Grandstander Variable", "Grandstander", system-ui, sans-serif;
+  --font-display: "Newsreader Variable", "Newsreader", Georgia, "Times New Roman", serif;
   --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 
-  --measure: 68ch;
+  --measure: 66ch;
   --gutter: clamp(16px, 4vw, 40px);
 
   color-scheme: light;
@@ -74,9 +71,9 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
-// The wallpaper sits on its own fixed layer: background-attachment: fixed
-// is ignored on iOS. A paper wash keeps text on the sky readable.
-body::before {
+// The watercolour, on the home page only, behind a heavy paper wash. It sits
+// on its own fixed layer because iOS ignores background-attachment: fixed.
+body[data-page="home"]::before {
   content: "";
   position: fixed;
   inset: 0;
@@ -84,9 +81,9 @@ body::before {
   background:
     linear-gradient(
       to bottom,
-      rgba(246, 243, 236, 0.72),
-      rgba(246, 243, 236, 0.28) 55%,
-      rgba(246, 243, 236, 0.1)
+      rgba(247, 245, 239, 0.94),
+      rgba(247, 245, 239, 0.7) 60%,
+      rgba(247, 245, 239, 0.55)
     ),
     url("/images/city-dragon-2400.webp") center 70% / cover no-repeat,
     var(--table);
@@ -95,9 +92,9 @@ body::before {
     background:
       linear-gradient(
         to bottom,
-        rgba(246, 243, 236, 0.78),
-        rgba(246, 243, 236, 0.35) 55%,
-        rgba(246, 243, 236, 0.15)
+        rgba(247, 245, 239, 0.95),
+        rgba(247, 245, 239, 0.75) 60%,
+        rgba(247, 245, 239, 0.6)
       ),
       url("/images/city-dragon-1400.webp") 22% 70% / cover no-repeat,
       var(--table);
@@ -108,23 +105,24 @@ h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
   margin: 0;
   text-wrap: balance;
 }
 
 h1 {
-  font-size: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);
+  font-size: clamp(2rem, 1.5rem + 2vw, 2.9rem);
 }
 
 h2 {
-  font-size: clamp(1.375rem, 1.1rem + 1.2vw, 1.875rem);
+  font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.6rem);
 }
 
 h3 {
-  font-size: 1.125rem;
+  font-size: 1.15rem;
+  font-weight: 600;
 }
 
 p {
@@ -142,22 +140,23 @@ a {
 }
 
 ::selection {
-  background: var(--gold);
+  background: #cfe3e0;
   color: var(--ink);
 }
 
 :focus-visible {
-  outline: 3px solid var(--gold);
+  outline: 2px solid var(--player-b);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-// Card stock laid on the table. Panels hold anything a person reads.
-.card {
+// A sheet of paper with a hairline edge. Holds anything a person reads.
+.card,
+.panel {
   background: var(--card);
   color: var(--ink);
+  border: 1px solid var(--card-edge);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
   padding: clamp(18px, 3vw, 28px);
 
   ::selection {
@@ -239,7 +238,7 @@ a {
 
   @media (hover: hover) and (pointer: fine) {
     &:hover:not(:disabled) {
-      background: #244a93;
+      background: #175752;
     }
   }
 }
@@ -250,7 +249,7 @@ a {
 
   @media (hover: hover) and (pointer: fine) {
     &:hover:not(:disabled) {
-      background: #e6b84f;
+      background: #c79a4a;
     }
   }
 }
@@ -300,8 +299,8 @@ a {
   width: 100%;
   font: inherit;
   color: var(--ink);
-  background: #fffaf0;
-  border: 2px solid var(--card-edge);
+  background: #fff;
+  border: 1px solid #d6cfc0;
   border-radius: var(--radius);
   padding: 10px 12px;
   min-height: 44px;
@@ -347,11 +346,10 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: var(--card);
+  background: rgba(247, 245, 239, 0.94);
+  backdrop-filter: blur(6px);
   color: var(--ink);
-  box-shadow:
-    0 2px 0 rgba(0, 0, 0, 0.14),
-    0 10px 24px -14px rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid var(--card-edge);
 
   .topbar-inner {
     display: flex;
@@ -367,14 +365,16 @@ a {
     align-items: center;
     gap: 8px;
     font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.35rem;
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: -0.01em;
     text-decoration: none;
     color: var(--ink);
 
     svg {
       color: var(--player-a);
+      width: 22px;
+      height: 22px;
     }
   }
 
@@ -394,21 +394,20 @@ a {
       align-items: center;
       min-height: 40px;
       padding: 0 12px;
-      border-radius: 999px;
       text-decoration: none;
       color: var(--ink-soft);
-      font-weight: 600;
+      font-weight: 500;
       white-space: nowrap;
-      transition: background-color 120ms ease, color 120ms ease;
+      box-shadow: inset 0 -2px 0 transparent;
+      transition: color 120ms ease, box-shadow 120ms ease;
 
       &[aria-current="page"] {
-        background: var(--ink);
-        color: var(--card);
+        color: var(--ink);
+        box-shadow: inset 0 -2px 0 var(--player-b);
       }
 
       @media (hover: hover) and (pointer: fine) {
         &:hover:not([aria-current="page"]) {
-          background: var(--card-well);
           color: var(--ink);
         }
       }
@@ -438,9 +437,13 @@ a {
       flex-basis: 100%;
       margin-left: 0;
 
+      min-width: 0;
+      max-width: 100%;
+
       ul {
-        flex-wrap: wrap;
-        row-gap: 2px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
       }
     }
 
@@ -468,8 +471,9 @@ footer {
   font-size: 0.9rem;
 
   img {
-    width: min(220px, 60vw);
+    width: min(160px, 50vw);
     height: auto;
+    opacity: 0.55;
   }
 }
 

@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
@@ -218,7 +219,7 @@ describe('api', () => {
   it('keeps fear-section entries private to each seat', async () => {
     const alice = await agentFor('alice');
     const bob = await agentFor('bob');
-    const entry = await alice.post('/api/fear').send({
+    const entry = await alice.post('/api/entries').send({
       step: 'ladder',
       answers: { rungs: [{ text: 'Say the word', rating: 3 }] },
     });
@@ -226,18 +227,32 @@ describe('api', () => {
     expect(entry.body.answers.rungs[0].rating).toBe(3);
 
     const log = await alice
-      .post('/api/fear')
+      .post('/api/entries')
       .send({ step: 'now', before: 7, after: 4 });
     expect(log.status).toBe(201);
     expect(
-      (await alice.post('/api/fear').send({ step: 'now', before: 11 })).status,
+      (await alice.post('/api/entries').send({ step: 'now', before: 11 }))
+        .status,
     ).toBe(400);
 
-    expect((await alice.get('/api/fear')).body).toHaveLength(2);
-    expect((await bob.get('/api/fear')).body).toHaveLength(0);
-    expect((await bob.delete(`/api/fear/${log.body.id}`)).status).toBe(404);
-    expect((await alice.delete(`/api/fear/${log.body.id}`)).status).toBe(204);
+    expect((await alice.get('/api/entries')).body).toHaveLength(2);
+    expect((await bob.get('/api/entries')).body).toHaveLength(0);
+    expect((await bob.delete(`/api/entries/${log.body.id}`)).status).toBe(404);
+    expect((await alice.delete(`/api/entries/${log.body.id}`)).status).toBe(
+      204,
+    );
   });
+
+  it.skipIf(!existsSync('dist'))(
+    'serves the CBT course files only to a signed-in person',
+    async () => {
+      const anon = await request(app).get('/cbt/section-5.mp4');
+      expect(anon.status).toBe(401);
+      const alice = await agentFor('alice');
+      const signedIn = await alice.get('/cbt/no-such-file.mp4');
+      expect(signedIn.status).not.toBe(401);
+    },
+  );
 
   it('seeds only what is missing', async () => {
     expect(await seedMissing()).toEqual({ videos: 0, quizzes: 0 });

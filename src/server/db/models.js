@@ -92,10 +92,11 @@ export const Contact = sequelize.define('contact', {
   updatedById: { type: DataTypes.INTEGER, allowNull: true },
 });
 
-// One saved piece of work in the fear-of-death section: a finished step, a
-// ladder rung tried, or a quick "the fear is here" log. Answers are the
-// step's own fields, kept as JSON so a step's questions can change.
-export const FearEntry = sequelize.define('fearEntry', {
+// One private piece of work, visible only to the person who wrote it. `step`
+// says what it is: a fear-of-death step, a ladder rung tried, a "the fear is
+// here" log, a feelings-map check-in ("feeling"), or a therapy-section note
+// ("therapy-5"). Answers are that thing's own fields, kept as JSON.
+export const Entry = sequelize.define('entry', {
   step: { type: DataTypes.STRING(48), allowNull: false },
   answers: { type: DataTypes.JSONB, allowNull: false, defaultValue: {} },
   before: { type: DataTypes.INTEGER, allowNull: true },
@@ -128,5 +129,5 @@ QuizAnswer.belongsTo(QuizAttempt);
 QuizAnswer.belongsTo(QuizQuestion, { as: 'question' });
 QuizQuestion.hasMany(QuizAnswer, { onDelete: 'CASCADE' });
 
-User.hasMany(FearEntry, { onDelete: 'CASCADE' });
-FearEntry.belongsTo(User);
+User.hasMany(Entry, { onDelete: 'CASCADE' });
+Entry.belongsTo(User);

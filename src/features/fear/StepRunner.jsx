@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import {
-  useGetFearEntriesQuery,
-  useSaveFearEntryMutation,
-} from '../../app/api.js';
+import { useGetEntriesQuery, useSaveEntryMutation } from '../../app/api.js';
 import { Block } from './Blocks.jsx';
 import { progressFrom } from './progress.js';
 import { STEPS, stepBySlug } from './steps.js';
@@ -14,8 +11,8 @@ export function StepRunner() {
   const [page, setPage] = useState(0);
   const [answers, setAnswers] = useState({});
   const [saved, setSaved] = useState(false);
-  const [save, { isLoading, error }] = useSaveFearEntryMutation();
-  const { data: entries = [] } = useGetFearEntriesQuery();
+  const [save, { isLoading, error }] = useSaveEntryMutation();
+  const { data: entries = [] } = useGetEntriesQuery();
   const heading = useRef(null);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: move focus to the heading whenever the page changes

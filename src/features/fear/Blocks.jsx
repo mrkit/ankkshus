@@ -45,7 +45,7 @@ function Write({ block, value = '', set }) {
 }
 
 // Ask first; show the answer only after an attempt (or an honest "not sure").
-function Ask({ block, value = '', set, kind }) {
+export function Ask({ block, value = '', set, kind }) {
   const [shown, setShown] = useState(Boolean(value));
   const answer = kind === 'guess' ? block.reveal : [block.model];
   return (
@@ -69,7 +69,8 @@ function Ask({ block, value = '', set, kind }) {
             disabled={!value.trim()}
             onClick={() => setShown(true)}
           >
-            {kind === 'guess' ? 'See what happens' : 'Compare'}
+            {block.button ??
+              (kind === 'guess' ? 'See what happens' : 'Compare')}
           </button>
           <button
             type="button"

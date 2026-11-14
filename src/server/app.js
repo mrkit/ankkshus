@@ -4,10 +4,11 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import morgan from 'morgan';
 import { config } from './config.js';
+import { requireAuth } from './middleware/auth.js';
 import { errorHandler, notFound } from './middleware/errors.js';
 import authRouter from './routes/auth.js';
 import contactsRouter from './routes/contacts.js';
-import fearRouter from './routes/fear.js';
+import entriesRouter from './routes/entries.js';
 import postsRouter from './routes/posts.js';
 import quizzesRouter from './routes/quizzes.js';
 import usersRouter from './routes/users.js';
@@ -33,11 +34,14 @@ export function createApp() {
   app.use('/api/quizzes', quizzesRouter);
   app.use('/api/users', usersRouter);
   app.use('/api/contacts', contactsRouter);
-  app.use('/api/fear', fearRouter);
+  app.use('/api/entries', entriesRouter);
   app.use('/api', notFound);
 
   // In production the built site is served by this process. In development Vite serves it.
   if (existsSync(distDir)) {
+    // The CBT course videos and worksheets are a paid course and personal
+    // material, so they need a session like the API does.
+    app.use('/cbt', requireAuth);
     app.use(express.static(distDir));
     app.get('/luci', (_req, res) =>
       res.sendFile('luci.html', { root: distDir }),

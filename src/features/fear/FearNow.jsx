@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSaveFearEntryMutation } from '../../app/api.js';
+import { useSaveEntryMutation } from '../../app/api.js';
 import { Rate10 } from './Rate10.jsx';
 
 const URGES = [
@@ -17,7 +17,7 @@ export function FearNow() {
   const [before, setBefore] = useState(null);
   const [after, setAfter] = useState(null);
   const [urges, setUrges] = useState([]);
-  const [save, { isLoading, error }] = useSaveFearEntryMutation();
+  const [save, { isLoading, error }] = useSaveEntryMutation();
   const [saved, setSaved] = useState(false);
 
   async function finish() {

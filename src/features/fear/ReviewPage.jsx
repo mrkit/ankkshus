@@ -1,20 +1,17 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import {
-  useGetFearEntriesQuery,
-  useSaveFearEntryMutation,
-} from '../../app/api.js';
+import { useGetEntriesQuery, useSaveEntryMutation } from '../../app/api.js';
 import { REVIEWS, stepBySlug } from './steps.js';
 
 // A spaced recall question from a finished step: answer first, then compare.
 export function ReviewPage() {
   const { slug } = useParams();
   const review = REVIEWS[slug];
-  const { data: entries = [] } = useGetFearEntriesQuery();
+  const { data: entries = [] } = useGetEntriesQuery();
   const [text, setText] = useState('');
   const [shown, setShown] = useState(false);
   const [saved, setSaved] = useState(false);
-  const [save, { isLoading }] = useSaveFearEntryMutation();
+  const [save, { isLoading }] = useSaveEntryMutation();
 
   if (!review) return <p className="muted">That question does not exist.</p>;
   const earlier = entries.find((e) => e.step === slug)?.answers ?? {};
