@@ -102,6 +102,8 @@ export const api = createApi({
       invalidatesTags: ['Contacts'],
     }),
 
+    getRecords: build.query({ query: () => 'records' }),
+
     getEntries: build.query({
       query: () => 'entries',
       providesTags: ['Entries'],
@@ -138,6 +140,7 @@ export const {
   useSaveAttemptMutation,
   useGetContactsQuery,
   useSaveContactMutation,
+  useGetRecordsQuery,
   useGetEntriesQuery,
   useSaveEntryMutation,
   useDeleteEntryMutation,

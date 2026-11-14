@@ -415,3 +415,14 @@ A feelings map lets the user place a feeling on two axes (pleasantness and energ
 - A separate gitignored `media/` folder. Rejected: Anthony asked for the assets folder, and a sign-in check on `/cbt` protects it there.
 - Reproduce the Mood Meter's grid and word set. Rejected: it is someone else's published design. The map uses the circumplex model (Russell, 1980) with its own hand-placed words.
 - Embed the videos from Drive. Rejected: Drive asks for a Google sign-in, and the files are private to the person who shared them.
+
+## 2026-11-13 — Therapy covers the whole course; earlier records sit in a protected folder whose file names are the titles
+
+**Chosen.** Therapy now runs from the introduction to section 8. Each section of 0 to 4 has a practice drawn from its worksheets: thought, feeling or action; ranking problems; weighing up an avoidance; taking an emotion apart. Earlier documents go in the gitignored `assets/records/`. They are served only to a signed-in person and listed under Therapy as "Background", titled by their file names.
+
+**Why.** Anthony pointed out that the assets folder already held the first four worksheets and a historical document that belongs on the site. Therapy had started at section 5. The document is a personal medical record. The repo is public, so its title and description cannot live in the code.
+
+**Considered and rejected.**
+
+- Hard-code the document's title in the page. Rejected: it would publish a personal detail in a public repo.
+- Leave it as a plain static file. Rejected: anyone with the URL could open it.

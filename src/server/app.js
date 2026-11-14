@@ -1,4 +1,4 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import cookieParser from 'cookie-parser';
 import express from 'express';
@@ -16,6 +16,23 @@ import videoChannelsRouter from './routes/videoChannels.js';
 import videosRouter from './routes/videos.js';
 
 const distDir = fileURLToPath(new URL('../../dist', import.meta.url));
+const assetsDir = fileURLToPath(new URL('../../assets', import.meta.url));
+
+// Documents in records/ (gitignored): the file names are the titles, so no
+// personal detail lives in the code. Built copy first, then the source folder.
+function listRecords() {
+  for (const dir of [`${distDir}/records`, `${assetsDir}/records`]) {
+    if (!existsSync(dir)) continue;
+    return readdirSync(dir)
+      .filter((f) => !f.startsWith('.'))
+      .sort()
+      .map((f) => ({
+        name: f.replace(/\.[a-z0-9]+$/i, ''),
+        url: `/records/${encodeURIComponent(f)}`,
+      }));
+  }
+  return [];
+}
 
 export function createApp() {
   const app = express();
@@ -33,6 +50,7 @@ export function createApp() {
   app.use('/api/video-channels', videoChannelsRouter);
   app.use('/api/quizzes', quizzesRouter);
   app.use('/api/users', usersRouter);
+  app.get('/api/records', requireAuth, (_req, res) => res.json(listRecords()));
   app.use('/api/contacts', contactsRouter);
   app.use('/api/entries', entriesRouter);
   app.use('/api', notFound);
@@ -42,6 +60,7 @@ export function createApp() {
     // The CBT course videos and worksheets are a paid course and personal
     // material, so they need a session like the API does.
     app.use('/cbt', requireAuth);
+    app.use('/records', requireAuth);
     app.use(express.static(distDir));
     app.get('/luci', (_req, res) =>
       res.sendFile('luci.html', { root: distDir }),

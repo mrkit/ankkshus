@@ -3,9 +3,22 @@ import { Link, useParams } from 'react-router-dom';
 import { useGetEntriesQuery, useSaveEntryMutation } from '../../app/api.js';
 import { Ask } from '../fear/Blocks.jsx';
 import { sectionByN } from './course.js';
-import { JournalDays, LabelSwap, Toolbox, TrapSorter } from './Practice.jsx';
+import {
+  AvoidanceCost,
+  EmotionParts,
+  JournalDays,
+  LabelSwap,
+  ProblemRanker,
+  ThoughtFeelingAction,
+  Toolbox,
+  TrapSorter,
+} from './Practice.jsx';
 
 const PRACTICE_TITLE = {
+  tfa: 'Practice: thought, feeling or action?',
+  problems: 'Practice: rank your problems',
+  avoid: 'Practice: weigh up an avoidance',
+  emotion: 'Practice: take an emotion apart',
   traps: 'Practice: spot the trap',
   journal: 'Your journal',
   labels: 'Practice: swap a label',
@@ -48,7 +61,9 @@ export function SectionPage({ user }) {
       </Link>
       <header className="page-head">
         <h1>
-          {section.n}. {section.title}
+          {section.n === 0
+            ? `Introduction: ${section.title}`
+            : `${section.n}. ${section.title}`}
         </h1>
       </header>
 
@@ -91,19 +106,33 @@ export function SectionPage({ user }) {
         />
       </section>
 
-      <section className="panel">
-        <h2>{PRACTICE_TITLE[section.practice]}</h2>
-        {section.practice === 'traps' && (
-          <TrapSorter value={answers.traps} set={set('traps')} />
-        )}
-        {section.practice === 'journal' && <JournalDays user={user} />}
-        {section.practice === 'labels' && (
-          <LabelSwap value={answers.labels} set={set('labels')} />
-        )}
-        {section.practice === 'toolbox' && (
-          <Toolbox value={answers.toolbox} set={set('toolbox')} />
-        )}
-      </section>
+      {section.practice && (
+        <section className="panel">
+          <h2>{PRACTICE_TITLE[section.practice]}</h2>
+          {section.practice === 'tfa' && (
+            <ThoughtFeelingAction value={answers.tfa} set={set('tfa')} />
+          )}
+          {section.practice === 'problems' && (
+            <ProblemRanker value={answers.problems} set={set('problems')} />
+          )}
+          {section.practice === 'avoid' && (
+            <AvoidanceCost value={answers.avoid} set={set('avoid')} />
+          )}
+          {section.practice === 'emotion' && (
+            <EmotionParts value={answers.emotion} set={set('emotion')} />
+          )}
+          {section.practice === 'traps' && (
+            <TrapSorter value={answers.traps} set={set('traps')} />
+          )}
+          {section.practice === 'journal' && <JournalDays user={user} />}
+          {section.practice === 'labels' && (
+            <LabelSwap value={answers.labels} set={set('labels')} />
+          )}
+          {section.practice === 'toolbox' && (
+            <Toolbox value={answers.toolbox} set={set('toolbox')} />
+          )}
+        </section>
+      )}
 
       <section className="panel">
         <h2>Worksheets</h2>
@@ -139,7 +168,7 @@ export function SectionPage({ user }) {
         </span>
         {next && (
           <Link to={`/therapy/${next.n}`} className="next-link">
-            Section {next.n}: {next.title} →
+            Next: {next.title} →
           </Link>
         )}
       </div>

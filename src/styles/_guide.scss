@@ -1255,3 +1255,42 @@
     padding-left: 0;
   }
 }
+
+.problem-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 6px 0;
+    border-top: 1px solid var(--card-edge);
+
+    > span {
+      flex: 1 1 180px;
+    }
+
+    .ladder-rating {
+      margin-left: 0;
+    }
+  }
+}
+
+.problems {
+  display: grid;
+  gap: 14px;
+
+  .reveal ol {
+    margin: 0;
+    padding-left: 1.3em;
+  }
+}
+
+@media (min-width: 600px) {
+  .tfa-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

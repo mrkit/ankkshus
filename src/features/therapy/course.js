@@ -1,4 +1,4 @@
-// The CBT course sections 5 to 8: the videos and original worksheets live in
+// The CBT course, introduction to section 8: the videos and original worksheets live in
 // assets/cbt (gitignored, served only to signed-in people). The worksheets
 // can also be filled in online; `quizzes` are their slugs in Check-in.
 // The before/after questions and the practice are written for this site.
@@ -6,6 +6,123 @@
 const ws = (file, title) => ({ file: `/cbt/${file}`, title });
 
 export const SECTIONS = [
+  {
+    n: 0,
+    title: 'Start getting happier today',
+    video: '/cbt/section-0.mp4',
+    before:
+      'What would be different in a normal week if this course worked for you?',
+    after: {
+      prompt:
+        'In your own words: what does the course ask of you, and what does it promise in return?',
+      model:
+        'It asks you to watch each section and do its worksheets honestly, at your own pace. In return it gives you the CBT tools to notice and change the thoughts, behaviors and emotions that keep you unhappy.',
+    },
+    practice: null,
+    quizzes: [{ slug: 'cbt-intro', title: 'Getting to know you' }],
+    worksheets: [
+      ws(
+        'worksheet-0-1-getting-to-know-you.docx',
+        'Introduction: getting to know you',
+      ),
+    ],
+  },
+  {
+    n: 1,
+    title: 'How CBT works',
+    video: '/cbt/section-1.mp4',
+    before:
+      'Guess: if you change one of your thoughts, your feelings or your actions, what happens to the other two?',
+    after: {
+      prompt:
+        'In your own words: how are thoughts, feelings and behavior connected?',
+      model:
+        'Each one feeds the other two. A thought changes how you feel, the feeling changes what you do, and what you do feeds back into what you think. CBT works by changing the thoughts and behaviors, which you can reach directly, so the feelings follow.',
+    },
+    practice: 'tfa',
+    quizzes: [{ slug: 'cbt-1', title: 'After the video' }],
+    worksheets: [],
+  },
+  {
+    n: 2,
+    title: 'Looking into distress',
+    video: '/cbt/section-2.mp4',
+    before:
+      'If you had to name the one problem that affects your days most, what would it be?',
+    after: {
+      prompt:
+        'In your own words: why list every problem first, then pick five, then set goals?',
+      model:
+        'Writing everything down shows the whole picture. Picking the five with the biggest effect tells you where to start, and seeing how they affect each other shows which one to work on first. Goals are only about you, since other people’s behavior is not yours to control.',
+    },
+    practice: 'problems',
+    quizzes: [{ slug: 'cbt-2', title: 'Problems and goals' }],
+    worksheets: [
+      ws(
+        'worksheet-2-1-identifying-my-problems.docx',
+        '2.1 Identifying my problems',
+      ),
+      ws(
+        'worksheet-2-2-my-most-significant-problems.docx',
+        '2.2 My most significant problems',
+      ),
+      ws('worksheet-2-3-my-long-term-goals.docx', '2.3 My long-term goals'),
+    ],
+  },
+  {
+    n: 3,
+    title: 'Problematic behavior',
+    video: '/cbt/section-3.mp4',
+    before: 'What is something you avoid? Guess what it costs you over a year.',
+    after: {
+      prompt:
+        'In your own words: why does avoiding things make life harder, and what do you do instead?',
+      model:
+        'Avoiding brings relief now, but it shrinks your life and keeps the problem in place. Instead you name the unhealthy behavior, choose a healthy one to replace it, and put time for it in your calendar.',
+    },
+    practice: 'avoid',
+    quizzes: [{ slug: 'cbt-3', title: 'Unhealthy behaviors and avoidance' }],
+    worksheets: [
+      ws(
+        'worksheet-3-1-my-unhealthy-behaviors.docx',
+        '3.1 My unhealthy behaviors',
+      ),
+      ws(
+        'worksheet-3-2-my-avoidance-behavior.docx',
+        '3.2 My avoidance behavior',
+      ),
+      ws(
+        'worksheet-3-3-challenging-my-most-significant-negative-behavior.docx',
+        '3.3 Challenging my most significant negative behavior',
+      ),
+    ],
+  },
+  {
+    n: 4,
+    title: 'Problematic emotions',
+    video: '/cbt/section-4.mp4',
+    before:
+      'Think of a strong feeling you had this week. Was it about the event itself, or about what you told yourself about it?',
+    after: {
+      prompt:
+        'In your own words: how do you take an emotion apart and challenge it?',
+      model:
+        'First name the emotion precisely. Then look at the pieces behind it, such as the situation, the thoughts and what it did to your body and actions. Then question the thoughts, so a healthier emotion can take its place.',
+    },
+    practice: 'emotion',
+    quizzes: [{ slug: 'cbt-4', title: 'My emotions' }],
+    worksheets: [
+      ws('worksheet-4-1-my-emotional-map.docx', '4.1 My emotional map'),
+      ws(
+        'worksheet-4-2-the-components-of-my-emotion.docx',
+        '4.2 The components of my emotion',
+      ),
+      ws(
+        'worksheet-4-3-challenging-my-negative-unhealthy-emotions.docx',
+        '4.3 Challenging my negative unhealthy emotions',
+      ),
+    ],
+  },
   {
     n: 5,
     title: 'Problematic thoughts',
@@ -112,6 +229,19 @@ export const SECTIONS = [
 export const sectionByN = Object.fromEntries(
   SECTIONS.map((s) => [String(s.n), s]),
 );
+
+// Section 1: thought, feeling or action?
+export const TFA_ITEMS = [
+  ['I am going to mess this up.', 'thought'],
+  ['Anxious.', 'feeling'],
+  ['I cancelled the plans.', 'action'],
+  ['Nobody really likes me.', 'thought'],
+  ['Embarrassed.', 'feeling'],
+  ['I stayed in bed until noon.', 'action'],
+  ['This will never get better.', 'thought'],
+  ['I texted a friend back.', 'action'],
+  ['Lonely.', 'feeling'],
+];
 
 // The ten thought traps from worksheet 5.2, each described in our own words.
 export const TRAPS = {

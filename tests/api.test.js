@@ -244,13 +244,18 @@ describe('api', () => {
   });
 
   it.skipIf(!existsSync('dist'))(
-    'serves the CBT course files only to a signed-in person',
+    'serves the course files and records only to a signed-in person',
     async () => {
       const anon = await request(app).get('/cbt/section-5.mp4');
       expect(anon.status).toBe(401);
       const alice = await agentFor('alice');
       const signedIn = await alice.get('/cbt/no-such-file.mp4');
       expect(signedIn.status).not.toBe(401);
+      expect((await request(app).get('/records/x.pdf')).status).toBe(401);
+      expect((await request(app).get('/api/records')).status).toBe(401);
+      const list = await alice.get('/api/records');
+      expect(list.status).toBe(200);
+      expect(Array.isArray(list.body)).toBe(true);
     },
   );
 

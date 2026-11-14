@@ -7,6 +7,11 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
 
 ## Next
 
+- [ ] Decide who can open the 2011 report under Therapy, "Background" · added 2026-11-13
+  - today both seats can open it, like everything else in Therapy; nothing about it is in the public repo
+  - Option: both seats, as now
+  - Option: only her seat; an agent adds a per-seat check once both passkeys exist (level: quick)
+
 - [ ] Look over the new calm editorial look and tell an agent what to change · added 2026-11-13
   - home, Manual, Therapy, Feelings and Fear of death all use it; the archived Check-in pages keep some old board styling
 - [ ] Play one Therapy video on your phone · added 2026-11-13
