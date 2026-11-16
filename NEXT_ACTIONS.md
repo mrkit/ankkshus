@@ -7,6 +7,7 @@ person or agent. Rules: ~/.agents/AGENTS.md, "Next actions".
 
 ## Next
 
+- [ ] Ask an agent to deploy the 1Password change on the People page (newest commit on local master, not pushed) · level: quick · added 2026-11-16
 - [ ] Decide who can open the 2011 report under Therapy, "Background" · added 2026-11-13
   - today both seats can open it, like everything else in Therapy; nothing about it is in the public repo
   - Option: both seats, as now

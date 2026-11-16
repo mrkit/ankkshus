@@ -46,6 +46,7 @@ function RoleForm({ spec, saved }) {
                 onChange={set('name')}
                 maxLength={120}
                 autoComplete="off"
+                data-1p-ignore
               />
             </label>
             <label className="field">
@@ -57,6 +58,7 @@ function RoleForm({ spec, saved }) {
                 onChange={set('phone')}
                 maxLength={40}
                 autoComplete="off"
+                data-1p-ignore
               />
             </label>
           </>
